@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "contact": "Contact",
+    "download": "Download"
+  },
+  "hero": {
+    "title_pool": "Pool",
+    "title_and": "&",
+    "title_chill": "Chill",
+    "subtitle": "Relax, <1>enjoy</1> and <3>book</3>.",
+    "button": "Explore More"
+  },
+  "footer": {
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy",
+    "copyright": "© 2025 NexDevCode. All rights reserved.",
+    "facebook_label": "Facebook",
+    "instagram_label": "Instagram",
+    "tiktok_label": "TikTok"
+  },
+  "feature": {
+    "badge": "Coming Soon",
+    "title": "Rent or manage your space easier",
+    "description": "Our app is on the way so you can rent pools, cabins and more, or earn money by offering your space.",
+    "highlight": "<0>Book in seconds. Earn effortlessly.</0> All from your phone.",
+    "button": "Notify me when ready",
+    "alt_text": "Pool & Chill App"
+  },
+  "tech": {
+    "powered_by": "Powered by"
+  },
+  "language": {
+    "spanish": "Español",
+    "english": "English"
+  }
+}

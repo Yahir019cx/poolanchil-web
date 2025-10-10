@@ -1,26 +1,33 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 
 export default function Navbar() {
-  const [activeItem, setActiveItem] = useState('Inicio');
+  const { t } = useTranslation();
+  const [activeItem, setActiveItem] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   
-  const menuItems = ['Inicio', 'Nosotros', 'Contacto', 'Descargar'];
+  const menuItems = [
+    { key: 'home', label: t('nav.home') },
+    { key: 'about', label: t('nav.about') },
+    { key: 'contact', label: t('nav.contact') },
+    { key: 'download', label: t('nav.download') }
+  ];
   const poolChillLogo = '/images/poolChillLogo.png';
 
   const routes = {
-    'Inicio': '/',
-    'Nosotros': '/nosotros',
-    'Contacto': '/contacto',
-    'Descargar': '/descargar'
+    'home': '/',
+    'about': '/nosotros',
+    'contact': '/contacto',
+    'download': '/descargar'
   };
 
-  const handleNavigation = (item) => {
-    setActiveItem(item);
-    navigate(routes[item]);
+  const handleNavigation = (itemKey) => {
+    setActiveItem(itemKey);
+    navigate(routes[itemKey]);
     setIsMenuOpen(false);
   };
 
@@ -43,8 +50,8 @@ export default function Navbar() {
             <img 
               src={poolChillLogo} 
               alt="Pool & Chill" 
-              className="h-10 md:h-14 lg:h-24 w-auto cursor-pointer"
-              onClick={() => handleNavigation('Inicio')}
+              className="h-10 md:h-14 lg:h-16 w-auto cursor-pointer"
+              onClick={() => handleNavigation('home')}
             />
           </div>
 
@@ -57,12 +64,12 @@ export default function Navbar() {
           <div className="hidden md:flex items-center justify-end flex-1 gap-6 lg:gap-16 ml-8">
             {menuItems.map((item) => (
               <button
-                key={item}
-                onClick={() => handleNavigation(item)}
+                key={item.key}
+                onClick={() => handleNavigation(item.key)}
                 className="relative py-2 text-base lg:text-xl font-medium text-gray-700 hover:text-primary transition-colors whitespace-nowrap"
               >
-                {item}
-                {activeItem === item && (
+                {item.label}
+                {activeItem === item.key && (
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary animate-in slide-in-from-left duration-300" />
                 )}
               </button>
@@ -78,13 +85,13 @@ export default function Navbar() {
             <div className="flex flex-col gap-4">
               {menuItems.map((item) => (
                 <button
-                  key={item}
-                  onClick={() => handleNavigation(item)}
+                  key={item.key}
+                  onClick={() => handleNavigation(item.key)}
                   className={`text-left py-2 text-base font-medium transition-colors ${
-                    activeItem === item ? 'text-primary' : 'text-gray-700 hover:text-primary'
+                    activeItem === item.key ? 'text-primary' : 'text-gray-700 hover:text-primary'
                   }`}
                 >
-                  {item}
+                  {item.label}
                 </button>
               ))}
             </div>

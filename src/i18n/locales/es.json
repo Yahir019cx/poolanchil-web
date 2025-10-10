@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros", 
+    "contact": "Contacto",
+    "download": "Descargar"
+  },
+  "hero": {
+    "title_pool": "Pool",
+    "title_and": "&",
+    "title_chill": "Chill",
+    "subtitle": "Relájate, <1>disfruta</1> y <3>reserva</3>.",
+    "button": "Explorar más"
+  },
+  "footer": {
+    "terms": "Términos y condiciones",
+    "privacy": "Aviso de privacidad",
+    "copyright": "© 2025 NexDevCode. Todos los derechos reservados.",
+    "facebook_label": "Facebook",
+    "instagram_label": "Instagram",
+    "tiktok_label": "TikTok"
+  },
+  "feature": {
+    "badge": "Próximamente",
+    "title": "Renta o administra tu espacio más fácil",
+    "description": "Nuestra app está en camino para que puedas rentar albercas, cabañas y más, o ganar dinero ofreciendo tu espacio.",
+    "highlight": "<0>Reserva en segundos. Gana sin esfuerzo.</0> Todo desde tu celular.",
+    "button": "Notificarme cuando esté lista",
+    "alt_text": "Pool & Chill App"
+  },
+  "tech": {
+    "powered_by": "Impulsado por"
+  },
+  "language": {
+    "spanish": "Español",
+    "english": "English"
+  }
+}

@@ -1,20 +1,21 @@
 import { useState } from 'react';
 import { Languages, ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function LanguageSwitcher() {
+  const { i18n, t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState('ES');
+  
+  const currentLang = i18n.language === 'es' ? 'ES' : 'EN';
 
   const languages = [
-    { code: 'ES', name: 'Español', flag: '🇪🇸' },
-    { code: 'EN', name: 'English', flag: '🇺🇸' },
+    { code: 'ES', langCode: 'es', name: t('language.spanish'), flag: '🇪🇸' },
+    { code: 'EN', langCode: 'en', name: t('language.english'), flag: '🇺🇸' },
   ];
 
   const handleLanguageChange = (langCode) => {
-    setCurrentLang(langCode);
+    i18n.changeLanguage(langCode);
     setIsOpen(false);
-    // Aquí conectarás con i18n después:
-    // i18n.changeLanguage(langCode.toLowerCase());
   };
 
   return (
@@ -43,7 +44,7 @@ export default function LanguageSwitcher() {
             {languages.map((lang) => (
               <button
                 key={lang.code}
-                onClick={() => handleLanguageChange(lang.code)}
+                onClick={() => handleLanguageChange(lang.langCode)}
                 className={`w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-gray-50 transition-colors ${
                   currentLang === lang.code ? 'text-primary bg-primary/5' : 'text-gray-700'
                 }`}
