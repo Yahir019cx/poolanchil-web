@@ -45,4 +45,26 @@
     "spanish": "Español",
     "english": "English"
   }
+  ,
+  "about": {
+    "comingSoon": "Coming Soon · February 2026",
+    "title1": "We are building",
+    "title2": "your next getaway",
+    "subtitle": "We connect people with unique spaces. Comfort, trust, and memorable experiences.",
+    "cards": {
+      "launch": {
+        "title": "Launch",
+        "description": "February 2026"
+      },
+      "search": {
+        "title": "Instant Search",
+        "description": "Find spaces instantly"
+      },
+      "reserve": {
+        "title": "Smart Booking",
+        "description": "Smooth and secure experience"
+      }
+    },
+    "developedBy": "Developed by:"
+  }
 }

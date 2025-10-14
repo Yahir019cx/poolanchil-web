@@ -45,4 +45,26 @@
     "spanish": "Español",
     "english": "English"
   }
+  ,
+  "about": {
+    "comingSoon": "Próximamente · Febrero 2026",
+    "title1": "Estamos construyendo",
+    "title2": "tu próxima escapada",
+    "subtitle": "Conectamos personas con espacios únicos. Comodidad, confianza y experiencias memorables.",
+    "cards": {
+      "launch": {
+        "title": "Lanzamiento",
+        "description": "Febrero 2026"
+      },
+      "search": {
+        "title": "Búsqueda instantánea",
+        "description": "Encuentra espacios al momento"
+      },
+      "reserve": {
+        "title": "Reserva inteligente",
+        "description": "Experiencia fluida y segura"
+      }
+    },
+    "developedBy": "Desarrollado por:"
+  }
 }
