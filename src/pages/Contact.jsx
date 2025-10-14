@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from "framer-motion";
 import { User, Phone, Mail, MapPin, Home, Sparkles, Droplet, Tent } from 'lucide-react';
 
-export function ContactSection() {
+export default function ContactSection() {
   const [role, setRole] = useState('');
   const [propertyType, setPropertyType] = useState('pool');
 
