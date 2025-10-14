@@ -31,6 +31,16 @@
   "tech": {
     "powered_by": "Powered by"
   },
+  "circle": {
+    "title_line1": "Ready for your next",
+    "title_line2": "aquatic adventure?",
+    "subtitle": "Touch the logo and discover the magic of <0>Pool&Chill</0>",
+    "card_title": "Pool&Chill",
+    "card_description": "Discover our incredible spaces to relax. Rent pools, cabins and campsites to live unforgettable experiences with your friends and family.",
+    "card_button": "Explore Now",
+    "logo_alt": "Pool&Chill Logo",
+    "app_alt": "Pool&Chill App"
+  },
   "language": {
     "spanish": "Español",
     "english": "English"

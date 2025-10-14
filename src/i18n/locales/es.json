@@ -31,6 +31,16 @@
   "tech": {
     "powered_by": "Impulsado por"
   },
+  "circle": {
+    "title_line1": "¿Listo para tu próxima",
+    "title_line2": "aventura acuática?",
+    "subtitle": "Toca el logo y descubre la magia de <0>Pool&Chill</0>",
+    "card_title": "Pool&Chill",
+    "card_description": "Descubre nuestros espacios increíbles para relajarte. Renta albercas, cabañas y campings para vivir experiencias inolvidables con tus amigos y familia.",
+    "card_button": "Explorar Ahora",
+    "logo_alt": "Pool&Chill Logo",
+    "app_alt": "Pool&Chill App"
+  },
   "language": {
     "spanish": "Español",
     "english": "English"

@@ -47,14 +47,18 @@ export function TechCarousel() {
     if (!scrollContainer) return;
 
     let scrollPosition = 0;
-    const scrollSpeed = 1;
+    const scrollSpeed = 0.5;
     let animationId;
 
     const scroll = () => {
       scrollPosition += scrollSpeed;
       
-      // When we reach the midpoint, reset to beginning for seamless loop
-      if (scrollPosition >= scrollContainer.scrollWidth / 2) {
+      // Calculate the width of one set of items
+      const itemWidth = 120 + 48; // min-width + gap in pixels
+      const oneSetWidth = technologies.length * itemWidth;
+      
+      // When we reach the width of one complete set, reset smoothly
+      if (scrollPosition >= oneSetWidth) {
         scrollPosition = 0;
       }
       
@@ -83,11 +87,15 @@ export function TechCarousel() {
         <div 
           ref={scrollRef}
           className="overflow-hidden"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          style={{ 
+            scrollbarWidth: 'none', 
+            msOverflowStyle: 'none',
+            WebkitOverflowScrolling: 'touch'
+          }}
         >
           <div className="flex gap-12 w-max px-6">
-            {/* Duplicate items for seamless loop */}
-            {[...technologies, ...technologies].map((tech, index) => (
+            {/* Triple items for ultra-smooth seamless loop */}
+            {[...technologies, ...technologies, ...technologies].map((tech, index) => (
               <div 
                 key={index}
                 className="flex flex-col items-center gap-3 min-w-[120px]"
