@@ -47,7 +47,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
           className="text-center mb-6"
         >
-          <h1 className="text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-6 bg-gradient-to-r from-gray-900 via-[#3CA2A2] to-gray-900 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-10 bg-gradient-to-r from-gray-900 via-[#3CA2A2] to-gray-900 bg-clip-text text-transparent">
             {t('about.title1')}
             <br />
             {t('about.title2')}

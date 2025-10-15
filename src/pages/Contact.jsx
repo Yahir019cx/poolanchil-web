@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from "framer-motion";
 import { User, Phone, Mail, MapPin, Home, Sparkles, Droplet, Tent } from 'lucide-react';
 
-export default function ContactSection() {
+export default function Contact() {
   const [role, setRole] = useState('');
   const [propertyType, setPropertyType] = useState('pool');
 
@@ -12,7 +12,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="relative min-h-screen py-20 px-6 overflow-hidden bg-gradient-to-b from-white via-primary/5 to-white">
+    <section className="relative min-h-screen py-20 px-6 overflow-hidden bg-gradient-to-b from-white via-primary/5 to-white mb-1">
       {/* Animated water wave background */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-10 right-20 w-96 h-96 bg-primary rounded-full blur-3xl animate-pulse" 
