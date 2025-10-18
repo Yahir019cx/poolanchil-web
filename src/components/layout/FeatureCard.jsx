@@ -27,13 +27,13 @@ export function FeatureCard() {
 
             {/* Content */}
             <div className="p-8 flex flex-col justify-center items-center text-center">
-              <h3 className="text-3xl font-bold text-gray-900 mb-4 animate-in slide-in-from-bottom duration-500">
+              <h3 className="text-lg sm:text-xl md:text-3xl font-bold text-gray-900 mb-4 animate-in slide-in-from-bottom duration-500">
                 {t('feature.title')}
               </h3>
-              <p className="text-gray-600 mb-2 animate-in slide-in-from-bottom duration-700">
+              <p className="text-sm sm:text-base text-gray-600 mb-2 animate-in slide-in-from-bottom duration-700">
                 {t('feature.description')}
               </p>
-              <p className="text-gray-600 mb-8 animate-in slide-in-from-bottom duration-900">
+              <p className="text-sm sm:text-base text-gray-600 mb-8 animate-in slide-in-from-bottom duration-900">
                 <Trans
                   i18nKey="feature.highlight"
                   components={{
@@ -42,7 +42,7 @@ export function FeatureCard() {
                 />
               </p>
               <Button 
-                className="bg-primary hover:bg-primary/90 text-white rounded-lg px-8 py-3 shadow-md hover:shadow-lg hover:scale-105 transition-all animate-in slide-in-from-bottom duration-1000"
+                className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base shadow-md hover:shadow-lg hover:scale-105 transition-all animate-in slide-in-from-bottom duration-1000"
               >
                 {t('feature.button')}
               </Button>

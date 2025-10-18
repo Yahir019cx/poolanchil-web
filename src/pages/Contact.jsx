@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from "framer-motion";
 import { User, Phone, Mail, MapPin, Home, Sparkles, Droplet, Tent } from 'lucide-react';
 
 export default function Contact() {
+  const { t } = useTranslation();
   const [role, setRole] = useState('');
-  const [propertyType, setPropertyType] = useState('pool');
+  const [propertyType, setPropertyType] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,11 +31,11 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-6 pb-2 bg-gradient-to-r from-gray-900 via-[#3CA2A2] to-gray-900 bg-clip-text text-transparent leading-tight">
-            ¡Contáctanos!
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-gray-900 mb-4 pb-2 bg-gradient-to-r from-gray-900 via-[#3CA2A2] to-gray-900 bg-clip-text text-transparent leading-tight">
+            {t('contact.title')}
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Nos encantaría saber de ti — ya seas huésped o anfitrión, estamos construyendo Pool & Chill juntos.
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
@@ -57,7 +59,7 @@ export default function Contact() {
             >
               <label htmlFor="fullName" className="flex items-center gap-2 text-gray-700 font-medium text-sm">
                 <User className="w-4 h-4 text-primary" />
-                Nombre completo
+                {t('contact.fullName')}
               </label>
               <input
                 id="fullName"
@@ -76,7 +78,7 @@ export default function Contact() {
             >
               <label htmlFor="phone" className="flex items-center gap-2 text-gray-700 font-medium text-sm">
                 <Phone className="w-4 h-4 text-primary" />
-                Número de teléfono
+                {t('contact.phone')}
               </label>
               <input
                 id="phone"
@@ -95,7 +97,7 @@ export default function Contact() {
             >
               <label htmlFor="email" className="flex items-center gap-2 text-gray-700 font-medium text-sm">
                 <Mail className="w-4 h-4 text-primary" />
-                Correo electrónico
+                {t('contact.email')}
               </label>
               <input
                 id="email"
@@ -114,7 +116,7 @@ export default function Contact() {
             >
               <label htmlFor="role" className="flex items-center gap-2 text-gray-700 font-medium text-sm">
                 <Sparkles className="w-4 h-4 text-primary" />
-                Soy un...
+                {t('contact.role')}
               </label>
               <select
                 id="role"
@@ -128,9 +130,9 @@ export default function Contact() {
                   backgroundSize: '1.5em 1.5em'
                 }}
               >
-                <option value="">Selecciona tu rol</option>
-                <option value="guest">Huésped</option>
-                <option value="host">Anfitrión</option>
+                <option value="">{t('contact.selectRole')}</option>
+                <option value="guest">{t('contact.guest')}</option>
+                <option value="host">{t('contact.host')}</option>
               </select>
             </motion.div>
 
@@ -144,19 +146,19 @@ export default function Contact() {
                 className="space-y-4 pt-4"
               >
                 <div className="space-y-2">
-                  <label htmlFor="guestIdeas" className="text-gray-700 font-medium text-sm">
-                    Cuéntanos qué te gustaría ver en la app
+                    <label htmlFor="guestIdeas" className="text-gray-700 font-medium text-sm">
+                    {t('contact.guestIdeasLabel')}
                   </label>
                   <textarea
                     id="guestIdeas"
-                    placeholder="Tus ideas nos ayudan a mejorar..."
+                    placeholder={t('contact.guestIdeasPlaceholder')}
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 shadow-sm hover:shadow-md resize-none bg-white"
                   />
                 </div>
                 <p className="text-sm text-gray-500 flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-primary" />
-                  Tus ideas ayudan a dar forma al futuro de Pool & Chill
+                  {t('contact.guestNote')}
                 </p>
               </motion.div>
             )}
@@ -172,70 +174,74 @@ export default function Contact() {
               >
                 {/* Property Type Radio Buttons */}
                 <div className="space-y-3">
-                  <label className="text-gray-700 font-medium text-sm">Tipo de espacio</label>
+                  <label className="text-gray-700 font-medium text-sm">{t('contact.propertyType')}</label>
                   <div className="flex gap-4 flex-wrap">
                     {[
-                      { value: 'cabin', label: 'Cabaña', icon: Home },
-                      { value: 'pool', label: 'Alberca', icon: Droplet },
-                      { value: 'camping', label: 'Camping', icon: Tent }
-                    ].map((option) => (
-                      <motion.button
-                        key={option.value}
-                        type="button"
-                        onClick={() => setPropertyType(option.value)}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`
-                          flex items-center gap-2 px-6 py-3 rounded-lg border-2 transition-all duration-300 shadow-sm
-                          ${propertyType === option.value 
-                            ? 'border-primary bg-primary/10 text-primary' 
-                            : 'border-gray-200 bg-white text-gray-600 hover:border-primary/50'
-                          }
-                        `}
-                      >
-                        <option.icon className="w-4 h-4" />
-                        <span className="font-medium">{option.label}</span>
-                      </motion.button>
-                    ))}
+                      { value: 'cabin', label: t('contact.types.cabin'), icon: Home },
+                      { value: 'pool', label: t('contact.types.pool'), icon: Droplet },
+                      { value: 'camping', label: t('contact.types.camping'), icon: Tent }
+                    ].map((option) => {
+                      const selected = propertyType.includes(option.value);
+                      return (
+                        <motion.button
+                          key={option.value}
+                          type="button"
+                          onClick={() => setPropertyType(prev => selected ? prev.filter(v => v !== option.value) : [...prev, option.value])}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          aria-pressed={selected}
+                          className={`
+                            flex items-center gap-2 px-6 py-3 rounded-lg border-2 transition-all duration-300 shadow-sm
+                            ${selected 
+                              ? 'border-primary bg-primary/10 text-primary' 
+                              : 'border-gray-200 bg-white text-gray-600 hover:border-primary/50'
+                            }
+                          `}
+                        >
+                          <option.icon className="w-4 h-4" />
+                          <span className="font-medium">{option.label}</span>
+                        </motion.button>
+                      );
+                    })}
                   </div>
                 </div>
 
                 {/* Place Name */}
                 <div className="space-y-2">
-                  <label htmlFor="placeName" className="flex items-center gap-2 text-gray-700 font-medium text-sm">
+                    <label htmlFor="placeName" className="flex items-center gap-2 text-gray-700 font-medium text-sm">
                     <Home className="w-4 h-4 text-primary" />
-                    Nombre del lugar
+                    {t('contact.placeName')}
                   </label>
                   <input
                     id="placeName"
                     type="text"
-                    placeholder="Villa Paraíso"
+                    placeholder={t('contact.placeNamePlaceholder')}
                     className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white"
                   />
                 </div>
 
                 {/* Address */}
                 <div className="space-y-2">
-                  <label htmlFor="address" className="flex items-center gap-2 text-gray-700 font-medium text-sm">
+                    <label htmlFor="address" className="flex items-center gap-2 text-gray-700 font-medium text-sm">
                     <MapPin className="w-4 h-4 text-primary" />
-                    Dirección
+                    {t('contact.address')}
                   </label>
                   <input
                     id="address"
                     type="text"
-                    placeholder="Calle, Colonia, Ciudad, Estado"
+                    placeholder={t('contact.addressPlaceholder')}
                     className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white"
                   />
                 </div>
 
                 {/* Description */}
                 <div className="space-y-2">
-                  <label htmlFor="hostDescription" className="text-gray-700 font-medium text-sm">
-                    Cuéntanos más sobre tu lugar
+                    <label htmlFor="hostDescription" className="text-gray-700 font-medium text-sm">
+                    {t('contact.hostDescriptionLabel')}
                   </label>
                   <textarea
                     id="hostDescription"
-                    placeholder="Describe tu espacio, amenidades, y lo que hace especial tu lugar..."
+                    placeholder={t('contact.hostDescriptionPlaceholder')}
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 shadow-sm hover:shadow-md resize-none bg-white"
                   />
@@ -243,7 +249,7 @@ export default function Contact() {
 
                 <p className="text-sm text-gray-500 flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-primary" />
-                  Contáctanos y lista tu lugar temprano para obtener beneficios exclusivos de anfitrión
+                  {t('contact.hostNote')}
                 </p>
               </motion.div>
             )}
@@ -262,7 +268,7 @@ export default function Contact() {
                   whileTap={{ scale: 0.98 }}
                   className="w-full py-4 rounded-lg bg-gradient-to-r from-primary to-primary/80 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  Enviar mensaje
+                  {t('contact.send')}
                 </motion.button>
               </motion.div>
             )}
@@ -276,7 +282,7 @@ export default function Contact() {
           transition={{ duration: 0.6, delay: 1 }}
           className="text-center text-sm text-gray-500 mt-8"
         >
-          Responderemos lo antes posible. ¡Gracias por ayudarnos a construir Pool & Chill!
+          {t('contact.bottomNote')}
         </motion.p>
       </div>
     </section>

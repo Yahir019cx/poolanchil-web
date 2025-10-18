@@ -4,6 +4,8 @@ import { useTranslation, Trans } from 'react-i18next';
 export function CircleCard() {
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
+  // track if viewport is xs (below Tailwind's `sm` breakpoint: 640px)
+  const [isXs, setIsXs] = useState(false);
   const poolChillLogo = '/images/poolChillLogo.png';
   const Mockup = '/images/iphone.png';
 
@@ -20,7 +22,26 @@ export function CircleCard() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isExpanded]);
 
+  // media-query watcher: hide component on xs screens
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia('(max-width: 639px)');
+    const handler = (e) => setIsXs(e.matches);
+    // set initial
+    setIsXs(mq.matches);
+    // add listener
+    if (mq.addEventListener) {
+      mq.addEventListener('change', handler);
+      return () => mq.removeEventListener('change', handler);
+    }
+    // fallback for older browsers
+    mq.addListener && mq.addListener(handler);
+    return () => mq.removeListener && mq.removeListener(handler);
+  }, []);
+
   return (
+    // if xs, don't render (disappear on small screens)
+    isXs ? null : (
     <div className="min-h-screen bg-white flex items-center justify-center p-8">
       <div className="relative">
         {/* Initial Circle State */}
@@ -106,7 +127,8 @@ export function CircleCard() {
             </div>
           </div>
         </div>
+        </div>
       </div>
-    </div>
+    )
   );
 }

@@ -47,12 +47,12 @@ export default function About() {
           transition={{ duration: 0.8 }}
           className="text-center mb-6"
         >
-          <h1 className="text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-10 bg-gradient-to-r from-gray-900 via-[#3CA2A2] to-gray-900 bg-clip-text text-transparent">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-gray-900 mb-8 bg-gradient-to-r from-gray-900 via-[#3CA2A2] to-gray-900 bg-clip-text text-transparent">
             {t('about.title1')}
             <br />
             {t('about.title2')}
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
             {t('about.subtitle')}
           </p>
         </motion.div>
@@ -97,8 +97,8 @@ export default function About() {
                 <div className="text-[#3CA2A2] mb-5 group-hover:scale-110 transition-transform duration-300">
                   {card.icon}
                 </div>
-                <h3 className="text-gray-900 mb-2 font-semibold">{card.title}</h3>
-                <p className="text-gray-600">{card.description}</p>
+                <h3 className="text-gray-900 mb-2 font-semibold text-base sm:text-lg md:text-xl">{card.title}</h3>
+                <p className="text-gray-600 text-sm sm:text-base">{card.description}</p>
               </div>
             </motion.div>
           ))}

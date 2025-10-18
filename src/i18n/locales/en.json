@@ -67,4 +67,43 @@
     },
     "developedBy": "Developed by:"
   }
+  ,
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We'd love to hear from you — whether you're a guest or a host, we're building Pool & Chill together.",
+    "fullName": "Full name",
+    "phone": "Phone number",
+    "email": "Email",
+    "role": "I am a...",
+    "selectRole": "Select your role",
+    "guest": "Guest",
+    "host": "Host",
+    "guestIdeasLabel": "Tell us what you'd like to see in the app",
+    "guestIdeasPlaceholder": "Your ideas help us improve...",
+    "guestNote": "Your ideas help shape the future of Pool & Chill",
+    "propertyType": "Property type",
+    "types": {
+      "cabin": "Cabin",
+      "pool": "Pool",
+      "camping": "Camping"
+    },
+    "placeName": "Place name",
+    "placeNamePlaceholder": "Paradise Villa",
+    "address": "Address",
+    "addressPlaceholder": "Street, Neighborhood, City, State",
+    "hostDescriptionLabel": "Tell us more about your place",
+    "hostDescriptionPlaceholder": "Describe your space, amenities, and what makes your place special...",
+    "hostNote": "Contact us and list your place early to receive exclusive host benefits",
+    "send": "Send message",
+    "bottomNote": "We'll reply as soon as possible. Thanks for helping us build Pool & Chill!"
+  }
+  ,
+  "download": {
+    "title": "Your next getaway is closer than you think",
+    "subtitle": "We're almost ready. Pool & Chill launches this February.",
+    "availableOn": "Available soon on",
+    "appStore": "App Store",
+    "googlePlay": "Google Play",
+    "releaseNote": "February 2026 • Find pools, cabins and outdoor spaces"
+  }
 }

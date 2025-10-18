@@ -67,4 +67,43 @@
     },
     "developedBy": "Desarrollado por:"
   }
+  ,
+  "contact": {
+    "title": "¡Contáctanos!",
+    "subtitle": "Nos encantaría saber de ti — ya seas huésped o anfitrión, estamos construyendo Pool & Chill juntos.",
+    "fullName": "Nombre completo",
+    "phone": "Número de teléfono",
+    "email": "Correo electrónico",
+    "role": "Soy un...",
+    "selectRole": "Selecciona tu rol",
+    "guest": "Huésped",
+    "host": "Anfitrión",
+    "guestIdeasLabel": "Cuéntanos qué te gustaría ver en la app",
+    "guestIdeasPlaceholder": "Tus ideas nos ayudan a mejorar...",
+    "guestNote": "Tus ideas ayudan a dar forma al futuro de Pool & Chill",
+    "propertyType": "Tipo de espacio",
+    "types": {
+      "cabin": "Cabaña",
+      "pool": "Alberca",
+      "camping": "Camping"
+    },
+    "placeName": "Nombre del lugar",
+    "placeNamePlaceholder": "Villa Paraíso",
+    "address": "Dirección",
+    "addressPlaceholder": "Calle, Colonia, Ciudad, Estado",
+    "hostDescriptionLabel": "Cuéntanos más sobre tu lugar",
+    "hostDescriptionPlaceholder": "Describe tu espacio, amenidades, y lo que hace especial tu lugar...",
+    "hostNote": "Contáctanos y lista tu lugar temprano para obtener beneficios exclusivos de anfitrión",
+    "send": "Enviar mensaje",
+    "bottomNote": "Responderemos lo antes posible. ¡Gracias por ayudarnos a construir Pool & Chill!"
+  }
+  ,
+  "download": {
+    "title": "Tu próxima escapada está más cerca de lo que piensas",
+    "subtitle": "Casi estamos listos. Pool & Chill se lanza este febrero.",
+    "availableOn": "Disponible pronto en",
+    "appStore": "App Store",
+    "googlePlay": "Google Play",
+    "releaseNote": "Febrero 2026 • Encuentra albercas, cabañas y espacios al aire libre"
+  }
 }
