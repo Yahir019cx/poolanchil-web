@@ -7,10 +7,80 @@ export default function Contact() {
   const { t } = useTranslation();
   const [role, setRole] = useState('');
   const [propertyType, setPropertyType] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // Obtener valores del formulario
+      const fullName = document.getElementById('fullName').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+
+      // Construir el payload según el rol
+      const payload = {
+        nombre: fullName,
+        correo: email,
+        telefono: phone,
+        rol: role === 'guest' ? 'huésped' : 'anfitrión'
+      };
+
+      if (role === 'host') {
+        payload.tipoEspacio = propertyType;
+        payload.nombreLugar = document.getElementById('placeName').value;
+        payload.direccion = document.getElementById('address').value;
+        payload.descripcion = document.getElementById('hostDescription').value;
+      } else if (role === 'guest') {
+        payload.mensaje = document.getElementById('guestIdeas').value;
+      }
+
+      // Enviar al backend
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/web/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error en la respuesta del servidor');
+      }
+
+      // Éxito
+      setSubmitStatus('success');
+
+      // Limpiar formulario
+      document.getElementById('fullName').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('phone').value = '';
+      setRole('');
+      setPropertyType([]);
+
+      if (role === 'host') {
+        document.getElementById('placeName').value = '';
+        document.getElementById('address').value = '';
+        document.getElementById('hostDescription').value = '';
+      } else if (role === 'guest') {
+        document.getElementById('guestIdeas').value = '';
+      }
+
+      // Ocultar mensaje de éxito después de 5 segundos
+      setTimeout(() => setSubmitStatus(null), 5000);
+
+    } catch (error) {
+      console.error('Error al enviar formulario:', error);
+      setSubmitStatus('error');
+
+      // Ocultar mensaje de error después de 5 segundos
+      setTimeout(() => setSubmitStatus(null), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -264,12 +334,38 @@ export default function Contact() {
               >
                 <motion.button
                   onClick={handleSubmit}
-                  whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(60, 162, 162, 0.4)' }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 rounded-lg bg-gradient-to-r from-primary to-primary/80 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  disabled={isSubmitting}
+                  whileHover={!isSubmitting ? { scale: 1.02, boxShadow: '0 0 30px rgba(60, 162, 162, 0.4)' } : {}}
+                  whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                  className={`w-full py-4 rounded-lg font-semibold shadow-lg transition-all duration-300 ${
+                    isSubmitting
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : 'bg-gradient-to-r from-primary to-primary/80 text-white hover:shadow-xl'
+                  }`}
                 >
-                  {t('contact.send')}
+                  {isSubmitting ? 'Enviando...' : t('contact.send')}
                 </motion.button>
+
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-4 p-4 rounded-lg bg-green-50 border-2 border-green-200 text-green-700 text-center font-medium"
+                  >
+                    ✅ Enviado correctamente
+                  </motion.div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-4 p-4 rounded-lg bg-red-50 border-2 border-red-200 text-red-700 text-center font-medium"
+                  >
+                    ❌ Error al enviar el formulario
+                  </motion.div>
+                )}
               </motion.div>
             )}
           </div>
