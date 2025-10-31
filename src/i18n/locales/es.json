@@ -37,7 +37,7 @@
     "subtitle": "Toca el logo y descubre la magia de <0>Pool&Chill</0>",
     "card_title": "Pool&Chill",
     "card_description": "Descubre nuestros espacios increíbles para relajarte. Renta albercas, cabañas y campings para vivir experiencias inolvidables con tus amigos y familia.",
-    "card_button": "Explorar Ahora",
+    "card_button": "Suscribirme ahora",
     "logo_alt": "Pool&Chill Logo",
     "app_alt": "Pool&Chill App"
   },
@@ -95,7 +95,21 @@
     "hostDescriptionPlaceholder": "Describe tu espacio, amenidades, y lo que hace especial tu lugar...",
     "hostNote": "Contáctanos y lista tu lugar temprano para obtener beneficios exclusivos de anfitrión",
     "send": "Enviar mensaje",
-    "bottomNote": "Responderemos lo antes posible. ¡Gracias por ayudarnos a construir Pool & Chill!"
+    "bottomNote": "Responderemos lo antes posible. ¡Gracias por ayudarnos a construir Pool & Chill!",
+    "successModal": {
+      "title": "¡Correo enviado con éxito!",
+      "message": "Pronto nos pondremos en contacto contigo",
+      "button": "Continuar"
+    },
+    "validation": {
+      "nameRequired": "El nombre es requerido",
+      "nameInvalid": "El nombre solo puede contener letras y espacios",
+      "emailRequired": "El correo electrónico es requerido",
+      "emailInvalid": "Por favor ingresa un correo electrónico válido",
+      "phoneRequired": "El teléfono es requerido",
+      "phoneInvalid": "El teléfono solo puede contener números, + y espacios",
+      "phoneMinLength": "El teléfono debe tener al menos 10 dígitos"
+    }
   }
   ,
   "download": {
@@ -104,6 +118,11 @@
     "availableOn": "Disponible pronto en",
     "appStore": "App Store",
     "googlePlay": "Google Play",
-    "releaseNote": "Febrero 2026 • Encuentra albercas, cabañas y espacios al aire libre"
+    "releaseNote": "Febrero 2026 • Encuentra albercas, cabañas y espacios al aire libre",
+    "launchCountdown": "Lanzamiento en:",
+    "days": "Días",
+    "hours": "Horas",
+    "minutes": "Minutos",
+    "seconds": "Segundos"
   }
 }

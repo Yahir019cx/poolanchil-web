@@ -37,7 +37,7 @@
     "subtitle": "Touch the logo and discover the magic of <0>Pool&Chill</0>",
     "card_title": "Pool&Chill",
     "card_description": "Discover our incredible spaces to relax. Rent pools, cabins and campsites to live unforgettable experiences with your friends and family.",
-    "card_button": "Explore Now",
+    "card_button": "Subscribe Now",
     "logo_alt": "Pool&Chill Logo",
     "app_alt": "Pool&Chill App"
   },
@@ -95,7 +95,21 @@
     "hostDescriptionPlaceholder": "Describe your space, amenities, and what makes your place special...",
     "hostNote": "Contact us and list your place early to receive exclusive host benefits",
     "send": "Send message",
-    "bottomNote": "We'll reply as soon as possible. Thanks for helping us build Pool & Chill!"
+    "bottomNote": "We'll reply as soon as possible. Thanks for helping us build Pool & Chill!",
+    "successModal": {
+      "title": "Email sent successfully!",
+      "message": "We'll get back to you soon",
+      "button": "Continue"
+    },
+    "validation": {
+      "nameRequired": "Name is required",
+      "nameInvalid": "Name can only contain letters and spaces",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address",
+      "phoneRequired": "Phone number is required",
+      "phoneInvalid": "Phone can only contain numbers, + and spaces",
+      "phoneMinLength": "Phone must have at least 10 digits"
+    }
   }
   ,
   "download": {
@@ -104,6 +118,11 @@
     "availableOn": "Available soon on",
     "appStore": "App Store",
     "googlePlay": "Google Play",
-    "releaseNote": "February 2026 • Find pools, cabins and outdoor spaces"
+    "releaseNote": "February 2026 • Find pools, cabins and outdoor spaces",
+    "launchCountdown": "Launching in:",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds"
   }
 }

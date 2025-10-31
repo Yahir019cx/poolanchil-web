@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from "framer-motion";
-import { User, Phone, Mail, MapPin, Home, Sparkles, Droplet, Tent } from 'lucide-react';
+import { User, Phone, Mail, MapPin, Home, Sparkles, Droplet, Tent, UserCheck, Users } from 'lucide-react';
+import SuccessModal from '../components/ui/SuccessModal';
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -9,23 +10,98 @@ export default function Contact() {
   const [propertyType, setPropertyType] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [errors, setErrors] = useState({
+    fullName: '',
+    email: '',
+    phone: ''
+  });
+
+  const [formValues, setFormValues] = useState({
+    fullName: '',
+    email: '',
+    phone: ''
+  });
+
+  // Prevenir entrada de caracteres no permitidos en nombre
+  const handleNameInput = (e) => {
+    const value = e.target.value;
+    // Solo permitir letras, espacios y acentos
+    const filtered = value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]/g, '');
+    setFormValues(prev => ({ ...prev, fullName: filtered }));
+    e.target.value = filtered;
+
+    // Validar
+    if (!filtered.trim()) {
+      setErrors(prev => ({ ...prev, fullName: t('contact.validation.nameRequired') }));
+    } else {
+      setErrors(prev => ({ ...prev, fullName: '' }));
+    }
+  };
+
+  // Prevenir entrada de letras en teléfono
+  const handlePhoneInput = (e) => {
+    const value = e.target.value;
+    // Solo permitir números, +, espacios, paréntesis y guiones
+    const filtered = value.replace(/[^\d+\s()-]/g, '');
+    setFormValues(prev => ({ ...prev, phone: filtered }));
+    e.target.value = filtered;
+
+    // Validar
+    if (!filtered.trim()) {
+      setErrors(prev => ({ ...prev, phone: t('contact.validation.phoneRequired') }));
+    } else if (filtered.replace(/[\s()-]/g, '').length < 10) {
+      setErrors(prev => ({ ...prev, phone: t('contact.validation.phoneMinLength') }));
+    } else {
+      setErrors(prev => ({ ...prev, phone: '' }));
+    }
+  };
+
+  // Validar email
+  const handleEmailInput = (e) => {
+    const value = e.target.value;
+    setFormValues(prev => ({ ...prev, email: value }));
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!value.trim()) {
+      setErrors(prev => ({ ...prev, email: t('contact.validation.emailRequired') }));
+    } else if (!emailRegex.test(value)) {
+      setErrors(prev => ({ ...prev, email: t('contact.validation.emailInvalid') }));
+    } else {
+      setErrors(prev => ({ ...prev, email: '' }));
+    }
+  };
+
+  // Verificar si el formulario es válido
+  const isFormValid = () => {
+    return (
+      formValues.fullName.trim() !== '' &&
+      formValues.email.trim() !== '' &&
+      formValues.phone.trim() !== '' &&
+      !errors.fullName &&
+      !errors.email &&
+      !errors.phone &&
+      role !== ''
+    );
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Verificar que el formulario sea válido antes de enviar
+    if (!isFormValid()) {
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus(null);
 
     try {
-      // Obtener valores del formulario
-      const fullName = document.getElementById('fullName').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value;
-
       // Construir el payload según el rol
       const payload = {
-        nombre: fullName,
-        correo: email,
-        telefono: phone,
+        nombre: formValues.fullName,
+        correo: formValues.email,
+        telefono: formValues.phone,
         rol: role === 'guest' ? 'huésped' : 'anfitrión'
       };
 
@@ -51,13 +127,11 @@ export default function Contact() {
         throw new Error('Error en la respuesta del servidor');
       }
 
-      // Éxito
-      setSubmitStatus('success');
+      // Éxito - Mostrar modal
+      setShowSuccessModal(true);
 
       // Limpiar formulario
-      document.getElementById('fullName').value = '';
-      document.getElementById('email').value = '';
-      document.getElementById('phone').value = '';
+      setFormValues({ fullName: '', email: '', phone: '' });
       setRole('');
       setPropertyType([]);
 
@@ -68,9 +142,6 @@ export default function Contact() {
       } else if (role === 'guest') {
         document.getElementById('guestIdeas').value = '';
       }
-
-      // Ocultar mensaje de éxito después de 5 segundos
-      setTimeout(() => setSubmitStatus(null), 5000);
 
     } catch (error) {
       console.error('Error al enviar formulario:', error);
@@ -134,9 +205,24 @@ export default function Contact() {
               <input
                 id="fullName"
                 type="text"
+                value={formValues.fullName}
                 placeholder="Tu nombre"
-                className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white"
+                onInput={handleNameInput}
+                className={`w-full px-4 py-3 rounded-lg border-2 ${
+                  errors.fullName
+                    ? 'border-red-400 focus:border-red-500 focus:ring-red-100'
+                    : 'border-gray-200 focus:border-primary focus:ring-primary/10'
+                } focus:ring-4 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white`}
               />
+              {errors.fullName && (
+                <motion.p
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-500 text-sm"
+                >
+                  {errors.fullName}
+                </motion.p>
+              )}
             </motion.div>
 
             {/* Phone Number */}
@@ -153,9 +239,24 @@ export default function Contact() {
               <input
                 id="phone"
                 type="tel"
+                value={formValues.phone}
                 placeholder="+52 123 456 7890"
-                className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white"
+                onInput={handlePhoneInput}
+                className={`w-full px-4 py-3 rounded-lg border-2 ${
+                  errors.phone
+                    ? 'border-red-400 focus:border-red-500 focus:ring-red-100'
+                    : 'border-gray-200 focus:border-primary focus:ring-primary/10'
+                } focus:ring-4 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white`}
               />
+              {errors.phone && (
+                <motion.p
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-500 text-sm"
+                >
+                  {errors.phone}
+                </motion.p>
+              )}
             </motion.div>
 
             {/* Email */}
@@ -172,9 +273,24 @@ export default function Contact() {
               <input
                 id="email"
                 type="email"
+                value={formValues.email}
                 placeholder="tu@email.com"
-                className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white"
+                onInput={handleEmailInput}
+                className={`w-full px-4 py-3 rounded-lg border-2 ${
+                  errors.email
+                    ? 'border-red-400 focus:border-red-500 focus:ring-red-100'
+                    : 'border-gray-200 focus:border-primary focus:ring-primary/10'
+                } focus:ring-4 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white`}
               />
+              {errors.email && (
+                <motion.p
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-500 text-sm"
+                >
+                  {errors.email}
+                </motion.p>
+              )}
             </motion.div>
 
             {/* Role Selector */}
@@ -182,28 +298,50 @@ export default function Contact() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="space-y-2"
+              className="space-y-3"
             >
-              <label htmlFor="role" className="flex items-center gap-2 text-gray-700 font-medium text-sm">
+              <label className="flex items-center gap-2 text-gray-700 font-medium text-sm">
                 <Sparkles className="w-4 h-4 text-primary" />
                 {t('contact.role')}
               </label>
-              <select
-                id="role"
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white appearance-none cursor-pointer"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%233CA2A2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'right 0.75rem center',
-                  backgroundSize: '1.5em 1.5em'
-                }}
-              >
-                <option value="">{t('contact.selectRole')}</option>
-                <option value="guest">{t('contact.guest')}</option>
-                <option value="host">{t('contact.host')}</option>
-              </select>
+
+              <div className="flex gap-4 flex-wrap">
+                {/* Huésped Button */}
+                <motion.button
+                  type="button"
+                  onClick={() => setRole('guest')}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`
+                    flex-1 min-w-[140px] flex items-center justify-center gap-3 px-6 py-4 rounded-xl border-2 transition-all duration-300 shadow-sm
+                    ${role === 'guest'
+                      ? 'border-primary bg-primary/10 text-primary shadow-lg shadow-primary/20'
+                      : 'border-gray-200 bg-white text-gray-600 hover:border-primary/50 hover:shadow-md'
+                    }
+                  `}
+                >
+                  <UserCheck className="w-5 h-5" />
+                  <span className="font-semibold">{t('contact.guest')}</span>
+                </motion.button>
+
+                {/* Anfitrión Button */}
+                <motion.button
+                  type="button"
+                  onClick={() => setRole('host')}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`
+                    flex-1 min-w-[140px] flex items-center justify-center gap-3 px-6 py-4 rounded-xl border-2 transition-all duration-300 shadow-sm
+                    ${role === 'host'
+                      ? 'border-primary bg-primary/10 text-primary shadow-lg shadow-primary/20'
+                      : 'border-gray-200 bg-white text-gray-600 hover:border-primary/50 hover:shadow-md'
+                    }
+                  `}
+                >
+                  <Users className="w-5 h-5" />
+                  <span className="font-semibold">{t('contact.host')}</span>
+                </motion.button>
+              </div>
             </motion.div>
 
             {/* Guest Section */}
@@ -247,8 +385,8 @@ export default function Contact() {
                   <label className="text-gray-700 font-medium text-sm">{t('contact.propertyType')}</label>
                   <div className="flex gap-4 flex-wrap">
                     {[
-                      { value: 'cabin', label: t('contact.types.cabin'), icon: Home },
-                      { value: 'pool', label: t('contact.types.pool'), icon: Droplet },
+                      { value: 'cabaña', label: t('contact.types.cabin'), icon: Home },
+                      { value: 'alberca', label: t('contact.types.pool'), icon: Droplet },
                       { value: 'camping', label: t('contact.types.camping'), icon: Tent }
                     ].map((option) => {
                       const selected = propertyType.includes(option.value);
@@ -334,11 +472,11 @@ export default function Contact() {
               >
                 <motion.button
                   onClick={handleSubmit}
-                  disabled={isSubmitting}
-                  whileHover={!isSubmitting ? { scale: 1.02, boxShadow: '0 0 30px rgba(60, 162, 162, 0.4)' } : {}}
-                  whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                  disabled={isSubmitting || !isFormValid()}
+                  whileHover={!isSubmitting && isFormValid() ? { scale: 1.02, boxShadow: '0 0 30px rgba(60, 162, 162, 0.4)' } : {}}
+                  whileTap={!isSubmitting && isFormValid() ? { scale: 0.98 } : {}}
                   className={`w-full py-4 rounded-lg font-semibold shadow-lg transition-all duration-300 ${
-                    isSubmitting
+                    isSubmitting || !isFormValid()
                       ? 'bg-gray-400 cursor-not-allowed'
                       : 'bg-gradient-to-r from-primary to-primary/80 text-white hover:shadow-xl'
                   }`}
@@ -346,17 +484,7 @@ export default function Contact() {
                   {isSubmitting ? 'Enviando...' : t('contact.send')}
                 </motion.button>
 
-                {/* Status Messages */}
-                {submitStatus === 'success' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mt-4 p-4 rounded-lg bg-green-50 border-2 border-green-200 text-green-700 text-center font-medium"
-                  >
-                    ✅ Enviado correctamente
-                  </motion.div>
-                )}
-
+                {/* Error Message */}
                 {submitStatus === 'error' && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
@@ -381,6 +509,15 @@ export default function Contact() {
           {t('contact.bottomNote')}
         </motion.p>
       </div>
+
+      {/* Success Modal */}
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        title={t('contact.successModal.title')}
+        message={t('contact.successModal.message')}
+        buttonText={t('contact.successModal.button')}
+      />
     </section>
   );
 }

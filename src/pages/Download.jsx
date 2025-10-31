@@ -1,12 +1,44 @@
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 
 export default function ComingSoonSection() {
   const poolChillLogo = '/images/poolChillLogo.png';
   const appStoreIcon = '/images/app-store-icon.svg'; // O usa una URL de CDN
   const playStoreIcon = '/images/play-store-icon.svg'; // O usa una URL de CDN
   const { t } = useTranslation();
-  
+
+  // Estado para el contador regresivo
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  // Calcular tiempo restante hasta febrero 2026
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const targetDate = new Date('2026-02-01T00:00:00');
+      const now = new Date();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60)
+        });
+      }
+    };
+
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   // Animación de burbujas flotantes
   const bubbles = Array.from({ length: 12 }, (_, i) => ({
     id: i,
@@ -17,7 +49,7 @@ export default function ComingSoonSection() {
   }));
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#E8F5F5] via-white to-[#F0F9F9] mt-6" >
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#E8F5F5] via-white to-[#F0F9F9]" >
 
       {/* Burbujas flotantes animadas */}
       {bubbles.map((bubble) => (
@@ -46,10 +78,10 @@ export default function ComingSoonSection() {
       ))}
 
       {/* Contenido principal */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-24 sm:pt-32 pb-20">
         {/* Título principal con gradiente */}
         <motion.h1
-          className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl mb-2 bg-gradient-to-r from-[#2B8080] via-[#3CA2A2] to-[#2B8080] bg-clip-text text-transparent leading-tight"
+          className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl mb-2 sm:mb-4 bg-gradient-to-r from-[#2B8080] via-[#3CA2A2] to-[#2B8080] bg-clip-text text-transparent leading-tight"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
@@ -59,7 +91,7 @@ export default function ComingSoonSection() {
 
         {/* Subtítulo */}
         <motion.p
-          className="text-base sm:text-lg md:text-xl text-gray-600 mb-0 max-w-2xl mx-auto"
+          className="text-base sm:text-lg md:text-xl text-gray-600 mb-2 sm:mb-4 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
@@ -69,7 +101,7 @@ export default function ComingSoonSection() {
 
         {/* Mockup de ícono de app */}
         <motion.div
-          className="w-36 h-32 sm:w-40 sm:h-36 md:w-64 md:h-56 lg:w-72 lg:h-64 mx-auto mb-0 flex items-center justify-center"
+          className="w-36 h-32 sm:w-40 sm:h-36 md:w-64 md:h-56 lg:w-72 lg:h-64 mx-auto mb-0 mt-2 sm:mt-4 flex items-center justify-center"
           initial={{ opacity: 0, scale: 0.7, rotate: -10 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
@@ -79,6 +111,143 @@ export default function ComingSoonSection() {
             alt="Pool&Chill App Icon"
             className="w-36 h-32 sm:w-40 sm:h-36 md:w-64 md:h-56 lg:w-72 lg:h-64 object-contain"
           />
+        </motion.div>
+
+        {/* Contador Regresivo */}
+        <motion.div
+          className="mb-8 -mt-6 sm:-mt-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
+        >
+          <h3 className="text-lg md:text-xl text-gray-600 mb-4 font-medium">
+            {t('download.launchCountdown')}
+          </h3>
+
+          <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6">
+            {/* Días */}
+            <motion.div
+              className="relative group"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="relative bg-white/40 backdrop-blur-lg rounded-2xl p-3 sm:p-4 md:p-6 shadow-xl border border-white/60 min-w-[70px] sm:min-w-[90px] md:min-w-[110px]">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#3CA2A2]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative">
+                  <motion.div
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-br from-[#2B8080] to-[#3CA2A2] bg-clip-text text-transparent"
+                    key={timeLeft.days}
+                    initial={{ scale: 1.2, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {String(timeLeft.days).padStart(2, '0')}
+                  </motion.div>
+                  <div className="text-xs sm:text-sm md:text-base text-gray-500 mt-1 font-medium">
+                    {t('download.days')}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Separador animado */}
+            <motion.div
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#3CA2A2]"
+              animate={{ opacity: [1, 0.3, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              :
+            </motion.div>
+
+            {/* Horas */}
+            <motion.div
+              className="relative group"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="relative bg-white/40 backdrop-blur-lg rounded-2xl p-3 sm:p-4 md:p-6 shadow-xl border border-white/60 min-w-[70px] sm:min-w-[90px] md:min-w-[110px]">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#3CA2A2]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative">
+                  <motion.div
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-br from-[#2B8080] to-[#3CA2A2] bg-clip-text text-transparent"
+                    key={timeLeft.hours}
+                    initial={{ scale: 1.2, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {String(timeLeft.hours).padStart(2, '0')}
+                  </motion.div>
+                  <div className="text-xs sm:text-sm md:text-base text-gray-500 mt-1 font-medium">
+                    {t('download.hours')}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Separador animado */}
+            <motion.div
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#3CA2A2]"
+              animate={{ opacity: [1, 0.3, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
+            >
+              :
+            </motion.div>
+
+            {/* Minutos */}
+            <motion.div
+              className="relative group"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="relative bg-white/40 backdrop-blur-lg rounded-2xl p-3 sm:p-4 md:p-6 shadow-xl border border-white/60 min-w-[70px] sm:min-w-[90px] md:min-w-[110px]">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#3CA2A2]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative">
+                  <motion.div
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-br from-[#2B8080] to-[#3CA2A2] bg-clip-text text-transparent"
+                    key={timeLeft.minutes}
+                    initial={{ scale: 1.2, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {String(timeLeft.minutes).padStart(2, '0')}
+                  </motion.div>
+                  <div className="text-xs sm:text-sm md:text-base text-gray-500 mt-1 font-medium">
+                    {t('download.minutes')}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Separador animado */}
+            <motion.div
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#3CA2A2]"
+              animate={{ opacity: [1, 0.3, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
+            >
+              :
+            </motion.div>
+
+            {/* Segundos */}
+            <motion.div
+              className="relative group"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="relative bg-white/40 backdrop-blur-lg rounded-2xl p-3 sm:p-4 md:p-6 shadow-xl border border-white/60 min-w-[70px] sm:min-w-[90px] md:min-w-[110px]">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#3CA2A2]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative">
+                  <motion.div
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-br from-[#2B8080] to-[#3CA2A2] bg-clip-text text-transparent"
+                    key={timeLeft.seconds}
+                    initial={{ scale: 1.2, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {String(timeLeft.seconds).padStart(2, '0')}
+                  </motion.div>
+                  <div className="text-xs sm:text-sm md:text-base text-gray-500 mt-1 font-medium">
+                    {t('download.seconds')}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Botones de plataforma */}
