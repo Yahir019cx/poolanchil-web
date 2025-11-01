@@ -1,15 +1,24 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
+
+// Routes mapping outside component to avoid recreation
+const ROUTES = {
+  'home': '/',
+  'about': '/nosotros',
+  'contact': '/contacto',
+  'download': '/descargar'
+};
 
 export default function Navbar() {
   const { t } = useTranslation();
   const [activeItem, setActiveItem] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-  
+  const location = useLocation();
+
   const menuItems = [
     { key: 'home', label: t('nav.home') },
     { key: 'about', label: t('nav.about') },
@@ -18,16 +27,18 @@ export default function Navbar() {
   ];
   const poolChillLogo = '/images/poolChillLogo.png';
 
-  const routes = {
-    'home': '/',
-    'about': '/nosotros',
-    'contact': '/contacto',
-    'download': '/descargar'
-  };
+  // Detect current route and update active item
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const activeKey = Object.keys(ROUTES).find(key => ROUTES[key] === currentPath);
+    if (activeKey) {
+      setActiveItem(activeKey);
+    }
+  }, [location.pathname]);
 
   const handleNavigation = (itemKey) => {
     setActiveItem(itemKey);
-    navigate(routes[itemKey]);
+    navigate(ROUTES[itemKey]);
     setIsMenuOpen(false);
   };
 

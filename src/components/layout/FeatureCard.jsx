@@ -1,11 +1,13 @@
 import { Button } from '../ui/Button';
 import { Sparkles } from 'lucide-react';
 import { useTranslation, Trans } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 export function FeatureCard() {
   const { t } = useTranslation();
   const featureImage = '/images/CardFeature.jpg';
-  
+  const navigate = useNavigate();
+
   return (
     <section className="py-12 bg-gray-50">
       <div className="max-w-4xl mx-auto px-6">
@@ -13,9 +15,11 @@ export function FeatureCard() {
           <div className="grid md:grid-cols-2">
             {/* Image */}
             <div className="h-40 md:h-96 relative overflow-hidden">
-              <img 
+              <img
                 src={featureImage}
-                alt={t('feature.alt_text')} 
+                alt={t('feature.alt_text')}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
               />
               {/* Overlay Badge */}
@@ -41,7 +45,8 @@ export function FeatureCard() {
                   }}
                 />
               </p>
-              <Button 
+              <Button
+                onClick={() => navigate('/contacto')}
                 className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base shadow-md hover:shadow-lg hover:scale-105 transition-all animate-in slide-in-from-bottom duration-1000"
               >
                 {t('feature.button')}

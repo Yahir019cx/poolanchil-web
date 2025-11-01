@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 export function CircleCard() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [isExpanded, setIsExpanded] = useState(false);
   // track if viewport is xs (below Tailwind's `sm` breakpoint: 640px)
   const [isXs, setIsXs] = useState(false);
@@ -81,6 +83,8 @@ export function CircleCard() {
               <img
                 src={poolChillLogo}
                 alt={t('circle.logo_alt')}
+                loading="lazy"
+                decoding="async"
                 className="w-40 h-40 md:w-52 md:h-52 object-contain group-hover:scale-110 transition-transform duration-300"
               />
             </div>
@@ -108,7 +112,10 @@ export function CircleCard() {
                   <p className="text-base text-gray-700 leading-relaxed font-medium">
                     {t('circle.card_description')}
                   </p>
-                  <button className="bg-gradient-to-r from-primary to-secondary text-white hover:shadow-lg hover:shadow-primary/50 font-semibold px-7 py-3 rounded-lg transition-all duration-300 text-sm shadow-lg">
+                  <button
+                    onClick={() => navigate('/contacto')}
+                    className="bg-gradient-to-r from-primary to-secondary text-white hover:shadow-lg hover:shadow-primary/50 font-semibold px-7 py-3 rounded-lg transition-all duration-300 text-sm shadow-lg"
+                  >
                     {t('circle.card_button')}
                   </button>
                 </div>
@@ -119,6 +126,8 @@ export function CircleCard() {
                     <img
                       src={Mockup}
                       alt={t('circle.app_alt')}
+                      loading="lazy"
+                      decoding="async"
                       className="object-contain drop-shadow-2xl w-64 h-auto"
                     />
                   </div>

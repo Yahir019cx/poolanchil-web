@@ -1,14 +1,19 @@
 import { Button } from '../ui/Button';
 import { useTranslation, Trans } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 export function HeroSection() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const heroImage = '/images/pool-hero-section-ball.jpg';
 
   return (
     <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center">
+      {/* Preload hero image for better LCP */}
+      <link rel="preload" as="image" href={heroImage} />
+
       {/* Pool water background */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: `url(${heroImage})`
@@ -44,7 +49,8 @@ export function HeroSection() {
           </p>
 
           <div className="pt-1 flex justify-center md:justify-start">
-            <Button 
+            <Button
+              onClick={() => navigate('/descargar')}
               className="bg-primary hover:bg-primary/90 text-white px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 text-sm md:text-base lg:text-base font-bold rounded-xl shadow-xl hover:shadow-primary/40 hover:scale-105 transition-all duration-300 hover:-translate-y-1"
             >
               {t('hero.button')}

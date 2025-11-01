@@ -124,5 +124,265 @@
     "hours": "Horas",
     "minutes": "Minutos",
     "seconds": "Segundos"
+  },
+  "terms": {
+    "title": "Términos y Condiciones",
+    "lastUpdated": "Última actualización: 1 de noviembre de 2025",
+    "intro": "Bienvenido a Pool & Chill. Al proporcionar sus datos personales a través de nuestro formulario de registro, usted acepta los siguientes términos y condiciones, los cuales cumplen con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) de México.",
+    "closeButton": "He leído y acepto los términos",
+    "contact": {
+      "title": "Contacto",
+      "content": "Para cualquier duda, aclaración o ejercicio de sus derechos ARCO, puede contactarnos a través de:",
+      "email": "team@poolandchill.com"
+    },
+    "sections": {
+      "dataCollection": {
+        "title": "1. Recolección de Datos Personales",
+        "content": [
+          "Pool & Chill recopila los siguientes datos personales a través del formulario de registro:",
+          "• Nombre completo\n• Correo electrónico\n• Número de teléfono\n• Tipo de usuario (Huésped o Anfitrión)",
+          "Para usuarios registrados como Anfitriones, también recopilamos:",
+          "• Tipo de propiedad (Cabaña, Alberca, Camping)\n• Nombre del lugar\n• Dirección completa\n• Descripción del espacio y amenidades",
+          "Estos datos son necesarios para proporcionar nuestros servicios y mantener comunicación con nuestros usuarios antes del lanzamiento oficial de la aplicación."
+        ]
+      },
+      "dataUseGuests": {
+        "title": "2. Uso de Datos - Huéspedes",
+        "content": [
+          "Los datos personales de usuarios registrados como 'Huéspedes' serán utilizados exclusivamente para:",
+          "• Enviar información y actualizaciones sobre el desarrollo de la aplicación Pool & Chill\n• Notificar sobre el lanzamiento oficial de la plataforma\n• Compartir promociones y beneficios exclusivos para usuarios registrados anticipadamente\n• Enviar contenido relevante sobre espacios disponibles y nuevas funcionalidades",
+          "Sus datos NO serán utilizados para contacto comercial directo más allá de las comunicaciones relacionadas con Pool & Chill."
+        ]
+      },
+      "dataUseHosts": {
+        "title": "3. Uso de Datos - Anfitriones",
+        "content": [
+          "Los datos personales de usuarios registrados como 'Anfitriones' serán utilizados para:",
+          "• Contactarlo directamente para recopilar información adicional sobre su propiedad\n• Permitirle subir detalles, fotografías y características de su espacio antes del lanzamiento de la app\n• Coordinar la integración de su propiedad en la plataforma Pool & Chill\n• Proporcionarle acceso anticipado al panel de administración de anfitriones\n• Enviar información sobre el programa de anfitriones, comisiones y beneficios\n• Utilizar información de su lugar para material promocional y marketing de Pool & Chill (con su autorización previa)",
+          "El equipo de Pool & Chill se pondrá en contacto con usted para validar la información y coordinar el proceso de registro de su propiedad."
+        ]
+      },
+      "consent": {
+        "title": "4. Consentimiento",
+        "content": [
+          "Al enviar el formulario de registro, usted otorga su consentimiento EXPRESO, INFORMADO y GRATUITO para que Pool & Chill recopile, use, almacene y trate sus datos personales conforme a lo establecido en estos Términos y Condiciones y en nuestro Aviso de Privacidad.",
+          "El tratamiento de sus datos personales será diferenciado según se haya registrado como 'Huésped' o 'Anfitrión', conforme a lo descrito en las secciones 2 y 3 de este documento.",
+          "Usted tiene el derecho de revocar su consentimiento en cualquier momento, sin que esto afecte la licitud del tratamiento realizado previamente."
+        ]
+      },
+      "privacy": {
+        "title": "5. Aviso de Privacidad",
+        "content": [
+          "Pool & Chill cuenta con un Aviso de Privacidad integral que complementa estos Términos y Condiciones. En dicho aviso se detalla:",
+          "• Cómo protegemos sus datos personales mediante medidas de seguridad físicas, técnicas y administrativas\n• El tiempo que conservaremos su información\n• Las finalidades primarias y secundarias del tratamiento de datos\n• Los procedimientos para ejercer sus derechos ARCO",
+          "Puede consultar nuestro Aviso de Privacidad completo en nuestra página web o solicitarlo vía correo electrónico a team@poolandchill.com"
+        ]
+      },
+      "hostProgram": {
+        "title": "6. Programa de Anfitriones - Términos de Participación",
+        "content": "Al registrarse como Anfitrión, usted acepta participar en nuestro Programa de Anfitriones bajo los siguientes términos:",
+        "subsections": {
+          "benefits": {
+            "title": "Beneficios",
+            "content": "Acceso prioritario a la plataforma antes del lanzamiento público, visibilidad destacada durante los primeros meses, soporte personalizado del equipo de Pool & Chill, y comisiones preferenciales para anfitriones fundadores."
+          },
+          "responsibilities": {
+            "title": "Responsabilidades",
+            "content": "Proporcionar información precisa, completa y verificable sobre su propiedad, mantener actualizada la disponibilidad de su espacio, cumplir con las normas de calidad y seguridad establecidas por Pool & Chill, y responder oportunamente a las solicitudes de información."
+          },
+          "rights": {
+            "title": "Derechos de Pool & Chill",
+            "content": "Pool & Chill se reserva el derecho de seleccionar discrecionalmente a los anfitriones que formarán parte de la plataforma, solicitar documentación adicional para verificar la legitimidad de la propiedad, utilizar fotografías y descripciones proporcionadas para promocionar la aplicación, y rechazar o dar de baja propiedades que no cumplan con nuestros estándares de calidad."
+          }
+        }
+      },
+      "unsubscribe": {
+        "title": "7. Cancelación de Suscripción",
+        "content": [
+          "Tanto Huéspedes como Anfitriones pueden darse de baja de nuestras comunicaciones en cualquier momento:",
+          "• Utilizando el enlace 'Cancelar suscripción' incluido en cada correo electrónico\n• Enviando un correo a team@poolandchill.com con el asunto 'BAJA DE COMUNICACIONES'\n• Contactando directamente a través de nuestro formulario de contacto en la página web",
+          "Su solicitud de baja será procesada en un plazo máximo de 5 días hábiles. Aun después de darse de baja, conservaremos su información conforme a nuestras obligaciones legales y para efectos de historial."
+        ]
+      },
+      "aroRights": {
+        "title": "8. Derechos ARCO",
+        "content": [
+          "Conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, usted tiene derecho a:",
+          "• ACCESO: Conocer qué datos personales tenemos sobre usted\n• RECTIFICACIÓN: Solicitar la corrección de datos inexactos o incompletos\n• CANCELACIÓN: Solicitar la eliminación de sus datos de nuestras bases de datos\n• OPOSICIÓN: Oponerse al tratamiento de sus datos para fines específicos",
+          "Para ejercer cualquiera de estos derechos, debe enviar una solicitud por escrito a team@poolandchill.com, incluyendo:",
+          "1. Nombre completo y correo electrónico de contacto\n2. Descripción clara del derecho que desea ejercer\n3. Documentos que acrediten su identidad (copia de INE o documento oficial)\n4. Cualquier documento que facilite la localización de sus datos",
+          "Daremos respuesta a su solicitud en un plazo máximo de 20 días hábiles."
+        ]
+      },
+      "dataTransfer": {
+        "title": "9. Transferencia de Datos",
+        "content": [
+          "Pool & Chill puede almacenar sus datos personales en servidores ubicados fuera de México, específicamente en centros de datos en Estados Unidos y la Unión Europea, utilizando servicios de nube seguros y certificados.",
+          "Al aceptar estos Términos y Condiciones, usted otorga su CONSENTIMIENTO EXPRESO para la transferencia internacional de sus datos, la cual se realizará cumpliendo con todas las medidas de seguridad exigidas por la LFPDPPP.",
+          "Todos nuestros proveedores de servicios en la nube cumplen con estándares internacionales de protección de datos (ISO 27001, SOC 2, entre otros)."
+        ]
+      },
+      "dataStorage": {
+        "title": "10. Almacenamiento y Seguridad",
+        "content": [
+          "Pool & Chill implementa medidas de seguridad físicas, técnicas y administrativas para proteger sus datos personales contra daño, pérdida, alteración, destrucción o uso no autorizado:",
+          "• Cifrado de datos en tránsito (SSL/TLS) y en reposo\n• Acceso restringido a datos personales solo a personal autorizado\n• Auditorías de seguridad periódicas\n• Respaldos automáticos y planes de recuperación de desastres\n• Capacitación continua del personal en protección de datos",
+          "Sus datos serán conservados durante el tiempo necesario para cumplir las finalidades descritas y posteriormente durante el plazo que exijan las disposiciones legales aplicables."
+        ]
+      },
+      "responsibility": {
+        "title": "11. Responsabilidad del Usuario",
+        "content": [
+          "Al proporcionar sus datos personales, usted declara que:",
+          "• La información proporcionada es verdadera, exacta, completa y actualizada\n• Es mayor de 18 años o cuenta con autorización de su tutor legal\n• Comprende y acepta los términos establecidos en este documento\n• En caso de ser Anfitrión, cuenta con los derechos legales para ofrecer el espacio registrado",
+          "Proporcionar información falsa o engañosa puede resultar en la cancelación de su registro y la imposibilidad de utilizar nuestros servicios."
+        ]
+      },
+      "modifications": {
+        "title": "12. Modificaciones a los Términos",
+        "content": [
+          "Pool & Chill se reserva el derecho de modificar estos Términos y Condiciones en cualquier momento. Cualquier cambio será notificado a través de:",
+          "• Correo electrónico a la dirección registrada\n• Publicación en nuestro sitio web con al menos 10 días de anticipación",
+          "El uso continuado de nuestros servicios después de la notificación de cambios constituye su aceptación de los nuevos términos. Si no está de acuerdo con las modificaciones, puede darse de baja de nuestros servicios."
+        ]
+      },
+      "jurisdiction": {
+        "title": "13. Jurisdicción y Legislación Aplicable",
+        "content": [
+          "Estos Términos y Condiciones se rigen por las leyes de los Estados Unidos Mexicanos, específicamente por:",
+          "• Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)\n• Reglamento de la LFPDPPP\n• Lineamientos del Aviso de Privacidad emitidos por el INAI",
+          "Para la interpretación y cumplimiento de estos Términos, así como para la resolución de cualquier controversia que pudiera derivarse, las partes se someten expresamente a la jurisdicción de los tribunales competentes de la Ciudad de México, renunciando a cualquier otro fuero que pudiera corresponderles por razón de su domicilio presente o futuro."
+        ]
+      }
+    }
+  },
+  "privacy": {
+    "title": "Aviso de Privacidad",
+    "lastUpdated": "Última actualización: 1 de noviembre de 2025",
+    "intro": "En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), Pool & Chill pone a su disposición el presente Aviso de Privacidad.",
+    "closeButton": "Entendido",
+    "contact": {
+      "title": "Datos de Contacto del Responsable",
+      "content": "Para cualquier duda, aclaración o ejercicio de sus derechos, puede contactarnos:",
+      "email": "team@poolandchill.com.mx"
+    },
+    "sections": {
+      "responsible": {
+        "title": "1. Identificación del Responsable",
+        "content": [
+          "Pool & Chill es el responsable del tratamiento de sus datos personales.",
+          "Nombre: Pool & Chill\nDomicilio: Ciudad de México, México\nCorreo electrónico: team@poolandchill.com.mx",
+          "Pool & Chill se compromete a proteger la privacidad de sus datos personales y garantizar su derecho a la autodeterminación informativa."
+        ]
+      },
+      "purpose": {
+        "title": "2. Finalidades del Tratamiento de Datos",
+        "content": "Sus datos personales serán utilizados para las siguientes finalidades:",
+        "subsections": {
+          "primary": {
+            "title": "Finalidades Primarias (necesarias para el servicio)",
+            "content": "Gestionar su registro como usuario (Huésped o Anfitrión), contactarlo para proporcionar información sobre Pool & Chill, coordinar la integración de propiedades (para Anfitriones), administrar el programa de anfitriones, procesar solicitudes y consultas, cumplir con obligaciones legales y regulatorias."
+          },
+          "secondary": {
+            "title": "Finalidades Secundarias (no necesarias, pero permiten mejorar el servicio)",
+            "content": "Enviar boletines informativos y actualizaciones sobre la plataforma, realizar análisis estadísticos y estudios de mercado, personalizar su experiencia en la plataforma, enviar promociones y ofertas especiales, utilizar información de propiedades para material promocional y marketing (con autorización previa del Anfitrión)."
+          }
+        }
+      },
+      "dataCollected": {
+        "title": "3. Datos Personales que Recopilamos",
+        "content": [
+          "Recopilamos las siguientes categorías de datos personales:",
+          "Datos de identificación:\n• Nombre completo\n• Correo electrónico\n• Número de teléfono\n• Tipo de usuario (Huésped o Anfitrión)",
+          "Datos adicionales para Anfitriones:\n• Tipo de propiedad\n• Nombre del lugar\n• Dirección completa de la propiedad\n• Descripción del espacio y amenidades\n• Fotografías de la propiedad (cuando aplique)",
+          "Datos de navegación y uso:\n• Dirección IP\n• Tipo de navegador\n• Páginas visitadas\n• Fecha y hora de acceso"
+        ]
+      },
+      "collectionMethods": {
+        "title": "4. Métodos de Recopilación de Datos",
+        "content": [
+          "Sus datos personales son recopilados a través de los siguientes medios:",
+          "• Formularios en línea: Cuando completa nuestro formulario de registro en el sitio web\n• Directamente proporcionados: Cuando usted nos contacta por correo electrónico o teléfono\n• Automáticamente: Mediante cookies y tecnologías similares durante su navegación en nuestro sitio web\n• Comunicación directa: Durante el proceso de incorporación de anfitriones",
+          "Todos los datos recopilados son tratados conforme a los principios de licitud, consentimiento, información, calidad, finalidad, lealtad, proporcionalidad y responsabilidad establecidos en la LFPDPPP."
+        ]
+      },
+      "dataRecipients": {
+        "title": "5. Transferencias de Datos Personales",
+        "content": [
+          "Pool & Chill podrá transferir sus datos personales a los siguientes destinatarios:",
+          "Transferencias Nacionales:\n• Proveedores de servicios de tecnología y hosting con domicilio en México\n• Instituciones financieras para procesamiento de pagos (cuando aplique)",
+          "Transferencias Internacionales:\n• Servicios de almacenamiento en la nube ubicados en Estados Unidos y la Unión Europea\n• Plataformas de análisis y marketing digital\n• Proveedores de servicios de correo electrónico",
+          "Todas las transferencias internacionales se realizan garantizando que los destinatarios mantengan medidas de seguridad y protección de datos equivalentes a las exigidas por la legislación mexicana.",
+          "Al aceptar este Aviso de Privacidad, usted otorga su consentimiento expreso para estas transferencias. Puede revocar este consentimiento en cualquier momento."
+        ]
+      },
+      "aroRights": {
+        "title": "6. Derechos ARCO y Revocación del Consentimiento",
+        "content": [
+          "Usted tiene derecho a:",
+          "• ACCESO: Conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del tratamiento\n• RECTIFICACIÓN: Solicitar la corrección de su información personal en caso de que esté desactualizada, sea inexacta o incompleta\n• CANCELACIÓN: Solicitar que eliminemos su información de nuestros registros o bases de datos cuando considere que no está siendo utilizada adecuadamente\n• OPOSICIÓN: Oponerse al uso de sus datos personales para fines específicos",
+          "Para ejercer sus derechos ARCO, debe presentar una solicitud por escrito a través de:",
+          "• Correo electrónico: team@poolandchill.com.mx\n• Asunto: Solicitud de Derechos ARCO",
+          "Su solicitud deberá contener:\n1. Nombre completo y correo electrónico de contacto\n2. Descripción clara y precisa del derecho que desea ejercer\n3. Copia de identificación oficial (INE, pasaporte o cédula profesional)\n4. Cualquier documento o información que facilite la localización de sus datos",
+          "Pool & Chill dará respuesta a su solicitud en un plazo máximo de 20 días hábiles, contados desde la fecha en que se recibió la solicitud. La respuesta se enviará al correo electrónico proporcionado en su solicitud."
+        ]
+      },
+      "securityMeasures": {
+        "title": "7. Medidas de Seguridad",
+        "content": [
+          "Pool & Chill ha implementado y mantiene medidas de seguridad administrativas, técnicas y físicas para proteger sus datos personales contra daño, pérdida, alteración, destrucción o uso, acceso o tratamiento no autorizado:",
+          "Medidas Técnicas:\n• Cifrado SSL/TLS para transmisión de datos\n• Cifrado de datos en reposo\n• Firewalls y sistemas de detección de intrusos\n• Respaldos automáticos y cifrados\n• Autenticación de múltiples factores para acceso administrativo",
+          "Medidas Administrativas:\n• Políticas de seguridad de la información\n• Acuerdos de confidencialidad con empleados y proveedores\n• Capacitación continua del personal en protección de datos\n• Control de acceso basado en roles\n• Auditorías internas periódicas",
+          "Medidas Físicas:\n• Centros de datos con acceso restringido y vigilancia 24/7\n• Sistemas de control de acceso biométrico\n• Protección contra desastres naturales",
+          "A pesar de estas medidas, ningún sistema de seguridad es completamente infalible. Pool & Chill se compromete a notificarle inmediatamente en caso de cualquier vulneración de seguridad que pueda afectar sus datos personales."
+        ]
+      },
+      "consentRevocation": {
+        "title": "8. Revocación del Consentimiento",
+        "content": [
+          "Usted puede revocar el consentimiento que nos ha otorgado para el tratamiento de sus datos personales en cualquier momento.",
+          "Para revocar su consentimiento, deberá enviar una solicitud a:\n• Correo electrónico: team@poolandchill.com.mx\n• Asunto: Revocación de Consentimiento",
+          "Incluya en su solicitud:\n• Nombre completo\n• Correo electrónico registrado\n• Descripción clara de los tratamientos para los cuales desea revocar su consentimiento",
+          "Es importante tener en cuenta que:",
+          "• No en todos los casos podremos atender su solicitud o concluir el uso de forma inmediata, ya que es posible que por alguna obligación legal requiramos seguir tratando sus datos\n• La revocación del consentimiento podrá impedir que continúe utilizando algunos servicios de Pool & Chill\n• Daremos respuesta a su solicitud en un plazo máximo de 20 días hábiles"
+        ]
+      },
+      "updates": {
+        "title": "9. Modificaciones al Aviso de Privacidad",
+        "content": [
+          "Pool & Chill se reserva el derecho de efectuar modificaciones o actualizaciones al presente Aviso de Privacidad en cualquier momento, para atender:",
+          "• Cambios en la legislación aplicable\n• Novedades propias de nuestro modelo de negocio\n• Actualización de nuestras prácticas de privacidad\n• Implementación de nuevas tecnologías\n• Requerimientos del Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI)",
+          "Las modificaciones serán notificadas mediante:",
+          "• Correo electrónico a la dirección registrada (con al menos 10 días de anticipación)\n• Publicación en nuestro sitio web www.poolandchill.com.mx\n• Notificación destacada en la plataforma",
+          "Se recomienda consultar periódicamente el Aviso de Privacidad para estar informado sobre cómo protegemos su información."
+        ]
+      },
+      "childrenPrivacy": {
+        "title": "10. Privacidad de Menores",
+        "content": [
+          "Pool & Chill no está dirigido a menores de 18 años y no recopilamos intencionalmente información personal de menores.",
+          "Si tenemos conocimiento de que hemos recopilado datos personales de un menor de 18 años sin la supervisión de un padre o tutor, tomaremos las medidas necesarias para eliminar esa información de nuestros servidores de manera inmediata.",
+          "Si usted es padre, madre o tutor legal y tiene conocimiento de que su hijo menor de edad nos ha proporcionado información personal sin su consentimiento, le solicitamos que se ponga en contacto con nosotros de inmediato a través de team@poolandchill.com.mx para que podamos tomar las acciones apropiadas."
+        ]
+      },
+      "cookies": {
+        "title": "11. Uso de Cookies y Tecnologías de Rastreo",
+        "content": [
+          "Pool & Chill utiliza cookies y tecnologías similares para mejorar su experiencia en nuestro sitio web:",
+          "Tipos de cookies que utilizamos:\n• Cookies esenciales: Necesarias para el funcionamiento básico del sitio\n• Cookies de rendimiento: Para analizar cómo los visitantes usan el sitio\n• Cookies de funcionalidad: Para recordar sus preferencias\n• Cookies de publicidad: Para mostrar anuncios relevantes (con su consentimiento)",
+          "Puede configurar su navegador para rechazar cookies o alertarle cuando se envíen. Sin embargo, algunas funciones del sitio pueden no funcionar correctamente si deshabilita las cookies.",
+          "Para más información sobre el uso de cookies, consulte nuestra Política de Cookies disponible en nuestro sitio web."
+        ]
+      },
+      "userRights": {
+        "title": "12. Derechos del Usuario y Quejas ante el INAI",
+        "content": [
+          "Si considera que su derecho a la protección de datos personales ha sido lesionado o presume alguna violación a las disposiciones de la LFPDPPP, puede interponer una queja o denuncia ante el INAI:",
+          "Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI)\nDomicilio: Insurgentes Sur 3211, Col. Insurgentes Cuicuilco, Alcaldía Coyoacán, C.P. 04530, Ciudad de México\nTeléfono: 800 835 4324\nCorreo electrónico: info@inai.org.mx\nSitio web: www.inai.org.mx",
+          "El INAI es la autoridad encargada de garantizar el cumplimiento de la LFPDPPP y proteger los derechos de los titulares de datos personales en México.",
+          "Pool & Chill se compromete a cooperar plenamente con cualquier investigación del INAI y a acatar sus resoluciones."
+        ]
+      }
+    }
   }
 }
