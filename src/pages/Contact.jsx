@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from "framer-motion";
 import { User, Phone, Mail, MapPin, Home, Sparkles, Droplet, Tent, UserCheck, Users } from 'lucide-react';
 import SuccessModal from '../components/ui/SuccessModal';
+import { encryptData } from '../utils/encryption';
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -114,13 +115,16 @@ export default function Contact() {
         payload.mensaje = document.getElementById('guestIdeas').value;
       }
 
+      // Cifrar el payload
+      const encryptedPayload = await encryptData(payload);
+
       // Enviar al backend
       const response = await fetch(`${import.meta.env.VITE_API_URL}/web/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ data: encryptedPayload }),
       });
 
       if (!response.ok) {
