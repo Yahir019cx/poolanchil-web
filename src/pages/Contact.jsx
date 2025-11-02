@@ -9,7 +9,7 @@ export default function Contact() {
   const [role, setRole] = useState('');
   const [propertyType, setPropertyType] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+  const [submitStatus, setSubmitStatus] = useState(null); 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [errors, setErrors] = useState({
     fullName: '',
