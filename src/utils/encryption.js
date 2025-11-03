@@ -5,7 +5,7 @@
 
 // Clave secreta (en producción, deberías obtenerla de variables de entorno)
 // IMPORTANTE: Esta clave debe ser la misma en el backend para descifrar
-const SECRET_KEY = import.meta.env.VITE_ENCRYPTION_KEY || 'poolandchill-secret-key-2025';
+const SECRET_KEY = import.meta.env.ENCRYPTION_KEY || 'poolandchill-secret-key-2025';
 
 /**
  * Genera una clave de cifrado a partir de un string
