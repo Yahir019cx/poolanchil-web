@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "index.html"
   },
   "dependencies": {
+    "express": "^5.2.1",
     "framer-motion": "^12.23.24",
     "i18next": "^25.5.3",
     "i18next-browser-languagedetector": "^8.2.0",
@@ -35,5 +37,18 @@
     "tailwindcss-animate": "^1.0.7",
     "terser": "^5.44.0",
     "vite": "^7.1.7"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yahir019cx/poolanchil-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yahir019cx/poolanchil-web/issues"
+  },
+  "homepage": "https://github.com/Yahir019cx/poolanchil-web#readme"
 }

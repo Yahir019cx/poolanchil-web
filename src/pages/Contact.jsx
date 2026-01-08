@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from "framer-motion";
-import { User, Phone, Mail, MapPin, Home, Sparkles, Droplet, Tent, UserCheck, Users } from 'lucide-react';
+import { User, Phone, Mail, MapPin, Home, Sparkles, Droplet, Tent, UserCheck, Users, Wifi, Tv, ChefHat, WashingMachine, Refrigerator, Wind, Thermometer, ParkingSquare, Armchair, Utensils, Volume2, Umbrella, Table2, Flame, Bath, DoorClosed, Sun, Lightbulb, ShoppingBag, UtensilsCrossed, Upload, X, Image } from 'lucide-react';
 import SuccessModal from '../components/ui/SuccessModal';
 import { encryptData } from '../utils/encryption';
 
 export default function Contact() {
   const { t } = useTranslation();
   const [role, setRole] = useState('');
-  const [propertyType, setPropertyType] = useState([]);
+  const [propertyType, setPropertyType] = useState(''); // Cambiado a string para un solo valor
+  const [amenities, setAmenities] = useState([]);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [isDragging, setIsDragging] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); 
+  const [submitStatus, setSubmitStatus] = useState(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [errors, setErrors] = useState({
     fullName: '',
@@ -73,9 +76,42 @@ export default function Contact() {
     }
   };
 
+  // Manejar archivos
+  const handleFileUpload = (files) => {
+    const fileArray = Array.from(files);
+    const validFiles = fileArray.filter(file => {
+      const isImage = file.type.startsWith('image/');
+      const isUnder5MB = file.size <= 5 * 1024 * 1024; // 5MB
+      return isImage && isUnder5MB;
+    });
+
+    setUploadedFiles(prev => [...prev, ...validFiles].slice(0, 10)); // Máximo 10 archivos
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const files = e.dataTransfer.files;
+    handleFileUpload(files);
+  };
+
+  const removeFile = (index) => {
+    setUploadedFiles(prev => prev.filter((_, i) => i !== index));
+  };
+
   // Verificar si el formulario es válido
   const isFormValid = () => {
-    return (
+    const baseValid = (
       formValues.fullName.trim() !== '' &&
       formValues.email.trim() !== '' &&
       formValues.phone.trim() !== '' &&
@@ -84,6 +120,13 @@ export default function Contact() {
       !errors.phone &&
       role !== ''
     );
+
+    // Si es anfitrión, validar que tenga al menos una foto
+    if (role === 'host') {
+      return baseValid && uploadedFiles.length > 0;
+    }
+
+    return baseValid;
   };
 
   const handleSubmit = async (e) => {
@@ -108,6 +151,7 @@ export default function Contact() {
 
       if (role === 'host') {
         payload.tipoEspacio = propertyType;
+        payload.amenidades = amenities;
         payload.nombreLugar = document.getElementById('placeName').value;
         payload.direccion = document.getElementById('address').value;
         payload.descripcion = document.getElementById('hostDescription').value;
@@ -137,7 +181,9 @@ export default function Contact() {
       // Limpiar formulario
       setFormValues({ fullName: '', email: '', phone: '' });
       setRole('');
-      setPropertyType([]);
+      setPropertyType('');
+      setAmenities([]);
+      setUploadedFiles([]);
 
       if (role === 'host') {
         document.getElementById('placeName').value = '';
@@ -393,19 +439,19 @@ export default function Contact() {
                       { value: 'alberca', label: t('contact.types.pool'), icon: Droplet },
                       { value: 'camping', label: t('contact.types.camping'), icon: Tent }
                     ].map((option) => {
-                      const selected = propertyType.includes(option.value);
+                      const selected = propertyType === option.value;
                       return (
                         <motion.button
                           key={option.value}
                           type="button"
-                          onClick={() => setPropertyType(prev => selected ? prev.filter(v => v !== option.value) : [...prev, option.value])}
+                          onClick={() => setPropertyType(option.value)}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           aria-pressed={selected}
                           className={`
                             flex items-center gap-2 px-6 py-3 rounded-lg border-2 transition-all duration-300 shadow-sm
-                            ${selected 
-                              ? 'border-primary bg-primary/10 text-primary' 
+                            ${selected
+                              ? 'border-primary bg-primary/10 text-primary'
                               : 'border-gray-200 bg-white text-gray-600 hover:border-primary/50'
                             }
                           `}
@@ -417,6 +463,82 @@ export default function Contact() {
                     })}
                   </div>
                 </div>
+
+                {/* Amenities Section */}
+                {propertyType && (
+                  <div className="space-y-3">
+                    <label className="text-gray-700 font-medium text-sm">{t('contact.amenities')}</label>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                      {(() => {
+                        // Definir amenidades por tipo de espacio
+                        const amenitiesByType = {
+                          'cabaña': [
+                            { value: 'wifi', label: 'WiFi', icon: Wifi },
+                            { value: 'tv', label: 'TV', icon: Tv },
+                            { value: 'cocina', label: t('contact.amenitiesList.kitchen'), icon: ChefHat },
+                            { value: 'lavadora', label: t('contact.amenitiesList.washer'), icon: WashingMachine },
+                            { value: 'refrigerador', label: t('contact.amenitiesList.fridge'), icon: Refrigerator },
+                            { value: 'aire', label: t('contact.amenitiesList.ac'), icon: Wind },
+                            { value: 'calefaccion', label: t('contact.amenitiesList.heating'), icon: Thermometer },
+                            { value: 'estacionamiento', label: t('contact.amenitiesList.parking'), icon: ParkingSquare },
+                            { value: 'sala', label: t('contact.amenitiesList.livingRoom'), icon: Armchair },
+                            { value: 'comedor', label: t('contact.amenitiesList.diningRoom'), icon: Utensils },
+                            { value: 'chimenea', label: t('contact.amenitiesList.fireplace'), icon: Flame },
+                            { value: 'utensilios', label: t('contact.amenitiesList.utensils'), icon: UtensilsCrossed }
+                          ],
+                          'alberca': [
+                            { value: 'camastros', label: t('contact.amenitiesList.sunbeds'), icon: Armchair },
+                            { value: 'sombrillas', label: t('contact.amenitiesList.umbrellas'), icon: Umbrella },
+                            { value: 'mesas', label: t('contact.amenitiesList.tables'), icon: Table2 },
+                            { value: 'bocina', label: t('contact.amenitiesList.speaker'), icon: Volume2 },
+                            { value: 'asador', label: t('contact.amenitiesList.grill'), icon: UtensilsCrossed },
+                            { value: 'regaderas', label: t('contact.amenitiesList.showers'), icon: Bath },
+                            { value: 'vestidores', label: t('contact.amenitiesList.changingRooms'), icon: DoorClosed },
+                            { value: 'palapa', label: t('contact.amenitiesList.palapa'), icon: Sun },
+                            { value: 'hieleras', label: t('contact.amenitiesList.coolers'), icon: ShoppingBag }
+                          ],
+                          'camping': [
+                            { value: 'areaTiendas', label: t('contact.amenitiesList.tentArea'), icon: Tent },
+                            { value: 'areaTechada', label: t('contact.amenitiesList.coveredArea'), icon: Home },
+                            { value: 'fogata', label: t('contact.amenitiesList.bonfire'), icon: Sparkles },
+                            { value: 'banosPortatiles', label: t('contact.amenitiesList.portableToilets'), icon: DoorClosed },
+                            { value: 'mesas', label: t('contact.amenitiesList.tables'), icon: Table2 },
+                            { value: 'electricidad', label: t('contact.amenitiesList.electricity'), icon: Lightbulb },
+                            { value: 'iluminacion', label: t('contact.amenitiesList.lighting'), icon: Lightbulb },
+                            { value: 'estacionamiento', label: t('contact.amenitiesList.parking'), icon: ParkingSquare }
+                          ]
+                        };
+
+                        // Obtener amenidades del tipo seleccionado
+                        const availableAmenities = amenitiesByType[propertyType] || [];
+
+                        return availableAmenities.map((amenity) => {
+                          const selected = amenities.includes(amenity.value);
+                          return (
+                            <motion.button
+                              key={amenity.value}
+                              type="button"
+                              onClick={() => setAmenities(prev => selected ? prev.filter(v => v !== amenity.value) : [...prev, amenity.value])}
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              aria-pressed={selected}
+                              className={`
+                                flex items-center justify-center gap-2 px-3 py-3 rounded-lg border-2 transition-all duration-300 shadow-sm min-h-[48px]
+                                ${selected
+                                  ? 'border-primary bg-primary/10 text-primary'
+                                  : 'border-gray-200 bg-white text-gray-600 hover:border-primary/50'
+                                }
+                              `}
+                            >
+                              <amenity.icon className="w-4 h-4 flex-shrink-0" />
+                              <span className="font-medium text-sm whitespace-nowrap overflow-hidden text-ellipsis">{amenity.label}</span>
+                            </motion.button>
+                          );
+                        });
+                      })()}
+                    </div>
+                  </div>
+                )}
 
                 {/* Place Name */}
                 <div className="space-y-2">
@@ -457,6 +579,83 @@ export default function Contact() {
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 shadow-sm hover:shadow-md resize-none bg-white"
                   />
+                </div>
+
+                {/* File Upload Area */}
+                <div className="space-y-2">
+                  <label className="text-gray-700 font-medium text-sm">
+                    {t('contact.uploadPhotos')}
+                  </label>
+                  <div
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={handleDrop}
+                    className={`
+                      relative border-2 border-dashed rounded-lg p-8 transition-all duration-300
+                      ${isDragging
+                        ? 'border-primary bg-primary/5 scale-105'
+                        : 'border-gray-300 hover:border-primary/50 hover:bg-gray-50'
+                      }
+                    `}
+                  >
+                    <input
+                      type="file"
+                      id="fileUpload"
+                      multiple
+                      accept="image/*"
+                      onChange={(e) => handleFileUpload(e.target.files)}
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                    />
+                    <div className="flex flex-col items-center justify-center text-center space-y-3">
+                      <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                        <Upload className="w-8 h-8 text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-gray-700 font-medium">
+                          {t('contact.uploadTitle')}
+                        </p>
+                        <p className="text-sm text-gray-500 mt-1">
+                          {t('contact.uploadSubtitle')}
+                        </p>
+                      </div>
+                      <p className="text-xs text-gray-400">
+                        {t('contact.uploadLimit')}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Preview de archivos subidos */}
+                  {uploadedFiles.length > 0 && (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mt-4">
+                      {uploadedFiles.map((file, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.8 }}
+                          className="relative group"
+                        >
+                          <div className="aspect-square rounded-lg overflow-hidden border-2 border-gray-200 bg-gray-100">
+                            <img
+                              src={URL.createObjectURL(file)}
+                              alt={`Preview ${index + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => removeFile(index)}
+                            className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-red-600"
+                          >
+                            <X className="w-4 h-4" />
+                          </button>
+                          <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-xs p-1 truncate opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            {file.name}
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 <p className="text-sm text-gray-500 flex items-center gap-2">
