@@ -19,7 +19,7 @@ export default function ComingSoonSection() {
   // Calcular tiempo restante hasta febrero 2026
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const targetDate = new Date('2026-02-01T00:00:00');
+      const targetDate = new Date('2026-02-20T00:00:00');
       const now = new Date();
       const difference = targetDate - now;
 
