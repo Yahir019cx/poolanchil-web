@@ -150,7 +150,7 @@ export default function Contact() {
       };
 
       if (role === 'host') {
-        payload.tipoEspacio = propertyType;
+        payload.tipoEspacio = [propertyType]; // Debe ser un array
         payload.amenidades = amenities;
         payload.nombreLugar = document.getElementById('placeName').value;
         payload.direccion = document.getElementById('address').value;
@@ -162,17 +162,28 @@ export default function Contact() {
       // Cifrar el payload
       const encryptedPayload = await encryptData(payload);
 
-      // Enviar al backend
+      // Crear FormData para enviar tanto el JSON como los archivos
+      const formData = new FormData();
+      formData.append('data', encryptedPayload);
+
+      // Agregar las fotos al FormData (solo si es anfitrión)
+      if (role === 'host' && uploadedFiles.length > 0) {
+        uploadedFiles.forEach((file) => {
+          formData.append('fotos', file);
+        });
+      }
+
+      // Enviar al backend usando FormData
       const response = await fetch(`${import.meta.env.VITE_API_URL}/web/contact`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ data: encryptedPayload }),
+        // NO incluir Content-Type header - el navegador lo establecerá automáticamente con el boundary correcto
+        body: formData,
       });
 
       if (!response.ok) {
-        throw new Error('Error en la respuesta del servidor');
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Error del servidor:', errorData);
+        throw new Error(errorData.message || 'Error en la respuesta del servidor');
       }
 
       // Éxito - Mostrar modal
@@ -203,15 +214,14 @@ export default function Contact() {
       setIsSubmitting(false);
     }
   };
-
   return (
     <section className="relative min-h-screen py-20 px-6 overflow-hidden bg-gradient-to-b from-white via-primary/5 to-white mb-1">
       {/* Animated water wave background */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 right-20 w-96 h-96 bg-primary rounded-full blur-3xl animate-pulse" 
-             style={{ animationDuration: '5s' }} />
-        <div className="absolute bottom-10 left-20 w-96 h-96 bg-primary rounded-full blur-3xl animate-pulse" 
-             style={{ animationDuration: '7s', animationDelay: '2s' }} />
+        <div className="absolute top-10 right-20 w-96 h-96 bg-primary rounded-full blur-3xl animate-pulse"
+          style={{ animationDuration: '5s' }} />
+        <div className="absolute bottom-10 left-20 w-96 h-96 bg-primary rounded-full blur-3xl animate-pulse"
+          style={{ animationDuration: '7s', animationDelay: '2s' }} />
       </div>
 
       <div className="container mx-auto max-w-3xl relative z-10 mt-16">
@@ -239,7 +249,7 @@ export default function Contact() {
         >
           {/* Glassmorphic background */}
           <div className="absolute inset-0 bg-white/70 backdrop-blur-xl rounded-3xl border border-white/40 shadow-2xl" />
-          
+
           <div className="relative p-8 md:p-12 space-y-6">
             {/* Full Name */}
             <motion.div
@@ -258,11 +268,10 @@ export default function Contact() {
                 value={formValues.fullName}
                 placeholder="Tu nombre"
                 onInput={handleNameInput}
-                className={`w-full px-4 py-3 rounded-lg border-2 ${
-                  errors.fullName
+                className={`w-full px-4 py-3 rounded-lg border-2 ${errors.fullName
                     ? 'border-red-400 focus:border-red-500 focus:ring-red-100'
                     : 'border-gray-200 focus:border-primary focus:ring-primary/10'
-                } focus:ring-4 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white`}
+                  } focus:ring-4 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white`}
               />
               {errors.fullName && (
                 <motion.p
@@ -292,11 +301,10 @@ export default function Contact() {
                 value={formValues.phone}
                 placeholder="+52 123 456 7890"
                 onInput={handlePhoneInput}
-                className={`w-full px-4 py-3 rounded-lg border-2 ${
-                  errors.phone
+                className={`w-full px-4 py-3 rounded-lg border-2 ${errors.phone
                     ? 'border-red-400 focus:border-red-500 focus:ring-red-100'
                     : 'border-gray-200 focus:border-primary focus:ring-primary/10'
-                } focus:ring-4 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white`}
+                  } focus:ring-4 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white`}
               />
               {errors.phone && (
                 <motion.p
@@ -326,11 +334,10 @@ export default function Contact() {
                 value={formValues.email}
                 placeholder="tu@email.com"
                 onInput={handleEmailInput}
-                className={`w-full px-4 py-3 rounded-lg border-2 ${
-                  errors.email
+                className={`w-full px-4 py-3 rounded-lg border-2 ${errors.email
                     ? 'border-red-400 focus:border-red-500 focus:ring-red-100'
                     : 'border-gray-200 focus:border-primary focus:ring-primary/10'
-                } focus:ring-4 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white`}
+                  } focus:ring-4 outline-none transition-all duration-300 shadow-sm hover:shadow-md bg-white`}
               />
               {errors.email && (
                 <motion.p
@@ -404,7 +411,7 @@ export default function Contact() {
                 className="space-y-4 pt-4"
               >
                 <div className="space-y-2">
-                    <label htmlFor="guestIdeas" className="text-gray-700 font-medium text-sm">
+                  <label htmlFor="guestIdeas" className="text-gray-700 font-medium text-sm">
                     {t('contact.guestIdeasLabel')}
                   </label>
                   <textarea
@@ -542,7 +549,7 @@ export default function Contact() {
 
                 {/* Place Name */}
                 <div className="space-y-2">
-                    <label htmlFor="placeName" className="flex items-center gap-2 text-gray-700 font-medium text-sm">
+                  <label htmlFor="placeName" className="flex items-center gap-2 text-gray-700 font-medium text-sm">
                     <Home className="w-4 h-4 text-primary" />
                     {t('contact.placeName')}
                   </label>
@@ -556,7 +563,7 @@ export default function Contact() {
 
                 {/* Address */}
                 <div className="space-y-2">
-                    <label htmlFor="address" className="flex items-center gap-2 text-gray-700 font-medium text-sm">
+                  <label htmlFor="address" className="flex items-center gap-2 text-gray-700 font-medium text-sm">
                     <MapPin className="w-4 h-4 text-primary" />
                     {t('contact.address')}
                   </label>
@@ -570,7 +577,7 @@ export default function Contact() {
 
                 {/* Description */}
                 <div className="space-y-2">
-                    <label htmlFor="hostDescription" className="text-gray-700 font-medium text-sm">
+                  <label htmlFor="hostDescription" className="text-gray-700 font-medium text-sm">
                     {t('contact.hostDescriptionLabel')}
                   </label>
                   <textarea
@@ -678,11 +685,10 @@ export default function Contact() {
                   disabled={isSubmitting || !isFormValid()}
                   whileHover={!isSubmitting && isFormValid() ? { scale: 1.02, boxShadow: '0 0 30px rgba(60, 162, 162, 0.4)' } : {}}
                   whileTap={!isSubmitting && isFormValid() ? { scale: 0.98 } : {}}
-                  className={`w-full py-4 rounded-lg font-semibold shadow-lg transition-all duration-300 ${
-                    isSubmitting || !isFormValid()
+                  className={`w-full py-4 rounded-lg font-semibold shadow-lg transition-all duration-300 ${isSubmitting || !isFormValid()
                       ? 'bg-gray-400 cursor-not-allowed'
                       : 'bg-gradient-to-r from-primary to-primary/80 text-white hover:shadow-xl'
-                  }`}
+                    }`}
                 >
                   {isSubmitting ? 'Enviando...' : t('contact.send')}
                 </motion.button>
