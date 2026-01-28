@@ -168,12 +168,20 @@ export default function Register() {
             <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary/20 to-primary/5 rounded-full flex items-center justify-center">
               <Home className="w-12 h-12 text-primary" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-primary to-gray-900 bg-clip-text text-transparent">
-              Bienvenido al registro de Pool & Chill
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-700">
+              Bienvenido a Pool & Chill
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Ingresa tus datos personales y verifica tu correo, después llena los datos de tu propiedad para publicarla y sé de los primeros en aparecer en Pool & Chill
-            </p>
+
+            <div className="space-y-3">
+              <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
+                Regístrate con tus datos personales y confirma tu correo.
+              </p>
+              <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Luego agrega la información de tu propiedad y publícala para
+                empezar a recibir visibilidad en Pool & Chill.
+              </p>
+            </div>
+
             <motion.button
               onClick={nextStep}
               whileHover={{ scale: 1.05 }}
@@ -340,9 +348,9 @@ export default function Register() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
-                { value: 'pool', label: 'Alberca', icon: Droplet, emoji: '🏊' },
-                { value: 'cabin', label: 'Cabaña', icon: Home, emoji: '🏡' },
-                { value: 'camping', label: 'Camping', icon: Tent, emoji: '🏕️' }
+                { value: 'pool', label: 'Alberca', icon: Droplet },
+                { value: 'cabin', label: 'Cabaña', icon: Home },
+                { value: 'camping', label: 'Camping', icon: Tent }
               ].map((type) => {
                 const selected = formData.propertyTypes.includes(type.value);
                 return (
