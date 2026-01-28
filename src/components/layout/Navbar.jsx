@@ -9,6 +9,7 @@ const ROUTES = {
   'home': '/',
   'about': '/nosotros',
   'contact': '/contacto',
+  'register': '/registro',
   'download': '/descargar'
 };
 
@@ -23,6 +24,7 @@ export default function Navbar() {
     { key: 'home', label: t('nav.home') },
     { key: 'about', label: t('nav.about') },
     { key: 'contact', label: t('nav.contact') },
+    { key: 'register', label: t('nav.register') },
     { key: 'download', label: t('nav.download') }
   ];
   const poolChillLogo = '/images/poolChillLogo.png';

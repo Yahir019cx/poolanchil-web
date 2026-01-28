@@ -4,6 +4,7 @@ import { Footer } from '../components/layout/Footer';
 import Home from '../pages/Home';
 import Nosotros from '../pages/About';
 import Contacto from '../pages/Contact';
+import Registro from '../pages/Register';
 import Descargar from '../pages/Download';
 
 export default function AppRouter() {
@@ -16,6 +17,7 @@ export default function AppRouter() {
             <Route path="/" element={<Home />} />
             <Route path="/nosotros" element={<Nosotros />} />
             <Route path="/contacto" element={<Contacto />} />
+            <Route path="/registro" element={<Registro />} />
             <Route path="/descargar" element={<Descargar />} />
           </Routes>
         </main>

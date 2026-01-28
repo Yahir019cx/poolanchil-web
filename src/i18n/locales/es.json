@@ -1,8 +1,9 @@
 {
   "nav": {
     "home": "Inicio",
-    "about": "Nosotros", 
+    "about": "Nosotros",
     "contact": "Contacto",
+    "register": "Registro",
     "download": "Descargar"
   },
   "hero": {
