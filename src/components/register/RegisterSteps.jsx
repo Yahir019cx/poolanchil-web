@@ -987,17 +987,6 @@ export const BasicInfoStep = ({ formData, setFormData }) => {
         </div>
       </div>
 
-      <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4 flex items-start gap-3">
-        <AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-        <div className="text-sm text-blue-800">
-          <p className="font-semibold mb-2">Tipos de renta:</p>
-          <ul className="list-disc list-inside space-y-1">
-            {hasCabin && <li>Cabaña: Por día</li>}
-            {hasPool && <li>Alberca: Por máximo de horas</li>}
-            {hasCamping && <li>Camping: Por día</li>}
-          </ul>
-        </div>
-      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
