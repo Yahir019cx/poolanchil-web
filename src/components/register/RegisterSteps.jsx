@@ -553,17 +553,71 @@ export const LocationStep = ({ formData, setFormData }) => {
         title: 'Arrastra para ajustar la ubicación'
       });
 
-      // Actualizar coordenadas cuando el usuario mueva el marcador arrastrándolo
+      // Función para geocodificación inversa (coordenadas -> dirección)
+      const reverseGeocode = async (lat, lng) => {
+        const geocoder = new window.google.maps.Geocoder();
+        setIsLoadingCoordinates(true);
+
+        try {
+          const result = await geocoder.geocode({ location: { lat, lng } });
+
+          if (result.results && result.results[0]) {
+            const addressComponents = result.results[0].address_components;
+
+            // Extraer componentes de dirección
+            let street = '';
+            let number = '';
+            let state = '';
+            let municipality = '';
+            let zipCode = '';
+
+            addressComponents.forEach(component => {
+              const types = component.types;
+
+              if (types.includes('route')) {
+                street = component.long_name;
+              } else if (types.includes('street_number')) {
+                number = component.long_name;
+              } else if (types.includes('administrative_area_level_1')) {
+                state = component.long_name;
+              } else if (types.includes('locality') || types.includes('administrative_area_level_2')) {
+                municipality = component.long_name;
+              } else if (types.includes('postal_code')) {
+                zipCode = component.long_name;
+              }
+            });
+
+            // Actualizar formData con la dirección y coordenadas
+            setFormData(prev => ({
+              ...prev,
+              street: street || prev.street,
+              number: number || prev.number,
+              state: state || prev.state,
+              municipality: municipality || prev.municipality,
+              zipCode: zipCode || prev.zipCode,
+              coordinates: { lat: lat.toString(), lng: lng.toString() }
+            }));
+          }
+        } catch (error) {
+          console.error('Error en geocodificación inversa:', error);
+          // Si falla, al menos actualizar las coordenadas
+          setFormData(prev => ({
+            ...prev,
+            coordinates: { lat: lat.toString(), lng: lng.toString() }
+          }));
+        } finally {
+          setIsLoadingCoordinates(false);
+        }
+      };
+
+      // Actualizar coordenadas y dirección cuando el usuario mueva el marcador arrastrándolo
       newMarker.addListener('dragend', (event) => {
         const lat = event.latLng.lat();
         const lng = event.latLng.lng();
-        setFormData({
-          ...formData,
-          coordinates: { lat: lat.toString(), lng: lng.toString() }
-        });
+        reverseGeocode(lat, lng);
       });
 
-      // Permitir hacer clic en el mapa para colocar el pin
+      // Permitir hacer clic en el mapa para colocar el pin y actualizar dirección
       newMap.addListener('click', (event) => {
         const lat = event.latLng.lat();
         const lng = event.latLng.lng();
@@ -571,11 +625,8 @@ export const LocationStep = ({ formData, setFormData }) => {
         // Mover el marcador a la nueva posición
         newMarker.setPosition({ lat, lng });
 
-        // Actualizar coordenadas
-        setFormData({
-          ...formData,
-          coordinates: { lat: lat.toString(), lng: lng.toString() }
-        });
+        // Actualizar coordenadas y hacer geocodificación inversa
+        reverseGeocode(lat, lng);
       });
 
       setMap(newMap);
@@ -647,7 +698,7 @@ export const LocationStep = ({ formData, setFormData }) => {
     setIsDetectingLocation(true);
 
     navigator.geolocation.getCurrentPosition(
-      (position) => {
+      async (position) => {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
 
@@ -656,11 +707,55 @@ export const LocationStep = ({ formData, setFormData }) => {
           map.setCenter({ lat, lng });
           marker.setPosition({ lat, lng });
 
-          // Actualizar coordenadas
-          setFormData({
-            ...formData,
-            coordinates: { lat: lat.toString(), lng: lng.toString() }
-          });
+          // Hacer geocodificación inversa para obtener la dirección
+          const geocoder = new window.google.maps.Geocoder();
+
+          try {
+            const result = await geocoder.geocode({ location: { lat, lng } });
+
+            if (result.results && result.results[0]) {
+              const addressComponents = result.results[0].address_components;
+
+              let street = '';
+              let number = '';
+              let state = '';
+              let municipality = '';
+              let zipCode = '';
+
+              addressComponents.forEach(component => {
+                const types = component.types;
+
+                if (types.includes('route')) {
+                  street = component.long_name;
+                } else if (types.includes('street_number')) {
+                  number = component.long_name;
+                } else if (types.includes('administrative_area_level_1')) {
+                  state = component.long_name;
+                } else if (types.includes('locality') || types.includes('administrative_area_level_2')) {
+                  municipality = component.long_name;
+                } else if (types.includes('postal_code')) {
+                  zipCode = component.long_name;
+                }
+              });
+
+              setFormData({
+                ...formData,
+                street: street || formData.street,
+                number: number || formData.number,
+                state: state || formData.state,
+                municipality: municipality || formData.municipality,
+                zipCode: zipCode || formData.zipCode,
+                coordinates: { lat: lat.toString(), lng: lng.toString() }
+              });
+            }
+          } catch (error) {
+            console.error('Error en geocodificación inversa:', error);
+            // Si falla, al menos actualizar las coordenadas
+            setFormData({
+              ...formData,
+              coordinates: { lat: lat.toString(), lng: lng.toString() }
+            });
+          }
         }
 
         setIsDetectingLocation(false);
