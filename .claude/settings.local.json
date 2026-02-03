@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(mkdir:*)",
-      "Bash(npm i:*)"
+      "Bash(npm i:*)",
+      "Bash(tree:*)",
+      "Bash(dir /S /B)"
     ],
     "deny": [],
     "ask": []
