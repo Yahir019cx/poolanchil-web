@@ -8,7 +8,7 @@ import brand from "../assets/variantes-03.png";
 
 const HomeView = () => {
   return (
-    <div className="container">
+    <div className="home-view">
       {/* Fondo */}
       <img src={fondo} alt="Fondo" className="background" />
 
@@ -23,9 +23,8 @@ const HomeView = () => {
 
       {/* Botones */}
       <div className="buttons">
-        <button className="btn buscar">BUSCAR</button>
-        <button className="btn reservar">RESERVAR</button>
-      </div>
+    <button className="btn reservar">RESERVAR</button>
+    </div>
     </div>
   );
 };

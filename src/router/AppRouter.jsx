@@ -6,6 +6,8 @@ import Nosotros from '../pages/About';
 import Contacto from '../pages/Contact';
 import Registro from '../pages/Register';
 import Descargar from '../pages/Download';
+import HomeView from '../pages/HomeView';
+
 
 export default function AppRouter() {
   return (
@@ -19,6 +21,7 @@ export default function AppRouter() {
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/descargar" element={<Descargar />} />
+            <Route path="/invitacion" element={<HomeView />} />
           </Routes>
         </main>
         <Footer />
