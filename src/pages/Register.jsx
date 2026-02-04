@@ -62,6 +62,7 @@ export default function Register() {
     gender: '',
     phoneNumber: '',
     estado: '',
+    whatsappConsent: false,
 
     // Tipo de espacio (array)
     propertyTypes: [],
@@ -236,6 +237,7 @@ export default function Register() {
       if (!formData.dateOfBirth) newErrors.dateOfBirth = 'La fecha de nacimiento es requerida';
       if (!formData.gender) newErrors.gender = 'Selecciona tu género';
       if (!formData.estado) newErrors.estado = 'Selecciona tu estado';
+      if (!formData.whatsappConsent) newErrors.whatsappConsent = 'Debes aceptar el consentimiento para continuar';
     }
 
     if (step === 3) {

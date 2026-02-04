@@ -197,7 +197,7 @@
         "title": "4. Personal Data Collected",
         "content": [
           "Through the registration process and use of the Platform, Pool & Chill collects the following categories of personal data:",
-          "Personal identification data:\n• First name(s) and last name(s)\n• Email address\n• Phone number (10-digit Mexican format with international code +52)\n• Date of birth\n• Gender (male, female, other/prefer not to say)\n• State of residence within Mexico\n• Access password (stored in encrypted form)",
+          "Personal identification data:\n• First name(s) and last name(s)\n• Email address\n• Phone number (10-digit Mexican format with international code +52)\n• Date of birth\n• Gender (male, female, other/prefer not to say)\n• State of residence within Mexico\n• Access password (stored in encrypted form)\n• Express consent for WhatsApp contact",
           "Identity verification data (Hosts):\n• Voter ID (INE/IFE) image — front and back\n• Facial biometric data obtained during the Didit verification process\n• Identity verification result",
           "Space data (Hosts):\n• Space name and description\n• Space type (Pool, Cabin, Camping)\n• Full address (street, number, municipality, state, postal code)\n• GPS coordinates (latitude and longitude) via Google Maps\n• Check-in and check-out times\n• Pricing: weekday rate (Monday-Thursday) and weekend rate (Friday-Sunday)\n• Maximum capacity, number of bedrooms, beds, bathrooms\n• Amenities and specific space features\n• Space rules set by the Host\n• Space photographs (up to 10 images, maximum 5 MB each, JPG, PNG, or WebP formats)",
           "Financial data (Hosts):\n• Bank account holder name\n• Bank account number\n• Bank institution name",
@@ -229,7 +229,7 @@
         "title": "7. Data Use - Guests",
         "content": [
           "Personal data from users registered as Guests will be used exclusively for the following purposes:",
-          "Primary purposes (necessary for service provision):\n• Manage and administer your user account on the Platform\n• Enable searching, viewing, and booking of available spaces\n• Process and manage your bookings\n• Maintain communication regarding your booking status\n• Generate receipts and transaction records\n• Comply with legal, tax, and regulatory obligations",
+          "Primary purposes (necessary for service provision):\n• Manage and administer your user account on the Platform\n• Enable searching, viewing, and booking of available spaces\n• Process and manage your bookings\n• Maintain communication regarding your booking status, including contact via WhatsApp to the provided phone number (with your express consent granted during registration)\n• Generate receipts and transaction records\n• Comply with legal, tax, and regulatory obligations",
           "Secondary purposes (not necessary, but improve service):\n• Send information and updates about new Platform features\n• Notify about exclusive promotions, benefits, and special offers\n• Conduct anonymized statistical analysis and market research\n• Personalize your browsing experience and space recommendations\n• Send satisfaction surveys",
           "If you do not wish your data to be processed for secondary purposes, you may express your refusal by sending an email to team@poolandchill.com with the subject 'OPT-OUT SECONDARY PURPOSES'."
         ]
@@ -238,7 +238,7 @@
         "title": "8. Data Use - Hosts",
         "content": [
           "Personal data from users registered as Hosts will be used for the following purposes:",
-          "Primary purposes (necessary for service provision):\n• Manage and administer your Host account on the Platform\n• Verify your identity and the legitimacy of offered spaces\n• Publish and manage your space listings\n• Process payments derived from bookings\n• Contact you to gather additional information about your property\n• Coordinate the integration of your space into the Platform\n• Comply with legal, tax, and regulatory obligations",
+          "Primary purposes (necessary for service provision):\n• Manage and administer your Host account on the Platform\n• Verify your identity and the legitimacy of offered spaces\n• Publish and manage your space listings\n• Process payments derived from bookings\n• Contact you to gather additional information about your property, including communication via WhatsApp to the provided phone number (with your express consent granted during registration)\n• Coordinate the integration of your space into the Platform\n• Comply with legal, tax, and regulatory obligations",
           "Secondary purposes (not necessary, but improve service):\n• Provide early access to new features\n• Send information about the host program, commissions, and benefits\n• Use information and photographs of your space for promotional and marketing materials (with your prior express authorization)\n• Send newsletters and recommendations to improve your listing\n• Conduct statistical analysis and market research",
           "The Pool & Chill team will contact you to validate the information provided and coordinate the onboarding process for your space on the Platform."
         ]
@@ -368,7 +368,7 @@
         "title": "1. Identity and Domicile of the Responsible Party",
         "content": [
           "In accordance with Article 16, Section I of the LFPDPPP and Article 24 of its Regulations:",
-          "Responsible for data processing: Pool & Chill\nTrade name: Pool & Chill\nDomicile: Mexico City, United Mexican States\nPrivacy email: team@poolandchill.com\nWebsite: www.poolandchill.com",
+          "Responsible for data processing: Pool & Chill\nTrade name: Pool & Chill\nDomicile: Mexico City, United Mexican States\nPrivacy email: team@poolandchill.com\nWebsite: www.poolandchill.com.mx",
           "Pool & Chill is a digital intermediation platform for the temporary rental of recreational spaces (pools, cabins, and camping areas) between individuals. The Responsible Party is committed to protecting the privacy of data subjects' personal data and guaranteeing the exercise of the right to informational self-determination, as established in Article 16, second paragraph of the Political Constitution of the United Mexican States."
         ]
       },
@@ -397,7 +397,7 @@
         "title": "4. Primary Processing Purposes",
         "content": [
           "In accordance with Article 16, Section III of the LFPDPPP, your personal data will be processed for the following primary purposes, which are necessary for the legal relationship between you and Pool & Chill:",
-          "For all Users:\n• Manage the creation, administration, and maintenance of your user account\n• Verify your identity and authenticate your access to the Platform\n• Fulfill obligations derived from the Terms and Conditions\n• Address your requests, complaints, inquiries, and claims\n• Send operational communications related to the service (registration confirmations, account notifications, security alerts)\n• Comply with applicable legal, tax, and regulatory obligations\n• Prevent fraud and illicit activities",
+          "For all Users:\n• Manage the creation, administration, and maintenance of your user account\n• Verify your identity and authenticate your access to the Platform\n• Fulfill obligations derived from the Terms and Conditions\n• Address your requests, complaints, inquiries, and claims\n• Send operational communications related to the service (registration confirmations, account notifications, security alerts), including contact via WhatsApp to the provided phone number (with express consent granted by the data subject during registration)\n• Comply with applicable legal, tax, and regulatory obligations\n• Prevent fraud and illicit activities",
           "For Guests:\n• Enable searching, viewing, and booking of spaces\n• Process and manage your bookings\n• Generate receipts and transaction records\n• Facilitate communication with Hosts regarding bookings",
           "For Hosts:\n• Verify your identity through the Didit verification process\n• Publish, manage, and update your space listings\n• Process payments derived from bookings to your bank account\n• Coordinate the onboarding and integration process of your space into the Platform\n• Validate information and documentation provided about the space"
         ]

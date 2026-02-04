@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { User, Mail, Lock, Calendar, Phone, MapPin, Eye, EyeOff } from "lucide-react";
+import { User, Mail, Lock, Calendar, Phone, MapPin, Eye, EyeOff, MessageCircle } from "lucide-react";
 import { DataPicker } from "../DataPicker";
 import { ESTADOS_MEXICO } from "../constants/states";
 
@@ -254,6 +254,51 @@ export const PersonalDataStep = ({
             <p className="text-red-500 text-sm">{errors.estado}</p>
           )}
         </div>
+      </div>
+
+      {/* Consentimiento de contacto por WhatsApp */}
+      <div className="space-y-2 pt-2">
+        <label
+          className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
+            formData.whatsappConsent
+              ? "border-primary bg-primary/5"
+              : errors.whatsappConsent
+              ? "border-red-400 bg-red-50"
+              : "border-gray-200 bg-gray-50 hover:border-gray-300"
+          }`}
+        >
+          <input
+            type="checkbox"
+            checked={formData.whatsappConsent}
+            onChange={(e) =>
+              setFormData({ ...formData, whatsappConsent: e.target.checked })
+            }
+            className="mt-1 w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary/20 accent-[#3CA2A2] shrink-0"
+          />
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-1">
+              <MessageCircle className="w-4 h-4 text-[#25D366]" />
+              <span className="font-semibold text-gray-900 text-sm">
+                Consentimiento de contacto
+              </span>
+            </div>
+            <p className="text-gray-600 text-xs leading-relaxed">
+              Doy mi consentimiento expreso para que Pool & Chill me contacte a
+              través de WhatsApp al número de teléfono proporcionado, con el fin
+              de enviarme información relacionada con mi cuenta, verificación de
+              identidad, reservaciones, y comunicaciones operativas del servicio.
+              Este consentimiento es necesario para el uso de la Plataforma y
+              podrá ser revocado en cualquier momento enviando un correo a{" "}
+              <span className="text-[#3CA2A2] font-medium">
+                team@poolandchill.com
+              </span>
+              .
+            </p>
+          </div>
+        </label>
+        {errors.whatsappConsent && (
+          <p className="text-red-500 text-sm">{errors.whatsappConsent}</p>
+        )}
       </div>
     </motion.div>
   );
