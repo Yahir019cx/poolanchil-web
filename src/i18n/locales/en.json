@@ -160,260 +160,370 @@
   },
   "terms": {
     "title": "Terms and Conditions",
-    "lastUpdated": "Last updated: November 1, 2025",
-    "intro": "Welcome to Pool & Chill. By providing your personal data through our registration form, you accept the following terms and conditions, which comply with Mexico's Federal Law on Protection of Personal Data Held by Private Parties (LFPDPPP).",
+    "lastUpdated": "Last updated: February 4, 2026",
+    "intro": "Welcome to Pool & Chill (hereinafter, \"the Platform\"), a digital intermediation platform for the temporary rental of recreational spaces (pools, cabins, and camping areas) between individuals in the United Mexican States. By accessing, registering, or using our services, you (hereinafter, \"the User\") fully accept these Terms and Conditions, which are governed by the Federal Law on Protection of Personal Data Held by Private Parties (LFPDPPP), its Regulations, the Federal Consumer Protection Law (LFPC), the Commercial Code, and all other applicable Mexican legislation.",
     "closeButton": "I have read and accept the terms",
     "contact": {
       "title": "Contact",
       "content": "For any questions, clarifications, or to exercise your ARCO rights, you can contact us at:",
-      "email": "privacidad@poolandchill.com"
+      "email": "team@poolandchill.com"
     },
     "sections": {
-      "dataCollection": {
-        "title": "1. Personal Data Collection",
+      "definitions": {
+        "title": "1. Definitions",
         "content": [
-          "Pool & Chill collects the following personal data through the registration form:",
-          "• Full name\n• Email address\n• Phone number\n• User type (Guest or Host)",
-          "For users registered as Hosts, we also collect:",
-          "• Property type (Cabin, Pool, Camping)\n• Place name\n• Full address\n• Space description and amenities",
-          "This data is necessary to provide our services and maintain communication with our users before the official app launch."
+          "For the purposes of these Terms and Conditions, the following definitions shall apply:",
+          "• Platform: The Pool & Chill website and mobile application, including all its services, functionalities, and content.\n• User: Any individual over 18 years of age who registers on the Platform, either as a Guest or Host.\n• Guest: A User who searches for and books recreational spaces through the Platform.\n• Host: A User who offers and lists recreational spaces (pools, cabins, or camping areas) for temporary rental.\n• Space: Any property or recreational area listed on the Platform for temporary rental.\n• Personal Data: Any information concerning an identified or identifiable individual, as defined in Article 3, Section V of the LFPDPPP.\n• Sensitive Personal Data: Data that may reveal intimate aspects of the data subject or whose misuse may lead to discrimination or entail serious risk.\n• ARCO Rights: Rights of Access, Rectification, Cancellation, and Opposition regarding personal data.\n• INAI: National Institute for Transparency, Access to Information, and Personal Data Protection.\n• Didit: External identity verification service provider used by the Platform."
+        ]
+      },
+      "objectAcceptance": {
+        "title": "2. Purpose and Acceptance",
+        "content": [
+          "These Terms and Conditions are intended to regulate access, use, and registration on the Pool & Chill Platform, as well as to establish the rights and obligations of both Users and the Platform.",
+          "By completing the registration form, checking the acceptance box, or using any functionality of the Platform, you express your free, informed, and explicit consent to be bound by these Terms and Conditions, as well as the corresponding Privacy Notice.",
+          "If you do not agree with any of the provisions contained herein, you must refrain from using the Platform and its services. Continued use of the Platform constitutes tacit acceptance of any subsequent modifications to these Terms."
+        ]
+      },
+      "registrationRequirements": {
+        "title": "3. Registration Requirements",
+        "content": [
+          "To register on the Platform, the User must meet the following requirements:",
+          "• Be an individual over 18 years of age with legal capacity to enter into contracts under Mexican law.\n• Provide truthful, complete, and up-to-date information during the registration process.\n• Create a secure password of at least 8 characters to protect their account.\n• Complete email verification through the confirmation link sent to the provided address.\n• For Hosts: complete the identity verification process using their voter ID (INE/IFE) through the Didit service.",
+          "The registration process consists of multiple stages including: personal data, email verification, space type selection, location, basic space information, amenities, rules, photographs, identity verification, and final preview.",
+          "Pool & Chill reserves the right to reject any registration application or suspend existing accounts when there are indications of false information, fraudulent activity, or breach of these Terms."
+        ]
+      },
+      "dataCollected": {
+        "title": "4. Personal Data Collected",
+        "content": [
+          "Through the registration process and use of the Platform, Pool & Chill collects the following categories of personal data:",
+          "Personal identification data:\n• First name(s) and last name(s)\n• Email address\n• Phone number (10-digit Mexican format with international code +52)\n• Date of birth\n• Gender (male, female, other/prefer not to say)\n• State of residence within Mexico\n• Access password (stored in encrypted form)",
+          "Identity verification data (Hosts):\n• Voter ID (INE/IFE) image — front and back\n• Facial biometric data obtained during the Didit verification process\n• Identity verification result",
+          "Space data (Hosts):\n• Space name and description\n• Space type (Pool, Cabin, Camping)\n• Full address (street, number, municipality, state, postal code)\n• GPS coordinates (latitude and longitude) via Google Maps\n• Check-in and check-out times\n• Pricing: weekday rate (Monday-Thursday) and weekend rate (Friday-Sunday)\n• Maximum capacity, number of bedrooms, beds, bathrooms\n• Amenities and specific space features\n• Space rules set by the Host\n• Space photographs (up to 10 images, maximum 5 MB each, JPG, PNG, or WebP formats)",
+          "Financial data (Hosts):\n• Bank account holder name\n• Bank account number\n• Bank institution name",
+          "Navigation and usage data:\n• IP address\n• Browser type and version\n• Pages visited and browsing time\n• Date and time of access\n• Session and authentication tokens",
+          "All data is collected in accordance with the principles of lawfulness, consent, information, quality, purpose, loyalty, proportionality, and responsibility established in Articles 6 to 13 of the LFPDPPP."
+        ]
+      },
+      "identityVerification": {
+        "title": "5. Identity Verification",
+        "content": [
+          "To ensure the safety of all Platform users, Hosts must complete an identity verification process as follows:",
+          "a) Email verification: All users must confirm their email address through a verification link sent during registration. This step is mandatory before proceeding with identity verification.",
+          "b) Identity verification through Didit: The Platform uses the services of external provider Didit for Host identity verification. This process involves:\n• Opening a secure popup window from the Didit service\n• Capture and analysis of the user's Voter ID (INE/IFE)\n• Facial biometric verification to confirm identity match with the document\n• The process has a 10-minute time limit for completion",
+          "By accepting these Terms, you expressly authorize Pool & Chill to share your data with Didit exclusively for identity verification purposes. Didit operates under its own terms of service and privacy policy, which will be presented to you during the verification process.",
+          "Pool & Chill does not store the original images of your INE/IFE once the verification process is completed; it only retains the verification result (approved/rejected). Biometric data is processed exclusively by Didit and is subject to their data retention policy."
+        ]
+      },
+      "financialData": {
+        "title": "6. Financial and Banking Data",
+        "content": [
+          "Pool & Chill collects banking data from Hosts for the purpose of processing payments derived from bookings. The financial data collected includes:",
+          "• Bank account holder name\n• Bank account number or CLABE (standardized bank code)\n• Bank institution name",
+          "This data is processed with the highest security measures, including AES-GCM 256-bit encryption (Advanced Encryption Standard - Galois/Counter Mode) with PBKDF2 key derivation using 100,000 iterations, utilizing the browser's native Web Crypto API.",
+          "Financial data will be used exclusively to:\n• Process payments corresponding to bookings made through the Platform\n• Comply with applicable tax and regulatory obligations\n• Verify bank account ownership",
+          "Pool & Chill does NOT store credit or debit card data directly on its servers. Payment processing is conducted through authorized financial institutions in compliance with the Credit Institutions Law and National Banking and Securities Commission (CNBV) regulations."
         ]
       },
       "dataUseGuests": {
-        "title": "2. Data Use - Guests",
+        "title": "7. Data Use - Guests",
         "content": [
-          "Personal data from users registered as 'Guests' will be used exclusively to:",
-          "• Send information and updates about Pool & Chill app development\n• Notify about the official platform launch\n• Share exclusive promotions and benefits for early registered users\n• Send relevant content about available spaces and new features",
-          "Your data will NOT be used for direct commercial contact beyond communications related to Pool & Chill."
+          "Personal data from users registered as Guests will be used exclusively for the following purposes:",
+          "Primary purposes (necessary for service provision):\n• Manage and administer your user account on the Platform\n• Enable searching, viewing, and booking of available spaces\n• Process and manage your bookings\n• Maintain communication regarding your booking status\n• Generate receipts and transaction records\n• Comply with legal, tax, and regulatory obligations",
+          "Secondary purposes (not necessary, but improve service):\n• Send information and updates about new Platform features\n• Notify about exclusive promotions, benefits, and special offers\n• Conduct anonymized statistical analysis and market research\n• Personalize your browsing experience and space recommendations\n• Send satisfaction surveys",
+          "If you do not wish your data to be processed for secondary purposes, you may express your refusal by sending an email to team@poolandchill.com with the subject 'OPT-OUT SECONDARY PURPOSES'."
         ]
       },
       "dataUseHosts": {
-        "title": "3. Data Use - Hosts",
+        "title": "8. Data Use - Hosts",
         "content": [
-          "Personal data from users registered as 'Hosts' will be used to:",
-          "• Contact you directly to gather additional information about your property\n• Allow you to upload details, photos, and features of your space before the app launch\n• Coordinate the integration of your property into the Pool & Chill platform\n• Provide early access to the host management panel\n• Send information about the host program, commissions, and benefits\n• Use your place information for promotional and marketing materials (with your prior authorization)",
-          "The Pool & Chill team will contact you to validate information and coordinate your property registration process."
+          "Personal data from users registered as Hosts will be used for the following purposes:",
+          "Primary purposes (necessary for service provision):\n• Manage and administer your Host account on the Platform\n• Verify your identity and the legitimacy of offered spaces\n• Publish and manage your space listings\n• Process payments derived from bookings\n• Contact you to gather additional information about your property\n• Coordinate the integration of your space into the Platform\n• Comply with legal, tax, and regulatory obligations",
+          "Secondary purposes (not necessary, but improve service):\n• Provide early access to new features\n• Send information about the host program, commissions, and benefits\n• Use information and photographs of your space for promotional and marketing materials (with your prior express authorization)\n• Send newsletters and recommendations to improve your listing\n• Conduct statistical analysis and market research",
+          "The Pool & Chill team will contact you to validate the information provided and coordinate the onboarding process for your space on the Platform."
         ]
       },
       "consent": {
-        "title": "4. Consent",
+        "title": "9. Consent",
         "content": [
-          "By submitting the registration form, you give your EXPRESS, INFORMED, and FREE consent for Pool & Chill to collect, use, store, and process your personal data as established in these Terms and Conditions and our Privacy Notice.",
-          "The processing of your personal data will be differentiated based on whether you registered as a 'Guest' or 'Host', as described in sections 2 and 3 of this document.",
-          "You have the right to revoke your consent at any time, without affecting the lawfulness of processing carried out previously."
-        ]
-      },
-      "privacy": {
-        "title": "5. Privacy Notice",
-        "content": [
-          "Pool & Chill has a comprehensive Privacy Notice that complements these Terms and Conditions. This notice details:",
-          "• How we protect your personal data through physical, technical, and administrative security measures\n• How long we will keep your information\n• Primary and secondary purposes of data processing\n• Procedures to exercise your ARCO rights",
-          "You can review our complete Privacy Notice on our website or request it via email at privacidad@poolandchill.com"
+          "By submitting the registration form and accepting these Terms and Conditions, you grant your EXPRESS, FREE, SPECIFIC, and INFORMED consent for Pool & Chill to collect, use, store, process, and, where applicable, transfer your personal data as established in these Terms and the Privacy Notice, in accordance with Articles 8 and 36 of the LFPDPPP.",
+          "For sensitive personal data (including biometric data obtained during identity verification and financial data), your express consent is obtained in a reinforced manner when you specifically accept the identity verification process and voluntarily provide your banking information.",
+          "You have the right to revoke your consent at any time, without retroactive effects, pursuant to Article 8, second paragraph of the LFPDPPP. Revoking consent may limit or prevent the provision of certain Platform services."
         ]
       },
       "hostProgram": {
-        "title": "6. Host Program - Participation Terms",
-        "content": "By registering as a Host, you agree to participate in our Host Program under the following terms:",
+        "title": "10. Host Program",
+        "content": "By registering as a Host, you agree to participate in the Pool & Chill Host Program under the following terms:",
         "subsections": {
           "benefits": {
             "title": "Benefits",
-            "content": "Priority access to the platform before public launch, highlighted visibility during the first months, personalized support from the Pool & Chill team, and preferential commissions for founding hosts."
+            "content": "Priority access to the Platform before public launch, highlighted visibility during the first months of operation, personalized support from the Pool & Chill team, preferential commissions for founding hosts, and advanced space and booking management tools."
           },
           "responsibilities": {
-            "title": "Responsibilities",
-            "content": "Provide accurate, complete, and verifiable information about your property, keep your space availability updated, comply with quality and safety standards established by Pool & Chill, and respond promptly to information requests."
+            "title": "Host Obligations",
+            "content": "Provide accurate, complete, and verifiable information about your space, keep availability, pricing, and rental conditions updated, comply with quality, hygiene, and safety standards established by the Platform and applicable law, respond promptly to information requests and bookings, hold necessary permits and licenses for space operation, and maintain current identity verification."
           },
           "rights": {
             "title": "Pool & Chill Rights",
-            "content": "Pool & Chill reserves the right to discretionally select hosts who will be part of the platform, request additional documentation to verify property legitimacy, use photos and descriptions provided to promote the app, and reject or remove properties that don't meet our quality standards."
+            "content": "Pool & Chill reserves the right to: discretionally select Hosts who will be part of the Platform, request additional documentation to verify space legitimacy and Host identity, use photographs and descriptions provided for Platform promotion (with prior authorization), reject or remove spaces that do not meet quality, safety, or legality standards, and apply sanctions or suspensions for breach of these Terms."
           }
         }
       },
-      "unsubscribe": {
-        "title": "7. Unsubscribe",
+      "intellectualProperty": {
+        "title": "11. Intellectual Property and Content",
         "content": [
-          "Both Guests and Hosts can unsubscribe from our communications at any time:",
-          "• Using the 'Unsubscribe' link included in each email\n• Sending an email to privacidad@poolandchill.com with subject 'UNSUBSCRIBE'\n• Contacting directly through our website contact form",
-          "Your unsubscribe request will be processed within a maximum of 5 business days. Even after unsubscribing, we will retain your information according to our legal obligations and for historical purposes."
+          "All Platform content, including but not limited to: design, logos, trademarks, texts, graphics, source code, software, databases, and other elements, are the exclusive property of Pool & Chill or its licensors, and are protected by the Federal Copyright Law, the Industrial Property Law, and applicable international treaties.",
+          "Users who publish content on the Platform (photographs, descriptions, texts) grant Pool & Chill a non-exclusive, royalty-free, worldwide, transferable, and sublicensable license to use, reproduce, modify, adapt, and distribute such content for Platform operation and promotion purposes.",
+          "The User declares and warrants that all content they publish is their own creation or that they hold the necessary authorizations for its publication, and that such content does not infringe third-party rights or contravene applicable law."
+        ]
+      },
+      "userResponsibility": {
+        "title": "12. User Responsibilities",
+        "content": [
+          "By using the Platform, the User agrees to:",
+          "• Provide truthful, accurate, complete, and up-to-date information during registration and at all subsequent times\n• Maintain the confidentiality of their password and access credentials\n• Immediately notify Pool & Chill of any unauthorized use of their account\n• Not use the Platform for unlawful, fraudulent purposes or purposes contrary to morality and good customs\n• Not publish offensive, defamatory, discriminatory content or content that contravenes current legislation\n• Comply with tax obligations arising from transactions conducted through the Platform",
+          "Specifically for Hosts:\n• Guarantee that the offered space meets the conditions described in the listing\n• Hold the necessary permits, licenses, and insurance for space operation\n• Ensure the space complies with applicable safety, hygiene, and civil protection regulations\n• Assume civil and criminal liability arising from any incident at the space",
+          "Failure to comply with these obligations may result in suspension or permanent cancellation of the User's account, without prejudice to any corresponding legal actions."
+        ]
+      },
+      "liabilityLimitation": {
+        "title": "13. Limitation of Liability",
+        "content": [
+          "Pool & Chill acts exclusively as an intermediary between Guests and Hosts, therefore:",
+          "• It is NOT the owner, operator, or administrator of spaces listed on the Platform\n• It does NOT guarantee the quality, safety, legality, or suitability of offered spaces\n• It is NOT responsible for damages, injuries, or losses that may occur during use of the spaces\n• It is NOT responsible for the accuracy of information published by Hosts\n• It does NOT assume responsibility for service interruptions caused by force majeure, acts of God, or technical failures beyond its control",
+          "To the extent permitted by the Federal Consumer Protection Law, Pool & Chill's total liability to the User for any claim arising from the use of the Platform shall be limited to the amount of commissions actually charged in the last 12 months.",
+          "Nothing in these Terms excludes or limits Pool & Chill's liability for willful misconduct, bad faith, or gross negligence, in accordance with applicable law."
+        ]
+      },
+      "cancellation": {
+        "title": "14. Cancellation and Service Termination",
+        "content": [
+          "The User may request account cancellation and service termination at any time by:",
+          "• Sending an email to team@poolandchill.com with the subject 'ACCOUNT CANCELLATION'\n• Through the cancellation functionality available in account settings\n• Contacting directly through the website contact form",
+          "The cancellation request will be processed within a maximum of 5 business days. Once the account is cancelled:\n• Access to the Platform will be deactivated\n• Host spaces will be unpublished (if applicable)\n• Data will be retained for the period established by applicable legal provisions, pursuant to Article 37 of the LFPDPPP Regulations\n• Pending payments will be processed before completing the cancellation",
+          "Pool & Chill reserves the right to cancel accounts ex officio when there are indications of fraudulent activity, false information, or serious breach of these Terms, with prior notification to the User."
         ]
       },
       "aroRights": {
-        "title": "8. ARCO Rights",
+        "title": "15. ARCO Rights",
         "content": [
-          "According to the Federal Law on Protection of Personal Data Held by Private Parties, you have the right to:",
-          "• ACCESS: Know what personal data we have about you\n• RECTIFICATION: Request correction of inaccurate or incomplete data\n• CANCELLATION: Request deletion of your data from our databases\n• OPPOSITION: Oppose the processing of your data for specific purposes",
-          "To exercise any of these rights, you must send a written request to privacidad@poolandchill.com, including:",
-          "1. Full name and contact email\n2. Clear description of the right you wish to exercise\n3. Documents proving your identity (copy of ID or official document)\n4. Any documents that facilitate locating your data",
-          "We will respond to your request within a maximum of 20 business days."
+          "Pursuant to Articles 28 to 35 of the LFPDPPP and Articles 89 to 96 of its Regulations, as a personal data subject you have the right to:",
+          "• ACCESS: Know what personal data we hold about you, what we use it for, and the conditions of processing (Art. 23 LFPDPPP)\n• RECTIFICATION: Request correction of inaccurate, incomplete, or outdated data (Art. 24 LFPDPPP)\n• CANCELLATION: Request deletion of your data from our databases when you consider it is not being processed in accordance with the principles, duties, and obligations of the LFPDPPP (Art. 25 LFPDPPP)\n• OPPOSITION: Oppose the processing of your data for specific purposes (Art. 27 LFPDPPP)",
+          "To exercise any of these rights, you must send a written request to team@poolandchill.com, including:",
+          "1. Full name and registered email address\n2. Documents proving your identity (copy of INE/IFE, passport, or professional license)\n3. Clear and precise description of the right you wish to exercise\n4. Any document or information that facilitates locating your personal data\n5. Indication of the preferred means to receive the response",
+          "Pool & Chill will respond to your request within a maximum of 20 business days from the date of receipt of the complete request, pursuant to Article 32 of the LFPDPPP. If the request is granted, it will be implemented within 15 business days following the communication of the response."
         ]
       },
       "dataTransfer": {
-        "title": "9. Data Transfer",
+        "title": "16. International Data Transfer",
         "content": [
-          "Pool & Chill may store your personal data on servers located outside Mexico, specifically in data centers in the United States and European Union, using secure and certified cloud services.",
-          "By accepting these Terms and Conditions, you give your EXPRESS CONSENT for the international transfer of your data, which will be carried out complying with all security measures required by LFPDPPP.",
-          "All our cloud service providers comply with international data protection standards (ISO 27001, SOC 2, among others)."
+          "To provide its services, Pool & Chill uses technology and service providers that may involve the transfer of personal data outside Mexican territory, pursuant to Article 36 of the LFPDPPP:",
+          "• Firebase (Google LLC): File and image storage and analytics services — servers located in the United States\n• Render, Inc.: Server infrastructure for the Platform backend — servers located in the United States\n• Didit: Identity verification — servers located in the European Union\n• Google Maps Platform: Geolocation and geocoding services — servers located in the United States",
+          "By accepting these Terms and Conditions, you grant your EXPRESS CONSENT for the international transfer of your personal data to the aforementioned third parties, which will be carried out in compliance with all security measures required by the LFPDPPP and its Regulations.",
+          "All our service providers comply with international data protection standards (ISO 27001, SOC 2, EU GDPR) and have entered into personal data protection agreements with Pool & Chill.",
+          "National transfers that do not require the data subject's consent are those specified in Article 37 of the LFPDPPP."
         ]
       },
-      "dataStorage": {
-        "title": "10. Storage and Security",
+      "securityStorage": {
+        "title": "17. Information Storage and Security",
         "content": [
-          "Pool & Chill implements physical, technical, and administrative security measures to protect your personal data against damage, loss, alteration, destruction, or unauthorized use:",
-          "• Data encryption in transit (SSL/TLS) and at rest\n• Restricted access to personal data only to authorized personnel\n• Periodic security audits\n• Automatic backups and disaster recovery plans\n• Ongoing staff training on data protection",
-          "Your data will be kept for the time necessary to fulfill the described purposes and subsequently for the period required by applicable legal provisions."
-        ]
-      },
-      "responsibility": {
-        "title": "11. User Responsibility",
-        "content": [
-          "By providing your personal data, you declare that:",
-          "• The information provided is true, accurate, complete, and up to date\n• You are over 18 years old or have authorization from your legal guardian\n• You understand and accept the terms set forth in this document\n• If you are a Host, you have the legal rights to offer the registered space",
-          "Providing false or misleading information may result in cancellation of your registration and inability to use our services."
+          "Pool & Chill implements administrative, technical, and physical security measures in accordance with Article 19 of the LFPDPPP to protect your personal data against damage, loss, alteration, destruction, or unauthorized use, access, or processing:",
+          "Technical measures:\n• Encryption of sensitive data using AES-GCM 256-bit with PBKDF2 key derivation (100,000 iterations)\n• Data-in-transit encryption using SSL/TLS protocols\n• Secure password storage using cryptographic hash algorithms\n• Time-limited authentication tokens (access tokens and refresh tokens)\n• Firewalls and intrusion detection systems\n• Automatic encrypted backups",
+          "Administrative measures:\n• Documented information security policies\n• Confidentiality agreements with employees, collaborators, and suppliers\n• Ongoing staff training on personal data protection\n• Role-based access control and principle of least privilege\n• Periodic internal security audits\n• Incident response plan and security breach notification procedures",
+          "Your data will be retained for the time necessary to fulfill the described purposes and subsequently for the periods required by applicable legal provisions (including tax obligations under the Federal Tax Code)."
         ]
       },
       "modifications": {
-        "title": "12. Modifications to Terms",
+        "title": "18. Modifications to Terms",
         "content": [
-          "Pool & Chill reserves the right to modify these Terms and Conditions at any time. Any changes will be notified through:",
-          "• Email to the registered address\n• Publication on our website at least 10 days in advance",
-          "Continued use of our services after notification of changes constitutes your acceptance of the new terms. If you do not agree with the modifications, you may unsubscribe from our services."
+          "Pool & Chill reserves the right to modify these Terms and Conditions at any time, in accordance with the LFPC and other applicable legislation. Any changes will be notified through:",
+          "• Email to the registered address, at least 10 (ten) calendar days prior to the effective date of modifications\n• Publication on the Platform website, with clear indication of the last update date\n• Prominent notification within the Platform upon login",
+          "Continued use of the Platform after notification of changes and expiration of the indicated period constitutes acceptance of the new Terms. If you do not agree with the modifications, you may request cancellation of your account pursuant to Section 14 of these Terms.",
+          "Users are advised to periodically consult these Terms and Conditions. The current version will always be available on the Platform."
         ]
       },
       "jurisdiction": {
-        "title": "13. Jurisdiction and Applicable Law",
+        "title": "19. Applicable Law and Jurisdiction",
         "content": [
-          "These Terms and Conditions are governed by the laws of the United Mexican States, specifically by:",
-          "• Federal Law on Protection of Personal Data Held by Private Parties (LFPDPPP)\n• LFPDPPP Regulations\n• Privacy Notice Guidelines issued by INAI",
-          "For the interpretation and compliance with these Terms, as well as for the resolution of any controversy that may arise, the parties expressly submit to the jurisdiction of the competent courts of Mexico City, waiving any other jurisdiction that may correspond to them by reason of their present or future domicile."
+          "These Terms and Conditions are governed by and construed in accordance with the laws of the United Mexican States, specifically:",
+          "• Political Constitution of the United Mexican States (Articles 6, 16, and 28)\n• Federal Law on Protection of Personal Data Held by Private Parties (LFPDPPP) — DOF 07/05/2010\n• LFPDPPP Regulations — DOF 12/21/2011\n• Privacy Notice Guidelines — DOF 01/17/2013\n• Federal Consumer Protection Law (LFPC)\n• Commercial Code\n• Federal Civil Code\n• Federal Copyright Law\n• Industrial Property Law\n• Federal Tax Code (regarding tax obligations)",
+          "For the interpretation, compliance, and enforcement of these Terms and Conditions, as well as for the resolution of any controversy that may arise, the parties expressly submit to the jurisdiction of the competent courts of Mexico City, United Mexican States, waiving any other jurisdiction that may correspond to them by reason of their present or future domicile, in accordance with Article 1093 of the Commercial Code.",
+          "The foregoing is without prejudice to the User's right to resort to the Federal Consumer Protection Agency (PROFECO) or INAI for the defense of their rights, in accordance with applicable legislation."
         ]
       }
     }
   },
   "privacy": {
-    "title": "Privacy Notice",
-    "lastUpdated": "Last updated: November 1, 2025",
-    "intro": "In compliance with Mexico's Federal Law on Protection of Personal Data Held by Private Parties (LFPDPPP), Pool & Chill makes available this Privacy Notice.",
+    "title": "Comprehensive Privacy Notice",
+    "lastUpdated": "Last updated: February 4, 2026",
+    "intro": "In compliance with the Federal Law on Protection of Personal Data Held by Private Parties (LFPDPPP), its Regulations, and the Privacy Notice Guidelines published in the Official Gazette on January 17, 2013, Pool & Chill (hereinafter, \"the Responsible Party\") makes available to personal data subjects this Comprehensive Privacy Notice, in order to disclose the personal data processing practices and policies implemented.",
     "closeButton": "Understood",
     "contact": {
       "title": "Responsible Party Contact Information",
-      "content": "For any questions, clarifications, or to exercise your rights, you can contact us:",
-      "email": "team@poolandchill.com.mx"
+      "content": "For any questions, clarifications, or to exercise your ARCO rights, the Personal Data Protection Department is at your service:",
+      "email": "team@poolandchill.com"
     },
     "sections": {
       "responsible": {
-        "title": "1. Identification of the Responsible Party",
+        "title": "1. Identity and Domicile of the Responsible Party",
         "content": [
-          "Pool & Chill is responsible for the processing of your personal data.",
-          "Name: Pool & Chill\nAddress: Mexico City, Mexico\nEmail: team@poolandchill.com.mx",
-          "Pool & Chill is committed to protecting the privacy of your personal data and guaranteeing your right to informational self-determination."
+          "In accordance with Article 16, Section I of the LFPDPPP and Article 24 of its Regulations:",
+          "Responsible for data processing: Pool & Chill\nTrade name: Pool & Chill\nDomicile: Mexico City, United Mexican States\nPrivacy email: team@poolandchill.com\nWebsite: www.poolandchill.com",
+          "Pool & Chill is a digital intermediation platform for the temporary rental of recreational spaces (pools, cabins, and camping areas) between individuals. The Responsible Party is committed to protecting the privacy of data subjects' personal data and guaranteeing the exercise of the right to informational self-determination, as established in Article 16, second paragraph of the Political Constitution of the United Mexican States."
         ]
       },
-      "purpose": {
-        "title": "2. Purposes of Data Processing",
-        "content": "Your personal data will be used for the following purposes:",
-        "subsections": {
-          "primary": {
-            "title": "Primary Purposes (necessary for the service)",
-            "content": "Manage your registration as a user (Guest or Host), contact you to provide information about Pool & Chill, coordinate property integration (for Hosts), manage the host program, process requests and inquiries, comply with legal and regulatory obligations."
-          },
-          "secondary": {
-            "title": "Secondary Purposes (not necessary, but allow us to improve service)",
-            "content": "Send newsletters and platform updates, conduct statistical analysis and market research, personalize your platform experience, send promotions and special offers, use property information for promotional and marketing materials (with Host's prior authorization)."
-          }
-        }
-      },
       "dataCollected": {
-        "title": "3. Personal Data We Collect",
+        "title": "2. Personal Data Collected",
         "content": [
-          "We collect the following categories of personal data:",
-          "Identification data:\n• Full name\n• Email address\n• Phone number\n• User type (Guest or Host)",
-          "Additional data for Hosts:\n• Property type\n• Place name\n• Complete property address\n• Space description and amenities\n• Property photographs (when applicable)",
-          "Navigation and usage data:\n• IP address\n• Browser type\n• Pages visited\n• Date and time of access"
+          "In accordance with Article 16, Section II of the LFPDPPP, Pool & Chill collects the following categories of personal data:",
+          "I. Identification data:\n• First name(s) and last name(s)\n• Date of birth\n• Gender (male, female, other/prefer not to say)\n• State of residence within Mexico\n• Voter ID (INE/IFE) — front and back image (for Hosts)",
+          "II. Contact data:\n• Email address\n• Phone number (10-digit format with international code +52)",
+          "III. Patrimonial and financial data (Hosts only):\n• Bank account holder name\n• Bank account number or CLABE (standardized bank code)\n• Bank institution name",
+          "IV. Space data (Hosts):\n• Space name, description, and type (Pool, Cabin, Camping)\n• Full address (street, number, municipality, state, postal code)\n• Geographic coordinates (latitude and longitude) obtained via Google Maps\n• Operating hours (check-in / check-out)\n• Pricing structure (weekday and weekend rates)\n• Capacity, number of bedrooms, beds, and bathrooms\n• Amenities, features, and space rules\n• Space photographs (up to 10 images, max. 5 MB each)",
+          "V. Authentication data:\n• Access password (stored exclusively in cryptographic hash format; Pool & Chill does not have access to your plaintext password)\n• Session and authentication tokens (access token and refresh token)",
+          "VI. Navigation and usage data (automatically collected):\n• IP address\n• Browser type and version\n• Operating system\n• Pages visited and browsing time\n• Date, time, and timezone of access\n• Preferred browser language"
+        ]
+      },
+      "sensitiveData": {
+        "title": "3. Sensitive Personal Data",
+        "content": [
+          "In accordance with Article 3, Section VI of the LFPDPPP, Pool & Chill collects the following data that may be considered sensitive:",
+          "• Facial biometric data: Obtained exclusively during the identity verification process conducted by external provider Didit. This data is processed by Didit and is NOT stored directly by Pool & Chill.\n• Voter ID (INE/IFE) image: Used to verify the identity of Hosts. Once verification is complete, Pool & Chill retains only the result (approved/rejected) and not the document images.",
+          "The processing of this sensitive data is carried out with the express written consent of the data subject, in accordance with Article 9 of the LFPDPPP. This data is processed under strict enhanced security measures and in accordance with the principle of data minimization.",
+          "In no case does Pool & Chill collect data relating to racial or ethnic origin, health status, religious, philosophical, or moral beliefs, union membership, political opinions, or sexual preference."
+        ]
+      },
+      "primaryPurposes": {
+        "title": "4. Primary Processing Purposes",
+        "content": [
+          "In accordance with Article 16, Section III of the LFPDPPP, your personal data will be processed for the following primary purposes, which are necessary for the legal relationship between you and Pool & Chill:",
+          "For all Users:\n• Manage the creation, administration, and maintenance of your user account\n• Verify your identity and authenticate your access to the Platform\n• Fulfill obligations derived from the Terms and Conditions\n• Address your requests, complaints, inquiries, and claims\n• Send operational communications related to the service (registration confirmations, account notifications, security alerts)\n• Comply with applicable legal, tax, and regulatory obligations\n• Prevent fraud and illicit activities",
+          "For Guests:\n• Enable searching, viewing, and booking of spaces\n• Process and manage your bookings\n• Generate receipts and transaction records\n• Facilitate communication with Hosts regarding bookings",
+          "For Hosts:\n• Verify your identity through the Didit verification process\n• Publish, manage, and update your space listings\n• Process payments derived from bookings to your bank account\n• Coordinate the onboarding and integration process of your space into the Platform\n• Validate information and documentation provided about the space"
+        ]
+      },
+      "secondaryPurposes": {
+        "title": "5. Secondary Processing Purposes",
+        "content": [
+          "Additionally, your personal data may be processed for the following secondary purposes, which are NOT necessary for the main legal relationship but allow us to improve service quality:",
+          "• Send newsletters, updates about new features, and relevant content about the Platform\n• Send promotions, special offers, and exclusive benefits\n• Conduct anonymized or aggregated statistical analysis, market research, and consumer behavior studies\n• Personalize your browsing experience and space recommendations\n• Use photographs, descriptions, and space information for Pool & Chill promotional and marketing materials (with the Host's prior express authorization)\n• Send service satisfaction surveys\n• Develop new products, services, and features",
+          "If you do NOT wish your personal data to be processed for secondary purposes, you may express your refusal at any time by sending an email to team@poolandchill.com with the subject 'OPT-OUT SECONDARY PURPOSES'. Your refusal will not be grounds for denying you the Platform's main services."
+        ]
+      },
+      "identityVerification": {
+        "title": "6. Third-Party Identity Verification",
+        "content": [
+          "For Host identity verification, Pool & Chill uses the services of external provider Didit, as follows:",
+          "Verification process:\n• A secure popup window from the Didit service is opened from the Platform\n• The user presents their Voter ID (INE/IFE) before the camera\n• Facial biometric verification is performed to confirm identity match with the document\n• The process has a 10-minute time limit\n• The Platform periodically checks verification status with the backend server",
+          "Data shared with Didit:\n• INE/IFE image (front and back)\n• Facial biometric data captured in real time\n• User's email address to link the verification",
+          "Completing email verification is a mandatory prerequisite before initiating the identity verification process with Didit.",
+          "Didit operates under its own terms of service and privacy policy, which will be presented to the data subject during the verification process. Pool & Chill is not responsible for the processing that Didit performs on the data once transferred, without prejudice to transfer oversight pursuant to Article 36 of the LFPDPPP."
         ]
       },
       "collectionMethods": {
-        "title": "4. Data Collection Methods",
+        "title": "7. Personal Data Collection Methods",
         "content": [
-          "Your personal data is collected through the following means:",
-          "• Online forms: When you complete our registration form on the website\n• Directly provided: When you contact us by email or phone\n• Automatically: Through cookies and similar technologies during your website navigation\n• Direct communication: During the host onboarding process",
-          "All collected data is processed according to the principles of legality, consent, information, quality, purpose, loyalty, proportionality, and responsibility established in the LFPDPPP."
+          "In accordance with Article 16, Section IV of the LFPDPPP, your personal data is obtained through the following means:",
+          "Direct means (personally provided by the data subject):\n• Online registration form (11-step process)\n• Contact form on the website\n• Upload of photographs and identity documents\n• Interaction with Google Maps for location selection\n• Identity verification process with Didit\n• Direct communications via email",
+          "Automatic means (collected during browsing):\n• Cookies and similar tracking technologies\n• Server logs\n• Firebase Analytics for aggregated usage and performance data\n• Browser local storage (localStorage) for session tokens and language preference",
+          "Indirect means (obtained from third parties):\n• Identity verification result provided by Didit\n• Reverse geolocation data provided by Google Maps (coordinate-to-address conversion)",
+          "All collected data is processed in accordance with the eight principles established in Articles 6 to 13 of the LFPDPPP: lawfulness, consent, information, quality, purpose, loyalty, proportionality, and responsibility."
         ]
       },
-      "dataRecipients": {
-        "title": "5. Personal Data Transfers",
+      "dataTransfers": {
+        "title": "8. Personal Data Transfers",
         "content": [
-          "Pool & Chill may transfer your personal data to the following recipients:",
-          "National Transfers:\n• Technology and hosting service providers based in Mexico\n• Financial institutions for payment processing (when applicable)",
-          "International Transfers:\n• Cloud storage services located in the United States and European Union\n• Digital analytics and marketing platforms\n• Email service providers",
-          "All international transfers are made ensuring that recipients maintain security and data protection measures equivalent to those required by Mexican legislation.",
-          "By accepting this Privacy Notice, you give your express consent for these transfers. You may revoke this consent at any time."
+          "In accordance with Articles 36 and 37 of the LFPDPPP, Pool & Chill may make the following personal data transfers:",
+          "National transfers:\n• Mexican financial institutions for Host payment processing\n• Competent authorities when there is a duly substantiated and motivated legal requirement",
+          "International transfers (requiring consent):\n• Firebase / Google LLC (United States): Image and file storage in Firebase Cloud Storage, and analytics services through Firebase Analytics\n• Render, Inc. (United States): Server infrastructure hosting the Platform backend\n• Didit (European Union): Host identity verification, including biometric data processing and identity document images\n• Google Maps Platform (United States): Geolocation services, direct and reverse geocoding for space location",
+          "Transfers not requiring consent (Art. 37 LFPDPPP):\n• Those provided for by law or treaty to which Mexico is a party\n• Those necessary for medical prevention or diagnosis\n• Those between controlling and subsidiary companies\n• Those necessary by virtue of a contract entered into in the interest of the data subject\n• Those necessary for the maintenance or fulfillment of a legal relationship between the responsible party and the data subject\n• Those necessary for the recognition, exercise, or defense of a right in judicial proceedings",
+          "By accepting this Privacy Notice, you grant your express consent for the international transfers described above, in accordance with Article 36 of the LFPDPPP."
         ]
       },
       "aroRights": {
-        "title": "6. ARCO Rights and Consent Revocation",
+        "title": "9. ARCO Rights",
         "content": [
-          "You have the right to:",
-          "• ACCESS: Know what personal data we have about you, what we use it for, and the conditions of processing\n• RECTIFICATION: Request correction of your personal information if it is outdated, inaccurate, or incomplete\n• CANCELLATION: Request that we delete your information from our records or databases when you consider it is not being used properly\n• OPPOSITION: Oppose the use of your personal data for specific purposes",
-          "To exercise your ARCO rights, you must submit a written request through:",
-          "• Email: team@poolandchill.com.mx\n• Subject: ARCO Rights Request",
-          "Your request must contain:\n1. Full name and contact email\n2. Clear and precise description of the right you wish to exercise\n3. Copy of official identification (ID, passport, or professional license)\n4. Any document or information that facilitates locating your data",
-          "Pool & Chill will respond to your request within a maximum of 20 business days from the date the request was received. The response will be sent to the email address provided in your request."
-        ]
-      },
-      "securityMeasures": {
-        "title": "7. Security Measures",
-        "content": [
-          "Pool & Chill has implemented and maintains administrative, technical, and physical security measures to protect your personal data against damage, loss, alteration, destruction, or unauthorized use, access, or processing:",
-          "Technical Measures:\n• SSL/TLS encryption for data transmission\n• Data encryption at rest\n• Firewalls and intrusion detection systems\n• Automatic encrypted backups\n• Multi-factor authentication for administrative access",
-          "Administrative Measures:\n• Information security policies\n• Confidentiality agreements with employees and suppliers\n• Ongoing staff training on data protection\n• Role-based access control\n• Periodic internal audits",
-          "Physical Measures:\n• Data centers with restricted access and 24/7 surveillance\n• Biometric access control systems\n• Natural disaster protection",
-          "Despite these measures, no security system is completely infallible. Pool & Chill commits to notifying you immediately in case of any security breach that may affect your personal data."
+          "In accordance with Articles 28 to 35 of the LFPDPPP and Articles 89 to 96 of its Regulations, as a data subject you have the right to:",
+          "• ACCESS (Art. 23 LFPDPPP): Request information about your personal data held in Pool & Chill's databases, as well as know the Privacy Notice governing the processing.\n• RECTIFICATION (Art. 24 LFPDPPP): Request correction of your data when it is inaccurate, incomplete, or outdated.\n• CANCELLATION (Art. 25 LFPDPPP): Request deletion of your data from Pool & Chill's records or databases. Cancellation will lead to a blocking period, after which the data will be deleted.\n• OPPOSITION (Art. 27 LFPDPPP): Oppose the processing of your personal data when there is a legitimate cause to do so.",
+          "Procedure to exercise your ARCO rights:",
+          "1. Send your request by email to: team@poolandchill.com with the subject 'ARCO REQUEST - [TYPE OF RIGHT]'\n2. Your request must contain, pursuant to Article 29 of the LFPDPPP:\n   a) Full name and domicile or email address for communicating the response\n   b) Documents proving your identity (copy of INE/IFE, passport, or professional license) or, where applicable, those of your legal representative\n   c) Clear and precise description of the personal data regarding which you seek to exercise an ARCO right\n   d) Any element or document that facilitates locating the personal data\n   e) In case of rectification, the modifications to be made and supporting documentation",
+          "Response timeframes:\n• Pool & Chill will communicate its determination to the data subject within a maximum of 20 business days from receipt of the complete request (Art. 32 LFPDPPP)\n• If granted, it will be implemented within 15 business days following communication of the response (Art. 32 LFPDPPP)\n• Timeframes may be extended once for an equal period, when circumstances warrant (Art. 32 LFPDPPP)\n• Delivery of personal data will be free of charge; only justified shipping or reproduction costs may be charged"
         ]
       },
       "consentRevocation": {
-        "title": "8. Consent Revocation",
+        "title": "10. Consent Revocation",
         "content": [
-          "You may revoke the consent you have granted us for the processing of your personal data at any time.",
-          "To revoke your consent, you must send a request to:\n• Email: team@poolandchill.com.mx\n• Subject: Consent Revocation",
-          "Include in your request:\n• Full name\n• Registered email\n• Clear description of the processing for which you wish to revoke consent",
-          "It is important to note that:",
-          "• Not in all cases can we fulfill your request or conclude use immediately, as it is possible that due to a legal obligation we need to continue processing your data\n• Revoking consent may prevent you from continuing to use some Pool & Chill services\n• We will respond to your request within a maximum of 20 business days"
+          "In accordance with Article 8, second paragraph of the LFPDPPP, you may revoke the consent granted for the processing of your personal data at any time, without retroactive effects.",
+          "To revoke your consent, you must send a request to:\n• Email: team@poolandchill.com\n• Subject: CONSENT REVOCATION",
+          "Your request must include:\n• Full name\n• Email address registered on the Platform\n• Copy of valid official identification\n• Clear and precise description of the processing for which you wish to revoke consent\n• Indication of whether revocation is total or partial",
+          "Important considerations:\n• Not in all cases can we fulfill your request immediately, as legal or contractual obligations may require continued processing of certain data (Art. 26 LFPDPPP)\n• Total consent revocation will result in inability to continue providing Platform services and account cancellation\n• Partial revocation may be limited to secondary purposes without affecting main service provision\n• Pool & Chill will respond to your request within a maximum of 20 business days"
         ]
       },
-      "updates": {
-        "title": "9. Privacy Notice Modifications",
+      "useLimitation": {
+        "title": "11. Limitation of Data Use and Disclosure",
         "content": [
-          "Pool & Chill reserves the right to make modifications or updates to this Privacy Notice at any time, to address:",
-          "• Changes in applicable legislation\n• Developments in our business model\n• Updates to our privacy practices\n• Implementation of new technologies\n• Requirements from INAI (National Institute for Transparency, Access to Information and Personal Data Protection)",
-          "Modifications will be notified through:",
-          "• Email to the registered address (with at least 10 days advance notice)\n• Publication on our website www.poolandchill.com.mx\n• Prominent notification on the platform",
-          "It is recommended to periodically consult the Privacy Notice to stay informed about how we protect your information."
-        ]
-      },
-      "childrenPrivacy": {
-        "title": "10. Children's Privacy",
-        "content": [
-          "Pool & Chill is not directed to minors under 18 years of age and we do not intentionally collect personal information from minors.",
-          "If we become aware that we have collected personal data from a minor under 18 years of age without parental or guardian supervision, we will take necessary measures to delete such information from our servers immediately.",
-          "If you are a parent or legal guardian and are aware that your minor child has provided us with personal information without your consent, please contact us immediately at team@poolandchill.com.mx so we can take appropriate action."
+          "Pool & Chill provides the following mechanisms for you to limit the use and disclosure of your personal data, in accordance with Article 16, Section VII of the LFPDPPP:",
+          "• Exclusion List Registration: Send an email to team@poolandchill.com with the subject 'EXCLUSION LIST' to stop receiving promotional communications\n• Cookie settings: You can configure your browser to reject or delete cookies\n• Opt-out of secondary purposes: You can limit data use exclusively to primary purposes\n• Notification cancellation: You can disable email notifications using the unsubscribe link included in each communication",
+          "Additionally, you can register with PROFECO's Public Registry to Avoid Advertising (REPEP) to limit commercial communications, through the website www.repep.profeco.gob.mx"
         ]
       },
       "cookies": {
-        "title": "11. Use of Cookies and Tracking Technologies",
+        "title": "12. Use of Cookies and Tracking Technologies",
         "content": [
-          "Pool & Chill uses cookies and similar technologies to improve your experience on our website:",
-          "Types of cookies we use:\n• Essential cookies: Necessary for basic site functionality\n• Performance cookies: To analyze how visitors use the site\n• Functionality cookies: To remember your preferences\n• Advertising cookies: To show relevant ads (with your consent)",
-          "You can configure your browser to reject cookies or alert you when they are sent. However, some site features may not work properly if you disable cookies.",
-          "For more information about cookie use, consult our Cookie Policy available on our website."
+          "Pool & Chill uses cookies, browser local storage (localStorage), and similar technologies as follows:",
+          "Essential cookies (strictly necessary):\n• Session cookies to maintain your authentication\n• Language preference storage (Spanish/English) in localStorage\n• Access and refresh tokens in localStorage for session management\n• User identifier to personalize the experience",
+          "Performance and analytics cookies:\n• Firebase Analytics: To collect aggregated and anonymous usage data that allows us to improve the Platform\n• These cookies collect information about how visitors use the website (most visited pages, errors, loading times)",
+          "Functionality cookies:\n• User language preferences\n• Registration process session state\n• Display preferences",
+          "You can configure your browser to reject cookies or alert you when they are sent. However, disabling essential cookies will prevent the Platform from functioning properly, including authentication and the registration process.",
+          "For more information about cookie management in common browsers, please consult your web browser's documentation."
         ]
       },
-      "userRights": {
-        "title": "12. User Rights and Complaints to INAI",
+      "childrenPrivacy": {
+        "title": "13. Children's Privacy",
         "content": [
-          "If you consider that your right to personal data protection has been violated or you suspect any violation of LFPDPPP provisions, you can file a complaint or report with INAI:",
-          "National Institute for Transparency, Access to Information and Personal Data Protection (INAI)\nAddress: Insurgentes Sur 3211, Col. Insurgentes Cuicuilco, Coyoacán, C.P. 04530, Mexico City\nPhone: 800 835 4324\nEmail: info@inai.org.mx\nWebsite: www.inai.org.mx",
-          "INAI is the authority responsible for ensuring compliance with the LFPDPPP and protecting the rights of personal data holders in Mexico.",
-          "Pool & Chill commits to fully cooperate with any INAI investigation and comply with its resolutions."
+          "Pool & Chill is not directed at minors under 18 years of age. The Platform requires all users to be individuals over 18 years of age with full legal capacity to contract.",
+          "Pool & Chill does NOT intentionally collect personal data from minors. The registration form includes date of birth as a mandatory field to verify the user's age.",
+          "If Pool & Chill becomes aware that personal data has been collected from a minor under 18 without the verifiable consent of their parent or legal guardian, it will take the necessary measures to immediately delete such information from its servers and databases, in accordance with Article 4 of the General Law on the Rights of Children and Adolescents.",
+          "If you are a parent or legal guardian and are aware that a minor has provided personal information to Pool & Chill without your consent, please contact us immediately at team@poolandchill.com so we can take appropriate action."
+        ]
+      },
+      "securityMeasures": {
+        "title": "14. Security Measures",
+        "content": [
+          "In accordance with Article 19 of the LFPDPPP, Pool & Chill has implemented and maintains administrative, technical, and physical security measures to protect personal data against damage, loss, alteration, destruction, or unauthorized use, access, or processing:",
+          "Technical Measures:\n• Encryption of sensitive data using AES-GCM (Advanced Encryption Standard - Galois/Counter Mode) 256-bit, with PBKDF2 key derivation of 100,000 iterations, using the browser's native Web Crypto API\n• Data-in-transit encryption using SSL/TLS protocols\n• Password storage using irreversible cryptographic hash algorithms\n• Time-limited authentication token system\n• Firewalls and intrusion detection and prevention systems\n• Automatic encrypted backups with geographic redundancy\n• Secure file storage in Firebase Cloud Storage with per-user access control",
+          "Administrative Measures:\n• Documented and updated information security policies\n• Confidentiality and data protection agreements with employees, collaborators, and suppliers\n• Ongoing staff training on personal data protection\n• Role-based access control and principle of least privilege\n• Periodic internal information security audits\n• Documented incident response plan and security breach notification procedures\n• Data protection impact assessments for new features",
+          "Physical Measures:\n• Infrastructure hosted in certified data centers (Firebase/Google Cloud and Render) with restricted access\n• 24/7 surveillance and monitoring\n• Access control systems and disaster protection",
+          "Despite the implementation of these measures, no security system is absolutely infallible. In the event of a security breach that significantly affects the patrimonial or moral rights of data subjects, Pool & Chill will immediately notify the data subject, pursuant to Article 20 of the LFPDPPP, indicating: (i) the nature of the incident; (ii) the personal data compromised; (iii) recommendations for the data subject to protect their interests; and (iv) corrective actions implemented."
+        ]
+      },
+      "updates": {
+        "title": "15. Privacy Notice Modifications",
+        "content": [
+          "In accordance with Article 16, last paragraph of the LFPDPPP, Pool & Chill reserves the right to make modifications or updates to this Privacy Notice at any time to address:",
+          "• Changes in applicable Mexican and international data protection legislation\n• Modifications to internal privacy policies\n• New personal data processing purposes\n• Changes in the Platform's business model or services\n• Implementation of new technologies or third-party integrations\n• Requirements or recommendations from INAI",
+          "Modifications will be notified through:\n• Email to the registered address, at least 10 calendar days prior to the effective date\n• Publication on the Platform website with clear indication of the last update date\n• Prominent notification within the Platform upon login",
+          "If modifications involve processing different from that originally disclosed, or the inclusion of new purposes, data categories, or third-party transfers, the data subject's consent will be obtained again.",
+          "Data subjects are advised to periodically consult this Privacy Notice. The current version will be available at all times on the Platform."
+        ]
+      },
+      "consentClause": {
+        "title": "16. Consent",
+        "content": [
+          "By providing your personal data through registration forms, contact forms, or any other means provided by the Platform, and by accepting these terms, you acknowledge that you have read, understood, and accepted this Comprehensive Privacy Notice in all its terms.",
+          "You also grant your express, free, specific, and informed consent for the processing of your personal data in accordance with the purposes, transfers, and conditions described herein, pursuant to Articles 8 and 36 of the LFPDPPP.",
+          "For sensitive personal data (biometric data for identity verification and financial data), your express consent is granted in a reinforced manner by voluntarily completing the identity verification process with Didit and providing your banking data, pursuant to Article 9 of the LFPDPPP.",
+          "This consent may be revoked at any time, without retroactive effects, in accordance with the procedure established in Section 10 of this Notice."
+        ]
+      },
+      "complaints": {
+        "title": "17. Complaints and Reports to INAI",
+        "content": [
+          "If you consider that your right to personal data protection has been violated by any conduct of Pool & Chill, or suspect any violation of the provisions of the LFPDPPP and other applicable regulations, you may file the corresponding complaint or report with INAI, pursuant to Articles 45 and 46 of the LFPDPPP:",
+          "National Institute for Transparency, Access to Information and Personal Data Protection (INAI)\nAddress: Insurgentes Sur 3211, Col. Insurgentes Cuicuilco, Coyoacán, C.P. 04530, Mexico City, Mexico\nPhone: 800 835 4324 (INAI Tel)\nEmail: atencion@inai.org.mx\nWebsite: www.inai.org.mx",
+          "INAI is the autonomous constitutional body that guarantees compliance with the right to personal data protection in Mexico, pursuant to Article 6, Section A, Subsection VIII of the Political Constitution of the United Mexican States.",
+          "Pool & Chill commits to fully cooperate with any verification, investigation, or sanctioning procedure conducted by INAI, and to comply with the resolutions issued by said Institute.",
+          "Effective date of this Privacy Notice: February 4, 2026."
         ]
       }
     }

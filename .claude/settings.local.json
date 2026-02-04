@@ -4,7 +4,8 @@
       "Bash(mkdir:*)",
       "Bash(npm i:*)",
       "Bash(tree:*)",
-      "Bash(dir /S /B)"
+      "Bash(dir /S /B)",
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": []

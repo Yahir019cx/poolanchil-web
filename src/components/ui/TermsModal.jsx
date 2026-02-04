@@ -12,17 +12,23 @@ export default function TermsModal({ isOpen, onClose }) {
   };
 
   const sections = [
-    'dataCollection',
+    'definitions',
+    'objectAcceptance',
+    'registrationRequirements',
+    'dataCollected',
+    'identityVerification',
+    'financialData',
     'dataUseGuests',
     'dataUseHosts',
     'consent',
-    'privacy',
     'hostProgram',
-    'unsubscribe',
+    'intellectualProperty',
+    'userResponsibility',
+    'liabilityLimitation',
+    'cancellation',
     'aroRights',
     'dataTransfer',
-    'dataStorage',
-    'responsibility',
+    'securityStorage',
     'modifications',
     'jurisdiction'
   ];

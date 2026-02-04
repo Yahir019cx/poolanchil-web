@@ -13,17 +13,22 @@ export default function PrivacyModal({ isOpen, onClose }) {
 
   const sections = [
     'responsible',
-    'purpose',
     'dataCollected',
+    'sensitiveData',
+    'primaryPurposes',
+    'secondaryPurposes',
+    'identityVerification',
     'collectionMethods',
-    'dataRecipients',
+    'dataTransfers',
     'aroRights',
-    'securityMeasures',
     'consentRevocation',
-    'updates',
-    'childrenPrivacy',
+    'useLimitation',
     'cookies',
-    'userRights'
+    'childrenPrivacy',
+    'securityMeasures',
+    'updates',
+    'consentClause',
+    'complaints'
   ];
 
   return (
