@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import Home from '../pages/Home';
@@ -8,24 +8,42 @@ import Registro from '../pages/Register';
 import Descargar from '../pages/Download';
 import HomeView from '../pages/HomeView';
 
+// Layout con Navbar y Footer
+function MainLayout() {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+// Layout standalone (sin Navbar ni Footer)
+function StandaloneLayout() {
+  return <Outlet />;
+}
 
 export default function AppRouter() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/nosotros" element={<Nosotros />} />
-            <Route path="/contacto" element={<Contacto />} />
-            <Route path="/registro" element={<Registro />} />
-            <Route path="/descargar" element={<Descargar />} />
-            <Route path="/invitacion" element={<HomeView />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <Routes>
+        {/* Rutas con Navbar y Footer */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/contacto" element={<Contacto />} />
+          <Route path="/registro" element={<Registro />} />
+          <Route path="/descargar" element={<Descargar />} />
+        </Route>
+
+        {/* Rutas standalone (fullscreen, sin nav/footer) */}
+        <Route element={<StandaloneLayout />}>
+          <Route path="/invitacion" element={<HomeView />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }
