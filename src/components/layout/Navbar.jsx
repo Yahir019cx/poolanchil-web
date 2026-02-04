@@ -63,7 +63,7 @@ export default function Navbar() {
             <img 
               src={poolChillLogo} 
               alt="Pool & Chill" 
-              className="h-10 md:h-14 lg:h-16 w-auto cursor-pointer"
+              className="h-20 md:h-20 lg:h-24 w-auto cursor-pointer"
               onClick={() => handleNavigation('home')}
             />
           </div>

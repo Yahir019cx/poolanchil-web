@@ -14,6 +14,7 @@ export { TimePicker } from "./shared/TimePicker";
 export {
   WelcomeStep,
   PersonalDataStep,
+  EmailVerificationStep,
   PropertyTypeStep,
   LocationStep,
   BasicInfoStep,

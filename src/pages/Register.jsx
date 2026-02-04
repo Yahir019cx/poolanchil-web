@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Toast } from '../components/ui/Toast';
 import {
   WelcomeStep,
   PersonalDataStep,
+  EmailVerificationStep,
   PropertyTypeStep,
   LocationStep,
   BasicInfoStep,
@@ -15,11 +18,38 @@ import {
   PreviewStep
 } from '../components/register/RegisterSteps';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL_LOCAL || 'http://localhost:3000';
+
 export default function Register() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const hasExchangedSession = useRef(false);
+
   const [currentStep, setCurrentStep] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Toast notification state
+  const [toast, setToast] = useState({
+    isVisible: false,
+    message: '',
+    type: 'success' // 'success' | 'error' | 'warning'
+  });
+
+  // Función para mostrar notificación
+  const showToast = (message, type = 'success') => {
+    setToast({
+      isVisible: true,
+      message,
+      type
+    });
+  };
+
+  const hideToast = () => {
+    setToast(prev => ({ ...prev, isVisible: false }));
+  };
 
   const [formData, setFormData] = useState({
     // Datos personales
@@ -95,6 +125,7 @@ export default function Register() {
   const steps = [
     'Bienvenida',
     'Datos personales',
+    'Verificación de email',
     '¿Qué ofreces?',
     'Ubicación',
     'Información básica',
@@ -102,9 +133,67 @@ export default function Register() {
     'Reglas',
     'Fotos',
     'Verificación INE',
-    'Cuenta de pago',
     'Vista previa'
   ];
+
+  // Auto-login después de verificación de email
+  useEffect(() => {
+    const exchangeSession = async () => {
+      const sessionToken = searchParams.get('session');
+      const errorStatus = searchParams.get('status');
+      const errorMessage = searchParams.get('message');
+
+      // Caso de error
+      if (errorStatus === 'error') {
+        showToast(errorMessage || 'Error al verificar el email', 'error');
+        setSearchParams({});
+        setCurrentStep(0);
+        return;
+      }
+
+      // Caso exitoso - intercambiar session token
+      if (sessionToken && !hasExchangedSession.current) {
+        hasExchangedSession.current = true;
+        setIsLoading(true);
+
+        try {
+          const response = await fetch(`${API_BASE_URL}/auth/exchange-session`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sessionToken }),
+          });
+
+          if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message || 'Error al intercambiar sesión');
+          }
+
+          const data = await response.json();
+
+          // Guardar tokens en localStorage
+          localStorage.setItem('accessToken', data.accessToken);
+          localStorage.setItem('refreshToken', data.refreshToken);
+          localStorage.setItem('userId', data.user.userId);
+
+          // Limpiar la URL
+          setSearchParams({});
+
+          // Posicionar en paso 3 (PropertyTypeStep)
+          setCurrentStep(3);
+
+          console.log('✅ Auto-login exitoso');
+        } catch (error) {
+          console.error('❌ Error al intercambiar sesión:', error);
+          showToast(error.message || 'Error al iniciar sesión. Intenta de nuevo.', 'error');
+          setCurrentStep(0);
+        } finally {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    exchangeSession();
+  }, [searchParams, setSearchParams]);
 
   // Validaciones
   const validateEmail = (email) => {
@@ -149,7 +238,7 @@ export default function Register() {
       if (!formData.estado) newErrors.estado = 'Selecciona tu estado';
     }
 
-    if (step === 2) {
+    if (step === 3) {
       if (formData.propertyTypes.length === 0) {
         newErrors.propertyTypes = 'Selecciona al menos un tipo de espacio';
       }
@@ -159,7 +248,46 @@ export default function Register() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const nextStep = () => {
+  const nextStep = async () => {
+    // Paso 1: Enviar POST /auth/register
+    if (currentStep === 1) {
+      if (!validateStep(currentStep)) return;
+
+      setIsLoading(true);
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/auth/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: formData.email,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            phoneNumber: `+52${formData.phoneNumber}`, // Formato internacional México
+            password: formData.password,
+            dateOfBirth: formData.dateOfBirth,
+            gender: parseInt(formData.gender),
+          }),
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.message || 'Error al registrar usuario');
+        }
+
+        // Registro exitoso → avanzar al paso 2 (EmailVerificationStep)
+        setCurrentStep(2);
+        console.log('✅ Registro exitoso. Verifica tu correo.');
+      } catch (error) {
+        console.error('❌ Error al registrar:', error);
+        showToast(error.message || 'Error al registrar. Intenta de nuevo.', 'error');
+      } finally {
+        setIsLoading(false);
+      }
+      return;
+    }
+
+    // Otros pasos: validación y avance normal
     if (currentStep === 0 || validateStep(currentStep)) {
       if (currentStep < steps.length - 1) {
         setCurrentStep(currentStep + 1);
@@ -226,55 +354,170 @@ export default function Register() {
     }
   };
 
-  const handleSubmit = () => {
-    // Construir el JSON final
-    const finalData = {
-      user: {
-        email: formData.email,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        password: formData.password,
-        dateOfBirth: formData.dateOfBirth,
-        gender: parseInt(formData.gender),
-        phoneNumber: formData.phoneNumber,
-        estado: formData.estado
-      },
-      properties: {
-        espacio: formData.propertyTypes,
-        nombre: formData.propertyName,
-        descripcion: formData.description
-      },
-      direccion: {
-        calle: formData.street,
-        numero: formData.number,
-        cp: formData.zipCode,
-        estado: formData.state,
-        municipio: formData.municipality,
-        coordenadas: formData.coordinates
-      },
-      informacionBasica: {
-        checkIn: formData.checkIn,
-        checkOut: formData.checkOut,
-        tipoRenta: formData.rentType,
-        horasMaximas: formData.maxHours,
-        precioEntresemana: formData.priceWeekday,
-        precioFinDeSemana: formData.priceWeekend
-      },
-      amenidades: {
-        ...(formData.propertyTypes.includes('pool') && { alberca: formData.poolAmenities }),
-        ...(formData.propertyTypes.includes('cabin') && { cabana: formData.cabinAmenities }),
-        ...(formData.propertyTypes.includes('camping') && { camping: formData.campingAmenities })
-      },
-      reglas: formData.rules.filter(rule => rule.trim() !== ''),
-      cuentaPago: {
-        nombre: formData.accountName,
-        numero: formData.accountNumber,
-        banco: formData.bankName
-      }
-    };
+  const handleSubmit = async () => {
+    setIsLoading(true);
 
-    console.log('Datos del formulario:', finalData);
-    alert('Formulario enviado! Revisa la consola para ver los datos.');
+    try {
+      const accessToken = localStorage.getItem('accessToken');
+      const userId = localStorage.getItem('userId');
+
+      if (!accessToken || !userId) {
+        throw new Error('No se encontró sesión activa. Por favor, inicia sesión.');
+      }
+
+      // 1. Subir imágenes a Firebase Storage
+      console.log('📤 Subiendo imágenes a Firebase...');
+      const { uploadMultipleImages } = await import('../utils/uploadImages');
+
+      const imageUrls = await uploadMultipleImages(
+        formData.photos,
+        'properties',
+        userId,
+        (progress) => {
+          console.log(`📸 Subiendo: ${progress.current}/${progress.total} (${progress.percentage}%)`);
+        }
+      );
+
+      console.log('✅ Imágenes subidas:', imageUrls.length);
+
+      // 2. Construir el JSON en el formato esperado por el backend
+      const propertyData = {
+        services: {
+          hasPool: formData.propertyTypes.includes('pool'),
+          hasCabin: formData.propertyTypes.includes('cabin'),
+          hasCamping: formData.propertyTypes.includes('camping')
+        },
+        location: {
+          street: formData.street,
+          exteriorNumber: formData.number,
+          interiorNumber: formData.interiorNumber || null,
+          neighborhood: formData.municipality,
+          zipCode: formData.zipCode,
+          stateId: 1, // TODO: Mapear estado a stateId
+          cityId: 1, // TODO: Mapear municipio a cityId
+          latitude: parseFloat(formData.coordinates.lat) || 0,
+          longitude: parseFloat(formData.coordinates.lng) || 0,
+          googlePlaceId: formData.googlePlaceId || null,
+          formattedAddress: `${formData.street} ${formData.number}, ${formData.municipality}, ${formData.state}`
+        },
+        basicInfo: {
+          propertyName: formData.propertyName,
+          description: formData.description,
+          ...(formData.propertyTypes.includes('pool') && {
+            pool: {
+              checkInTime: formData.checkIn,
+              checkOutTime: formData.checkOut,
+              maxHours: parseInt(formData.maxHours) || 12,
+              minHours: 4,
+              priceWeekday: parseFloat(formData.priceWeekday),
+              priceWeekend: parseFloat(formData.priceWeekend)
+            }
+          }),
+          ...(formData.propertyTypes.includes('cabin') && {
+            cabin: {
+              checkInTime: formData.checkIn,
+              checkOutTime: formData.checkOut,
+              minNights: 1,
+              priceWeekday: parseFloat(formData.priceWeekday),
+              priceWeekend: parseFloat(formData.priceWeekend)
+            }
+          }),
+          ...(formData.propertyTypes.includes('camping') && {
+            camping: {
+              checkInTime: formData.checkIn,
+              checkOutTime: formData.checkOut,
+              minNights: 1,
+              priceWeekday: parseFloat(formData.priceWeekday),
+              priceWeekend: parseFloat(formData.priceWeekend)
+            }
+          })
+        },
+        amenities: {
+          ...(formData.propertyTypes.includes('pool') && {
+            pool: {
+              maxPersons: parseInt(formData.poolAmenities.maxPeople) || 0,
+              temperatureMin: parseInt(formData.poolAmenities.tempMin) || 20,
+              temperatureMax: parseInt(formData.poolAmenities.tempMax) || 28,
+              items: formData.poolAmenities.features?.map((f, i) => ({
+                amenityId: f.id || i + 1,
+                quantity: f.quantity || 1
+              })) || []
+            }
+          }),
+          ...(formData.propertyTypes.includes('cabin') && {
+            cabin: {
+              maxGuests: parseInt(formData.cabinAmenities.maxGuests) || 0,
+              bedrooms: parseInt(formData.cabinAmenities.bedrooms) || 0,
+              singleBeds: parseInt(formData.cabinAmenities.singleBeds) || 0,
+              doubleBeds: parseInt(formData.cabinAmenities.doubleBeds) || 0,
+              fullBathrooms: parseInt(formData.cabinAmenities.fullBathrooms) || 0,
+              halfBathrooms: parseInt(formData.cabinAmenities.halfBathrooms) || 0,
+              items: formData.cabinAmenities.features?.map((f, i) => ({
+                amenityId: f.id || i + 1,
+                quantity: f.quantity || 1
+              })) || []
+            }
+          }),
+          ...(formData.propertyTypes.includes('camping') && {
+            camping: {
+              maxPersons: parseInt(formData.campingAmenities.maxPeople) || 0,
+              areaSquareMeters: parseInt(formData.campingAmenities.squareMeters) || 0,
+              approxTents: parseInt(formData.campingAmenities.tents) || 0,
+              items: formData.campingAmenities.features?.map((f, i) => ({
+                amenityId: f.id || i + 1,
+                quantity: f.quantity || 1
+              })) || []
+            }
+          })
+        },
+        rules: formData.rules
+          .filter(rule => rule.trim() !== '')
+          .map((rule, index) => ({
+            text: rule,
+            order: index + 1
+          })),
+        images: imageUrls.map((url, index) => ({
+          url: url,
+          isPrimary: index === 0,
+          order: index + 1
+        }))
+      };
+
+      console.log('📦 Datos a enviar:', propertyData);
+
+      // 3. Enviar al backend
+      console.log('🚀 Enviando propiedad al backend...');
+      const response = await fetch(`${API_BASE_URL}/properties`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(propertyData)
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Error al crear la propiedad');
+      }
+
+      const result = await response.json();
+      console.log('✅ Propiedad creada exitosamente:', result);
+
+      // 4. Mostrar éxito y redirigir
+      showToast('¡Propiedad registrada exitosamente! Será revisada por nuestro equipo.', 'success');
+
+      // Esperar 2 segundos antes de redirigir para que el usuario vea la notificación
+      setTimeout(() => {
+        navigate('/dashboard'); // O la ruta que corresponda
+      }, 2000);
+
+    } catch (error) {
+      console.error('❌ Error al enviar registro:', error);
+      showToast(error.message || 'Error al enviar el registro. Por favor, intenta de nuevo.', 'error');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const renderStepContent = () => {
@@ -299,6 +542,9 @@ export default function Register() {
         );
 
       case 2:
+        return <EmailVerificationStep email={formData.email} />;
+
+      case 3:
         return (
           <PropertyTypeStep
             formData={formData}
@@ -307,16 +553,16 @@ export default function Register() {
           />
         );
 
-      case 3:
+      case 4:
         return <LocationStep formData={formData} setFormData={setFormData} />;
 
-      case 4:
+      case 5:
         return <BasicInfoStep formData={formData} setFormData={setFormData} />;
 
-      case 5:
+      case 6:
         return <AmenitiesStep formData={formData} setFormData={setFormData} />;
 
-      case 6:
+      case 7:
         return (
           <RulesStep
             formData={formData}
@@ -326,7 +572,7 @@ export default function Register() {
           />
         );
 
-      case 7:
+      case 8:
         return (
           <PhotosStep
             formData={formData}
@@ -335,29 +581,53 @@ export default function Register() {
           />
         );
 
-      case 8:
+      case 9:
         return (
           <INEStep
-            formData={formData}
-            handleFileUpload={handleFileUpload}
-            removeFile={removeFile}
+            onComplete={nextStep}
           />
         );
 
-      case 9:
-        return <PaymentStep formData={formData} setFormData={setFormData} />;
-
       case 10:
-        return <PreviewStep formData={formData} handleSubmit={handleSubmit} />;
+        return <PreviewStep formData={formData} handleSubmit={handleSubmit} isLoading={isLoading} />;
 
       default:
         return null;
     }
   };
 
+  // Loading durante intercambio de sesión
+  if (isLoading && searchParams.get('session')) {
+    return (
+      <>
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          isVisible={toast.isVisible}
+          onClose={hideToast}
+        />
+        <section className="relative min-h-screen py-20 px-6 overflow-hidden bg-gradient-to-b from-white via-primary/5 to-white mb-1 flex items-center justify-center">
+          <div className="text-center space-y-4">
+            <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto" />
+            <p className="text-xl font-semibold text-gray-700">Verificando tu cuenta...</p>
+            <p className="text-gray-500">Por favor espera un momento</p>
+          </div>
+        </section>
+      </>
+    );
+  }
+
   return (
-    <section className="relative min-h-screen py-20 px-6 overflow-hidden bg-gradient-to-b from-white via-primary/5 to-white mb-1">
-      {/* Animated water wave background */}
+    <>
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        isVisible={toast.isVisible}
+        onClose={hideToast}
+      />
+
+      <section className="relative min-h-screen py-20 px-6 overflow-hidden bg-gradient-to-b from-white via-primary/5 to-white mb-1">
+        {/* Animated water wave background */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-10 right-20 w-96 h-96 bg-primary rounded-full blur-3xl animate-pulse"
           style={{ animationDuration: '5s' }} />
@@ -400,13 +670,14 @@ export default function Register() {
             </AnimatePresence>
 
             {/* Navigation Buttons */}
-            {currentStep > 0 && (
+            {currentStep > 0 && currentStep !== 2 && (
               <div className="flex justify-between items-center mt-8 pt-6 border-t border-gray-200">
                 <motion.button
                   onClick={prevStep}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-6 py-3 rounded-lg border-2 border-gray-300 text-gray-700 font-semibold hover:border-primary hover:text-primary transition-all duration-300 flex items-center gap-2"
+                  disabled={isLoading}
                 >
                   <ChevronLeft className="w-5 h-5" />
                   Anterior
@@ -417,10 +688,20 @@ export default function Register() {
                     onClick={nextStep}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-primary/80 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
+                    className="px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-primary/80 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={isLoading}
                   >
-                    Siguiente
-                    <ChevronRight className="w-5 h-5" />
+                    {isLoading ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        Cargando...
+                      </>
+                    ) : (
+                      <>
+                        Siguiente
+                        <ChevronRight className="w-5 h-5" />
+                      </>
+                    )}
                   </motion.button>
                 )}
               </div>
@@ -429,5 +710,6 @@ export default function Register() {
         </motion.div>
       </div>
     </section>
+    </>
   );
 }
