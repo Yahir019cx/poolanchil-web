@@ -6,7 +6,7 @@ import Nosotros from '../pages/About';
 import Contacto from '../pages/Contact';
 import Registro from '../pages/Register';
 import Descargar from '../pages/Download';
-import HomeView from '../pages/HomeView';
+import Invitation from '../pages/invitation';
 
 // Layout con Navbar y Footer
 function MainLayout() {
@@ -41,7 +41,7 @@ export default function AppRouter() {
 
         {/* Rutas standalone (fullscreen, sin nav/footer) */}
         <Route element={<StandaloneLayout />}>
-          <Route path="/invitacion" element={<HomeView />} />
+          <Route path="/invitacion" element={<Invitation />} />
         </Route>
       </Routes>
     </BrowserRouter>
