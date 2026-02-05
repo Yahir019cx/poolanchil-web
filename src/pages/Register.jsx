@@ -18,7 +18,7 @@ import {
   PreviewStep
 } from '../components/register/RegisterSteps';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL_LOCAL || 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export default function Register() {
   const [searchParams, setSearchParams] = useSearchParams();

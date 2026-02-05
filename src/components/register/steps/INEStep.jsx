@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Shield, CreditCard, CheckCircle2, AlertCircle, ExternalLink, Loader2 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL_LOCAL || 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export const INEStep = ({ onComplete }) => {
   const [isVerifying, setIsVerifying] = useState(false);
