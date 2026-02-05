@@ -277,7 +277,6 @@ export const PersonalDataStep = ({
           />
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1">
-              <MessageCircle className="w-4 h-4 text-[#25D366]" />
               <span className="font-semibold text-gray-900 text-sm">
                 Consentimiento de contacto
               </span>
