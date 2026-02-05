@@ -7,6 +7,7 @@ import Contacto from '../pages/Contact';
 import Registro from '../pages/Register';
 import Descargar from '../pages/Download';
 import HomeView from '../pages/HomeView';
+import Detalle from "../pages/Detalle";
 
 
 export default function AppRouter() {
@@ -22,6 +23,7 @@ export default function AppRouter() {
             <Route path="/registro" element={<Registro />} />
             <Route path="/descargar" element={<Descargar />} />
             <Route path="/invitacion" element={<HomeView />} />
+            <Route path="/detalle" element={<Detalle />} />
           </Routes>
         </main>
         <Footer />
