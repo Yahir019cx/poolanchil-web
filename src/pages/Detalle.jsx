@@ -1,203 +1,501 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { cabinFeatures } from "../components/register/constants/amenities";
-
-/* 🔥 pool amenities si luego las quieres */
-import { poolFeatures } from "../components/register/constants/amenities";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  ArrowLeft,
+  Heart,
+  ChevronLeft,
+  ChevronRight,
+  Star,
+  Users,
+  BedDouble,
+  Bath,
+  DoorOpen,
+  MapPin,
+  Wifi,
+  Tv,
+  UtensilsCrossed,
+  Wind,
+  Car,
+  Flame,
+  Volume2,
+  Shirt,
+  Clock,
+  Ban,
+  Dog,
+  Music,
+  Cigarette,
+  PartyPopper,
+  Baby,
+  Calendar,
+} from "lucide-react";
 
 const images = [
-  "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
-  "https://images.unsplash.com/photo-1564013799919-ab600027ffc6",
-  "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267"
+  "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200&q=80",
+  "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80",
+  "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80",
+  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80",
+];
+
+const amenities = [
+  { label: "WiFi", icon: Wifi },
+  { label: "TV", icon: Tv },
+  { label: "Cocina equipada", icon: UtensilsCrossed },
+  { label: "Aire acondicionado", icon: Wind },
+  { label: "Estacionamiento", icon: Car },
+  { label: "Chimenea", icon: Flame },
+  { label: "Bocina", icon: Volume2 },
+  { label: "Toallas", icon: Shirt },
+];
+
+const rules = [
+  { icon: Ban, text: "No se permiten fiestas ni eventos" },
+  { icon: Cigarette, text: "No fumar dentro de la propiedad" },
+  { icon: Dog, text: "Mascotas permitidas (max 2)" },
+  { icon: Music, text: "Silencio despues de las 10:00 PM" },
+  { icon: PartyPopper, text: "Maximo 10 invitados" },
+  { icon: Heart, text: "Respetar y cuidar el espacio" },
 ];
 
 export default function Detalle() {
   const navigate = useNavigate();
 
   const [fav, setFav] = useState(false);
+  const [showFavChip, setShowFavChip] = useState(false);
   const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
 
-  const next = () => setIndex((index + 1) % images.length);
-  const prev = () => setIndex((index - 1 + images.length) % images.length);
+  // Google Maps
+  const mapRef = useRef(null);
 
-  /* 🔥 SIMULACIÓN BACKEND */
   const space = {
-    name: "Cabaña Pool&Chill Deluxe",
-    location: "Aguascalientes",
+    name: "Cabana Pool&Chill Deluxe",
+    location: "Aguascalientes, Mexico",
     price: 5500,
     rating: 4.9,
     guests: 10,
     bedrooms: 3,
+    beds: 5,
     bathrooms: 2,
+    description:
+      "Disfruta una experiencia Pool&Chill increible con alberca privada, zona de asador, musica y espacio perfecto para relajarte con amigos. Rodeada de naturaleza y con todas las comodidades para una estancia inolvidable.",
+    coordinates: { lat: 21.8818, lng: -102.2916 },
+  };
 
-    /* amenidades reales que tiene esta cabaña */
-    amenities: [
-      "wifi",
-      "tv",
-      "cocina",
-      "lavadora",
-      "refrigerador",
-      "ac",
-      "estacionamiento",
-      "sillones",
-      "microondas",
-      "comedor",
-      "utensilios",
-      "chimenea",
-      "bocina",
-      "toallas"
-    ]
+  // Carousel
+  const next = useCallback(() => {
+    setDirection(1);
+    setIndex((prev) => (prev + 1) % images.length);
+  }, []);
+
+  const prev = useCallback(() => {
+    setDirection(-1);
+    setIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, []);
+
+  // Auto-advance carousel
+  useEffect(() => {
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [next]);
+
+  // Fav chip
+  const toggleFav = () => {
+    const newFav = !fav;
+    setFav(newFav);
+    if (newFav) {
+      setShowFavChip(true);
+      setTimeout(() => setShowFavChip(false), 2000);
+    }
+  };
+
+  // Google Maps init
+  useEffect(() => {
+    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+    if (!apiKey || !mapRef.current) return;
+
+    const createMap = () => {
+      const position = {
+        lat: space.coordinates.lat,
+        lng: space.coordinates.lng,
+      };
+
+      const newMap = new window.google.maps.Map(mapRef.current, {
+        center: position,
+        zoom: 14,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: true,
+        styles: [
+          {
+            featureType: "poi",
+            elementType: "labels",
+            stylers: [{ visibility: "off" }],
+          },
+        ],
+      });
+
+      new window.google.maps.Marker({
+        position,
+        map: newMap,
+        title: space.name,
+      });
+    };
+
+    if (!window.google) {
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
+      script.async = true;
+      script.defer = true;
+      script.onload = createMap;
+      document.head.appendChild(script);
+    } else {
+      createMap();
+    }
+  }, []);
+
+  const slideVariants = {
+    enter: (dir) => ({ x: dir > 0 ? 300 : -300, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (dir) => ({ x: dir > 0 ? -300 : 300, opacity: 0 }),
   };
 
   return (
-    <div className="min-h-screen bg-[#f6f7f8] pb-32">
+    <div className="min-h-screen bg-gradient-to-b from-light/50 to-white pb-10">
+      {/* Favorites chip */}
+      <AnimatePresence>
+        {showFavChip && (
+          <motion.div
+            initial={{ opacity: 0, y: -20, x: "-50%" }}
+            animate={{ opacity: 1, y: 0, x: "-50%" }}
+            exit={{ opacity: 0, y: -20, x: "-50%" }}
+            className="fixed top-6 left-1/2 z-50 bg-secondary text-white px-5 py-2.5 rounded-full shadow-lg flex items-center gap-2 text-sm font-medium"
+          >
+            <Heart className="w-4 h-4 fill-red-400 text-red-400" />
+            Se agrego a favoritos
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* ===== CARD PRINCIPAL ===== */}
-      <div className="max-w-6xl mx-auto px-4 pt-10">
-        <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+      {/* Main Card */}
+      <div className="max-w-4xl mx-auto px-4 pt-6 md:pt-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100"
+        >
+          {/* Carousel */}
+          <div className="relative w-full h-[280px] md:h-[450px] overflow-hidden bg-gray-200">
+            <AnimatePresence initial={false} custom={direction} mode="wait">
+              <motion.img
+                key={index}
+                src={images[index]}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="absolute inset-0 w-full h-full object-cover"
+                alt={`Imagen ${index + 1}`}
+              />
+            </AnimatePresence>
 
-          {/* ===== CARRUSEL ===== */}
-          <div className="relative w-full h-[260px] md:h-[420px]">
-            <img src={images[index]} className="w-full h-full object-cover" />
+            {/* Gradient overlay top */}
+            <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
 
-            {/* back */}
-            <button
-              onClick={() => navigate("/")}
-              className="absolute top-5 left-5 bg-white p-3 rounded-full shadow-lg"
+            {/* Back button */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => navigate("/invitacion")}
+              className="absolute top-5 left-5 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-lg hover:bg-white transition-colors z-10"
             >
-              ←
-            </button>
+              <ArrowLeft className="w-5 h-5 text-secondary" />
+            </motion.button>
 
-            {/* fav */}
-            <button
-              onClick={() => setFav(!fav)}
-              className="absolute top-5 right-5 bg-white p-3 rounded-full shadow-lg"
+            {/* Fav button */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={toggleFav}
+              className="absolute top-5 right-5 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-lg hover:bg-white transition-colors z-10"
             >
-              <span className={`text-2xl ${fav ? "text-red-500" : "text-gray-400"}`}>
-                ♥
-              </span>
-            </button>
+              <motion.div
+                animate={fav ? { scale: [1, 1.3, 1] } : { scale: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Heart
+                  className={`w-5 h-5 transition-colors duration-300 ${
+                    fav
+                      ? "fill-red-500 text-red-500"
+                      : "text-gray-500 fill-transparent"
+                  }`}
+                />
+              </motion.div>
+            </motion.button>
 
-            {/* arrows */}
+            {/* Carousel arrows */}
             <button
               onClick={prev}
-              className="absolute left-3 top-1/2 bg-white/90 px-3 py-1 rounded-full"
-            >‹</button>
-
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm hover:bg-white p-2 rounded-full shadow-md transition-all z-10"
+            >
+              <ChevronLeft className="w-5 h-5 text-secondary" />
+            </button>
             <button
               onClick={next}
-              className="absolute right-3 top-1/2 bg-white/90 px-3 py-1 rounded-full"
-            >›</button>
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm hover:bg-white p-2 rounded-full shadow-md transition-all z-10"
+            >
+              <ChevronRight className="w-5 h-5 text-secondary" />
+            </button>
+
+            {/* Dots */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    setDirection(i > index ? 1 : -1);
+                    setIndex(i);
+                  }}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    i === index
+                      ? "w-6 bg-white"
+                      : "w-2 bg-white/50 hover:bg-white/70"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* ===== CONTENIDO ===== */}
+          {/* Content */}
           <div className="p-6 md:p-10 space-y-8">
-
-            {/* TITULO */}
-            <div>
-              <h1 className="text-2xl md:text-3xl font-bold">
-                {space.name}
-              </h1>
-
-              <div className="text-gray-500 mt-2">
-                ⭐ {space.rating} · {space.guests} huéspedes · {space.bedrooms} recámaras · {space.bathrooms} baños
+            {/* Title & Rating */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
+                <div>
+                  <h1 className="text-2xl md:text-3xl font-bold text-dark">
+                    {space.name}
+                  </h1>
+                  <div className="flex items-center gap-2 mt-1.5 text-gray-500">
+                    <MapPin className="w-4 h-4 text-primary" />
+                    <span className="text-sm">{space.location}</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5 bg-primary/10 px-3 py-1.5 rounded-full shrink-0">
+                  <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+                  <span className="font-bold text-dark text-sm">
+                    {space.rating}
+                  </span>
+                </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* DESCRIP */}
-            <p className="text-gray-600 leading-relaxed">
-              Disfruta una experiencia Pool&Chill increíble con alberca privada,
-              zona de asador, música y espacio perfecto para relajarte con amigos.
-            </p>
+            {/* Property Details */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-3"
+            >
+              {[
+                {
+                  icon: Users,
+                  value: space.guests,
+                  label: "Huespedes",
+                },
+                {
+                  icon: DoorOpen,
+                  value: space.bedrooms,
+                  label: "Habitaciones",
+                },
+                { icon: BedDouble, value: space.beds, label: "Camas" },
+                { icon: Bath, value: space.bathrooms, label: "Baños" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="flex items-center gap-3 p-4 rounded-2xl bg-light/50 border border-primary/10"
+                >
+                  <div className="p-2 rounded-xl bg-primary/10">
+                    <item.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-lg font-bold text-dark">{item.value}</p>
+                    <p className="text-xs text-gray-500">{item.label}</p>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
 
-            {/* ===== AMENIDADES CABAÑA ===== */}
-            <div>
-              <h3 className="text-xl font-bold mb-6">Lo que ofrece la cabaña</h3>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {cabinFeatures.map((item) => {
-                  const Icon = item.icon;
-
-                  /* si la cabaña tiene esa amenidad */
-                  const isActive = space.amenities.includes(item.value);
-
-                  return (
-                    <div
-                      key={item.value}
-                      className={`
-                        flex items-center gap-3
-                        border rounded-xl px-4 py-4
-                        transition-all duration-200
-
-                        ${
-                          isActive
-                            ? "border-sky-400 shadow-sm"
-                            : "border-gray-200 opacity-40"
-                        }
-                      `}
-                    >
-                      <Icon
-                        className={`w-5 h-5 ${
-                          isActive ? "text-sky-500" : "text-gray-400"
-                        }`}
-                      />
-
-                      <span className="text-sm font-medium">
-                        {item.label}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* ===== MAPA ===== */}
-            <div>
-              <h3 className="text-xl font-bold mb-3">📍 ¿Dónde vas a estar?</h3>
-
-              <div className="rounded-2xl overflow-hidden shadow-md">
-                <iframe
-                  src="https://www.google.com/maps?q=Aguascalientes,Mexico&output=embed"
-                  width="100%"
-                  height="320"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                ></iframe>
-              </div>
-
-              <p className="text-sm text-gray-500 mt-2">
-                La ubicación exacta se comparte después de reservar.
+            {/* Description */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+            >
+              <h3 className="text-lg font-bold text-dark mb-3">
+                Acerca de este espacio
+              </h3>
+              <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                {space.description}
               </p>
-            </div>
+            </motion.div>
 
-            {/* PRECIO */}
-            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 border-t pt-6">
-              <div>
-                <p className="text-3xl font-bold text-teal-600">
-                  ${space.price} MXN
-                </p>
-                <p className="text-gray-500">por día</p>
+            {/* Divider */}
+            <div className="border-t border-gray-100" />
+
+            {/* Amenities */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <h3 className="text-lg font-bold text-dark mb-4">
+                Amenidades de la cabaña
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {amenities.map((item, i) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 + i * 0.05 }}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl border border-primary/15 bg-white hover:bg-light/30 hover:border-primary/30 transition-all duration-200"
+                  >
+                    <item.icon className="w-5 h-5 text-primary shrink-0" />
+                    <span className="text-sm font-medium text-gray-700">
+                      {item.label}
+                    </span>
+                  </motion.div>
+                ))}
               </div>
+            </motion.div>
 
-              <button className="bg-teal-600 hover:bg-teal-700 text-white px-10 py-4 rounded-2xl font-semibold shadow-lg text-lg">
-                Reservar ahora
-              </button>
-            </div>
+            {/* Divider */}
+            <div className="border-t border-gray-100" />
 
+            {/* Check-in / Check-out */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.43 }}
+            >
+              <h3 className="text-lg font-bold text-dark mb-4">
+                Horarios
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="relative p-5 rounded-2xl border border-primary/15 bg-light/30 flex flex-col items-center text-center">
+                  <div className="p-2 rounded-xl bg-primary/10 mb-2">
+                    <Clock className="w-5 h-5 text-primary" />
+                  </div>
+                  <span className="text-sm font-semibold text-dark mb-1">Check-in</span>
+                  <p className="text-xl font-bold text-primary">3:00 PM</p>
+                </div>
+                <div className="relative p-5 rounded-2xl border border-secondary/15 bg-secondary/5 flex flex-col items-center text-center">
+                  <div className="p-2 rounded-xl bg-secondary/10 mb-2">
+                    <Clock className="w-5 h-5 text-secondary" />
+                  </div>
+                  <span className="text-sm font-semibold text-dark mb-1">Check-out</span>
+                  <p className="text-xl font-bold text-secondary">12:00 PM</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Divider */}
+            <div className="border-t border-gray-100" />
+
+            {/* Rules */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45 }}
+            >
+              <h3 className="text-lg font-bold text-dark mb-4">
+                Reglas del espacio
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {rules.map((rule, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.45 + i * 0.05 }}
+                    className="flex items-center gap-3 py-2"
+                  >
+                    <div className="p-2 rounded-lg bg-secondary/10 shrink-0">
+                      <rule.icon className="w-4 h-4 text-secondary" />
+                    </div>
+                    <span className="text-sm text-gray-600">{rule.text}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Divider */}
+            <div className="border-t border-gray-100" />
+
+            {/* Map */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <MapPin className="w-5 h-5 text-primary" />
+                <h3 className="text-lg font-bold text-dark">
+                  Donde vas a estar
+                </h3>
+              </div>
+              <div
+                ref={mapRef}
+                className="w-full h-72 md:h-96 rounded-2xl border border-gray-200 overflow-hidden bg-gray-100"
+              />
+              <p className="text-xs text-gray-400 mt-2">
+                La ubicación marca el lugar exacto del evento.
+              </p>
+            </motion.div>
+
+            {/* Divider */}
+            <div className="border-t border-gray-100" />
+
+            {/* Price & CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55 }}
+              className="p-6 rounded-2xl bg-light/40 border border-primary/10"
+            >
+              <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-5">
+                <div>
+                  <p className="text-sm font-medium text-gray-500 mb-1">Precio por dia</p>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-3xl font-bold text-dark">
+                      ${space.price.toLocaleString()}
+                    </span>
+                    <span className="text-sm font-medium text-gray-400">MXN</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 mt-2 text-sm text-primary font-medium">
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span>Disponible ahora</span>
+                  </div>
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="bg-primary hover:bg-secondary text-white px-10 py-4 rounded-2xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-base"
+                >
+                  Reservar ahora
+                </motion.button>
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </div>
-
-      {/* ===== BOTON FIJO MOBILE ===== */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t p-4 flex justify-between items-center">
-        <div>
-          <p className="font-bold text-lg">${space.price} MXN</p>
-          <p className="text-xs text-gray-500">por día</p>
-        </div>
-
-        <button className="bg-teal-600 text-white px-6 py-3 rounded-xl font-semibold">
-          Reservar
-        </button>
+        </motion.div>
       </div>
     </div>
   );

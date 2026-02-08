@@ -268,7 +268,7 @@ export const INEStep = ({ onComplete }) => {
             >
               <AlertCircle className="w-12 h-12 text-amber-600 mx-auto mb-3" />
               <h3 className="text-lg font-bold text-amber-900 mb-2">
-                ⚠️ Ventana Emergente Bloqueada
+                Ventana Emergente Bloqueada
               </h3>
               <p className="text-sm text-amber-800 mb-4">
                 Tu navegador bloqueó la ventana de verificación. Haz clic en el botón de abajo para abrirla manualmente.
@@ -286,7 +286,7 @@ export const INEStep = ({ onComplete }) => {
                 <ExternalLink className="w-5 h-5" />
               </motion.a>
               <p className="text-xs text-amber-700 mt-3">
-                💡 Tip: Permite ventanas emergentes en tu navegador para evitar este paso
+                Tip: Permite ventanas emergentes en tu navegador para evitar este paso
               </p>
             </motion.div>
           )}

@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 // Imágenes
 import fondo from "../assets/POST POOL_Mesa de trabajo 1-01.png";
 import chica from "../assets/POST POOL_Mesa de trabajo 1-03.png";
@@ -5,6 +7,8 @@ import logoBg from "../assets/variantes_Mesa de trabajo 1.png";
 import brand from "../assets/variantes-03.png";
 
 const Invitation = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="relative w-screen h-screen overflow-hidden font-['Montserrat',sans-serif]">
       {/* Fondo */}
@@ -37,7 +41,10 @@ const Invitation = () => {
 
       {/* Botones */}
       <div className="absolute bottom-[8%] left-1/2 -translate-x-1/2 flex justify-center z-[5]">
-        <button className="px-12 py-4 rounded-[40px] border-none text-lg font-bold tracking-wider cursor-pointer shadow-[0_10px_25px_rgba(0,0,0,0.25)] transition-all duration-[250ms] bg-[#d2b26b] text-white hover:shadow-[0_12px_30px_rgba(0,0,0,0.3)] hover:scale-105">
+        <button
+          onClick={() => navigate("/detalle")}
+          className="px-12 py-4 rounded-[40px] border-none text-lg font-bold tracking-wider cursor-pointer shadow-[0_10px_25px_rgba(0,0,0,0.25)] transition-all duration-[250ms] bg-[#d2b26b] text-white hover:shadow-[0_12px_30px_rgba(0,0,0,0.3)] hover:scale-105"
+        >
           RESERVAR
         </button>
       </div>
