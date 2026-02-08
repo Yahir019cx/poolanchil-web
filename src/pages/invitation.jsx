@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
-// Imágenes
-import fondo from "../assets/POST POOL_Mesa de trabajo 1-01.png";
-import chica from "../assets/POST POOL_Mesa de trabajo 1-03.png";
-import logoBg from "../assets/variantes_Mesa de trabajo 1.png";
-import brand from "../assets/variantes-03.png";
+// Imágenes desde public
+const fondo = "/images/wall.png";
+const chica = "/images/girl.png";
+const brand = "/images/poolChillLogo.png";
+const logoBg = "/poolChillicon.png";
 
 const Invitation = () => {
   const navigate = useNavigate();
