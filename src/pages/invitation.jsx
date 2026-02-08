@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
 // Imágenes desde public
-const fondo = "/images/wall.png";
-const chica = "/images/girl.png";
+const fondo = "/images/wall.webp";
+const chica = "/images/girl.webp";
 const brand = "/images/poolChillLogo.png";
 const logoBg = "/poolChillicon.png";
 
