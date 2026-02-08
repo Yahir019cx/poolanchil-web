@@ -143,6 +143,11 @@ export default function Detalle() {
     };
 
     if (!window.google) {
+      const existing = document.querySelector('script[src*="maps.googleapis.com"]');
+      if (existing) {
+        existing.addEventListener("load", createMap);
+        return;
+      }
       const script = document.createElement("script");
       script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
       script.async = true;
