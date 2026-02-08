@@ -31,7 +31,7 @@ const saveFormToStorage = (data, step) => {
       timestamp: Date.now()
     }));
   } catch (e) {
-    console.warn('Error guardando en sessionStorage:', e);
+    // Error silencioso - sessionStorage no disponible
   }
 };
 
@@ -224,7 +224,6 @@ export default function Register() {
 
           setSearchParams({});
         } catch (error) {
-          console.error('Error al procesar retorno de Didit:', error);
           const saved = loadFormFromStorage();
           setCurrentStep(saved?.currentStep || 8);
           setSearchParams({});
@@ -271,10 +270,7 @@ export default function Register() {
 
           // Posicionar en paso 3 (PropertyTypeStep)
           setCurrentStep(3);
-
-          console.log('✅ Auto-login exitoso');
         } catch (error) {
-          console.error('❌ Error al intercambiar sesión:', error);
           showToast(error.message || 'Error al iniciar sesión. Intenta de nuevo.', 'error');
           setCurrentStep(0);
         } finally {
@@ -369,9 +365,7 @@ export default function Register() {
 
         // Registro exitoso → avanzar al paso 2 (EmailVerificationStep)
         setCurrentStep(2);
-        console.log('✅ Registro exitoso. Verifica tu correo.');
       } catch (error) {
-        console.error('❌ Error al registrar:', error);
         showToast(error.message || 'Error al registrar. Intenta de nuevo.', 'error');
       } finally {
         setIsLoading(false);
@@ -458,19 +452,13 @@ export default function Register() {
       }
 
       // 1. Subir imágenes a Firebase Storage
-      console.log('📤 Subiendo imágenes a Firebase...');
       const { uploadMultipleImages } = await import('../utils/uploadImages');
 
       const imageUrls = await uploadMultipleImages(
         formData.photos,
         'properties',
-        userId,
-        (progress) => {
-          console.log(`📸 Subiendo: ${progress.current}/${progress.total} (${progress.percentage}%)`);
-        }
+        userId
       );
-
-      console.log('✅ Imágenes subidas:', imageUrls.length);
 
       // 2. Construir el JSON en el formato esperado por el backend
       const propertyData = {
@@ -575,10 +563,7 @@ export default function Register() {
         }))
       };
 
-      console.log('📦 Datos a enviar:', propertyData);
-
       // 3. Enviar al backend
-      console.log('🚀 Enviando propiedad al backend...');
       const response = await fetch(`${API_BASE_URL}/properties`, {
         method: 'POST',
         headers: {
@@ -593,8 +578,7 @@ export default function Register() {
         throw new Error(error.message || 'Error al crear la propiedad');
       }
 
-      const result = await response.json();
-      console.log('✅ Propiedad creada exitosamente:', result);
+      await response.json();
 
       // 4. Limpiar datos guardados y mostrar éxito
       clearFormStorage();
@@ -602,11 +586,10 @@ export default function Register() {
 
       // Esperar 2 segundos antes de redirigir para que el usuario vea la notificación
       setTimeout(() => {
-        navigate('/dashboard'); // O la ruta que corresponda
+        navigate('/'); // O la ruta que corresponda
       }, 2000);
 
     } catch (error) {
-      console.error('❌ Error al enviar registro:', error);
       showToast(error.message || 'Error al enviar el registro. Por favor, intenta de nuevo.', 'error');
     } finally {
       setIsLoading(false);

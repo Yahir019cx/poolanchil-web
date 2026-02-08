@@ -33,7 +33,7 @@ export const INEStep = ({ onComplete }) => {
           }
         }
       } catch (error) {
-        console.error('Error verificando estado existente:', error);
+        // Error silencioso
       }
     };
 
@@ -58,33 +58,6 @@ export const INEStep = ({ onComplete }) => {
 
     try {
       const accessToken = localStorage.getItem('accessToken');
-      const userId = localStorage.getItem('userId');
-
-      // Debug: Verificar tokens
-      console.log('🔍 Verificando tokens...');
-      console.log('AccessToken exists:', !!accessToken);
-      console.log('UserId:', userId);
-
-      if (accessToken) {
-        // Mostrar primeros y últimos caracteres del token
-        const tokenPreview = `${accessToken.substring(0, 20)}...${accessToken.substring(accessToken.length - 10)}`;
-        console.log('Token preview:', tokenPreview);
-
-        // Decodificar el payload del JWT (sin verificar la firma)
-        try {
-          const base64Url = accessToken.split('.')[1];
-          const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-          const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-          }).join(''));
-          const payload = JSON.parse(jsonPayload);
-          console.log('Token payload:', payload);
-          console.log('Token expires:', new Date(payload.exp * 1000));
-          console.log('Token expired?', Date.now() > payload.exp * 1000);
-        } catch (e) {
-          console.error('Error decodificando token:', e);
-        }
-      }
 
       if (!accessToken) {
         throw new Error('No se encontró sesión activa. Por favor, verifica tu email primero para continuar con el registro.');
@@ -95,9 +68,6 @@ export const INEStep = ({ onComplete }) => {
         throw new Error('Token inválido. Por favor, vuelve a iniciar sesión.');
       }
 
-      console.log('🚀 Iniciando verificación con Didit...');
-      console.log('Endpoint:', `${API_BASE_URL}/verification/start`);
-
       const response = await fetch(`${API_BASE_URL}/verification/start`, {
         method: 'POST',
         headers: {
@@ -106,11 +76,8 @@ export const INEStep = ({ onComplete }) => {
         }
       });
 
-      console.log('📡 Respuesta del servidor:', response.status);
-
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        console.error('❌ Error del servidor:', errorData);
 
         if (response.status === 401) {
           throw new Error('Tu sesión expiró. Por favor, vuelve a verificar tu email.');
@@ -120,7 +87,6 @@ export const INEStep = ({ onComplete }) => {
       }
 
       const result = await response.json();
-      console.log('✅ Verificación iniciada:', result);
 
       if (result.success) {
         setVerificationUrl(result.data.verificationUrl);
@@ -134,14 +100,12 @@ export const INEStep = ({ onComplete }) => {
 
         // Verificar si la ventana se bloqueó
         if (!diditWindow || diditWindow.closed || typeof diditWindow.closed === 'undefined') {
-          console.warn('⚠️ Ventana emergente bloqueada por el navegador');
           setPopupBlocked(true);
           setIsVerifying(true);
           pollStatus();
           return;
         }
 
-        console.log('✅ Ventana de Didit abierta correctamente');
         setPopupBlocked(false);
 
         // Empezar a verificar el estado
@@ -150,7 +114,6 @@ export const INEStep = ({ onComplete }) => {
         throw new Error(result.message || 'Error al iniciar verificación');
       }
     } catch (error) {
-      console.error('❌ Error al iniciar verificación:', error);
       setError(error.message);
       setIsVerifying(false);
     }
@@ -166,7 +129,6 @@ export const INEStep = ({ onComplete }) => {
         });
 
         if (!response.ok) {
-          console.error('Error al verificar estado');
           return;
         }
 
@@ -177,7 +139,6 @@ export const INEStep = ({ onComplete }) => {
           clearInterval(pollingIntervalRef.current);
           setIsVerifying(false);
           setIsVerified(true);
-          console.log('✅ Verificación completada');
 
           // Avanzar automáticamente después de 2 segundos
           setTimeout(() => {
@@ -187,7 +148,7 @@ export const INEStep = ({ onComplete }) => {
           }, 2000);
         }
       } catch (error) {
-        console.error('Error verificando estado:', error);
+        // Error silencioso en polling
       }
     }, 3000); // Verificar cada 3 segundos
 

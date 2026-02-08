@@ -24,16 +24,13 @@ export const uploadImage = async (file, folder = 'properties', userId = null) =>
     const storageRef = ref(storage, path);
 
     // Subir archivo
-    console.log(`⬆️  Subiendo imagen: ${fileName}`);
     const snapshot = await uploadBytes(storageRef, file);
 
     // Obtener URL de descarga
     const downloadURL = await getDownloadURL(snapshot.ref);
-    console.log(`✅ Imagen subida: ${downloadURL}`);
 
     return downloadURL;
   } catch (error) {
-    console.error('❌ Error al subir imagen:', error);
     throw new Error(`Error al subir imagen: ${error.message}`);
   }
 };
@@ -69,10 +66,8 @@ export const uploadMultipleImages = async (files, folder = 'properties', userId 
       urls.push(url);
     }
 
-    console.log(`✅ Todas las imágenes subidas: ${urls.length} archivos`);
     return urls;
   } catch (error) {
-    console.error('❌ Error al subir múltiples imágenes:', error);
     throw new Error(`Error al subir imágenes: ${error.message}`);
   }
 };

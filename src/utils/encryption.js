@@ -79,7 +79,6 @@ export async function encryptData(data) {
     // Convertir a base64 para transmisión
     return btoa(String.fromCharCode(...resultArray));
   } catch (error) {
-    console.error('Error al cifrar datos:', error);
     throw new Error('Error en el cifrado');
   }
 }
@@ -122,7 +121,6 @@ export async function decryptData(encryptedBase64) {
     const jsonString = dec.decode(decryptedData);
     return JSON.parse(jsonString);
   } catch (error) {
-    console.error('Error al descifrar datos:', error);
     throw new Error('Error en el descifrado');
   }
 }

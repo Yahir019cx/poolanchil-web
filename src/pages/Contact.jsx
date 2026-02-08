@@ -182,7 +182,6 @@ export default function Contact() {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        console.error('Error del servidor:', errorData);
         throw new Error(errorData.message || 'Error en la respuesta del servidor');
       }
 
@@ -205,7 +204,6 @@ export default function Contact() {
       }
 
     } catch (error) {
-      console.error('Error al enviar formulario:', error);
       setSubmitStatus('error');
 
       // Ocultar mensaje de error después de 5 segundos

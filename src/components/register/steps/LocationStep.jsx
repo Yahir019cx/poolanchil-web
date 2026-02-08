@@ -101,7 +101,6 @@ export const LocationStep = ({ formData, setFormData }) => {
             }));
           }
         } catch (error) {
-          console.error('Error en geocodificación inversa:', error);
           // Si falla, al menos actualizar las coordenadas
           setFormData(prev => ({
             ...prev,
@@ -179,7 +178,7 @@ export const LocationStep = ({ formData, setFormData }) => {
           });
         }
       } catch (error) {
-        console.error('Error geocodificando dirección:', error);
+        // Error silencioso en geocodificación
       } finally {
         setIsLoadingCoordinates(false);
       }
@@ -251,7 +250,6 @@ export const LocationStep = ({ formData, setFormData }) => {
               });
             }
           } catch (error) {
-            console.error('Error en geocodificación inversa:', error);
             // Si falla, al menos actualizar las coordenadas
             setFormData({
               ...formData,
@@ -263,7 +261,6 @@ export const LocationStep = ({ formData, setFormData }) => {
         setIsDetectingLocation(false);
       },
       (error) => {
-        console.error('Error obteniendo ubicación:', error);
         alert('No se pudo obtener tu ubicación. Por favor, verifica los permisos del navegador.');
         setIsDetectingLocation(false);
       }
