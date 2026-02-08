@@ -46,27 +46,20 @@ export function Footer() {
               {/* Social Media Icons */}
               <div className="flex gap-4 mt-2 justify-center items-center">
                 <a 
-                  href="#" 
+                  href="https://www.facebook.com/profile.php?id=61587532944296&sk=about"  
                   className="w-10 h-10 rounded-full bg-[#3CA2A2]/10 hover:bg-[#3CA2A2]/20 flex items-center justify-center transition-colors"
                   aria-label={t('footer.facebook_label')}
+                  target='_blank'
                 >
                   <Facebook className="w-5 h-5 text-[#3CA2A2]" />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.instagram.com/pool_andchill?igsh=MWIzZ2pleTk4ZGN1Yw==" 
                   className="w-10 h-10 rounded-full bg-[#3CA2A2]/10 hover:bg-[#3CA2A2]/20 flex items-center justify-center transition-colors"
                   aria-label={t('footer.instagram_label')}
+                  target='_blank'
                 >
                   <Instagram className="w-5 h-5 text-[#3CA2A2]" />
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 rounded-full bg-[#3CA2A2]/10 hover:bg-[#3CA2A2]/20 flex items-center justify-center transition-colors"
-                  aria-label={t('footer.tiktok_label')}
-                >
-                  <svg className="w-5 h-5 text-[#3CA2A2]" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                  </svg>
                 </a>
               </div>
             </div>

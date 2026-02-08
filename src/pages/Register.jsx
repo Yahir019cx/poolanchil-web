@@ -19,6 +19,42 @@ import {
 } from '../components/register/RegisterSteps';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const STORAGE_KEY = 'poolandchill_onboarding';
+
+// Guardar formData en sessionStorage (excluyendo File objects)
+const saveFormToStorage = (data, step) => {
+  try {
+    const toSave = { ...data, photos: [], ineFiles: [] };
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
+      formData: toSave,
+      currentStep: step,
+      timestamp: Date.now()
+    }));
+  } catch (e) {
+    console.warn('Error guardando en sessionStorage:', e);
+  }
+};
+
+const loadFormFromStorage = () => {
+  try {
+    const saved = sessionStorage.getItem(STORAGE_KEY);
+    if (!saved) return null;
+    const parsed = JSON.parse(saved);
+    // Expirar después de 2 horas
+    if (Date.now() - parsed.timestamp > 2 * 60 * 60 * 1000) {
+      sessionStorage.removeItem(STORAGE_KEY);
+      return null;
+    }
+    return parsed;
+  } catch (e) {
+    sessionStorage.removeItem(STORAGE_KEY);
+    return null;
+  }
+};
+
+const clearFormStorage = () => {
+  sessionStorage.removeItem(STORAGE_KEY);
+};
 
 export default function Register() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -132,19 +168,73 @@ export default function Register() {
     'Información básica',
     'Amenidades',
     'Reglas',
-    'Fotos',
     'Verificación INE',
+    'Fotos',
     'Vista previa'
   ];
 
-  // Auto-login después de verificación de email
+  // Auto-guardar en sessionStorage después de verificación de email
   useEffect(() => {
-    const exchangeSession = async () => {
+    if (currentStep >= 3) {
+      saveFormToStorage(formData, currentStep);
+    }
+  }, [formData, currentStep]);
+
+  // Auto-login después de verificación de email + callback de Didit
+  useEffect(() => {
+    const handleSearchParams = async () => {
       const sessionToken = searchParams.get('session');
       const errorStatus = searchParams.get('status');
       const errorMessage = searchParams.get('message');
+      const verificationSessionId = searchParams.get('verificationSessionId');
 
-      // Caso de error
+      // Caso: Retorno de Didit
+      if (verificationSessionId) {
+        setIsLoading(true);
+        try {
+          // Restaurar datos del formulario desde sessionStorage
+          const saved = loadFormFromStorage();
+          if (saved) {
+            setFormData(prev => ({ ...prev, ...saved.formData, photos: [], ineFiles: [] }));
+          }
+
+          // Verificar estado con backend
+          const accessToken = localStorage.getItem('accessToken');
+          if (accessToken && errorStatus === 'Approved') {
+            const response = await fetch(`${API_BASE_URL}/verification/status`, {
+              headers: { 'Authorization': `Bearer ${accessToken}` }
+            });
+            const result = await response.json();
+
+            if (result.data?.isVerified) {
+              setCurrentStep(9); // Ir a Fotos (siguiente paso después de INE)
+              showToast('¡Verificación de identidad completada!', 'success');
+            } else {
+              setCurrentStep(8); // Volver a INE step para reintentar
+              showToast('Verificación en proceso. Espera un momento.', 'warning');
+            }
+          } else {
+            // Didit retornó con estado no aprobado
+            const savedFallback = loadFormFromStorage();
+            setCurrentStep(savedFallback?.currentStep || 8);
+            if (errorStatus && errorStatus !== 'Approved') {
+              showToast('La verificación no fue aprobada. Intenta de nuevo.', 'error');
+            }
+          }
+
+          setSearchParams({});
+        } catch (error) {
+          console.error('Error al procesar retorno de Didit:', error);
+          const saved = loadFormFromStorage();
+          setCurrentStep(saved?.currentStep || 8);
+          setSearchParams({});
+        } finally {
+          setIsLoading(false);
+        }
+        return;
+      }
+
+      // Caso de error (email verification)
       if (errorStatus === 'error') {
         showToast(errorMessage || 'Error al verificar el email', 'error');
         setSearchParams({});
@@ -193,7 +283,7 @@ export default function Register() {
       }
     };
 
-    exchangeSession();
+    handleSearchParams();
   }, [searchParams, setSearchParams]);
 
   // Validaciones
@@ -506,7 +596,8 @@ export default function Register() {
       const result = await response.json();
       console.log('✅ Propiedad creada exitosamente:', result);
 
-      // 4. Mostrar éxito y redirigir
+      // 4. Limpiar datos guardados y mostrar éxito
+      clearFormStorage();
       showToast('¡Propiedad registrada exitosamente! Será revisada por nuestro equipo.', 'success');
 
       // Esperar 2 segundos antes de redirigir para que el usuario vea la notificación
@@ -576,17 +667,17 @@ export default function Register() {
 
       case 8:
         return (
-          <PhotosStep
-            formData={formData}
-            handleFileUpload={handleFileUpload}
-            removeFile={removeFile}
+          <INEStep
+            onComplete={nextStep}
           />
         );
 
       case 9:
         return (
-          <INEStep
-            onComplete={nextStep}
+          <PhotosStep
+            formData={formData}
+            handleFileUpload={handleFileUpload}
+            removeFile={removeFile}
           />
         );
 

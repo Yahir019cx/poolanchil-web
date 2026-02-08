@@ -13,6 +13,33 @@ export const INEStep = ({ onComplete }) => {
   const pollingIntervalRef = useRef(null);
   const timeoutRef = useRef(null);
 
+  // Verificar si ya está verificado al montar
+  useEffect(() => {
+    const checkExistingVerification = async () => {
+      const accessToken = localStorage.getItem('accessToken');
+      if (!accessToken) return;
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/verification/status`, {
+          headers: { 'Authorization': `Bearer ${accessToken}` }
+        });
+        if (response.ok) {
+          const result = await response.json();
+          if (result.data?.isVerified) {
+            setIsVerified(true);
+            setTimeout(() => {
+              if (onComplete) onComplete();
+            }, 2000);
+          }
+        }
+      } catch (error) {
+        console.error('Error verificando estado existente:', error);
+      }
+    };
+
+    checkExistingVerification();
+  }, [onComplete]);
+
   // Limpiar intervalos al desmontar
   useEffect(() => {
     return () => {
