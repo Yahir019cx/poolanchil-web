@@ -17,25 +17,25 @@ export const Toast = ({ message, type = "success", isVisible, onClose, duration 
     switch (type) {
       case "success":
         return {
-          bgColor: "bg-gradient-to-r from-green-500 to-green-600",
+          bgColor: "bg-primary",
           icon: CheckCircle2,
           iconColor: "text-white"
         };
       case "error":
         return {
-          bgColor: "bg-gradient-to-r from-red-500 to-red-600",
+          bgColor: "bg-red-600",
           icon: XCircle,
           iconColor: "text-white"
         };
       case "warning":
         return {
-          bgColor: "bg-gradient-to-r from-amber-500 to-amber-600",
+          bgColor: "bg-amber-600",
           icon: AlertCircle,
           iconColor: "text-white"
         };
       default:
         return {
-          bgColor: "bg-gradient-to-r from-blue-500 to-blue-600",
+          bgColor: "bg-secondary",
           icon: AlertCircle,
           iconColor: "text-white"
         };
@@ -53,7 +53,7 @@ export const Toast = ({ message, type = "success", isVisible, onClose, duration 
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -100, scale: 0.9 }}
           transition={{ type: "spring", duration: 0.5 }}
-          className="fixed top-6 left-1/2 -translate-x-1/2 z-[9999] max-w-md w-full mx-4"
+          className="fixed top-6 left-4 right-4 mx-auto z-[9999] max-w-md w-auto"
         >
           <div className={`${config.bgColor} rounded-xl shadow-2xl p-4 flex items-center gap-3 backdrop-blur-lg`}>
             <div className="flex-shrink-0">

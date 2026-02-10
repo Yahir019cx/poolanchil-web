@@ -6,6 +6,7 @@ import Nosotros from '../pages/About';
 import Contacto from '../pages/Contact';
 import Registro from '../pages/Register';
 import Descargar from '../pages/Download';
+import VerificacionExitosa from '../pages/VerificacionExitosa';
 import Invitation from '../pages/invitation';
 import Detalle from "../pages/Detalle";
 
@@ -38,13 +39,14 @@ export default function AppRouter() {
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/registro" element={<Registro />} />
-          <Route path="/descargar" element={<Descargar />} />
+          <Route path="/descargar" element={<Descargar />} />          
         </Route>
 
         {/* Rutas standalone (fullscreen, sin nav/footer) */}
         <Route element={<StandaloneLayout />}>
           <Route path="/invitacion" element={<Invitation />} />
           <Route path="/detalle" element={<Detalle />} />
+          <Route path="/verificacion-exitosa" element={<VerificacionExitosa />} />
         </Route>
       </Routes>
     </BrowserRouter>

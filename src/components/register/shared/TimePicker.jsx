@@ -40,7 +40,7 @@ export const TimePicker = ({ value, onChange, label }) => {
   // Generar minutos (0, 15, 30, 45)
   const minutes = [0, 15, 30, 45];
 
-  // Actualizar la hora cuando cambian los selectores
+  // Actualizar la hora y cerrar cuando ambos valores están listos
   React.useEffect(() => {
     if (hour !== "" && minute !== "") {
       let hour24 = hour;
@@ -61,6 +61,14 @@ export const TimePicker = ({ value, onChange, label }) => {
     setMinute("");
     setPeriod("AM");
     onChange("");
+  };
+
+  // Auto-cerrar cuando se selecciona minuto (hora ya seleccionada)
+  const handleMinuteChange = (m) => {
+    setMinute(m);
+    if (hour !== "") {
+      setTimeout(() => setIsOpen(false), 150);
+    }
   };
 
   // Formatear hora para mostrar
@@ -121,65 +129,58 @@ export const TimePicker = ({ value, onChange, label }) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute z-50 mt-2 bg-white rounded-xl shadow-2xl border-2 border-gray-100 p-4 w-full min-w-[280px]"
+            className="absolute z-50 mt-2 bg-white rounded-xl shadow-2xl border-2 border-gray-100 p-3 w-full min-w-[250px]"
           >
-            <div className="space-y-3">
+            <div className="space-y-2">
               {/* Título */}
-              <div className="text-center pb-2 border-b border-gray-200">
-                <h3 className="text-base font-bold text-gray-900">
+              <div className="text-center pb-1.5 border-b border-gray-200">
+                <h3 className="text-sm font-bold text-gray-900">
                   {label || "Selecciona la hora"}
                 </h3>
-                <p className="text-xs text-gray-500 mt-0.5">
-                  Elige hora y minutos
-                </p>
               </div>
 
               {/* Reloj visual */}
-              <div className="flex items-center justify-center gap-2 py-3">
+              <div className="flex items-center justify-center gap-1.5 py-2">
                 {/* Selector de Hora */}
-                <div className="relative">
-                  <select
-                    value={hour}
-                    onChange={(e) => setHour(Number(e.target.value))}
-                    className="w-20 px-3 py-4 text-center text-2xl font-bold rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all duration-300 bg-white appearance-none cursor-pointer"
-                  >
-                    <option value="">--</option>
-                    {hours.map((h) => (
-                      <option key={h} value={h}>
-                        {String(h).padStart(2, "0")}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <select
+                  value={hour}
+                  onChange={(e) => setHour(Number(e.target.value))}
+                  className="w-16 px-2 py-2.5 text-center text-xl font-bold rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all duration-300 bg-white appearance-none cursor-pointer"
+                >
+                  <option value="">--</option>
+                  {hours.map((h) => (
+                    <option key={h} value={h}>
+                      {String(h).padStart(2, "0")}
+                    </option>
+                  ))}
+                </select>
 
-                <span className="text-3xl font-bold text-gray-400">:</span>
+                <span className="text-2xl font-bold text-gray-400">:</span>
 
                 {/* Selector de Minutos */}
-                <div className="relative">
-                  <select
-                    value={minute}
-                    onChange={(e) => setMinute(Number(e.target.value))}
-                    className="w-20 px-3 py-4 text-center text-2xl font-bold rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all duration-300 bg-white appearance-none cursor-pointer"
-                    disabled={hour === ""}
-                  >
-                    <option value="">--</option>
-                    {minutes.map((m) => (
-                      <option key={m} value={m}>
-                        {String(m).padStart(2, "0")}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <select
+                  value={minute}
+                  onChange={(e) => handleMinuteChange(Number(e.target.value))}
+                  className="w-16 px-2 py-2.5 text-center text-xl font-bold rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all duration-300 bg-white appearance-none cursor-pointer"
+                  disabled={hour === ""}
+                >
+                  <option value="">--</option>
+                  {minutes.map((m) => (
+                    <option key={m} value={m}>
+                      {String(m).padStart(2, "0")}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               {/* Selector AM/PM */}
-              <div className="flex gap-2">
+              <div className="flex gap-1.5">
                 <button
                   type="button"
                   onClick={() => setPeriod("AM")}
-                  className={`flex-1 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ${
+                  className={`flex-1 py-2 rounded-lg font-semibold text-xs transition-all duration-300 ${
                     period === "AM"
-                      ? "bg-primary text-white shadow-lg"
+                      ? "bg-primary text-white shadow-md"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}
                 >
@@ -188,9 +189,9 @@ export const TimePicker = ({ value, onChange, label }) => {
                 <button
                   type="button"
                   onClick={() => setPeriod("PM")}
-                  className={`flex-1 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ${
+                  className={`flex-1 py-2 rounded-lg font-semibold text-xs transition-all duration-300 ${
                     period === "PM"
-                      ? "bg-primary text-white shadow-lg"
+                      ? "bg-primary text-white shadow-md"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}
                 >
@@ -199,11 +200,11 @@ export const TimePicker = ({ value, onChange, label }) => {
               </div>
 
               {/* Horas comunes */}
-              <div className="pt-2 border-t border-gray-200">
-                <p className="text-xs text-gray-600 mb-2 font-semibold">
+              <div className="pt-1.5 border-t border-gray-200">
+                <p className="text-[10px] text-gray-500 mb-1.5 font-semibold">
                   Horas comunes:
                 </p>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-1.5">
                   {[
                     { h: 10, m: 0, p: "AM", label: "10:00 AM" },
                     { h: 12, m: 0, p: "PM", label: "12:00 PM" },
@@ -219,48 +220,15 @@ export const TimePicker = ({ value, onChange, label }) => {
                         setHour(preset.h);
                         setMinute(preset.m);
                         setPeriod(preset.p);
+                        setTimeout(() => setIsOpen(false), 150);
                       }}
-                      className="px-2 py-1.5 text-xs bg-gray-50 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors border border-gray-200 hover:border-primary font-medium"
+                      className="px-1.5 py-1 text-[11px] bg-gray-50 hover:bg-primary/10 hover:text-primary rounded-md transition-colors border border-gray-200 hover:border-primary font-medium"
                     >
                       {preset.label}
                     </button>
                   ))}
                 </div>
               </div>
-
-              {/* Hora seleccionada */}
-              {hasValue && (
-                <motion.div
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="pt-2 border-t border-gray-200"
-                >
-                  <div className="bg-primary/10 rounded-lg p-2 text-center">
-                    <p className="text-[10px] text-gray-600 mb-0.5">
-                      Hora seleccionada:
-                    </p>
-                    <p className="text-lg font-bold text-primary">
-                      {displayTime}
-                    </p>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Botón de confirmar */}
-              <motion.button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                disabled={!hasValue}
-                whileHover={{ scale: hasValue ? 1.02 : 1 }}
-                whileTap={{ scale: hasValue ? 0.98 : 1 }}
-                className={`w-full py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ${
-                  hasValue
-                    ? "bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-xl"
-                    : "bg-gray-100 text-gray-400 cursor-not-allowed"
-                }`}
-              >
-                {hasValue ? "Confirmar hora" : "Selecciona hora y minutos"}
-              </motion.button>
             </div>
           </motion.div>
         )}

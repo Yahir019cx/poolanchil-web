@@ -53,7 +53,7 @@ export default function TermsModal({ isOpen, onClose }) {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
-              className="relative bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[85vh] flex flex-col"
+              className="relative bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[80vh] mt-10 flex flex-col"
             >
               {/* Header fijo */}
               <div className="sticky top-0 bg-white rounded-t-3xl border-b border-gray-200 p-6 md:p-8 z-10">

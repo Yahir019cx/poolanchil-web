@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { useState } from "react";
 import {
   CheckCircle2,
   MapPin,
@@ -12,8 +13,16 @@ import {
   Tent,
   AlertCircle
 } from "lucide-react";
+import TermsModal from "../../ui/TermsModal";
+import PrivacyModal from "../../ui/PrivacyModal";
 
 export const PreviewStep = ({ formData, handleSubmit, isLoading }) => {
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
+  const [showPrivacy, setShowPrivacy] = useState(false);
+
+  const canSubmit = acceptedTerms && acceptedPrivacy;
   // Obtener tipos de espacio seleccionados
   const propertyTypeLabels = {
     pool: { label: "Alberca", icon: Droplet },
@@ -254,19 +263,63 @@ export const PreviewStep = ({ formData, handleSubmit, isLoading }) => {
         </motion.div>
       </div>
 
-      {/* Botón de enviar */}
+      {/* Aceptación de términos y envío */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
-        className="mt-8 pt-6 border-t border-gray-200"
+        className="mt-12 pt-8 border-t border-gray-200 space-y-4"
       >
+        {/* Checkbox términos y condiciones */}
+        <label className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
+          acceptedTerms ? 'border-primary bg-primary/5' : 'border-gray-200 bg-gray-50 hover:border-gray-300'
+        }`}>
+          <input
+            type="checkbox"
+            checked={acceptedTerms}
+            onChange={(e) => setAcceptedTerms(e.target.checked)}
+            className="mt-0.5 w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary/20 accent-[#3CA2A2] shrink-0"
+          />
+          <span className="text-sm text-gray-700">
+            He leído y acepto los{' '}
+            <button
+              type="button"
+              onClick={(e) => { e.preventDefault(); setShowTerms(true); }}
+              className="text-primary font-semibold hover:underline"
+            >
+              Términos y Condiciones
+            </button>
+          </span>
+        </label>
+
+        {/* Checkbox aviso de privacidad */}
+        <label className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
+          acceptedPrivacy ? 'border-primary bg-primary/5' : 'border-gray-200 bg-gray-50 hover:border-gray-300'
+        }`}>
+          <input
+            type="checkbox"
+            checked={acceptedPrivacy}
+            onChange={(e) => setAcceptedPrivacy(e.target.checked)}
+            className="mt-0.5 w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary/20 accent-[#3CA2A2] shrink-0"
+          />
+          <span className="text-sm text-gray-700">
+            He leído y acepto el{' '}
+            <button
+              type="button"
+              onClick={(e) => { e.preventDefault(); setShowPrivacy(true); }}
+              className="text-primary font-semibold hover:underline"
+            >
+              Aviso de Privacidad
+            </button>
+          </span>
+        </label>
+
         <motion.button
           type="button"
           onClick={handleSubmit}
-          disabled={isLoading}
-          whileHover={{ scale: isLoading ? 1 : 1.02 }}
-          whileTap={{ scale: isLoading ? 1 : 0.98 }}
+          disabled={!canSubmit || isLoading}
+          whileHover={{ scale: !canSubmit || isLoading ? 1 : 1.02 }}
+          whileTap={{ scale: !canSubmit || isLoading ? 1 : 0.98 }}
           className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-primary to-primary/80 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isLoading ? (
@@ -281,10 +334,11 @@ export const PreviewStep = ({ formData, handleSubmit, isLoading }) => {
             </>
           )}
         </motion.button>
-        <p className="text-center text-sm text-gray-500 mt-3">
-          Al enviar, aceptas nuestros términos y condiciones
-        </p>
       </motion.div>
+
+      {/* Modales */}
+      <TermsModal isOpen={showTerms} onClose={() => setShowTerms(false)} />
+      <PrivacyModal isOpen={showPrivacy} onClose={() => setShowPrivacy(false)} />
     </motion.div>
   );
 };

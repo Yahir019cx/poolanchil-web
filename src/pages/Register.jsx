@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { Toast } from '../components/ui/Toast';
+import { decryptPayload } from '../utils/encryption';
 import {
   WelcomeStep,
   PersonalDataStep,
@@ -59,13 +60,22 @@ const clearFormStorage = () => {
 export default function Register() {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
-  const hasExchangedSession = useRef(false);
+  const hasProcessedData = useRef(false);
 
   const [currentStep, setCurrentStep] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+
+  // Modal states
+  const [showAccountModal, setShowAccountModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [loginData, setLoginData] = useState({ email: '', password: '' });
+  const [loginErrors, setLoginErrors] = useState({});
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
+  const [isLoginUser, setIsLoginUser] = useState(false);
 
   // Toast notification state
   const [toast, setToast] = useState({
@@ -85,6 +95,82 @@ export default function Register() {
 
   const hideToast = () => {
     setToast(prev => ({ ...prev, isVisible: false }));
+  };
+
+  // Refrescar token si expiró
+  const refreshAccessToken = async () => {
+    const tokenTimestamp = parseInt(localStorage.getItem('tokenTimestamp') || '0');
+    const expiresIn = parseInt(localStorage.getItem('expiresIn') || '900');
+    const elapsed = (Date.now() - tokenTimestamp) / 1000;
+
+    if (elapsed < expiresIn) return true; // Token aún válido
+
+    const refreshToken = localStorage.getItem('refreshToken');
+    if (!refreshToken) return false;
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/auth/refresh`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ refreshToken }),
+      });
+
+      if (!response.ok) return false;
+
+      const data = await response.json();
+      localStorage.setItem('accessToken', data.accessToken);
+      localStorage.setItem('refreshToken', data.refreshToken);
+      localStorage.setItem('tokenTimestamp', Date.now().toString());
+      localStorage.setItem('expiresIn', (data.expiresIn || 900).toString());
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  // Login para usuarios existentes
+  const handleLogin = async () => {
+    const newErrors = {};
+    if (!loginData.email.trim()) newErrors.email = 'El correo es requerido';
+    if (!loginData.password) newErrors.password = 'La contraseña es requerida';
+    setLoginErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) return;
+
+    setIsLoginLoading(true);
+    try {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: loginData.email,
+          password: loginData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Credenciales inválidas');
+      }
+
+      const data = await response.json();
+
+      localStorage.setItem('accessToken', data.accessToken);
+      localStorage.setItem('refreshToken', data.refreshToken);
+      localStorage.setItem('userId', data.user.userId);
+      localStorage.setItem('user', JSON.stringify(data.user));
+      localStorage.setItem('tokenTimestamp', Date.now().toString());
+      localStorage.setItem('expiresIn', (data.expiresIn || 900).toString());
+
+      setShowLoginModal(false);
+      setShowAccountModal(false);
+      setIsLoginUser(true);
+      showToast('¡Inicio de sesión exitoso!', 'success');
+      setCurrentStep(3); // Saltar a PropertyTypeStep
+    } catch (error) {
+      showToast(error.message || 'Error al iniciar sesión', 'error');
+    } finally {
+      setIsLoginLoading(false);
+    }
   };
 
   const [formData, setFormData] = useState({
@@ -183,7 +269,6 @@ export default function Register() {
   // Auto-login después de verificación de email + callback de Didit
   useEffect(() => {
     const handleSearchParams = async () => {
-      const sessionToken = searchParams.get('session');
       const errorStatus = searchParams.get('status');
       const errorMessage = searchParams.get('message');
       const verificationSessionId = searchParams.get('verificationSessionId');
@@ -241,29 +326,22 @@ export default function Register() {
         return;
       }
 
-      // Caso exitoso - intercambiar session token
-      if (sessionToken && !hasExchangedSession.current) {
-        hasExchangedSession.current = true;
+      // Caso exitoso - descifrar tokens encriptados de ?data=
+      const encryptedData = searchParams.get('data');
+      if (encryptedData && !hasProcessedData.current) {
+        hasProcessedData.current = true;
         setIsLoading(true);
 
         try {
-          const response = await fetch(`${API_BASE_URL}/auth/exchange-session`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ sessionToken }),
-          });
-
-          if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.message || 'Error al intercambiar sesión');
-          }
-
-          const data = await response.json();
+          const payload = await decryptPayload(encryptedData);
 
           // Guardar tokens en localStorage
-          localStorage.setItem('accessToken', data.accessToken);
-          localStorage.setItem('refreshToken', data.refreshToken);
-          localStorage.setItem('userId', data.user.userId);
+          localStorage.setItem('accessToken', payload.accessToken);
+          localStorage.setItem('refreshToken', payload.refreshToken);
+          localStorage.setItem('userId', payload.user.userId);
+          localStorage.setItem('user', JSON.stringify(payload.user));
+          localStorage.setItem('tokenTimestamp', Date.now().toString());
+          localStorage.setItem('expiresIn', (payload.expiresIn || 900).toString());
 
           // Limpiar la URL
           setSearchParams({});
@@ -271,7 +349,7 @@ export default function Register() {
           // Posicionar en paso 3 (PropertyTypeStep)
           setCurrentStep(3);
         } catch (error) {
-          showToast(error.message || 'Error al iniciar sesión. Intenta de nuevo.', 'error');
+          showToast('Error al verificar tu cuenta. Intenta de nuevo.', 'error');
           setCurrentStep(0);
         } finally {
           setIsLoading(false);
@@ -337,6 +415,12 @@ export default function Register() {
   };
 
   const nextStep = async () => {
+    // Paso 0: Mostrar modal "¿Ya tienes cuenta?"
+    if (currentStep === 0) {
+      setShowAccountModal(true);
+      return;
+    }
+
     // Paso 1: Enviar POST /auth/register
     if (currentStep === 1) {
       if (!validateStep(currentStep)) return;
@@ -353,6 +437,7 @@ export default function Register() {
             lastName: formData.lastName,
             phoneNumber: `+52${formData.phoneNumber}`, // Formato internacional México
             password: formData.password,
+            type: 1, // 1 = Web
             dateOfBirth: formData.dateOfBirth,
             gender: parseInt(formData.gender),
           }),
@@ -374,16 +459,26 @@ export default function Register() {
     }
 
     // Otros pasos: validación y avance normal
-    if (currentStep === 0 || validateStep(currentStep)) {
+    if (validateStep(currentStep)) {
       if (currentStep < steps.length - 1) {
-        setCurrentStep(currentStep + 1);
+        // Si es login, saltar verificación INE (step 8)
+        if (currentStep === 7 && isLoginUser) {
+          setCurrentStep(9);
+        } else {
+          setCurrentStep(currentStep + 1);
+        }
       }
     }
   };
 
   const prevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      // Si es login, saltar verificación INE (step 8) al retroceder
+      if (currentStep === 9 && isLoginUser) {
+        setCurrentStep(7);
+      } else {
+        setCurrentStep(currentStep - 1);
+      }
     }
   };
 
@@ -444,6 +539,12 @@ export default function Register() {
     setIsLoading(true);
 
     try {
+      // Refrescar token si es necesario
+      const tokenValid = await refreshAccessToken();
+      if (!tokenValid) {
+        throw new Error('Tu sesión ha expirado. Por favor, inicia sesión de nuevo.');
+      }
+
       const accessToken = localStorage.getItem('accessToken');
       const userId = localStorage.getItem('userId');
 
@@ -673,7 +774,7 @@ export default function Register() {
   };
 
   // Loading durante intercambio de sesión
-  if (isLoading && searchParams.get('session')) {
+  if (isLoading && searchParams.get('data')) {
     return (
       <>
         <Toast
@@ -702,7 +803,7 @@ export default function Register() {
         onClose={hideToast}
       />
 
-      <section className="relative min-h-screen py-20 px-6 overflow-hidden bg-gradient-to-b from-white via-primary/5 to-white mb-1">
+      <section className="relative min-h-screen py-20 px-6 overflow-x-hidden bg-gradient-to-b from-white via-primary/5 to-white mb-1">
         {/* Animated water wave background */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-10 right-20 w-96 h-96 bg-primary rounded-full blur-3xl animate-pulse"
@@ -786,6 +887,188 @@ export default function Register() {
         </motion.div>
       </div>
     </section>
+
+      {/* Modal: ¿Ya tienes cuenta? */}
+      <AnimatePresence>
+        {showAccountModal && !showLoginModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setShowAccountModal(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 md:p-10"
+            >
+              <button
+                onClick={() => setShowAccountModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="flex flex-col items-center text-center space-y-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full flex items-center justify-center">
+                  <Mail className="w-10 h-10 text-primary" />
+                </div>
+
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+                  ¿Ya tienes una cuenta en Pool & Chill?
+                </h2>
+
+                <p className="text-gray-600">
+                  Si ya te registraste antes, inicia sesión para continuar con tu propiedad.
+                </p>
+
+                <div className="w-full space-y-3">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => setShowLoginModal(true)}
+                    className="w-full py-4 rounded-xl bg-gradient-to-r from-primary to-primary/80 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    Sí, ya tengo cuenta
+                  </motion.button>
+
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      setShowAccountModal(false);
+                      setCurrentStep(1);
+                    }}
+                    className="w-full py-4 rounded-xl border-2 border-gray-300 text-gray-700 font-semibold hover:border-primary hover:text-primary transition-all duration-300"
+                  >
+                    No, soy nuevo
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Modal: Login */}
+      <AnimatePresence>
+        {showLoginModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => {
+              setShowLoginModal(false);
+              setLoginData({ email: '', password: '' });
+              setLoginErrors({});
+            }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 md:p-10"
+            >
+              <button
+                onClick={() => {
+                  setShowLoginModal(false);
+                  setLoginData({ email: '', password: '' });
+                  setLoginErrors({});
+                }}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="space-y-6">
+                <div className="text-center">
+                  <h2 className="text-2xl font-bold text-gray-900">Iniciar sesión</h2>
+                  <p className="text-gray-600 mt-2">Ingresa tus credenciales para continuar</p>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="flex items-center gap-2 text-gray-700 font-medium text-sm">
+                      <Mail className="w-4 h-4 text-primary" />
+                      Correo electrónico
+                    </label>
+                    <input
+                      type="email"
+                      value={loginData.email}
+                      onChange={(e) => setLoginData(prev => ({ ...prev, email: e.target.value }))}
+                      className={`w-full px-4 py-3 rounded-lg border-2 ${
+                        loginErrors.email ? 'border-red-400' : 'border-gray-200'
+                      } focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 bg-white`}
+                      placeholder="tu@email.com"
+                    />
+                    {loginErrors.email && <p className="text-red-500 text-sm">{loginErrors.email}</p>}
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="flex items-center gap-2 text-gray-700 font-medium text-sm">
+                      <Lock className="w-4 h-4 text-primary" />
+                      Contraseña
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showLoginPassword ? 'text' : 'password'}
+                        value={loginData.password}
+                        onChange={(e) => setLoginData(prev => ({ ...prev, password: e.target.value }))}
+                        className={`w-full px-4 py-3 rounded-lg border-2 ${
+                          loginErrors.password ? 'border-red-400' : 'border-gray-200'
+                        } focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 bg-white pr-12`}
+                        placeholder="Tu contraseña"
+                        onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowLoginPassword(!showLoginPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary transition-colors"
+                      >
+                        {showLoginPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
+                    </div>
+                    {loginErrors.password && <p className="text-red-500 text-sm">{loginErrors.password}</p>}
+                  </div>
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={handleLogin}
+                  disabled={isLoginLoading}
+                  className="w-full py-4 rounded-xl bg-gradient-to-r from-primary to-primary/80 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                  {isLoginLoading ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Iniciando sesión...
+                    </>
+                  ) : (
+                    'Iniciar sesión'
+                  )}
+                </motion.button>
+
+                <button
+                  onClick={() => {
+                    setShowLoginModal(false);
+                    setLoginData({ email: '', password: '' });
+                    setLoginErrors({});
+                  }}
+                  className="w-full text-center text-sm text-gray-500 hover:text-primary transition-colors"
+                >
+                  Volver atrás
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

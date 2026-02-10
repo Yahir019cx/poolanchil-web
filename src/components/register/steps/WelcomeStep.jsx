@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Home, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 export const WelcomeStep = ({ nextStep }) => (
   <motion.div
@@ -8,9 +8,11 @@ export const WelcomeStep = ({ nextStep }) => (
     exit={{ opacity: 0, y: -20 }}
     className="text-center space-y-6 py-12"
   >
-    <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary/20 to-primary/5 rounded-full flex items-center justify-center">
-      <Home className="w-12 h-12 text-primary" />
-    </div>
+    <img
+      src="/poolChillicon.png"
+      alt="Pool & Chill"
+      className="w-24 h-24 mx-auto object-contain"
+    />
     <h2 className="text-3xl md:text-4xl font-bold text-secondary">
       Bienvenido a Pool & Chill
     </h2>

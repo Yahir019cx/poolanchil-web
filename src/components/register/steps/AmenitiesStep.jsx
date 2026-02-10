@@ -54,7 +54,7 @@ export const AmenitiesStep = ({ formData, setFormData }) => {
                 })
               }
               icon={Users}
-              max={50}
+              max={700}
             />
 
             <div className="space-y-2">
@@ -158,7 +158,7 @@ export const AmenitiesStep = ({ formData, setFormData }) => {
                 })
               }
               icon={Users}
-              max={30}
+              max={700}
             />
             <SpinnerInput
               label="Recámaras"
@@ -291,7 +291,7 @@ export const AmenitiesStep = ({ formData, setFormData }) => {
                 })
               }
               icon={Users}
-              max={50}
+              max={700}
             />
             <SpinnerInput
               label="m² de espacio"
