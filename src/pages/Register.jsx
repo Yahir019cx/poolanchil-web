@@ -22,39 +22,41 @@ import {
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 const STORAGE_KEY = 'poolandchill_onboarding';
 
-// Guardar formData en sessionStorage (excluyendo File objects)
+// Guardar formData en localStorage (excluyendo File objects)
+// Se usa localStorage en vez de sessionStorage para que persista entre pestañas
+// (Didit puede abrir nueva pestaña en móvil y redirigir ahí)
 const saveFormToStorage = (data, step) => {
   try {
     const toSave = { ...data, photos: [], ineFiles: [] };
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
       formData: toSave,
       currentStep: step,
       timestamp: Date.now()
     }));
   } catch (e) {
-    // Error silencioso - sessionStorage no disponible
+    // Error silencioso
   }
 };
 
 const loadFormFromStorage = () => {
   try {
-    const saved = sessionStorage.getItem(STORAGE_KEY);
+    const saved = localStorage.getItem(STORAGE_KEY);
     if (!saved) return null;
     const parsed = JSON.parse(saved);
     // Expirar después de 2 horas
     if (Date.now() - parsed.timestamp > 2 * 60 * 60 * 1000) {
-      sessionStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(STORAGE_KEY);
       return null;
     }
     return parsed;
   } catch (e) {
-    sessionStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_KEY);
     return null;
   }
 };
 
 const clearFormStorage = () => {
-  sessionStorage.removeItem(STORAGE_KEY);
+  localStorage.removeItem(STORAGE_KEY);
 };
 
 export default function Register() {
@@ -259,7 +261,19 @@ export default function Register() {
     'Vista previa'
   ];
 
-  // Auto-guardar en sessionStorage después de verificación de email
+  // Restaurar datos guardados al montar (por si se recarga la página o se abre nueva pestaña)
+  useEffect(() => {
+    const hasParams = searchParams.get('data') || searchParams.get('verificationSessionId') || searchParams.get('status');
+    if (!hasParams) {
+      const saved = loadFormFromStorage();
+      if (saved && saved.currentStep >= 3) {
+        setFormData(prev => ({ ...prev, ...saved.formData, photos: [], ineFiles: [] }));
+        setCurrentStep(saved.currentStep);
+      }
+    }
+  }, []); // Solo al montar
+
+  // Auto-guardar en localStorage después de verificación de email
   useEffect(() => {
     if (currentStep >= 3) {
       saveFormToStorage(formData, currentStep);
