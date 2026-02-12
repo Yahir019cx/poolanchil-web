@@ -9,6 +9,7 @@ import Descargar from '../pages/Download';
 import VerificacionExitosa from '../pages/VerificacionExitosa';
 import Invitation from '../pages/invitation';
 import Detalle from "../pages/Detalle";
+import ForgotPassword from "../pages/ForgotPassword";
 
 
 // Layout con Navbar y Footer
@@ -47,6 +48,7 @@ export default function AppRouter() {
           <Route path="/invitacion" element={<Invitation />} />
           <Route path="/detalle" element={<Detalle />} />
           <Route path="/verificacion-exitosa" element={<VerificacionExitosa />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1049,6 +1049,22 @@ export default function Register() {
                     </div>
                     {loginErrors.password && <p className="text-red-500 text-sm">{loginErrors.password}</p>}
                   </div>
+
+                  {/* Link olvidaste contraseña */}
+                  <div className="text-right">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowLoginModal(false);
+                        setLoginData({ email: '', password: '' });
+                        setLoginErrors({});
+                        navigate('/forgot-password');
+                      }}
+                      className="text-sm text-primary hover:text-primary/80 font-medium transition-colors"
+                    >
+                      ¿Olvidaste tu contraseña?
+                    </button>
+                  </div>
                 </div>
 
                 <motion.button
