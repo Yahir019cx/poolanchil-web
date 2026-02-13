@@ -31,31 +31,37 @@ import {
 } from "lucide-react";
 
 const images = [
-  "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200&q=80",
-  "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80",
-  "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80",
-  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80",
+  "/invitacion/aerea_atardecer.jpeg",
+  "/invitacion/vista_noche.jpeg",
+  "/invitacion/vista_largo.jpeg",
+  "/invitacion/vista_aerea.jpeg",
+  "/invitacion/ceremonia_vista.jpeg",
+  "/invitacion/espejo_alberca.jpeg",
+  "/invitacion/alberca.jpeg",
+  "/invitacion/ceremonia_vista2.jpeg",
+  "/invitacion/vista_generald.jpeg",
+  "/invitacion/vista_generald2.jpeg",
 ];
 
 const amenities = [
-  { label: "WiFi", icon: Wifi },
-  { label: "TV", icon: Tv },
+  { label: "Alberca agua termal", icon: Flame },
+  { label: "Jacuzzi", icon: Bath },
+  { label: "Terraza 100 personas", icon: Users },
   { label: "Cocina equipada", icon: UtensilsCrossed },
-  { label: "Aire acondicionado", icon: Wind },
+  { label: "Asador", icon: Flame },
+  { label: "Fogatero", icon: Flame },
+  { label: "Temazcal", icon: Star },
+  { label: "Cancha deportiva", icon: MapPin },
   { label: "Estacionamiento", icon: Car },
-  { label: "Chimenea", icon: Flame },
-  { label: "Bocina", icon: Volume2 },
-  { label: "Toallas", icon: Shirt },
 ];
 
+
 const rules = [
-  { icon: Ban, text: "No se permiten fiestas ni eventos" },
-  { icon: Cigarette, text: "No fumar dentro de la propiedad" },
-  { icon: Dog, text: "Mascotas permitidas (max 2)" },
-  { icon: Music, text: "Silencio despues de las 10:00 PM" },
-  { icon: PartyPopper, text: "Maximo 10 invitados" },
-  { icon: Heart, text: "Respetar y cuidar el espacio" },
+  { icon: Clock, text: "Horario 12:00 pm a 12:00 am" },
+  { icon: Users, text: "Capacidad máxima 100 personas" },
+  { icon: Car, text: "Estacionamiento 15 vehículos" },
 ];
+
 
 export default function Detalle() {
   const navigate = useNavigate();
@@ -69,17 +75,21 @@ export default function Detalle() {
   const mapRef = useRef(null);
 
   const space = {
-    name: "Cabana Pool&Chill Deluxe",
-    location: "Aguascalientes, Mexico",
-    price: 5500,
-    rating: 4.9,
-    guests: 10,
+    name: "QUINTA 3 GARCIA",
+    location: "Cerca de Valladolid",
+    price: 8500,
+    rating: 5,
+    guests: 100,
     bedrooms: 3,
     beds: 5,
     bathrooms: 2,
     description:
-      "Disfruta una experiencia Pool&Chill increible con alberca privada, zona de asador, musica y espacio perfecto para relajarte con amigos. Rodeada de naturaleza y con todas las comodidades para una estancia inolvidable.",
-    coordinates: { lat: 21.8818, lng: -102.2916 },
+    "Renta de terraza y alberca con agua termal. Ideal para fiestas y eventos. Cuenta con alberca 12x7 con jacuzzi, terraza para 100 personas, cocina equipada, asador, fogatero, temazcal, cancha deportiva, amplio jardín y estacionamiento interno. Excelente ubicación a unos pasos de Valladolid.",
+    coordinates: { 
+    lat: 22.026215, 
+    lng: -102.3295232 
+  },
+
   };
 
   // Carousel
@@ -399,14 +409,14 @@ export default function Detalle() {
                     <Clock className="w-5 h-5 text-primary" />
                   </div>
                   <span className="text-sm font-semibold text-dark mb-1">Check-in</span>
-                  <p className="text-xl font-bold text-primary">3:00 PM</p>
+                  <p className="text-xl font-bold text-primary">12:00 PM</p>
                 </div>
                 <div className="relative p-5 rounded-2xl border border-secondary/15 bg-secondary/5 flex flex-col items-center text-center">
                   <div className="p-2 rounded-xl bg-secondary/10 mb-2">
                     <Clock className="w-5 h-5 text-secondary" />
                   </div>
                   <span className="text-sm font-semibold text-dark mb-1">Check-out</span>
-                  <p className="text-xl font-bold text-secondary">12:00 PM</p>
+                  <p className="text-xl font-bold text-secondary">12:00 AM</p>
                 </div>
               </div>
             </motion.div>
@@ -477,7 +487,7 @@ export default function Detalle() {
             >
               <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-5">
                 <div>
-                  <p className="text-sm font-medium text-gray-500 mb-1">Precio por dia</p>
+                  <p className="text-sm font-medium text-gray-500 mb-1">Precio desde*</p>
                   <div className="flex items-baseline gap-1.5">
                     <span className="text-3xl font-bold text-dark">
                       ${space.price.toLocaleString()}
@@ -485,8 +495,7 @@ export default function Detalle() {
                     <span className="text-sm font-medium text-gray-400">MXN</span>
                   </div>
                   <div className="flex items-center gap-1.5 mt-2 text-sm text-primary font-medium">
-                    <Calendar className="w-3.5 h-3.5" />
-                    <span>Disponible ahora</span>
+                    <span>Esto solo es una invitación, confirma tu asistencia.</span>
                   </div>
                 </div>
 
