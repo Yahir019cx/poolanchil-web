@@ -79,6 +79,7 @@ export default function Register() {
   const [isLoginLoading, setIsLoginLoading] = useState(false);
   const [isLoginUser, setIsLoginUser] = useState(false);
   const [isINEVerified, setIsINEVerified] = useState(false);
+  const [skipVerification, setSkipVerification] = useState(false);
 
   // Toast notification state
   const [toast, setToast] = useState({
@@ -772,6 +773,8 @@ export default function Register() {
           <INEStep
             onComplete={nextStep}
             onVerificationStatusChange={setIsINEVerified}
+            onSkipVerificationChange={setSkipVerification}
+            verifyLater={skipVerification}
           />
         );
 
@@ -785,7 +788,7 @@ export default function Register() {
         );
 
       case 10:
-        return <PreviewStep formData={formData} handleSubmit={handleSubmit} isLoading={isLoading} />;
+        return <PreviewStep formData={formData} handleSubmit={handleSubmit} isLoading={isLoading} isINEVerified={isINEVerified} />;
 
       default:
         return null;
@@ -885,7 +888,7 @@ export default function Register() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-primary/80 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={isLoading || (currentStep === 8 && !isINEVerified)}
+                    disabled={isLoading || (currentStep === 8 && !isINEVerified && !skipVerification)}
                   >
                     {isLoading ? (
                       <>

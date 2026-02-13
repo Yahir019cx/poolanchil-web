@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
-export const INEStep = ({ onComplete, onVerificationStatusChange }) => {
+export const INEStep = ({ onComplete, onVerificationStatusChange, onSkipVerificationChange, verifyLater = false }) => {
   const [isVerifying, setIsVerifying] = useState(false);
   const [verificationUrl, setVerificationUrl] = useState(null);
   const [isVerified, setIsVerified] = useState(false);
@@ -17,6 +17,7 @@ export const INEStep = ({ onComplete, onVerificationStatusChange }) => {
   useEffect(() => {
     onVerificationStatusChange?.(isVerified);
   }, [isVerified, onVerificationStatusChange]);
+
 
   // Verificar si ya está verificado al montar
   useEffect(() => {
@@ -199,6 +200,14 @@ export const INEStep = ({ onComplete, onVerificationStatusChange }) => {
         </div>
       </div>
 
+      {/* Tip para la selfie */}
+      <div className="bg-primary/5 border-2 border-primary/20 rounded-lg p-4 flex items-start gap-3 mb-6">
+        <span className="text-primary font-bold text-sm">Tip:</span>
+        <p className="text-sm text-gray-700">
+          Quítate gorra o lentes para facilitar la verificación de tu selfie
+        </p>
+      </div>
+
       {/* Verificar si hay sesión activa */}
       {!localStorage.getItem('accessToken') && (
         <div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-4 flex items-start gap-3 mb-6">
@@ -242,6 +251,28 @@ export const INEStep = ({ onComplete, onVerificationStatusChange }) => {
             Iniciar Verificación con Didit
             <ExternalLink className="w-4 h-4" />
           </motion.button>
+
+          <label className="flex items-center justify-center gap-3 mt-6 cursor-pointer group">
+            <input
+              type="checkbox"
+              checked={verifyLater}
+              onChange={(e) => onSkipVerificationChange?.(e.target.checked)}
+              className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary/20 accent-[#3CA2A2]"
+            />
+            <span className="text-sm text-gray-600 group-hover:text-gray-900">
+              Verificar en otro momento
+            </span>
+          </label>
+
+          {verifyLater && (
+            <div className="mt-6 bg-amber-50 border-2 border-amber-200 rounded-lg p-4 flex items-start gap-3">
+              <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-amber-800">
+                <p className="font-semibold mb-1">Importante</p>
+                <p>Tu propiedad <strong>no será aprobada</strong> hasta que completes la verificación de identidad. Podrás verificar más adelante desde tu cuenta.</p>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -326,6 +357,28 @@ export const INEStep = ({ onComplete, onVerificationStatusChange }) => {
             <Loader2 className="w-4 h-4 animate-spin" />
             Esperando confirmación...
           </div>
+
+          <label className="flex items-center justify-center gap-3 mt-6 cursor-pointer group">
+            <input
+              type="checkbox"
+              checked={verifyLater}
+              onChange={(e) => onSkipVerificationChange?.(e.target.checked)}
+              className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary/20 accent-[#3CA2A2]"
+            />
+            <span className="text-sm text-gray-600 group-hover:text-gray-900">
+              Verificar en otro momento
+            </span>
+          </label>
+
+          {verifyLater && (
+            <div className="mt-6 bg-amber-50 border-2 border-amber-200 rounded-lg p-4 flex items-start gap-3">
+              <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-amber-800">
+                <p className="font-semibold mb-1">Importante</p>
+                <p>Tu propiedad <strong>no será aprobada</strong> hasta que completes la verificación de identidad. Podrás verificar más adelante desde tu cuenta.</p>
+              </div>
+            </div>
+          )}
         </motion.div>
       )}
 
@@ -387,6 +440,28 @@ export const INEStep = ({ onComplete, onVerificationStatusChange }) => {
             <Shield className="w-5 h-5" />
             Intentar de nuevo
           </motion.button>
+
+          <label className="flex items-center gap-3 mt-4 cursor-pointer group">
+            <input
+              type="checkbox"
+              checked={verifyLater}
+              onChange={(e) => onSkipVerificationChange?.(e.target.checked)}
+              className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary/20 accent-[#3CA2A2]"
+            />
+            <span className="text-sm text-gray-600 group-hover:text-gray-900">
+              Verificar en otro momento
+            </span>
+          </label>
+
+          {verifyLater && (
+            <div className="mt-4 bg-amber-50 border-2 border-amber-200 rounded-lg p-4 flex items-start gap-3">
+              <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-amber-800">
+                <p className="font-semibold mb-1">Importante</p>
+                <p>Tu propiedad <strong>no será aprobada</strong> hasta que completes la verificación de identidad. Podrás verificar más adelante desde tu cuenta.</p>
+              </div>
+            </div>
+          )}
         </motion.div>
       )}
 
