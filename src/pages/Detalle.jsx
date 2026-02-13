@@ -31,31 +31,34 @@ import {
 } from "lucide-react";
 
 const images = [
-  "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200&q=80",
-  "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80",
-  "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80",
-  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80",
+  "/invitacion/aerea_atardecer.jpeg",
+  "/invitacion/vista_aerea.jpeg",
+  "/invitacion/ceremonia_vista.jpeg",
+  "/invitacion/espejo_alberca.jpeg",
+  "/invitacion/alberca.jpeg",
+  "/invitacion/ceremonia_vista2.jpeg",
 ];
 
 const amenities = [
-  { label: "WiFi", icon: Wifi },
-  { label: "TV", icon: Tv },
+  { label: "Alberca agua termal", icon: Flame },
+  { label: "Jacuzzi", icon: Bath },
+  { label: "Terraza 100 personas", icon: Users },
   { label: "Cocina equipada", icon: UtensilsCrossed },
-  { label: "Aire acondicionado", icon: Wind },
+  { label: "Asador", icon: Flame },
+  { label: "Fogatero", icon: Flame },
+  { label: "Temazcal", icon: Star },
+  { label: "Cancha deportiva", icon: MapPin },
   { label: "Estacionamiento", icon: Car },
-  { label: "Chimenea", icon: Flame },
-  { label: "Bocina", icon: Volume2 },
-  { label: "Toallas", icon: Shirt },
 ];
 
+
 const rules = [
-  { icon: Ban, text: "No se permiten fiestas ni eventos" },
-  { icon: Cigarette, text: "No fumar dentro de la propiedad" },
-  { icon: Dog, text: "Mascotas permitidas (max 2)" },
-  { icon: Music, text: "Silencio despues de las 10:00 PM" },
-  { icon: PartyPopper, text: "Maximo 10 invitados" },
-  { icon: Heart, text: "Respetar y cuidar el espacio" },
+  { icon: Ban, text: "Se aparta con 30% de anticipo" },
+  { icon: Clock, text: "Horario 12:00 pm a 12:00 am" },
+  { icon: Users, text: "Capacidad máxima 100 personas" },
+  { icon: Car, text: "Estacionamiento 15 vehículos" },
 ];
+
 
 export default function Detalle() {
   const navigate = useNavigate();
@@ -69,17 +72,21 @@ export default function Detalle() {
   const mapRef = useRef(null);
 
   const space = {
-    name: "Cabana Pool&Chill Deluxe",
-    location: "Aguascalientes, Mexico",
-    price: 5500,
+    name: "QUINTA 3 GARCIA",
+    location: "Cerca de Valladolid",
+    price: 8500,
     rating: 4.9,
-    guests: 10,
+    guests: 100,
     bedrooms: 3,
     beds: 5,
     bathrooms: 2,
     description:
-      "Disfruta una experiencia Pool&Chill increible con alberca privada, zona de asador, musica y espacio perfecto para relajarte con amigos. Rodeada de naturaleza y con todas las comodidades para una estancia inolvidable.",
-    coordinates: { lat: 21.8818, lng: -102.2916 },
+    "Renta de terraza y alberca con agua termal. Ideal para fiestas y eventos. Cuenta con alberca 12x7 con jacuzzi, terraza para 100 personas, cocina equipada, asador, fogatero, temazcal, cancha deportiva, amplio jardín y estacionamiento interno. Excelente ubicación a unos pasos de Valladolid.",
+    coordinates: { 
+    lat: 22.026215, 
+    lng: -102.3295232 
+  },
+
   };
 
   // Carousel
