@@ -269,7 +269,7 @@ export const INEStep = ({ onComplete, onVerificationStatusChange, onSkipVerifica
               <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
               <div className="text-sm text-amber-800">
                 <p className="font-semibold mb-1">Importante</p>
-                <p>Tu propiedad <strong>no será aprobada</strong> hasta que completes la verificación de identidad. Podrás verificar más adelante desde tu cuenta.</p>
+                <p>Tu propiedad <strong>no será aprobada</strong> hasta que completes la verificación de identidad. Se te enviará un correo para completarla.</p>
               </div>
             </div>
           )}
@@ -375,7 +375,7 @@ export const INEStep = ({ onComplete, onVerificationStatusChange, onSkipVerifica
               <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
               <div className="text-sm text-amber-800">
                 <p className="font-semibold mb-1">Importante</p>
-                <p>Tu propiedad <strong>no será aprobada</strong> hasta que completes la verificación de identidad. Podrás verificar más adelante desde tu cuenta.</p>
+                <p>Tu propiedad <strong>no será aprobada</strong> hasta que completes la verificación de identidad. Se te enviará un correo para completarla.</p>
               </div>
             </div>
           )}
@@ -458,7 +458,7 @@ export const INEStep = ({ onComplete, onVerificationStatusChange, onSkipVerifica
               <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
               <div className="text-sm text-amber-800">
                 <p className="font-semibold mb-1">Importante</p>
-                <p>Tu propiedad <strong>no será aprobada</strong> hasta que completes la verificación de identidad. Podrás verificar más adelante desde tu cuenta.</p>
+                <p>Tu propiedad <strong>no será aprobada</strong> hasta que completes la verificación de identidad. Se te enviará un correo para completarla.</p>
               </div>
             </div>
           )}

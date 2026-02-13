@@ -57,16 +57,6 @@ export const PreviewStep = ({ formData, handleSubmit, isLoading, isINEVerified =
       </div>
 
       {/* Chip de aviso */}
-      {!isINEVerified && (
-        <div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-4 flex items-start gap-3 mb-6">
-          <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-          <div className="text-sm text-amber-800">
-            <p className="font-semibold mb-1">Identidad no verificada</p>
-            <p>Tu propiedad <strong>no será aprobada</strong> hasta que completes la verificación de identidad. Podrás verificar más adelante desde tu cuenta.</p>
-            <p className="mt-2">Se te enviará un correo para completarla.</p>
-          </div>
-        </div>
-      )}
       <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4 flex items-start gap-3 mb-6">
         <AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
         <div className="text-sm text-blue-800">

@@ -267,6 +267,14 @@ export default function Register() {
   // Restaurar datos guardados al montar (por si se recarga la página o se abre nueva pestaña)
   useEffect(() => {
     const hasParams = searchParams.get('data') || searchParams.get('verificationSessionId') || searchParams.get('status');
+    const forceReset = searchParams.get('reset') === '1';
+
+    if (forceReset) {
+      clearFormStorage();
+      setSearchParams({});
+      return;
+    }
+
     if (!hasParams) {
       const saved = loadFormFromStorage();
       if (saved && saved.currentStep >= 3) {
