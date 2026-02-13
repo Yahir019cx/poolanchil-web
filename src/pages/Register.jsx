@@ -78,6 +78,7 @@ export default function Register() {
   const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [isLoginLoading, setIsLoginLoading] = useState(false);
   const [isLoginUser, setIsLoginUser] = useState(false);
+  const [isINEVerified, setIsINEVerified] = useState(false);
 
   // Toast notification state
   const [toast, setToast] = useState({
@@ -206,6 +207,7 @@ export default function Register() {
     checkOut: '',
     rentType: '',
     maxHours: '',
+    maxNights: 1,
     priceWeekday: '',
     priceWeekend: '',
 
@@ -613,6 +615,7 @@ export default function Register() {
               checkInTime: formData.checkIn,
               checkOutTime: formData.checkOut,
               minNights: 1,
+              maxNights: parseInt(formData.maxNights) || 1,
               priceWeekday: parseFloat(formData.priceWeekday),
               priceWeekend: parseFloat(formData.priceWeekend)
             }
@@ -622,6 +625,7 @@ export default function Register() {
               checkInTime: formData.checkIn,
               checkOutTime: formData.checkOut,
               minNights: 1,
+              maxNights: parseInt(formData.maxNights) || 1,
               priceWeekday: parseFloat(formData.priceWeekday),
               priceWeekend: parseFloat(formData.priceWeekend)
             }
@@ -767,6 +771,7 @@ export default function Register() {
         return (
           <INEStep
             onComplete={nextStep}
+            onVerificationStatusChange={setIsINEVerified}
           />
         );
 
@@ -880,7 +885,7 @@ export default function Register() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-primary/80 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={isLoading}
+                    disabled={isLoading || (currentStep === 8 && !isINEVerified)}
                   >
                     {isLoading ? (
                       <>

@@ -1,8 +1,13 @@
 import { motion } from "motion/react";
-import { Home, FileText, Clock, DollarSign } from "lucide-react";
+import { Home, FileText, Clock, DollarSign, Moon } from "lucide-react";
 import { TimePicker } from "../shared/TimePicker";
+import { SpinnerInput } from "../shared/SpinnerInput";
+
+const hasCabinOrCamping = (propertyTypes) =>
+  propertyTypes?.includes("cabin") || propertyTypes?.includes("camping");
 
 export const BasicInfoStep = ({ formData, setFormData }) => {
+  const showMaxNights = hasCabinOrCamping(formData.propertyTypes);
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -75,6 +80,19 @@ export const BasicInfoStep = ({ formData, setFormData }) => {
           />
         </div>
       </div>
+
+      {showMaxNights && (
+        <SpinnerInput
+          label="Máximo de noches por reserva"
+          value={formData.maxNights ?? 1}
+          onChange={(val) =>
+            setFormData({ ...formData, maxNights: val })
+          }
+          min={1}
+          max={30}
+          icon={Moon}
+        />
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">

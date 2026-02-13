@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
-export const INEStep = ({ onComplete }) => {
+export const INEStep = ({ onComplete, onVerificationStatusChange }) => {
   const [isVerifying, setIsVerifying] = useState(false);
   const [verificationUrl, setVerificationUrl] = useState(null);
   const [isVerified, setIsVerified] = useState(false);
@@ -12,6 +12,11 @@ export const INEStep = ({ onComplete }) => {
   const [popupBlocked, setPopupBlocked] = useState(false);
   const pollingIntervalRef = useRef(null);
   const timeoutRef = useRef(null);
+
+  // Notificar al padre cuando cambie el estado de verificación
+  useEffect(() => {
+    onVerificationStatusChange?.(isVerified);
+  }, [isVerified, onVerificationStatusChange]);
 
   // Verificar si ya está verificado al montar
   useEffect(() => {
