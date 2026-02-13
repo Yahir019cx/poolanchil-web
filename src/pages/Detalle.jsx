@@ -495,7 +495,6 @@ export default function Detalle() {
                     <span className="text-sm font-medium text-gray-400">MXN</span>
                   </div>
                   <div className="flex items-center gap-1.5 mt-2 text-sm text-primary font-medium">
-                    <Calendar className="w-3.5 h-3.5" />
                     <span>Esto solo es una invitación, confirma tu asistencia.</span>
                   </div>
                 </div>
