@@ -32,11 +32,15 @@ import {
 
 const images = [
   "/invitacion/aerea_atardecer.jpeg",
+  "/invitacion/vista_noche.jpeg",
+  "/invitacion/vista_largo.jpeg",
   "/invitacion/vista_aerea.jpeg",
   "/invitacion/ceremonia_vista.jpeg",
   "/invitacion/espejo_alberca.jpeg",
   "/invitacion/alberca.jpeg",
   "/invitacion/ceremonia_vista2.jpeg",
+  "/invitacion/vista_generald.jpeg",
+  "/invitacion/vista_generald2.jpeg",
 ];
 
 const amenities = [
@@ -53,7 +57,6 @@ const amenities = [
 
 
 const rules = [
-  { icon: Ban, text: "Se aparta con 30% de anticipo" },
   { icon: Clock, text: "Horario 12:00 pm a 12:00 am" },
   { icon: Users, text: "Capacidad máxima 100 personas" },
   { icon: Car, text: "Estacionamiento 15 vehículos" },
@@ -75,7 +78,7 @@ export default function Detalle() {
     name: "QUINTA 3 GARCIA",
     location: "Cerca de Valladolid",
     price: 8500,
-    rating: 4.9,
+    rating: 5,
     guests: 100,
     bedrooms: 3,
     beds: 5,
@@ -406,14 +409,14 @@ export default function Detalle() {
                     <Clock className="w-5 h-5 text-primary" />
                   </div>
                   <span className="text-sm font-semibold text-dark mb-1">Check-in</span>
-                  <p className="text-xl font-bold text-primary">3:00 PM</p>
+                  <p className="text-xl font-bold text-primary">12:00 PM</p>
                 </div>
                 <div className="relative p-5 rounded-2xl border border-secondary/15 bg-secondary/5 flex flex-col items-center text-center">
                   <div className="p-2 rounded-xl bg-secondary/10 mb-2">
                     <Clock className="w-5 h-5 text-secondary" />
                   </div>
                   <span className="text-sm font-semibold text-dark mb-1">Check-out</span>
-                  <p className="text-xl font-bold text-secondary">12:00 PM</p>
+                  <p className="text-xl font-bold text-secondary">12:00 AM</p>
                 </div>
               </div>
             </motion.div>
@@ -484,7 +487,7 @@ export default function Detalle() {
             >
               <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-5">
                 <div>
-                  <p className="text-sm font-medium text-gray-500 mb-1">Precio por dia</p>
+                  <p className="text-sm font-medium text-gray-500 mb-1">Precio desde*</p>
                   <div className="flex items-baseline gap-1.5">
                     <span className="text-3xl font-bold text-dark">
                       ${space.price.toLocaleString()}
@@ -493,7 +496,7 @@ export default function Detalle() {
                   </div>
                   <div className="flex items-center gap-1.5 mt-2 text-sm text-primary font-medium">
                     <Calendar className="w-3.5 h-3.5" />
-                    <span>Disponible ahora</span>
+                    <span>Sujeto a disposición</span>
                   </div>
                 </div>
 
