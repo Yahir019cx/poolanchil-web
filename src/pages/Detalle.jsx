@@ -496,7 +496,7 @@ export default function Detalle() {
                   </div>
                   <div className="flex items-center gap-1.5 mt-2 text-sm text-primary font-medium">
                     <Calendar className="w-3.5 h-3.5" />
-                    <span>Sujeto a disposición</span>
+                    <span>Esto solo es una invitación, confirma tu asistencia.</span>
                   </div>
                 </div>
 
