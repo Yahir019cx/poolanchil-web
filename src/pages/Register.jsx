@@ -1074,7 +1074,7 @@ export default function Register() {
                         setShowLoginModal(false);
                         setLoginData({ email: '', password: '' });
                         setLoginErrors({});
-                        navigate('/forgot-password');
+                        navigate('/forgot-password', { state: { from: '/registro' } });
                       }}
                       className="text-sm text-primary hover:text-primary/80 font-medium transition-colors"
                     >

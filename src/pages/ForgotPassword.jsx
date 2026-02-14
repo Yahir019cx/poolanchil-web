@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Lock, Eye, EyeOff, ArrowLeft, CheckCircle2, AlertCircle, Send, KeyRound } from 'lucide-react';
 import { Toast } from '../components/ui/Toast';
@@ -12,7 +12,9 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export default function ForgotPassword() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const token = searchParams.get('token');
+  const from = location.state?.from || '/login';
 
   // Toast
   const [toast, setToast] = useState({ isVisible: false, message: '', type: 'success' });
@@ -45,9 +47,9 @@ export default function ForgotPassword() {
 
           <div className="relative p-8 md:p-12">
             {token ? (
-              <ResetPasswordView token={token} showToast={showToast} navigate={navigate} />
+              <ResetPasswordView token={token} showToast={showToast} navigate={navigate} from={from} />
             ) : (
-              <RequestResetView showToast={showToast} navigate={navigate} />
+              <RequestResetView showToast={showToast} navigate={navigate} from={from} />
             )}
           </div>
         </motion.div>
@@ -66,7 +68,7 @@ export default function ForgotPassword() {
 // ─────────────────────────────────────────────
 // Vista 1: Solicitar recuperación (sin token)
 // ─────────────────────────────────────────────
-function RequestResetView({ showToast, navigate }) {
+function RequestResetView({ showToast, navigate, from }) {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -144,7 +146,7 @@ function RequestResetView({ showToast, navigate }) {
           <motion.button
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            onClick={() => navigate('/registro')}
+            onClick={() => navigate(from)}
             className="w-full py-4 rounded-xl bg-gradient-to-r from-primary to-primary/80 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
           >
             <ArrowLeft className="w-5 h-5" />
@@ -235,7 +237,7 @@ function RequestResetView({ showToast, navigate }) {
 
           {/* Link volver */}
           <button
-            onClick={() => navigate('/registro')}
+            onClick={() => navigate(from)}
             className="w-full text-center text-sm text-gray-500 hover:text-primary transition-colors"
           >
             ¿Recordaste tu contraseña? <span className="font-semibold">Inicia sesión</span>
@@ -249,7 +251,7 @@ function RequestResetView({ showToast, navigate }) {
 // ─────────────────────────────────────────────
 // Vista 2: Restablecer contraseña (con token)
 // ─────────────────────────────────────────────
-function ResetPasswordView({ token, showToast, navigate }) {
+function ResetPasswordView({ token, showToast, navigate, from }) {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -365,7 +367,7 @@ function ResetPasswordView({ token, showToast, navigate }) {
           <motion.button
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            onClick={() => navigate('/registro')}
+            onClick={() => navigate(from)}
             className="w-full py-4 rounded-xl bg-gradient-to-r from-primary to-primary/80 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
           >
             <ArrowLeft className="w-5 h-5" />
@@ -527,7 +529,7 @@ function ResetPasswordView({ token, showToast, navigate }) {
 
           {/* Link volver */}
           <button
-            onClick={() => navigate('/registro')}
+            onClick={() => navigate(from)}
             className="w-full text-center text-sm text-gray-500 hover:text-primary transition-colors"
           >
             ¿Recordaste tu contraseña? <span className="font-semibold">Inicia sesión</span>

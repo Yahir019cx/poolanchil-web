@@ -7,9 +7,11 @@ import Contacto from '../pages/Contact';
 import Registro from '../pages/Register';
 import Descargar from '../pages/Download';
 import VerificacionExitosa from '../pages/VerificacionExitosa';
+import VerificacionDidit from '../pages/VerificacionDidit';
 import Invitation from '../pages/invitation';
 import Detalle from "../pages/Detalle";
 import ForgotPassword from "../pages/ForgotPassword";
+import Login from "../pages/Login";
 
 
 // Layout con Navbar y Footer
@@ -45,9 +47,11 @@ export default function AppRouter() {
 
         {/* Rutas standalone (fullscreen, sin nav/footer) */}
         <Route element={<StandaloneLayout />}>
+          <Route path="/login" element={<Login />} />
           <Route path="/invitacion" element={<Invitation />} />
           <Route path="/detalle" element={<Detalle />} />
           <Route path="/verificacion-exitosa" element={<VerificacionExitosa />} />
+          <Route path="/verificacion-didit" element={<VerificacionDidit />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
         </Route>
       </Routes>
