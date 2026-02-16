@@ -300,6 +300,16 @@ export default function Register() {
 
       // Caso: Retorno de Didit
       if (verificationSessionId) {
+        // Si la verificación se inició desde Login, redirigir a VerificacionDidit
+        const source = sessionStorage.getItem('diditVerificationSource');
+        if (source === 'login') {
+          sessionStorage.removeItem('diditVerificationSource');
+          const status = errorStatus === 'Approved' ? 'Approved' : 'Declined';
+          setSearchParams({});
+          navigate(`/verificacion-didit?status=${status}`, { replace: true });
+          return;
+        }
+
         setIsLoading(true);
         try {
           // Restaurar datos del formulario desde sessionStorage

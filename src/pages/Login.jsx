@@ -47,6 +47,7 @@ export default function Login() {
       setIsVerifyingDidit(true);
       setVerificationUrl(null);
       setPopupBlocked(false);
+      sessionStorage.setItem('diditVerificationSource', 'login');
 
       // 2. Iniciar verificación Didit
       const response = await fetch(`${API_BASE_URL}/verification/start`, {
