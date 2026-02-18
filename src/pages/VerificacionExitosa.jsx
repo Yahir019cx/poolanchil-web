@@ -1,12 +1,24 @@
-import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { CheckCircle2, AlertCircle, Smartphone } from 'lucide-react';
 
 export default function VerificacionExitosa() {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const status = searchParams.get('status');
   const message = searchParams.get('message');
+  const verificationSessionId = searchParams.get('verificationSessionId');
   const isError = status === 'error';
+
+  // Si la verificación Didit vino desde Login, redirigir a VerificacionDidit
+  useEffect(() => {
+    if (verificationSessionId && sessionStorage.getItem('diditVerificationSource') === 'login') {
+      sessionStorage.removeItem('diditVerificationSource');
+      const diditStatus = status === 'Approved' ? 'Approved' : 'Declined';
+      navigate(`/verificacion-didit?status=${diditStatus}`, { replace: true });
+    }
+  }, [verificationSessionId, status, navigate]);
 
   return (
     <section className="relative min-h-screen py-20 px-6 overflow-hidden bg-gradient-to-b from-white via-primary/5 to-white flex items-center justify-center">

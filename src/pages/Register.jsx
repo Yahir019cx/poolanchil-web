@@ -78,6 +78,8 @@ export default function Register() {
   const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [isLoginLoading, setIsLoginLoading] = useState(false);
   const [isLoginUser, setIsLoginUser] = useState(false);
+  const [isINEVerified, setIsINEVerified] = useState(false);
+  const [skipVerification, setSkipVerification] = useState(false);
 
   // Toast notification state
   const [toast, setToast] = useState({
@@ -206,6 +208,7 @@ export default function Register() {
     checkOut: '',
     rentType: '',
     maxHours: '',
+    maxNights: 1,
     priceWeekday: '',
     priceWeekend: '',
 
@@ -264,6 +267,14 @@ export default function Register() {
   // Restaurar datos guardados al montar (por si se recarga la página o se abre nueva pestaña)
   useEffect(() => {
     const hasParams = searchParams.get('data') || searchParams.get('verificationSessionId') || searchParams.get('status');
+    const forceReset = searchParams.get('reset') === '1';
+
+    if (forceReset) {
+      clearFormStorage();
+      setSearchParams({});
+      return;
+    }
+
     if (!hasParams) {
       const saved = loadFormFromStorage();
       if (saved && saved.currentStep >= 3) {
@@ -289,6 +300,16 @@ export default function Register() {
 
       // Caso: Retorno de Didit
       if (verificationSessionId) {
+        // Si la verificación se inició desde Login, redirigir a VerificacionDidit
+        const source = sessionStorage.getItem('diditVerificationSource');
+        if (source === 'login') {
+          sessionStorage.removeItem('diditVerificationSource');
+          const status = errorStatus === 'Approved' ? 'Approved' : 'Declined';
+          setSearchParams({});
+          navigate(`/verificacion-didit?status=${status}`, { replace: true });
+          return;
+        }
+
         setIsLoading(true);
         try {
           // Restaurar datos del formulario desde sessionStorage
@@ -613,6 +634,7 @@ export default function Register() {
               checkInTime: formData.checkIn,
               checkOutTime: formData.checkOut,
               minNights: 1,
+              maxNights: parseInt(formData.maxNights) || 1,
               priceWeekday: parseFloat(formData.priceWeekday),
               priceWeekend: parseFloat(formData.priceWeekend)
             }
@@ -622,6 +644,7 @@ export default function Register() {
               checkInTime: formData.checkIn,
               checkOutTime: formData.checkOut,
               minNights: 1,
+              maxNights: parseInt(formData.maxNights) || 1,
               priceWeekday: parseFloat(formData.priceWeekday),
               priceWeekend: parseFloat(formData.priceWeekend)
             }
@@ -767,6 +790,9 @@ export default function Register() {
         return (
           <INEStep
             onComplete={nextStep}
+            onVerificationStatusChange={setIsINEVerified}
+            onSkipVerificationChange={setSkipVerification}
+            verifyLater={skipVerification}
           />
         );
 
@@ -780,7 +806,7 @@ export default function Register() {
         );
 
       case 10:
-        return <PreviewStep formData={formData} handleSubmit={handleSubmit} isLoading={isLoading} />;
+        return <PreviewStep formData={formData} handleSubmit={handleSubmit} isLoading={isLoading} isINEVerified={isINEVerified} />;
 
       default:
         return null;
@@ -880,7 +906,7 @@ export default function Register() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-primary/80 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={isLoading}
+                    disabled={isLoading || (currentStep === 8 && !isINEVerified && !skipVerification)}
                   >
                     {isLoading ? (
                       <>
@@ -1058,7 +1084,7 @@ export default function Register() {
                         setShowLoginModal(false);
                         setLoginData({ email: '', password: '' });
                         setLoginErrors({});
-                        navigate('/forgot-password');
+                        navigate('/forgot-password', { state: { from: '/registro' } });
                       }}
                       className="text-sm text-primary hover:text-primary/80 font-medium transition-colors"
                     >

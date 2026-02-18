@@ -588,7 +588,7 @@ export default function Detalle() {
                 {
                   icon: Users,
                   value: space.guests,
-                  label: "Huespedes",
+                  label: "Invitados",
                 },
                 {
                   icon: DoorOpen,
@@ -682,7 +682,7 @@ export default function Detalle() {
                     <Clock className="w-5 h-5 text-secondary" />
                   </div>
                   <span className="text-sm font-semibold text-dark mb-1">Check-out</span>
-                  <p className="text-xl font-bold text-secondary">12:00 AM</p>
+                  <p className="text-xl font-bold text-secondary">5:00 PM</p>
                 </div>
               </div>
             </motion.div>
@@ -761,8 +761,7 @@ export default function Detalle() {
                     <span className="text-sm font-medium text-gray-400">MXN</span>
                   </div>
                   <div className="flex items-center gap-1.5 mt-2 text-sm text-primary font-medium">
-                    <Calendar className="w-3.5 h-3.5" />
-                    <span>Sujeto a disposición</span>
+                    <span>Esto solo es una representación de la propiedad, la asistencia no tiene costo.</span>
                   </div>
                 </div>
 

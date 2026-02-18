@@ -16,7 +16,7 @@ import {
 import TermsModal from "../../ui/TermsModal";
 import PrivacyModal from "../../ui/PrivacyModal";
 
-export const PreviewStep = ({ formData, handleSubmit, isLoading }) => {
+export const PreviewStep = ({ formData, handleSubmit, isLoading, isINEVerified = false }) => {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
@@ -251,14 +251,18 @@ export const PreviewStep = ({ formData, handleSubmit, isLoading }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="bg-green-50 rounded-xl border-2 border-green-200 p-6"
+          className={`rounded-xl border-2 p-6 ${isINEVerified ? 'bg-green-50 border-green-200' : 'bg-amber-50 border-amber-200'}`}
         >
           <div className="flex items-center gap-2 mb-2">
-            <Shield className="w-5 h-5 text-green-600" />
-            <h3 className="text-lg font-semibold text-green-900">Verificación de Identidad</h3>
+            <Shield className={`w-5 h-5 ${isINEVerified ? 'text-green-600' : 'text-amber-600'}`} />
+            <h3 className={`text-lg font-semibold ${isINEVerified ? 'text-green-900' : 'text-amber-900'}`}>
+              Verificación de Identidad
+            </h3>
           </div>
-          <p className="text-sm text-green-700">
-            ✓ Tu identidad ha sido verificada correctamente con Didit
+          <p className={`text-sm ${isINEVerified ? 'text-green-700' : 'text-amber-700'}`}>
+            {isINEVerified
+              ? '✓ Tu identidad ha sido verificada correctamente con Didit'
+              : '○ Identidad no verificada. Tu propiedad no será aprobada hasta que completes la verificación. Se te enviará un correo para completarla.'}
           </p>
         </motion.div>
       </div>
