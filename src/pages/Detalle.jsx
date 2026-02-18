@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -28,6 +29,12 @@ import {
   PartyPopper,
   Baby,
   Calendar,
+  X,
+  Phone,
+  Mail,
+  User,
+  CheckCircle,
+  Send,
 } from "lucide-react";
 
 const images = [
@@ -70,6 +77,44 @@ export default function Detalle() {
   const [showFavChip, setShowFavChip] = useState(false);
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+
+  // Reservation modal
+  const [showModal, setShowModal] = useState(false);
+  const [formStatus, setFormStatus] = useState("idle"); // idle | loading | sent
+  const [form, setForm] = useState({
+    nombre: "",
+    numero: "",
+    correo: "",
+    invitados: 0,
+  });
+
+  const handleInput = (e) =>
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus("loading");
+    try {
+      await axios.post(`${import.meta.env.VITE_API_URL}/invitation`, {
+        nombre: form.nombre,
+        numero: form.numero,
+        correo: form.correo,
+        invitados: form.invitados,
+      });
+      setFormStatus("sent");
+    } catch {
+      setFormStatus("error");
+      setTimeout(() => setFormStatus("idle"), 3500);
+    }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setTimeout(() => {
+      setFormStatus("idle");
+      setForm({ nombre: "", numero: "", correo: "", invitados: 1 });
+    }, 400);
+  };
 
   // Google Maps
   const mapRef = useRef(null);
@@ -188,6 +233,227 @@ export default function Detalle() {
           >
             <Heart className="w-4 h-4 fill-red-400 text-red-400" />
             Se agrego a favoritos
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── Reservation Modal ── */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            key="modal-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-4 md:p-6"
+            style={{ backgroundColor: "rgba(6,57,64,0.55)", backdropFilter: "blur(6px)" }}
+            onClick={(e) => e.target === e.currentTarget && closeModal()}
+          >
+            <motion.div
+              key="modal-card"
+              initial={{ opacity: 0, y: 80, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 80, scale: 0.95 }}
+              transition={{ type: "spring", damping: 28, stiffness: 320 }}
+              className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden"
+            >
+              {/* Modal header */}
+              <div className="relative px-7 pt-8 pb-6 bg-white border-b border-gray-100 overflow-hidden">
+                {/* Decorative circles */}
+                <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-primary/10" />
+                <div className="absolute -bottom-8 -left-4 w-24 h-24 rounded-full bg-secondary/8" />
+
+                <button
+                  onClick={closeModal}
+                  className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                >
+                  <X className="w-4 h-4 text-secondary" />
+                </button>
+
+                <div className="relative">
+                  <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-3 py-1 mb-3">
+                    <span className="text-primary text-xs font-semibold">Confirmación de asistencia</span>
+                  </div>
+                  <h2 className="text-xl font-bold text-dark leading-tight">
+                    {space.name}
+                  </h2>
+                  <p className="text-secondary/70 text-sm mt-1.5 leading-snug">
+                    Confirmarás tu asistencia al evento de Pool and Chill
+                  </p>
+                </div>
+              </div>
+
+              {/* Modal body */}
+              <div className="px-7 py-6">
+                <AnimatePresence mode="wait">
+                  {formStatus === "sent" ? (
+                    /* ── Success state ── */
+                    <motion.div
+                      key="success"
+                      initial={{ opacity: 0, scale: 0.85 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ type: "spring", damping: 20, stiffness: 260 }}
+                      className="flex flex-col items-center text-center py-6 gap-4"
+                    >
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: "spring", damping: 15, stiffness: 280, delay: 0.1 }}
+                        className="p-4 rounded-full bg-primary/10"
+                      >
+                        <CheckCircle className="w-12 h-12 text-primary" />
+                      </motion.div>
+                      <div>
+                        <h3 className="text-xl font-bold text-dark">¡Asistencia confirmada!</h3>
+                        <p className="text-sm text-gray-500 mt-1.5 leading-relaxed">
+                          Se confirmó tu asistencia, la ubicación exacta se te enviará por correo electrónico.
+                        </p>
+                      </div>
+                      <motion.button
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        onClick={closeModal}
+                        className="mt-2 w-full bg-primary hover:bg-secondary text-white py-3 rounded-2xl font-semibold transition-colors duration-300"
+                      >
+                        Cerrar
+                      </motion.button>
+                    </motion.div>
+                  ) : (
+                    /* ── Form ── */
+                    <motion.form
+                      key="form"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      onSubmit={handleSubmit}
+                      className="space-y-3"
+                    >
+                      {[
+                        { name: "nombre", label: "Nombre completo",    icon: User,  type: "text",  placeholder: "Tu nombre" },
+                        { name: "numero", label: "Número de teléfono", icon: Phone, type: "tel",   placeholder: "000 000 0000" },
+                        { name: "correo", label: "Correo electrónico", icon: Mail,  type: "email", placeholder: "correo@ejemplo.com" },
+                      ].map(({ name, label, icon: Icon, type, placeholder }, i) => (
+                        <motion.div
+                          key={name}
+                          initial={{ opacity: 0, x: -12 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: i * 0.07 }}
+                          className="group"
+                        >
+                          <label className="block text-xs font-semibold text-secondary mb-1.5 uppercase tracking-wide">
+                            {label}
+                          </label>
+                          <div className="relative">
+                            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 p-1.5 rounded-lg bg-primary/10 group-focus-within:bg-primary/20 transition-colors">
+                              <Icon className="w-4 h-4 text-primary" />
+                            </div>
+                            <input
+                              required
+                              type={type}
+                              name={name}
+                              value={form[name]}
+                              onChange={handleInput}
+                              placeholder={placeholder}
+                              className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 bg-light/30 text-dark placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all duration-200"
+                            />
+                          </div>
+                        </motion.div>
+                      ))}
+
+                      {/* Invitados spinner */}
+                      <motion.div
+                        initial={{ opacity: 0, x: -12 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.21 }}
+                      >
+                        <label className="block text-xs font-semibold text-secondary mb-1.5 uppercase tracking-wide">
+                          Número de invitados
+                        </label>
+                        <div className="flex items-center gap-0 rounded-xl border border-gray-200 bg-light/30 overflow-hidden">
+                          <div className="flex items-center gap-2 pl-3.5 pr-3">
+                            <div className="p-1.5 rounded-lg bg-primary/10">
+                              <Users className="w-4 h-4 text-primary" />
+                            </div>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setForm((p) => ({ ...p, invitados: Math.max(0, p.invitados - 1) }))
+                            }
+                            className="w-10 h-11 flex items-center justify-center text-secondary font-bold text-xl hover:bg-primary/10 active:bg-primary/20 transition-colors border-l border-gray-200 select-none"
+                          >
+                            −
+                          </button>
+                          <span className="flex-1 text-center font-bold text-dark text-base select-none">
+                            {form.invitados}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setForm((p) => ({ ...p, invitados: Math.min(2, p.invitados + 1) }))
+                            }
+                            className="w-10 h-11 flex items-center justify-center text-secondary font-bold text-xl hover:bg-primary/10 active:bg-primary/20 transition-colors border-r border-gray-200 select-none"
+                          >
+                            +
+                          </button>
+                          <span className="pr-4 text-xs text-gray-400 font-medium select-none">
+                            / 2
+                          </span>
+                        </div>
+                      </motion.div>
+
+                      <motion.button
+                        type="submit"
+                        disabled={formStatus === "loading"}
+                        whileHover={formStatus !== "loading" ? { scale: 1.02 } : {}}
+                        whileTap={formStatus !== "loading" ? { scale: 0.98 } : {}}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.32 }}
+                        className="w-full mt-2 bg-primary hover:bg-secondary disabled:opacity-70 text-white py-3.5 rounded-2xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+                      >
+                        {formStatus === "loading" ? (
+                          <>
+                            <motion.span
+                              animate={{ rotate: 360 }}
+                              transition={{ repeat: Infinity, duration: 0.9, ease: "linear" }}
+                              className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full inline-block"
+                            />
+                            Enviando...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-4 h-4" />
+                            Confirmar asistencia
+                          </>
+                        )}
+                      </motion.button>
+
+                      <AnimatePresence>
+                        {formStatus === "error" && (
+                          <motion.p
+                            initial={{ opacity: 0, y: -6 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -6 }}
+                            className="text-center text-xs text-red-500 font-medium pt-1"
+                          >
+                            Ocurrió un error. Por favor intenta de nuevo.
+                          </motion.p>
+                        )}
+                      </AnimatePresence>
+
+                      {formStatus !== "error" && (
+                        <p className="text-center text-xs text-gray-400 pt-1">
+                          Sin compromiso · Te contactaremos para confirmar
+                        </p>
+                      )}
+                    </motion.form>
+                  )}
+                </AnimatePresence>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -503,8 +769,10 @@ export default function Detalle() {
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className="bg-primary hover:bg-secondary text-white px-10 py-4 rounded-2xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-base"
+                  onClick={() => setShowModal(true)}
+                  className="bg-primary hover:bg-secondary text-white px-10 py-4 rounded-2xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-base flex items-center gap-2"
                 >
+                  <Calendar className="w-4 h-4" />
                   Reservar ahora
                 </motion.button>
               </div>
