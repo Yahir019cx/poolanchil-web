@@ -122,7 +122,7 @@ export default function Detalle() {
   const space = {
     name: "QUINTA 3 GARCIA",
     location: "Cerca de Valladolid",
-    price: 8500,
+    price: 0,
     rating: 5,
     guests: 100,
     bedrooms: 3,
