@@ -24,18 +24,10 @@ export default defineConfig({
           if (id.includes('node_modules/@googlemaps')) {
             return 'maps-vendor';
           }
-          // i18n
-          if (id.includes('node_modules/react-i18next') || id.includes('node_modules/i18next')) {
-            return 'i18n-vendor';
-          }
-          // React core
-          if (
-            id.includes('node_modules/react/') ||
-            id.includes('node_modules/react-dom/') ||
-            id.includes('node_modules/react-router-dom/')
-          ) {
-            return 'react-vendor';
-          }
+          // NOTA: React, react-dom, react-router-dom, react-i18next e i18next NO se
+          // chunquean manualmente. Vite los deduplica solo y garantiza el orden de
+          // inicialización correcto. Chunquearlos manualmente causa el error:
+          // "Cannot read properties of undefined (reading 'createContext')"
         },
       },
     },
