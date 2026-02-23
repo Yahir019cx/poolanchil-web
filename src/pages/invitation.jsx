@@ -10,7 +10,7 @@ const Invitation = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden font-['Montserrat',sans-serif]">
+    <div className="relative w-screen h-[100dvh] overflow-hidden font-['Montserrat',sans-serif]">
       {/* Fondo */}
       <img
         src={fondo}

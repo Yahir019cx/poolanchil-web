@@ -1,17 +1,21 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
-import Home from '../pages/Home';
-import Nosotros from '../pages/About';
-import Contacto from '../pages/Contact';
-import Registro from '../pages/Register';
-import Descargar from '../pages/Download';
-import VerificacionExitosa from '../pages/VerificacionExitosa';
-import VerificacionDidit from '../pages/VerificacionDidit';
+// Invitation carga eager: es la landing page a la que llegan los usuarios
 import Invitation from '../pages/invitation';
-import Detalle from "../pages/Detalle";
-import ForgotPassword from "../pages/ForgotPassword";
-import Login from "../pages/Login";
+
+// Todas las demás páginas se cargan bajo demanda (lazy) para reducir el bundle inicial
+const Home = lazy(() => import('../pages/Home'));
+const Nosotros = lazy(() => import('../pages/About'));
+const Contacto = lazy(() => import('../pages/Contact'));
+const Registro = lazy(() => import('../pages/Register'));
+const Descargar = lazy(() => import('../pages/Download'));
+const VerificacionExitosa = lazy(() => import('../pages/VerificacionExitosa'));
+const VerificacionDidit = lazy(() => import('../pages/VerificacionDidit'));
+const Detalle = lazy(() => import('../pages/Detalle'));
+const ForgotPassword = lazy(() => import('../pages/ForgotPassword'));
+const Login = lazy(() => import('../pages/Login'));
 
 
 // Layout con Navbar y Footer
@@ -35,6 +39,7 @@ function StandaloneLayout() {
 export default function AppRouter() {
   return (
     <BrowserRouter>
+      <Suspense fallback={null}>
       <Routes>
         {/* Rutas con Navbar y Footer */}
         <Route element={<MainLayout />}>
@@ -55,6 +60,7 @@ export default function AppRouter() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
         </Route>
       </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }
