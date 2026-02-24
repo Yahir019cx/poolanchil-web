@@ -7,9 +7,27 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'i18n-vendor': ['react-i18next', 'i18next'],
+        manualChunks(id) {
+          // Firebase y sus submódulos — el paquete más pesado (~500KB+)
+          if (id.includes('node_modules/firebase') || id.includes('node_modules/@firebase')) {
+            return 'firebase-vendor';
+          }
+          // Framer Motion / motion
+          if (id.includes('node_modules/framer-motion') || id.includes('node_modules/motion')) {
+            return 'motion-vendor';
+          }
+          // Lucide React icons
+          if (id.includes('node_modules/lucide-react')) {
+            return 'lucide-vendor';
+          }
+          // Google Maps
+          if (id.includes('node_modules/@googlemaps')) {
+            return 'maps-vendor';
+          }
+          // NOTA: React, react-dom, react-router-dom, react-i18next e i18next NO se
+          // chunquean manualmente. Vite los deduplica solo y garantiza el orden de
+          // inicialización correcto. Chunquearlos manualmente causa el error:
+          // "Cannot read properties of undefined (reading 'createContext')"
         },
       },
     },
