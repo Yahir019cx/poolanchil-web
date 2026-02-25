@@ -392,14 +392,14 @@ export default function Detalle() {
                           <button
                             type="button"
                             onClick={() =>
-                              setForm((p) => ({ ...p, invitados: Math.min(2, p.invitados + 1) }))
+                              setForm((p) => ({ ...p, invitados: Math.min(1, p.invitados + 1) }))
                             }
                             className="w-10 h-11 flex items-center justify-center text-secondary font-bold text-xl hover:bg-primary/10 active:bg-primary/20 transition-colors border-r border-gray-200 select-none"
                           >
                             +
                           </button>
                           <span className="pr-4 text-xs text-gray-400 font-medium select-none">
-                            / 2
+                            / 1
                           </span>
                         </div>
                       </motion.div>
