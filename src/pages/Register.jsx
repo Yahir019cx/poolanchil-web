@@ -623,8 +623,6 @@ export default function Register() {
             pool: {
               checkInTime: formData.checkIn,
               checkOutTime: formData.checkOut,
-              maxHours: parseInt(formData.maxHours) || 12,
-              minHours: 4,
               priceWeekday: parseFloat(formData.priceWeekday),
               priceWeekend: parseFloat(formData.priceWeekend)
             }
