@@ -13,14 +13,11 @@ import {
   Tent,
   AlertCircle
 } from "lucide-react";
-import TermsModal from "../../ui/TermsModal";
-import PrivacyModal from "../../ui/PrivacyModal";
+import { Link } from "react-router-dom";
 
 export const PreviewStep = ({ formData, handleSubmit, isLoading, isINEVerified = false }) => {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
-  const [showTerms, setShowTerms] = useState(false);
-  const [showPrivacy, setShowPrivacy] = useState(false);
 
   const canSubmit = acceptedTerms && acceptedPrivacy;
   // Obtener tipos de espacio seleccionados
@@ -286,13 +283,13 @@ export const PreviewStep = ({ formData, handleSubmit, isLoading, isINEVerified =
           />
           <span className="text-sm text-gray-700">
             He leído y acepto los{' '}
-            <button
-              type="button"
-              onClick={(e) => { e.preventDefault(); setShowTerms(true); }}
+            <Link
+              to="/terminos"
+              target="_blank"
               className="text-primary font-semibold hover:underline"
             >
               Términos y Condiciones
-            </button>
+            </Link>
           </span>
         </label>
 
@@ -308,13 +305,13 @@ export const PreviewStep = ({ formData, handleSubmit, isLoading, isINEVerified =
           />
           <span className="text-sm text-gray-700">
             He leído y acepto el{' '}
-            <button
-              type="button"
-              onClick={(e) => { e.preventDefault(); setShowPrivacy(true); }}
+            <Link
+              to="/privacidad"
+              target="_blank"
               className="text-primary font-semibold hover:underline"
             >
               Aviso de Privacidad
-            </button>
+            </Link>
           </span>
         </label>
 
@@ -340,9 +337,6 @@ export const PreviewStep = ({ formData, handleSubmit, isLoading, isINEVerified =
         </motion.button>
       </motion.div>
 
-      {/* Modales */}
-      <TermsModal isOpen={showTerms} onClose={() => setShowTerms(false)} />
-      <PrivacyModal isOpen={showPrivacy} onClose={() => setShowPrivacy(false)} />
     </motion.div>
   );
 };

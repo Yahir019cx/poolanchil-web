@@ -16,6 +16,8 @@ const VerificacionDidit = lazy(() => import('../pages/VerificacionDidit'));
 const Detalle = lazy(() => import('../pages/Detalle'));
 const ForgotPassword = lazy(() => import('../pages/ForgotPassword'));
 const Login = lazy(() => import('../pages/Login'));
+const Terms = lazy(() => import('../pages/Terms'));
+const Privacy = lazy(() => import('../pages/Privacy'));
 
 
 // Layout con Navbar y Footer
@@ -47,7 +49,9 @@ export default function AppRouter() {
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/registro" element={<Registro />} />
-          <Route path="/descargar" element={<Descargar />} />          
+          <Route path="/descargar" element={<Descargar />} />
+          <Route path="/terminos" element={<Terms />} />
+          <Route path="/privacidad" element={<Privacy />} />
         </Route>
 
         {/* Rutas standalone (fullscreen, sin nav/footer) */}

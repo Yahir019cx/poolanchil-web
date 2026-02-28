@@ -159,229 +159,191 @@
     "seconds": "Segundos"
   },
   "terms": {
-    "title": "Términos y Condiciones",
-    "lastUpdated": "Última actualización: 4 de febrero de 2026",
-    "intro": "Bienvenido a Pool & Chill (en adelante, \"la Plataforma\"), una plataforma digital de intermediación para la renta temporal de espacios recreativos (albercas, cabañas y zonas de camping) entre particulares en los Estados Unidos Mexicanos. Al acceder, registrarse o utilizar nuestros servicios, usted (en adelante, \"el Usuario\") acepta íntegramente los presentes Términos y Condiciones, los cuales se rigen conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su Reglamento, la Ley Federal de Protección al Consumidor (LFPC), el Código de Comercio, y demás legislación aplicable en México.",
-    "closeButton": "He leído y acepto los términos",
+    "title": "Términos y Condiciones de Uso",
+    "lastUpdated": "Última actualización: Febrero 2026",
+    "intro": "Los presentes Términos y Condiciones de Uso regulan la relación jurídica entre POOL & CHILL, sociedad mercantil constituida conforme a las leyes de los Estados Unidos Mexicanos, y las personas físicas o morales que utilicen la plataforma digital denominada \"Pool & Chill\", ya sea mediante aplicación móvil o sitio web. Al acceder, registrarse o utilizar la Plataforma en cualquiera de sus modalidades, el Usuario acepta de manera expresa, irrevocable e incondicional estar sujeto a estos Términos, así como a la Política de Privacidad y demás políticas publicadas en la Plataforma.",
+    "closeButton": "Volver",
     "contact": {
       "title": "Contacto",
-      "content": "Para cualquier duda, aclaración o ejercicio de sus derechos ARCO, puede contactarnos a través de:",
+      "content": "Para cualquier consulta, aclaración o notificación relacionada con estos Términos, los Usuarios podrán contactar a Pool & Chill a través de los medios de contacto proporcionados en la Plataforma. Todas las notificaciones y comunicaciones oficiales entre Pool & Chill y los Usuarios se realizarán mediante correo electrónico a la dirección registrada en la cuenta del Usuario o mediante publicación en la Plataforma.",
       "email": "team@poolandchill.com"
     },
     "sections": {
-      "definitions": {
-        "title": "1. Definiciones",
+      "partiesObject": {
+        "title": "I. Partes y Objeto del Contrato",
         "content": [
-          "Para efectos de los presentes Términos y Condiciones, se entenderá por:",
-          "• Plataforma: El sitio web y la aplicación móvil de Pool & Chill, incluyendo todos sus servicios, funcionalidades y contenidos.\n• Usuario: Toda persona física mayor de 18 años que se registre en la Plataforma, ya sea como Huésped o Anfitrión.\n• Huésped: Usuario que busca y reserva espacios recreativos a través de la Plataforma.\n• Anfitrión: Usuario que ofrece y publica espacios recreativos (albercas, cabañas o zonas de camping) para renta temporal.\n• Espacio: Cualquier propiedad o área recreativa publicada en la Plataforma para renta temporal.\n• Datos Personales: Cualquier información concerniente a una persona física identificada o identificable, conforme al artículo 3, fracción V de la LFPDPPP.\n• Datos Personales Sensibles: Aquellos datos que puedan revelar aspectos íntimos del titular o cuya utilización indebida pueda dar origen a discriminación o conlleve un riesgo grave.\n• Derechos ARCO: Derechos de Acceso, Rectificación, Cancelación y Oposición respecto de los datos personales.\n• INAI: Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales.\n• Didit: Proveedor externo de servicios de verificación de identidad utilizado por la Plataforma."
+          "1.1. Los presentes Términos y Condiciones de Uso (en adelante, los \"Términos\") regulan la relación jurídica entre POOL & CHILL, sociedad mercantil constituida conforme a las leyes de los Estados Unidos Mexicanos (en adelante, \"Pool & Chill\", \"la Plataforma\" o \"nosotros\"), y las personas físicas o morales que utilicen la plataforma digital denominada \"Pool & Chill\" (en adelante, los \"Usuarios\", \"Anfitriones\", \"Huéspedes\" o \"usted\"), ya sea mediante aplicación móvil o sitio web.",
+          "1.2. La Plataforma Pool & Chill opera como un marketplace digital que facilita la intermediación tecnológica entre Anfitriones (propietarios o administradores de albercas e inmuebles) y Huéspedes (personas que desean reservar el uso temporal de dichos espacios).",
+          "1.3. Al acceder, registrarse o utilizar la Plataforma en cualquiera de sus modalidades, el Usuario acepta de manera expresa, irrevocable e incondicional estar sujeto a estos Términos, así como a la Política de Privacidad y demás políticas publicadas en la Plataforma. Si el Usuario no está de acuerdo con estos Términos, deberá abstenerse de utilizar la Plataforma.",
+          "1.4. Estos Términos constituyen un contrato de adhesión celebrado entre Pool & Chill y el Usuario, conforme a lo dispuesto en el Código Civil Federal, el Código de Comercio y la Ley Federal de Protección al Consumidor."
         ]
       },
-      "objectAcceptance": {
-        "title": "2. Objeto y Aceptación",
+      "serviceNature": {
+        "title": "II. Naturaleza del Servicio y Deslinde de Responsabilidades",
         "content": [
-          "Los presentes Términos y Condiciones tienen por objeto regular el acceso, uso y registro en la Plataforma Pool & Chill, así como establecer los derechos y obligaciones tanto de los Usuarios como de la Plataforma.",
-          "Al completar el formulario de registro, marcar la casilla de aceptación, o hacer uso de cualquier funcionalidad de la Plataforma, usted manifiesta su consentimiento expreso, libre e informado para sujetarse a estos Términos y Condiciones, así como al Aviso de Privacidad correspondiente.",
-          "Si usted no está de acuerdo con cualquiera de las disposiciones contenidas en el presente documento, deberá abstenerse de utilizar la Plataforma y sus servicios. El uso continuado de la Plataforma constituye la aceptación tácita de cualquier modificación posterior a estos Términos."
+          "2.1. Pool & Chill actúa exclusivamente como intermediario tecnológico y facilitador de transacciones entre Anfitriones y Huéspedes. La Plataforma no es propietaria, administradora, arrendadora ni responsable directa de los inmuebles, albercas, instalaciones o servicios ofrecidos por los Anfitriones.",
+          "2.2. Pool & Chill no ejerce control alguno sobre la calidad, seguridad, condiciones físicas, legales o de cualquier otra índole de los inmuebles publicados en la Plataforma. La verificación de dichas condiciones es responsabilidad exclusiva del Anfitrión y del Huésped.",
+          "2.3. No existe relación laboral, de prestación de servicios profesionales, de sociedad, de mandato ni de representación entre Pool & Chill y los Anfitriones. Los Anfitriones actúan de manera independiente y autónoma, siendo responsables de cumplir con todas las obligaciones legales, fiscales y administrativas que les correspondan.",
+          "2.4. La relación contractual directa se establece entre el Anfitrión y el Huésped. Pool & Chill únicamente facilita la conexión tecnológica y el procesamiento de pagos, sin asumir responsabilidad alguna por el incumplimiento de las obligaciones derivadas de la relación contractual entre Anfitrión y Huésped.",
+          "2.5. Pool & Chill no garantiza la disponibilidad continua e ininterrumpida de la Plataforma, ni la ausencia de errores técnicos, fallas en el sistema, interrupciones o deficiencias en el servicio. El Usuario acepta que la Plataforma se proporciona \"tal cual\" y \"según disponibilidad\"."
         ]
       },
-      "registrationRequirements": {
-        "title": "3. Requisitos de Registro",
+      "commissions": {
+        "title": "III. Modelo de Comisiones y Tarifas",
         "content": [
-          "Para registrarse en la Plataforma, el Usuario deberá cumplir con los siguientes requisitos:",
-          "• Ser persona física mayor de 18 años con capacidad legal para contratar conforme a la legislación mexicana.\n• Proporcionar información veraz, completa y actualizada durante el proceso de registro.\n• Crear una contraseña segura de al menos 8 caracteres para proteger su cuenta.\n• Completar la verificación de correo electrónico mediante el enlace de confirmación enviado a la dirección proporcionada.\n• Para Anfitriones: completar el proceso de verificación de identidad mediante la credencial para votar (INE/IFE) a través del servicio Didit.",
-          "El proceso de registro consta de múltiples etapas que incluyen: datos personales, verificación de correo electrónico, selección de tipo de espacio, ubicación, información básica del espacio, amenidades, reglas, fotografías, verificación de identidad y vista previa final.",
-          "Pool & Chill se reserva el derecho de rechazar cualquier solicitud de registro o suspender cuentas existentes cuando existan indicios de información falsa, actividad fraudulenta o incumplimiento de estos Términos."
+          "3.1. Por la intermediación tecnológica y los servicios prestados, Pool & Chill percibe comisiones sobre el valor total de cada reservación confirmada.",
+          "3.1.1. Comisión al Anfitrión: El Anfitrión pagará a Pool & Chill una comisión equivalente al cinco por ciento (5%) del valor total de la reservación, excluyendo impuestos.\n3.1.2. Comisión al Huésped: El Huésped pagará a Pool & Chill una comisión equivalente al cinco por ciento (5%) del valor total de la reservación, excluyendo impuestos.\n3.1.3. Comisión Total: La comisión total percibida por Pool & Chill es equivalente al diez por ciento (10%) del valor total de la reservación, excluyendo impuestos.",
+          "3.2. Procesamiento de Pagos mediante Stripe:\n3.2.1. Los pagos se procesan mediante la plataforma de pagos Stripe, la cual retiene aproximadamente el tres punto siete por ciento (3.7%) del total procesado como comisión por el procesamiento de pagos.\n3.2.2. Después de deducir la comisión de Stripe, Pool & Chill percibe el seis punto tres por ciento (6.3%) restante como comisión por sus servicios de intermediación tecnológica.",
+          "3.3. Las comisiones establecidas en esta cláusula pueden ser modificadas por Pool & Chill previa notificación a los Usuarios con al menos treinta (30) días de anticipación, mediante publicación en la Plataforma o comunicación directa al correo electrónico registrado. El uso continuado de la Plataforma después de dicha notificación constituye aceptación de las nuevas comisiones.",
+          "3.4. Todas las tarifas y comisiones están expresadas en pesos mexicanos (MXN) y son exclusivas de impuestos, salvo que se indique expresamente lo contrario."
         ]
       },
-      "dataCollected": {
-        "title": "4. Datos Personales Recopilados",
+      "reservations": {
+        "title": "IV. Tarifas y Reservaciones",
         "content": [
-          "A través del proceso de registro y uso de la Plataforma, Pool & Chill recopila las siguientes categorías de datos personales:",
-          "Datos de identificación personal:\n• Nombre(s) y apellido(s)\n• Correo electrónico\n• Número de teléfono (formato mexicano de 10 dígitos con código internacional +52)\n• Fecha de nacimiento\n• Género (masculino, femenino, otro/prefiero no decir)\n• Estado de residencia dentro de la República Mexicana\n• Contraseña de acceso (almacenada de forma cifrada)\n• Consentimiento expreso para contacto vía WhatsApp",
-          "Datos de verificación de identidad (Anfitriones):\n• Imagen de la Credencial para Votar (INE/IFE) — anverso y reverso\n• Datos biométricos faciales obtenidos durante el proceso de verificación con Didit\n• Resultado de la verificación de identidad",
-          "Datos del espacio (Anfitriones):\n• Nombre y descripción del espacio\n• Tipo de espacio (Alberca, Cabaña, Camping)\n• Dirección completa (calle, número, municipio, estado, código postal)\n• Coordenadas GPS (latitud y longitud) mediante Google Maps\n• Horarios de entrada y salida (check-in / check-out)\n• Precios: tarifa entre semana (lunes a jueves) y fin de semana (viernes a domingo)\n• Capacidad máxima, número de habitaciones, camas, baños\n• Amenidades y características específicas del espacio\n• Reglas del espacio establecidas por el Anfitrión\n• Fotografías del espacio (hasta 10 imágenes, máximo 5 MB cada una, formatos JPG, PNG o WebP)",
-          "Datos financieros (Anfitriones):\n• Nombre del titular de la cuenta bancaria\n• Número de cuenta bancaria\n• Nombre de la institución bancaria",
-          "Datos de navegación y uso:\n• Dirección IP\n• Tipo y versión de navegador\n• Páginas visitadas y tiempo de navegación\n• Fecha y hora de acceso\n• Tokens de sesión y autenticación",
-          "Todos estos datos son recabados conforme a los principios de licitud, consentimiento, información, calidad, finalidad, lealtad, proporcionalidad y responsabilidad establecidos en los artículos 6 a 13 de la LFPDPPP."
+          "4.1. Tarifas Base: Los Anfitriones establecerán libremente las tarifas base por el uso de sus inmuebles y albercas, las cuales deberán reflejarse con claridad en la Plataforma.",
+          "4.2. Tarifas Especiales: Los Anfitriones podrán establecer tarifas diferenciadas para temporada alta, días festivos, eventos especiales o cualquier otra circunstancia que consideren relevante, siempre que dichas tarifas se encuentren claramente especificadas en la publicación del inmueble.",
+          "4.3. Bloqueo de Fechas: Los Anfitriones tienen la facultad de bloquear fechas específicas en las que sus inmuebles no estarán disponibles para reservaciones.",
+          "4.4. Confirmación Sujeta a Disponibilidad: Toda solicitud de reservación está sujeta a la disponibilidad real del inmueble al momento de la confirmación. Pool & Chill no garantiza la disponibilidad de ningún inmueble publicado en la Plataforma.",
+          "4.5. Horarios y Límites de Ocupación: Los Anfitriones establecerán los horarios de uso permitidos y los límites máximos de ocupación de sus inmuebles. El Huésped se obliga a respetar estrictamente dichos horarios y límites, bajo pena de incurrir en incumplimiento contractual y responsabilidad por daños y perjuicios.",
+          "4.6. Las reservaciones se consideran confirmadas únicamente cuando el Huésped haya completado el proceso de pago y recibido confirmación escrita por parte de la Plataforma o del Anfitrión."
         ]
       },
-      "identityVerification": {
-        "title": "5. Verificación de Identidad",
+      "cancellationPolicy": {
+        "title": "V. Política de Cancelación y Reembolsos",
         "content": [
-          "Para garantizar la seguridad de todos los usuarios de la Plataforma, los Anfitriones deberán completar un proceso de verificación de identidad conforme a lo siguiente:",
-          "a) Verificación de correo electrónico: Todos los usuarios deben confirmar su dirección de correo electrónico mediante un enlace de verificación enviado durante el registro. Este paso es obligatorio antes de proceder con la verificación de identidad.",
-          "b) Verificación de identidad mediante Didit: La Plataforma utiliza los servicios del proveedor externo Didit para la verificación de identidad de los Anfitriones. Este proceso implica:\n• La apertura de una ventana emergente segura del servicio Didit\n• La captura y análisis de la Credencial para Votar (INE/IFE) del usuario\n• La verificación biométrica facial para confirmar la coincidencia con el documento de identidad\n• El proceso tiene un tiempo límite de 10 minutos para su completación",
-          "Al aceptar estos Términos, usted autoriza expresamente a Pool & Chill a compartir sus datos con Didit exclusivamente para fines de verificación de identidad. Didit opera bajo sus propios términos de servicio y política de privacidad, los cuales le serán presentados durante el proceso de verificación.",
-          "Pool & Chill no almacena las imágenes originales de su INE/IFE una vez completado el proceso de verificación; únicamente conserva el resultado (aprobado/rechazado) de la verificación. Los datos biométricos son procesados exclusivamente por Didit y están sujetos a su política de retención de datos."
+          "5.1. El Usuario acepta que las siguientes políticas de cancelación y reembolso aplican a todas las reservaciones realizadas a través de la Plataforma.",
+          "5.2. Cancelación por parte del Huésped:\n• Con 7 días o más de anticipación: Reembolso del 100% del monto pagado, excluyendo comisiones de Pool & Chill y cargos de Stripe.\n• Con menos de 7 días pero más de 48 horas: Reembolso del 75% del monto pagado, excluyendo comisiones de Pool & Chill y cargos de Stripe.\n• Con menos de 48 horas: Reembolso del 50% del monto pagado, excluyendo comisiones de Pool & Chill y cargos de Stripe.\n• No Show (ausencia sin cancelación previa): No tendrá derecho a reembolso alguno.",
+          "5.3. Cancelación por parte del Anfitrión: Si el Anfitrión cancela una reservación confirmada, deberá reembolsar al Huésped el 100% del monto pagado, y Pool & Chill podrá aplicar sanciones que incluyan la suspensión temporal o permanente de la cuenta del Anfitrión.",
+          "5.4. Caso Fortuito o Fuerza Mayor: En caso de que la reservación no pueda llevarse a cabo debido a circunstancias de caso fortuito o fuerza mayor debidamente acreditadas (incluyendo desastres naturales, pandemias, restricciones gubernamentales, conflictos armados, actos de terrorismo, fallas en servicios públicos esenciales), el Huésped tendrá derecho a un reembolso del 100% del monto pagado, o bien, a reprogramar la reservación para una fecha posterior.",
+          "5.5. Los reembolsos se procesarán mediante el mismo método de pago utilizado para la reservación original, y podrán tardar entre cinco (5) y quince (15) días hábiles en reflejarse, dependiendo de las políticas del procesador de pagos."
         ]
       },
-      "financialData": {
-        "title": "6. Datos Financieros y Bancarios",
+      "liability": {
+        "title": "VI. Responsabilidad y Exenciones",
         "content": [
-          "Pool & Chill recopila datos bancarios de los Anfitriones para efectos del procesamiento de pagos derivados de las reservaciones. Los datos financieros recopilados incluyen:",
-          "• Nombre del titular de la cuenta bancaria\n• Número de cuenta bancaria o CLABE interbancaria\n• Nombre de la institución bancaria",
-          "Estos datos son tratados con las máximas medidas de seguridad, incluyendo cifrado AES-GCM de 256 bits (Advanced Encryption Standard - Galois/Counter Mode) con derivación de clave mediante PBKDF2 con 100,000 iteraciones, utilizando la API Web Crypto nativa del navegador.",
-          "Los datos financieros serán utilizados exclusivamente para:\n• Procesar los pagos correspondientes a las reservaciones realizadas a través de la Plataforma\n• Cumplir con las obligaciones fiscales y regulatorias aplicables\n• Verificar la titularidad de la cuenta bancaria",
-          "Pool & Chill NO almacena datos de tarjetas de crédito o débito directamente en sus servidores. El procesamiento de pagos se realiza a través de instituciones financieras autorizadas conforme a la Ley de Instituciones de Crédito y la normatividad de la Comisión Nacional Bancaria y de Valores (CNBV)."
+          "6.1. Deslinde de Responsabilidad por Accidentes: Pool & Chill no será responsable, bajo ninguna circunstancia, por accidentes, lesiones, daños físicos, pérdidas materiales, enfermedades, fallecimientos o cualquier otro perjuicio que ocurra dentro de los inmuebles, albercas o instalaciones ofrecidas por los Anfitriones.",
+          "6.2. Responsabilidad del Anfitrión: El Anfitrión es el único responsable de garantizar que su inmueble, alberca e instalaciones cumplan con todas las normas de seguridad, construcción, salud pública, protección civil y cualquier otra normativa aplicable.",
+          "6.3. Responsabilidad del Huésped: El Huésped es responsable de utilizar el inmueble y las instalaciones de manera adecuada, respetando las reglas establecidas por el Anfitrión y asumiendo la responsabilidad por cualquier daño que cause a la propiedad del Anfitrión o a terceros durante su uso.",
+          "6.4. Limitación Cuantitativa de Responsabilidad: En ningún caso la responsabilidad total de Pool & Chill hacia cualquier Usuario excederá el monto total de las comisiones efectivamente cobradas y percibidas por Pool & Chill en relación con la reservación específica objeto del reclamo.",
+          "6.5. Cláusula de Indemnización: Los Usuarios se obligan expresamente a sacar en paz y a salvo, indemnizar, defender y mantener indemne a Pool & Chill, así como a sus directores, administradores, empleados, agentes, afiliados, subsidiarias y representantes, de y contra cualquier reclamo, demanda, acción, procedimiento, pérdida, daño, responsabilidad, costo, gasto, sanción administrativa, multa y honorarios de abogados que surjan del uso de la Plataforma, incumplimiento de estos Términos, o violación de cualquier ley o derecho de terceros. Esta obligación subsistirá aún después de la terminación de la relación contractual."
         ]
       },
-      "dataUseGuests": {
-        "title": "7. Uso de Datos - Huéspedes",
+      "prohibitedConduct": {
+        "title": "VII. Conductas Prohibidas",
         "content": [
-          "Los datos personales de usuarios registrados como Huéspedes serán utilizados exclusivamente para las siguientes finalidades:",
-          "Finalidades primarias (necesarias para la prestación del servicio):\n• Gestionar y administrar su cuenta de usuario en la Plataforma\n• Permitir la búsqueda, visualización y reservación de espacios disponibles\n• Procesar y administrar sus reservaciones\n• Mantener comunicación sobre el estado de sus reservaciones, incluyendo contacto vía WhatsApp al número proporcionado (con su consentimiento expreso otorgado durante el registro)\n• Generar comprobantes y recibos de las transacciones\n• Cumplir con obligaciones legales, fiscales y regulatorias",
-          "Finalidades secundarias (no necesarias, pero mejoran el servicio):\n• Enviar información y actualizaciones sobre nuevas funcionalidades de la Plataforma\n• Notificar sobre promociones, beneficios exclusivos y ofertas especiales\n• Realizar análisis estadísticos y estudios de mercado de forma anonimizada\n• Personalizar su experiencia de navegación y recomendaciones de espacios\n• Enviar encuestas de satisfacción",
-          "Si usted no desea que sus datos sean tratados para las finalidades secundarias, podrá manifestar su negativa enviando un correo a team@poolandchill.com con el asunto 'NEGATIVA FINALIDADES SECUNDARIAS'."
+          "7.1. Los Usuarios se obligan a no realizar, permitir o facilitar ninguna de las siguientes conductas prohibidas:",
+          "• Eventos no autorizados: Realizar eventos, fiestas, reuniones masivas o cualquier actividad que no haya sido expresamente autorizada por el Anfitrión y que exceda el número máximo de personas permitidas.\n• Uso ilícito: Utilizar los inmuebles o la Plataforma para cualquier actividad ilegal, fraudulenta, engañosa o que viole cualquier ley aplicable.\n• Exceso de personas: Permitir que un número de personas mayor al establecido en la reservación acceda al inmueble, sin autorización previa y por escrito del Anfitrión.\n• Daños a propiedad: Causar daños intencionales o por negligencia a la propiedad del Anfitrión.\n• Actividades ilegales: Realizar, facilitar o permitir cualquier actividad que constituya un delito conforme a las leyes mexicanas o internacionales.",
+          "7.2. La violación de cualquiera de las conductas prohibidas dará lugar a la suspensión inmediata de la cuenta del Usuario, la cancelación de reservaciones activas sin derecho a reembolso, y la posibilidad de que Pool & Chill ejerza acciones legales en contra del Usuario infractor."
         ]
       },
-      "dataUseHosts": {
-        "title": "8. Uso de Datos - Anfitriones",
+      "accountSuspension": {
+        "title": "VIII. Suspensión o Cancelación de Cuenta",
         "content": [
-          "Los datos personales de usuarios registrados como Anfitriones serán utilizados para las siguientes finalidades:",
-          "Finalidades primarias (necesarias para la prestación del servicio):\n• Gestionar y administrar su cuenta de Anfitrión en la Plataforma\n• Verificar su identidad y la legitimidad de los espacios ofrecidos\n• Publicar y administrar los listados de sus espacios\n• Procesar los pagos derivados de las reservaciones\n• Contactarlo para recopilar información adicional sobre su propiedad, incluyendo comunicación vía WhatsApp al número proporcionado (con su consentimiento expreso otorgado durante el registro)\n• Coordinar la integración de su espacio en la Plataforma\n• Cumplir con obligaciones legales, fiscales y regulatorias",
-          "Finalidades secundarias (no necesarias, pero mejoran el servicio):\n• Proporcionarle acceso anticipado a nuevas funcionalidades\n• Enviar información sobre el programa de anfitriones, comisiones y beneficios\n• Utilizar información y fotografías de su espacio para material promocional y marketing de Pool & Chill (con su autorización previa y expresa)\n• Enviar boletines informativos y recomendaciones para mejorar su listado\n• Realizar análisis estadísticos y estudios de mercado",
-          "El equipo de Pool & Chill se pondrá en contacto con usted para validar la información proporcionada y coordinar el proceso de alta de su espacio en la Plataforma."
+          "8.1. Pool & Chill se reserva el derecho de suspender o cancelar, de manera temporal o permanente, la cuenta de cualquier Usuario que incumpla estos Términos, las políticas de la Plataforma o cualquier ley aplicable.",
+          "8.2. Las causas que pueden dar lugar a la suspensión o cancelación de cuenta incluyen:\n• Incumplimiento de obligaciones contractuales establecidas en estos Términos.\n• Fraude, engaño, suplantación de identidad o cualquier actividad fraudulenta.\n• Conducta riesgosa que ponga en peligro la seguridad de otros Usuarios o de terceros.\n• Violación de las conductas prohibidas establecidas en la Cláusula VII.\n• Proporcionar información falsa, inexacta o engañosa durante el registro o uso de la Plataforma.\n• Intentar eludir o manipular el sistema de pagos, comisiones o cualquier otro mecanismo de la Plataforma.",
+          "8.3. La suspensión o cancelación de cuenta no exime al Usuario de cumplir con sus obligaciones pendientes, incluyendo el pago de comisiones, reembolsos o indemnizaciones que correspondan."
         ]
-      },
-      "consent": {
-        "title": "9. Consentimiento",
-        "content": [
-          "Al enviar el formulario de registro y aceptar los presentes Términos y Condiciones, usted otorga su consentimiento EXPRESO, LIBRE, ESPECÍFICO e INFORMADO para que Pool & Chill recopile, use, almacene, trate y, en su caso, transfiera sus datos personales conforme a lo establecido en estos Términos y en el Aviso de Privacidad, de conformidad con los artículos 8 y 36 de la LFPDPPP.",
-          "Tratándose de datos personales sensibles (incluyendo datos biométricos obtenidos durante la verificación de identidad y datos financieros), su consentimiento expreso se obtiene de manera reforzada al aceptar específicamente el proceso de verificación de identidad y al proporcionar voluntariamente su información bancaria.",
-          "Usted tiene el derecho de revocar su consentimiento en cualquier momento, sin que dicha revocación tenga efectos retroactivos, conforme al artículo 8, párrafo segundo de la LFPDPPP. La revocación del consentimiento podrá limitar o impedir la prestación de ciertos servicios de la Plataforma."
-        ]
-      },
-      "hostProgram": {
-        "title": "10. Programa de Anfitriones",
-        "content": "Al registrarse como Anfitrión, usted acepta participar en el Programa de Anfitriones de Pool & Chill bajo los siguientes términos:",
-        "subsections": {
-          "benefits": {
-            "title": "Beneficios",
-            "content": "Acceso prioritario a la Plataforma antes del lanzamiento público, visibilidad destacada durante los primeros meses de operación, soporte personalizado del equipo de Pool & Chill, comisiones preferenciales para anfitriones fundadores, y herramientas avanzadas de administración de espacios y reservaciones."
-          },
-          "responsibilities": {
-            "title": "Obligaciones del Anfitrión",
-            "content": "Proporcionar información precisa, completa y verificable sobre su espacio, mantener actualizada la disponibilidad, precios y condiciones de renta, cumplir con las normas de calidad, higiene y seguridad establecidas por la Plataforma y la legislación aplicable, responder oportunamente a las solicitudes de información y reservaciones, contar con los permisos y licencias necesarios para la operación del espacio, y mantener vigente su verificación de identidad."
-          },
-          "rights": {
-            "title": "Derechos de Pool & Chill",
-            "content": "Pool & Chill se reserva el derecho de: seleccionar discrecionalmente a los Anfitriones que formarán parte de la Plataforma, solicitar documentación adicional para verificar la legitimidad del espacio y la identidad del Anfitrión, utilizar fotografías y descripciones proporcionadas para la promoción de la Plataforma (con autorización previa), rechazar o dar de baja espacios que no cumplan con los estándares de calidad, seguridad o legalidad, y aplicar sanciones o suspensiones ante el incumplimiento de estos Términos."
-          }
-        }
       },
       "intellectualProperty": {
-        "title": "11. Propiedad Intelectual y Contenido",
+        "title": "IX. Propiedad Intelectual",
         "content": [
-          "Todo el contenido de la Plataforma, incluyendo pero no limitado a: diseño, logotipos, marcas, textos, gráficos, código fuente, software, bases de datos y demás elementos, son propiedad exclusiva de Pool & Chill o de sus licenciantes, y están protegidos por la Ley Federal del Derecho de Autor, la Ley de la Propiedad Industrial y los tratados internacionales aplicables.",
-          "El Usuario que publique contenido en la Plataforma (fotografías, descripciones, textos) otorga a Pool & Chill una licencia no exclusiva, gratuita, mundial, transferible y sublicenciable para usar, reproducir, modificar, adaptar y distribuir dicho contenido con fines de operación y promoción de la Plataforma.",
-          "El Usuario declara y garantiza que todo el contenido que publique es de su autoría o cuenta con las autorizaciones necesarias para su publicación, y que dicho contenido no infringe derechos de terceros ni contraviene la legislación aplicable."
+          "9.1. La marca \"Pool & Chill\", los logotipos, diseños, interfaces gráficas, código fuente, bases de datos, algoritmos y cualquier otro elemento de la Plataforma son propiedad exclusiva de Pool & Chill o de sus licenciantes, y están protegidos por las leyes mexicanas e internacionales de propiedad intelectual, incluyendo la Ley Federal del Derecho de Autor y la Ley de la Propiedad Industrial.",
+          "9.2. Los Usuarios no adquieren ningún derecho de propiedad sobre los elementos mencionados, y se les prohíbe expresamente utilizar, reproducir, modificar, distribuir, transmitir, mostrar públicamente o crear obras derivadas de dichos elementos sin autorización previa y por escrito de Pool & Chill.",
+          "9.3. El contenido proporcionado por los Usuarios (incluyendo fotografías, descripciones, comentarios y reseñas) podrá ser utilizado por Pool & Chill para los fines de operación, promoción y mejora de la Plataforma, sin que ello genere obligación alguna de pago o reconocimiento a favor del Usuario."
         ]
       },
-      "userResponsibility": {
-        "title": "12. Responsabilidades del Usuario",
+      "minors": {
+        "title": "X. Protección de Menores",
         "content": [
-          "Al utilizar la Plataforma, el Usuario se compromete a:",
-          "• Proporcionar información veraz, exacta, completa y actualizada durante el registro y en todo momento posterior\n• Mantener la confidencialidad de su contraseña y credenciales de acceso\n• Notificar inmediatamente a Pool & Chill cualquier uso no autorizado de su cuenta\n• No utilizar la Plataforma para fines ilícitos, fraudulentos o contrarios a la moral y las buenas costumbres\n• No publicar contenido ofensivo, difamatorio, discriminatorio o que contravenga la legislación vigente\n• Cumplir con las obligaciones fiscales derivadas de las transacciones realizadas a través de la Plataforma",
-          "Para Anfitriones específicamente:\n• Garantizar que el espacio ofrecido cumple con las condiciones descritas en la publicación\n• Contar con los permisos, licencias y seguros necesarios para la operación del espacio\n• Garantizar que el espacio cumple con las normas de seguridad, higiene y protección civil aplicables\n• Asumir la responsabilidad civil y penal derivada de cualquier incidente en el espacio",
-          "El incumplimiento de estas obligaciones podrá resultar en la suspensión o cancelación definitiva de la cuenta del Usuario, sin perjuicio de las acciones legales que correspondan."
+          "10.1. La Plataforma está dirigida a personas mayores de edad (18 años) con capacidad legal para contratar conforme a las leyes mexicanas.",
+          "10.2. Los menores de edad solo podrán utilizar la Plataforma bajo la supervisión y responsabilidad de sus padres, tutores o representantes legales, quienes serán responsables de todas las acciones realizadas por los menores a su cargo.",
+          "10.3. Pool & Chill no será responsable por el uso de la Plataforma por parte de menores de edad sin la supervisión adecuada de sus representantes legales."
         ]
       },
-      "liabilityLimitation": {
-        "title": "13. Limitación de Responsabilidad",
+      "alcohol": {
+        "title": "XI. Consumo de Alcohol y Sustancias",
         "content": [
-          "Pool & Chill actúa exclusivamente como intermediario entre Huéspedes y Anfitriones, por lo que:",
-          "• NO es propietario, operador ni administrador de los espacios publicados en la Plataforma\n• NO garantiza la calidad, seguridad, legalidad o idoneidad de los espacios ofrecidos\n• NO es responsable por daños, perjuicios, lesiones o pérdidas que pudieran ocurrir durante el uso de los espacios\n• NO es responsable por la veracidad de la información publicada por los Anfitriones\n• NO asume responsabilidad por interrupciones del servicio causadas por fuerza mayor, caso fortuito o fallas técnicas ajenas a su control",
-          "En la medida permitida por la Ley Federal de Protección al Consumidor, la responsabilidad total de Pool & Chill frente al Usuario por cualquier reclamo derivado del uso de la Plataforma estará limitada al monto de las comisiones efectivamente cobradas en los últimos 12 meses.",
-          "Nada en estos Términos excluye o limita la responsabilidad de Pool & Chill por dolo, mala fe o negligencia grave, conforme a la legislación aplicable."
+          "11.1. El consumo de alcohol y sustancias dentro de los inmuebles ofrecidos en la Plataforma está sujeto a las reglas y restricciones establecidas por cada Anfitrión, así como a la legislación aplicable en materia de consumo de alcohol y sustancias controladas.",
+          "11.2. Los Usuarios son responsables de cumplir con todas las leyes y regulaciones aplicables al consumo de alcohol y sustancias, incluyendo las restricciones de edad y las normas de seguridad.",
+          "11.3. Pool & Chill no será responsable por los daños, accidentes o consecuencias derivadas del consumo de alcohol o sustancias dentro de los inmuebles, siendo esta responsabilidad exclusiva del Anfitrión y del Huésped."
         ]
       },
-      "cancellation": {
-        "title": "14. Cancelación y Baja del Servicio",
+      "moneyLaundering": {
+        "title": "XII. Prevención de Lavado de Dinero",
         "content": [
-          "El Usuario podrá solicitar la cancelación de su cuenta y la baja del servicio en cualquier momento mediante:",
-          "• Envío de correo electrónico a team@poolandchill.com con el asunto 'CANCELACIÓN DE CUENTA'\n• A través de la funcionalidad de cancelación disponible en la configuración de su cuenta\n• Contactando directamente a través del formulario de contacto en el sitio web",
-          "La solicitud de cancelación será procesada en un plazo máximo de 5 días hábiles. Una vez cancelada la cuenta:\n• Se desactivará el acceso a la Plataforma\n• Se despublicarán los espacios del Anfitrión (si aplica)\n• Se conservarán los datos durante el plazo que establezcan las disposiciones legales aplicables, conforme al artículo 37 del Reglamento de la LFPDPPP\n• Se procesarán los pagos pendientes antes de completar la cancelación",
-          "Pool & Chill se reserva el derecho de cancelar cuentas de oficio cuando existan indicios de actividad fraudulenta, información falsa o incumplimiento grave de estos Términos, previa notificación al Usuario."
+          "12.1. Pool & Chill se compromete a cumplir con todas las disposiciones legales aplicables en materia de prevención de lavado de dinero y financiamiento al terrorismo, conforme a la Ley para la Transparencia y Ordenamiento de los Servicios Financieros y demás normativa aplicable.",
+          "12.2. Los Usuarios se obligan a proporcionar información veraz, completa y actualizada cuando así se les solicite, y a colaborar con Pool & Chill en cualquier procedimiento de verificación de identidad o debido proceso de conocimiento del cliente que sea requerido por la ley.",
+          "12.3. Pool & Chill se reserva el derecho de suspender o cancelar cualquier transacción que considere sospechosa o que pueda estar relacionada con actividades de lavado de dinero o financiamiento al terrorismo, y de reportar dichas actividades a las autoridades competentes cuando sea requerido por la ley."
         ]
       },
-      "aroRights": {
-        "title": "15. Derechos ARCO",
+      "payments": {
+        "title": "XIII. Pagos y Procesamiento",
         "content": [
-          "Conforme a los artículos 28 a 35 de la LFPDPPP y los artículos 89 a 96 de su Reglamento, usted como titular de datos personales tiene derecho a:",
-          "• ACCESO: Conocer qué datos personales tenemos sobre usted, para qué los utilizamos y las condiciones del tratamiento (Art. 23 LFPDPPP)\n• RECTIFICACIÓN: Solicitar la corrección de datos inexactos, incompletos o desactualizados (Art. 24 LFPDPPP)\n• CANCELACIÓN: Solicitar la eliminación de sus datos de nuestras bases de datos cuando considere que no están siendo utilizados conforme a los principios, deberes y obligaciones de la LFPDPPP (Art. 25 LFPDPPP)\n• OPOSICIÓN: Oponerse al tratamiento de sus datos para fines específicos (Art. 27 LFPDPPP)",
-          "Para ejercer cualquiera de estos derechos, debe enviar una solicitud por escrito a team@poolandchill.com, incluyendo:",
-          "1. Nombre completo del titular y correo electrónico registrado\n2. Documentos que acrediten su identidad (copia de INE/IFE, pasaporte o cédula profesional)\n3. Descripción clara y precisa del derecho que desea ejercer\n4. Cualquier documento o información que facilite la localización de sus datos personales\n5. Indicación del medio por el cual desea recibir la respuesta",
-          "Pool & Chill dará respuesta a su solicitud en un plazo máximo de 20 días hábiles contados desde la fecha de recepción de la solicitud completa, conforme al artículo 32 de la LFPDPPP. En caso de resultar procedente, la solicitud se hará efectiva dentro de los 15 días hábiles siguientes a la comunicación de la respuesta."
-        ]
-      },
-      "dataTransfer": {
-        "title": "16. Transferencia Internacional de Datos",
-        "content": [
-          "Para la prestación de sus servicios, Pool & Chill utiliza proveedores de tecnología y servicios que pueden implicar la transferencia de datos personales fuera de territorio mexicano, conforme al artículo 36 de la LFPDPPP:",
-          "• Firebase (Google LLC): Almacenamiento de archivos e imágenes y servicios de analítica — servidores ubicados en Estados Unidos\n• Render, Inc.: Infraestructura de servidores para el backend de la Plataforma — servidores ubicados en Estados Unidos\n• Didit: Verificación de identidad — servidores ubicados en la Unión Europea\n• Google Maps Platform: Servicios de geolocalización y geocodificación — servidores ubicados en Estados Unidos",
-          "Al aceptar estos Términos y Condiciones, usted otorga su CONSENTIMIENTO EXPRESO para la transferencia internacional de sus datos personales a los terceros mencionados, la cual se realizará cumpliendo con todas las medidas de seguridad exigidas por la LFPDPPP y su Reglamento.",
-          "Todos nuestros proveedores de servicios cumplen con estándares internacionales de protección de datos (ISO 27001, SOC 2, GDPR de la Unión Europea) y han suscrito acuerdos de protección de datos personales con Pool & Chill.",
-          "Las transferencias nacionales que no requieren consentimiento del titular son las señaladas en el artículo 37 de la LFPDPPP."
-        ]
-      },
-      "securityStorage": {
-        "title": "17. Almacenamiento y Seguridad de la Información",
-        "content": [
-          "Pool & Chill implementa medidas de seguridad administrativas, técnicas y físicas de conformidad con el artículo 19 de la LFPDPPP para proteger sus datos personales contra daño, pérdida, alteración, destrucción o uso, acceso o tratamiento no autorizado:",
-          "Medidas técnicas:\n• Cifrado de datos sensibles mediante AES-GCM de 256 bits con derivación de clave PBKDF2 (100,000 iteraciones)\n• Cifrado de datos en tránsito mediante protocolos SSL/TLS\n• Almacenamiento seguro de contraseñas mediante algoritmos de hash criptográfico\n• Tokens de autenticación con expiración temporal (access tokens y refresh tokens)\n• Firewalls y sistemas de detección de intrusos\n• Respaldos automáticos y cifrados",
-          "Medidas administrativas:\n• Políticas de seguridad de la información documentadas\n• Acuerdos de confidencialidad con empleados, colaboradores y proveedores\n• Capacitación continua del personal en protección de datos personales\n• Control de acceso basado en roles y principio de privilegio mínimo\n• Auditorías internas periódicas de seguridad\n• Plan de respuesta a incidentes y notificación de vulneraciones de seguridad",
-          "Sus datos serán conservados durante el tiempo necesario para cumplir las finalidades descritas y posteriormente durante los plazos que establezcan las disposiciones legales aplicables (incluyendo obligaciones fiscales conforme al Código Fiscal de la Federación)."
-        ]
-      },
-      "modifications": {
-        "title": "18. Modificaciones a los Términos",
-        "content": [
-          "Pool & Chill se reserva el derecho de modificar los presentes Términos y Condiciones en cualquier momento, de conformidad con lo dispuesto en la LFPC y demás legislación aplicable. Cualquier cambio será notificado a través de:",
-          "• Correo electrónico a la dirección registrada, con al menos 10 (diez) días naturales de anticipación a la entrada en vigor de las modificaciones\n• Publicación en el sitio web de la Plataforma, con indicación clara de la fecha de última actualización\n• Notificación destacada dentro de la Plataforma al iniciar sesión",
-          "El uso continuado de la Plataforma después de la notificación de cambios y transcurrido el plazo indicado constituye la aceptación de los nuevos Términos. Si usted no está de acuerdo con las modificaciones, podrá solicitar la cancelación de su cuenta conforme a la Sección 14 de estos Términos.",
-          "Se recomienda al Usuario consultar periódicamente los presentes Términos y Condiciones. La versión vigente siempre estará disponible en la Plataforma."
+          "13.1. Los pagos se procesan mediante la plataforma de pagos Stripe, la cual cumple con los más altos estándares de seguridad en el procesamiento de transacciones financieras.",
+          "13.2. La verificación de identidad de los Usuarios se realiza mediante el servicio de Didit, el cual permite validar la identidad de los usuarios de manera segura y conforme a la normativa aplicable.",
+          "13.3. La infraestructura tecnológica de la Plataforma se encuentra alojada en Firebase, que proporciona medidas de seguridad avanzadas para la protección de datos.",
+          "13.4. Todos los datos se encuentran cifrados tanto en tránsito (mediante protocolos TLS/SSL) como en reposo, garantizando la protección de la información sensible de los Usuarios.",
+          "13.5. Pool & Chill no almacena datos bancarios completos de los Usuarios. La información de tarjetas de crédito y débito es procesada y almacenada exclusivamente por Stripe, conforme a sus políticas de seguridad y cumplimiento normativo (PCI DSS).",
+          "13.7. Aclaración sobre el Flujo de Pagos y Custodia de Fondos:\n• Los pagos realizados a través de la Plataforma son procesados exclusivamente por Stripe, plataforma de pagos autorizada y regulada conforme a la legislación aplicable.\n• Stripe es la entidad que retiene temporalmente los fondos correspondientes a las reservaciones, actuando como procesador de pagos y custodio de los recursos financieros.\n• Pool & Chill no custodia directamente los recursos financieros de los Usuarios. Pool & Chill únicamente actúa como intermediario tecnológico que facilita la conexión entre Anfitriones y Huéspedes.\n• Pool & Chill no opera como institución de crédito, institución financiera, entidad de custodia, ni como ninguna otra entidad sujeta a la supervisión de la CNBV, CONDUSEF o cualquier otra autoridad financiera.\n• Pool & Chill no capta recursos del público, limitándose exclusivamente a percibir comisiones por la intermediación tecnológica prestada."
         ]
       },
       "jurisdiction": {
-        "title": "19. Legislación Aplicable y Jurisdicción",
+        "title": "XIV. Jurisdicción y Competencia",
         "content": [
-          "Los presentes Términos y Condiciones se rigen e interpretan conforme a las leyes de los Estados Unidos Mexicanos, específicamente por:",
-          "• Constitución Política de los Estados Unidos Mexicanos (artículos 6, 16 y 28)\n• Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) — DOF 05/07/2010\n• Reglamento de la LFPDPPP — DOF 21/12/2011\n• Lineamientos del Aviso de Privacidad — DOF 17/01/2013\n• Ley Federal de Protección al Consumidor (LFPC)\n• Código de Comercio\n• Código Civil Federal\n• Ley Federal del Derecho de Autor\n• Ley de la Propiedad Industrial\n• Código Fiscal de la Federación (en lo relativo a obligaciones fiscales)",
-          "Para la interpretación, cumplimiento y ejecución de los presentes Términos y Condiciones, así como para la resolución de cualquier controversia que pudiera derivarse de los mismos, las partes se someten expresamente a la jurisdicción de los tribunales competentes de la Ciudad de México, Estados Unidos Mexicanos, renunciando a cualquier otro fuero que pudiera corresponderles por razón de su domicilio presente o futuro, de conformidad con el artículo 1093 del Código de Comercio.",
-          "Lo anterior sin perjuicio del derecho del Usuario de acudir ante la Procuraduría Federal del Consumidor (PROFECO) o ante el INAI para la defensa de sus derechos, conforme a la legislación aplicable."
+          "14.1. Estos Términos se rigen por las leyes de los Estados Unidos Mexicanos, sin dar efecto a cualquier principio de conflictos de leyes.",
+          "14.2. Para cualquier controversia, conflicto o diferencia que surja de o esté relacionada con estos Términos, el uso de la Plataforma o cualquier transacción realizada a través de ella, las partes se someten expresamente a la jurisdicción y competencia de los tribunales competentes de la Ciudad de México, Distrito Federal, renunciando a cualquier otro fuero que pudiera corresponderles por razón de sus domicilios presentes o futuros o por cualquier otra causa.",
+          "14.3. En caso de que alguna disposición de estos Términos sea declarada nula, inválida o inaplicable por autoridad competente, el resto de las disposiciones permanecerán en pleno vigor y efecto."
+        ]
+      },
+      "modifications": {
+        "title": "XV. Modificaciones a los Términos",
+        "content": [
+          "15.1. Pool & Chill se reserva el derecho de modificar estos Términos en cualquier momento, previa notificación a los Usuarios mediante publicación en la Plataforma o comunicación al correo electrónico registrado, con al menos treinta (30) días de anticipación.",
+          "15.2. El uso continuado de la Plataforma después de la entrada en vigor de las modificaciones constituye aceptación de los Términos modificados. Si el Usuario no está de acuerdo con las modificaciones, deberá cesar inmediatamente el uso de la Plataforma y solicitar la cancelación de su cuenta."
+        ]
+      },
+      "contact": {
+        "title": "XVI. Contacto",
+        "content": [
+          "16.1. Para cualquier consulta, aclaración o notificación relacionada con estos Términos, los Usuarios podrán contactar a Pool & Chill a través de los medios de contacto proporcionados en la Plataforma.",
+          "16.2. Todas las notificaciones y comunicaciones oficiales entre Pool & Chill y los Usuarios se realizarán mediante correo electrónico a la dirección registrada en la cuenta del Usuario o mediante publicación en la Plataforma.",
+          "Al utilizar la Plataforma Pool & Chill, usted reconoce haber leído, entendido y aceptado estos Términos y Condiciones de Uso en su totalidad."
         ]
       }
     }
   },
   "privacy": {
     "title": "Aviso de Privacidad Integral",
-    "lastUpdated": "Última actualización: 4 de febrero de 2026",
+    "lastUpdated": "Última actualización: Febrero 2026",
     "intro": "En cumplimiento con lo dispuesto en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su Reglamento, y los Lineamientos del Aviso de Privacidad publicados en el Diario Oficial de la Federación el 17 de enero de 2013, Pool & Chill (en adelante, \"el Responsable\") pone a disposición de los titulares de datos personales el presente Aviso de Privacidad Integral, a fin de dar a conocer las prácticas y políticas de tratamiento de datos personales implementadas.",
     "closeButton": "Entendido",
     "contact": {
       "title": "Datos de Contacto del Responsable",
-      "content": "Para cualquier duda, aclaración o ejercicio de sus derechos ARCO, el Departamento de Protección de Datos Personales se encuentra a su disposición:",
-      "email": "team@poolandchill.com"
+      "content": "Para cualquier duda, aclaración o ejercicio de sus derechos ARCO relacionado con este Aviso de Privacidad, puede contactarnos a través de:",
+      "email": "team@poolandchill.com.mx",
+      "address": "Ensarta, 100, entre calle carretera a valladolid y calle carretera a comunidad el maguey, 20900, Jesús María, Aguascalientes, México",
+      "footer": "Este Aviso de Privacidad está disponible en todo momento en la Plataforma Pool & Chill para su consulta."
     },
     "sections": {
       "responsible": {
-        "title": "1. Identidad y Domicilio del Responsable",
+        "title": "I. Identidad y Domicilio del Responsable",
         "content": [
-          "De conformidad con el artículo 16, fracción I de la LFPDPPP y el artículo 24 de su Reglamento:",
-          "Responsable del tratamiento: Pool & Chill\nDenominación comercial: Pool & Chill\nDomicilio: Ciudad de México, Estados Unidos Mexicanos\nCorreo electrónico para asuntos de privacidad: team@poolandchill.com\nSitio web: www.poolandchill.com.mx",
+          "En cumplimiento con lo dispuesto en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (en adelante, la \"LFPDPPP\") y su Reglamento, POOL & CHILL, sociedad mercantil constituida conforme a las leyes de los Estados Unidos Mexicanos (en adelante, \"Pool & Chill\", \"nosotros\" o \"el Responsable\"), con domicilio ubicado en Ensarta, 100, entre calle carretera a valladolid y calle carretera a comunidad el maguey, 20900, Jesús María, Aguascalientes, México, es responsable del tratamiento de sus datos personales.",
+          "Para efectos de este Aviso de Privacidad, Pool & Chill actúa como Responsable del tratamiento de los datos personales que usted proporcione a través de la plataforma digital \"Pool & Chill\", ya sea mediante aplicación móvil o sitio web.",
           "Pool & Chill es una plataforma digital de intermediación para la renta temporal de espacios recreativos (albercas, cabañas y zonas de camping) entre particulares. El Responsable se compromete a proteger la privacidad de los datos personales de los titulares y a garantizar el ejercicio del derecho a la autodeterminación informativa, conforme a lo establecido en el artículo 16, segundo párrafo de la Constitución Política de los Estados Unidos Mexicanos."
         ]
       },
       "dataCollected": {
-        "title": "2. Datos Personales que se Recaban",
+        "title": "II. Datos Personales Recabados",
         "content": [
-          "De conformidad con el artículo 16, fracción II de la LFPDPPP, Pool & Chill recaba las siguientes categorías de datos personales:",
-          "I. Datos de identificación:\n• Nombre(s) y apellido(s)\n• Fecha de nacimiento\n• Género (masculino, femenino, otro/prefiero no decir)\n• Estado de residencia dentro de la República Mexicana\n• Credencial para Votar (INE/IFE) — imagen del anverso y reverso (para Anfitriones)",
-          "II. Datos de contacto:\n• Correo electrónico\n• Número de teléfono (formato de 10 dígitos con código internacional +52)",
-          "III. Datos patrimoniales y financieros (exclusivamente Anfitriones):\n• Nombre del titular de la cuenta bancaria\n• Número de cuenta bancaria o CLABE interbancaria\n• Nombre de la institución bancaria",
-          "IV. Datos del espacio (Anfitriones):\n• Nombre, descripción y tipo de espacio (Alberca, Cabaña, Camping)\n• Dirección completa (calle, número, municipio, estado, código postal)\n• Coordenadas geográficas (latitud y longitud) obtenidas mediante Google Maps\n• Horarios de operación (check-in / check-out)\n• Estructura de precios (tarifa entre semana y fin de semana)\n• Capacidad, número de habitaciones, camas y baños\n• Amenidades, características y reglas del espacio\n• Fotografías del espacio (hasta 10 imágenes, máx. 5 MB c/u)",
-          "V. Datos de autenticación:\n• Contraseña de acceso (almacenada exclusivamente en formato de hash criptográfico; Pool & Chill no tiene acceso a su contraseña en texto plano)\n• Tokens de sesión y autenticación (access token y refresh token)",
-          "VI. Datos de navegación y uso (recopilados automáticamente):\n• Dirección IP\n• Tipo y versión del navegador\n• Sistema operativo\n• Páginas visitadas y tiempo de navegación\n• Fecha, hora y zona horaria de acceso\n• Idioma preferido del navegador"
+          "Pool & Chill recaba los siguientes datos personales de los Usuarios de la Plataforma:",
+          "II.1. Datos de Identificación:\n• Nombre completo\n• Fecha de nacimiento\n• Edad\n• Nacionalidad\n• Fotografía de identificación oficial\n• Número de identificación oficial (INE, pasaporte u otro documento oficial)\n• Firma electrónica o biométrica (cuando aplique)",
+          "II.2. Datos de Contacto:\n• Correo electrónico\n• Número telefónico (fijo y/o móvil)\n• Dirección de residencia\n• Código postal\n• Ciudad y estado de residencia",
+          "II.3. Datos Financieros:\n• Información de tarjetas de crédito o débito (procesada exclusivamente por Stripe, sin almacenamiento completo por parte de Pool & Chill)\n• Información bancaria para recibir pagos (en el caso de Anfitriones)\n• Historial de transacciones\n• Comprobantes de pago\n• Información fiscal (RFC, CURP, cuando sea requerido)",
+          "II.4. Datos de Verificación:\n• Información proporcionada a través del servicio de verificación de identidad Didit\n• Documentos de identificación oficial escaneados\n• Información biométrica (cuando sea utilizada para verificación)",
+          "II.5. Datos de Uso de la Plataforma:\n• Información de registro y acceso (usuario, contraseña encriptada)\n• Historial de reservaciones\n• Preferencias de búsqueda\n• Comentarios y reseñas publicadas\n• Fotografías y videos subidos a la Plataforma\n• Ubicación geográfica (cuando sea proporcionada voluntariamente)\n• Dirección IP\n• Tipo de dispositivo utilizado\n• Sistema operativo y versión del navegador\n• Cookies y tecnologías similares",
+          "II.6. Datos del Inmueble (para Anfitriones):\n• Dirección completa del inmueble\n• Características físicas del inmueble y alberca\n• Fotografías del inmueble\n• Información de propiedad o autorización para ofrecer el inmueble\n• Documentos legales relacionados con el inmueble (cuando sea requerido)"
         ]
       },
       "sensitiveData": {
@@ -394,20 +356,25 @@
         ]
       },
       "primaryPurposes": {
-        "title": "4. Finalidades Primarias del Tratamiento",
+        "title": "III. Finalidades Primarias del Tratamiento",
         "content": [
-          "De conformidad con el artículo 16, fracción III de la LFPDPPP, sus datos personales serán tratados para las siguientes finalidades primarias, las cuales son necesarias para la relación jurídica entre usted y Pool & Chill:",
-          "Para todos los Usuarios:\n• Gestionar la creación, administración y mantenimiento de su cuenta de usuario\n• Verificar su identidad y autenticar su acceso a la Plataforma\n• Cumplir con las obligaciones derivadas de los Términos y Condiciones\n• Atender sus solicitudes, quejas, consultas y reclamaciones\n• Enviar comunicaciones operativas relacionadas con el servicio (confirmaciones de registro, notificaciones de cuenta, alertas de seguridad), incluyendo contacto vía WhatsApp al número proporcionado (con consentimiento expreso del titular otorgado durante el registro)\n• Cumplir con obligaciones legales, fiscales y regulatorias aplicables\n• Prevenir fraudes y actividades ilícitas",
-          "Para Huéspedes:\n• Permitir la búsqueda, visualización y reservación de espacios\n• Procesar y administrar sus reservaciones\n• Generar comprobantes y recibos de transacciones\n• Facilitar la comunicación con los Anfitriones respecto de las reservaciones",
-          "Para Anfitriones:\n• Verificar su identidad mediante el proceso de verificación con Didit\n• Publicar, administrar y actualizar los listados de sus espacios\n• Procesar los pagos derivados de las reservaciones a su cuenta bancaria\n• Coordinar el proceso de alta e integración de su espacio en la Plataforma\n• Validar la información y documentación proporcionada sobre el espacio"
+          "Los datos personales recabados serán utilizados para las siguientes finalidades primarias, que son necesarias para la prestación del servicio solicitado:",
+          "III.1. Gestión de la Cuenta de Usuario:\n• Crear y administrar su cuenta en la Plataforma\n• Verificar su identidad mediante el servicio de Didit\n• Autenticar su acceso a la Plataforma\n• Mantener su perfil de usuario actualizado",
+          "III.2. Procesamiento de Reservaciones:\n• Facilitar la conexión entre Anfitriones y Huéspedes\n• Procesar solicitudes de reservación\n• Confirmar y gestionar reservaciones\n• Comunicar información relevante sobre las reservaciones",
+          "III.3. Procesamiento de Pagos:\n• Procesar pagos mediante la plataforma Stripe\n• Gestionar comisiones y tarifas\n• Procesar reembolsos cuando corresponda\n• Emitir comprobantes fiscales\n• Gestionar disputas relacionadas con pagos",
+          "III.4. Comunicación con Usuarios:\n• Enviar notificaciones sobre reservaciones\n• Responder a consultas y solicitudes de soporte\n• Enviar información importante sobre cambios en los términos de servicio o políticas\n• Comunicar actualizaciones de la Plataforma",
+          "III.5. Verificación y Seguridad:\n• Verificar la identidad de los Usuarios\n• Prevenir fraudes y actividades ilícitas\n• Cumplir con obligaciones legales en materia de prevención de lavado de dinero\n• Mantener la seguridad e integridad de la Plataforma",
+          "III.6. Publicación de Contenido:\n• Publicar información de inmuebles (para Anfitriones)\n• Mostrar reseñas y comentarios de Usuarios\n• Compartir fotografías y descripciones de inmuebles"
         ]
       },
       "secondaryPurposes": {
-        "title": "5. Finalidades Secundarias del Tratamiento",
+        "title": "IV. Finalidades Secundarias del Tratamiento",
         "content": [
-          "Adicionalmente, de manera enunciativa mas no limitativa, sus datos personales podrán ser tratados para las siguientes finalidades secundarias, las cuales NO son necesarias para la relación jurídica principal, pero permiten mejorar la calidad del servicio:",
-          "• Enviar boletines informativos, actualizaciones sobre nuevas funcionalidades y contenido relevante sobre la Plataforma\n• Enviar promociones, ofertas especiales y beneficios exclusivos\n• Realizar análisis estadísticos, estudios de mercado e investigación de hábitos de consumo, de forma anonimizada o agregada\n• Personalizar su experiencia de navegación y recomendaciones de espacios\n• Utilizar fotografías, descripciones e información de los espacios para material promocional y marketing de Pool & Chill (con autorización previa y expresa del Anfitrión)\n• Enviar encuestas de satisfacción del servicio\n• Desarrollar nuevos productos, servicios y funcionalidades",
-          "Si usted NO desea que sus datos personales sean tratados para las finalidades secundarias, podrá manifestar su negativa en cualquier momento enviando un correo electrónico a team@poolandchill.com con el asunto 'NEGATIVA FINALIDADES SECUNDARIAS'. Su negativa no será motivo para negarle los servicios principales de la Plataforma."
+          "Adicionalmente, sus datos personales podrán ser utilizados para las siguientes finalidades secundarias, que no son necesarias para la prestación del servicio pero nos permiten brindarle una mejor experiencia:",
+          "IV.1. Marketing y Promociones:\n• Enviar ofertas promocionales y descuentos\n• Informar sobre nuevos servicios o funcionalidades\n• Realizar estudios de mercado y análisis de preferencias\n• Personalizar el contenido y las recomendaciones mostradas en la Plataforma",
+          "IV.2. Mejora de Servicios:\n• Analizar el uso de la Plataforma para mejorar nuestros servicios\n• Desarrollar nuevas funcionalidades\n• Realizar estudios estadísticos y de comportamiento de usuarios\n• Optimizar la experiencia del usuario",
+          "IV.3. Comunicaciones Comerciales:\n• Enviar boletines informativos\n• Invitar a participar en programas de fidelización\n• Compartir contenido educativo relacionado con el uso de albercas y espacios recreativos",
+          "Si usted no desea que sus datos personales sean tratados para alguna o todas las finalidades secundarias, puede manifestar su oposición mediante el procedimiento establecido en la sección de Derechos ARCO de este Aviso."
         ]
       },
       "identityVerification": {
@@ -431,32 +398,37 @@
         ]
       },
       "dataTransfers": {
-        "title": "8. Transferencias de Datos Personales",
+        "title": "V. Transferencias de Datos Personales",
         "content": [
-          "De conformidad con los artículos 36 y 37 de la LFPDPPP, Pool & Chill podrá realizar las siguientes transferencias de datos personales:",
-          "Transferencias nacionales:\n• Instituciones financieras mexicanas para el procesamiento de pagos a Anfitriones\n• Autoridades competentes cuando medie requerimiento legal debidamente fundado y motivado",
-          "Transferencias internacionales (que requieren consentimiento):\n• Firebase / Google LLC (Estados Unidos): Almacenamiento de imágenes y archivos en Firebase Cloud Storage, y servicios de analítica mediante Firebase Analytics\n• Render, Inc. (Estados Unidos): Infraestructura de servidores donde se aloja el backend de la Plataforma\n• Didit (Unión Europea): Verificación de identidad de Anfitriones, incluyendo procesamiento de datos biométricos e imágenes de documentos de identidad\n• Google Maps Platform (Estados Unidos): Servicios de geolocalización, geocodificación directa e inversa para la ubicación de espacios",
-          "Transferencias que no requieren consentimiento (Art. 37 LFPDPPP):\n• Las previstas en una ley o tratado del que México sea parte\n• Las necesarias para la prevención o diagnóstico médico\n• Las que se realicen entre sociedades controladoras y subsidiarias\n• Las necesarias por virtud de un contrato celebrado en interés del titular\n• Las necesarias para el mantenimiento o cumplimiento de una relación jurídica entre el responsable y el titular\n• Las necesarias para el reconocimiento, ejercicio o defensa de un derecho en un proceso judicial",
-          "Al aceptar el presente Aviso de Privacidad, usted otorga su consentimiento expreso para las transferencias internacionales antes descritas, de conformidad con el artículo 36 de la LFPDPPP."
+          "Pool & Chill realiza las siguientes transferencias de datos personales a terceros, sin que se requiera su consentimiento adicional conforme a lo establecido en el artículo 37 de la LFPDPPP:",
+          "V.1. Transferencia a Stripe:\n• Datos transferidos: Información de tarjetas de crédito/débito, información de transacciones, datos de identificación necesarios para el procesamiento de pagos.\n• Finalidad: Procesamiento seguro de pagos y cumplimiento de obligaciones financieras.\n• País de destino: Estados Unidos de América.\n• Medidas de seguridad: Stripe cumple con los estándares PCI DSS y mantiene certificaciones internacionales de seguridad.",
+          "V.2. Transferencia a Didit:\nPara efectos de la verificación de identidad y prevención de fraudes, Pool & Chill utiliza los servicios de Didit, una plataforma de verificación de identidad digital. Didit Identity, Inc., persona moral de derecho privado que provee los servicios de verificación de identidad, actúa como encargado del tratamiento de datos personales, procesando únicamente los datos que Pool & Chill le proporcione para cumplir con las finalidades de verificación de identidad y detección de fraude.\n• Datos transferidos: Las transferencias a Didit podrán incluir: identificación oficial, selfies biométricos, fecha de nacimiento, fotografía, datos de verificación, metadatos asociados y cualquier otro dato estrictamente necesario para la verificación de identidad y detección de fraude.\n• Finalidad: Permitir la verificación de identidad del Usuario, la prevención de dobles cuentas, bots, fraudes y actividades potencialmente ilegales, así como dar cumplimiento a las obligaciones contractuales de Pool & Chill.\n• Domicilio y país de operación: Didit Identity, Inc. tiene su sede en San Francisco, Estados Unidos de América. Al usar los servicios de Didit, algunos datos personales pueden ser transferidos y almacenados en servidores ubicados fuera de México.\n• Didit, como encargado, se obliga a observar medidas de seguridad técnicas, administrativas y físicas para proteger los datos personales, y únicamente los utilizará para las finalidades autorizadas por Pool & Chill y por el Usuario.",
+          "V.3. Transferencia a Firebase (Google Cloud Platform):\n• Datos transferidos: Todos los datos personales almacenados en la Plataforma, incluyendo información de perfil, reservaciones, comunicaciones y contenido generado por usuarios.\n• Finalidad: Almacenamiento seguro de datos y provisión de infraestructura tecnológica para la Plataforma.\n• País de destino: Estados Unidos de América (con posibilidad de replicación en otros países donde Google Cloud Platform tenga centros de datos).\n• Medidas de seguridad: Firebase implementa medidas de seguridad de nivel empresarial, incluyendo cifrado en tránsito y en reposo, controles de acceso y monitoreo continuo.",
+          "V.4. Otras transferencias:\nPool & Chill también puede transferir datos personales cuando sea requerido por ley, orden judicial o autoridad competente, o cuando sea necesario para proteger los derechos, propiedad o seguridad de Pool & Chill, sus usuarios o terceros."
         ]
       },
       "aroRights": {
-        "title": "9. Derechos ARCO",
+        "title": "VII. Derechos ARCO",
         "content": [
-          "De conformidad con los artículos 28 a 35 de la LFPDPPP y los artículos 89 a 96 de su Reglamento, usted como titular tiene derecho a:",
-          "• ACCESO (Art. 23 LFPDPPP): Solicitar información sobre sus datos personales que obren en las bases de datos de Pool & Chill, así como conocer el Aviso de Privacidad al que está sujeto el tratamiento.\n• RECTIFICACIÓN (Art. 24 LFPDPPP): Solicitar la corrección de sus datos cuando sean inexactos, incompletos o no se encuentren actualizados.\n• CANCELACIÓN (Art. 25 LFPDPPP): Solicitar la eliminación de sus datos de los registros o bases de datos de Pool & Chill. La cancelación dará lugar a un período de bloqueo, tras el cual se procederá a la supresión del dato.\n• OPOSICIÓN (Art. 27 LFPDPPP): Oponerse al tratamiento de sus datos personales cuando exista causa legítima para ello.",
-          "Procedimiento para ejercer sus derechos ARCO:",
-          "1. Envíe su solicitud por correo electrónico a: team@poolandchill.com con el asunto 'SOLICITUD ARCO - [TIPO DE DERECHO]'\n2. Su solicitud deberá contener, conforme al artículo 29 de la LFPDPPP:\n   a) Nombre completo del titular y domicilio o correo electrónico para comunicar la respuesta\n   b) Documentos que acrediten su identidad (copia de INE/IFE, pasaporte o cédula profesional) o, en su caso, los de su representante legal\n   c) Descripción clara y precisa de los datos personales respecto de los cuales busca ejercer algún derecho ARCO\n   d) Cualquier elemento o documento que facilite la localización de los datos personales\n   e) En caso de rectificación, las modificaciones a realizarse y la documentación que sustente su petición",
-          "Plazos de respuesta:\n• Pool & Chill comunicará al titular la determinación adoptada en un plazo máximo de 20 días hábiles contados desde la recepción de la solicitud completa (Art. 32 LFPDPPP)\n• En caso de resultar procedente, se hará efectiva dentro de los 15 días hábiles siguientes a la comunicación de la respuesta (Art. 32 LFPDPPP)\n• Los plazos podrán ampliarse una sola vez por un período igual, cuando así lo justifiquen las circunstancias del caso (Art. 32 LFPDPPP)\n• La entrega de datos personales será gratuita; únicamente se podrán cobrar gastos justificados de envío o reproducción"
+          "Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones de uso que les damos (Derecho de Acceso). Asimismo, es su derecho solicitar la corrección de sus datos personales en caso de que estén desactualizados, sean inexactos o incompletos (Derecho de Rectificación); que los eliminemos de nuestros registros o bases de datos cuando considere que no están siendo utilizados adecuadamente (Derecho de Cancelación); así como oponerse al tratamiento de sus datos personales para fines específicos (Derecho de Oposición). Estos derechos se conocen como derechos ARCO.",
+          "VII.1. Procedimiento para ejercer derechos ARCO:\n1. Presentar su solicitud por escrito dirigida al Departamento de Protección de Datos Personales de Pool & Chill, a través del correo electrónico: team@poolandchill.com.mx\n2. La solicitud deberá contener: nombre del titular, correo electrónico registrado en la Plataforma, descripción clara y precisa de los datos personales respecto de los que se busca ejercer algún derecho ARCO, indicación del derecho que se desea ejercer (Acceso, Rectificación, Cancelación u Oposición), y cualquier otro elemento que facilite la localización de los datos personales.\n3. Adjuntar copia de identificación oficial vigente (INE, pasaporte u otro documento oficial) para acreditar su identidad.\n4. En caso de que la solicitud sea presentada por representante legal, deberá adjuntar el poder notarial o documento que acredite la representación.",
+          "VII.2. Plazos de respuesta:\nPool & Chill responderá a su solicitud en un plazo máximo de veinte (20) días hábiles contados a partir de la fecha en que recibamos su solicitud completa. Dicho plazo podrá ser ampliado por una vez por un período igual, siempre que así lo justifiquen las circunstancias del caso, lo cual se le notificará mediante correo electrónico.",
+          "VII.3. Entrega de información:\nEn caso de que su solicitud sea procedente, Pool & Chill hará efectiva la misma en un plazo máximo de quince (15) días hábiles contados a partir de la fecha en que comuniquemos la respuesta. La entrega de información se realizará mediante correo electrónico o, a solicitud del titular, mediante copia simple en formato digital.",
+          "VII.4. Revocación del consentimiento:\nUsted puede revocar el consentimiento que nos haya otorgado para el tratamiento de sus datos personales en cualquier momento. Sin embargo, no en todos los casos podremos atender su solicitud de forma inmediata, ya que es posible que por alguna obligación legal requiramos seguir tratando sus datos personales. Para ciertos fines, la revocación de su consentimiento implicará que no podamos continuar prestando el servicio que nos solicitó. La revocación del consentimiento deberá seguir el mismo procedimiento establecido para el ejercicio de derechos ARCO."
+        ]
+      },
+      "dataRetention": {
+        "title": "VIII. Conservación y Eliminación de Datos Personales",
+        "content": [
+          "VIII.1. Tiempo de conservación:\nSus datos personales serán conservados durante el tiempo necesario para cumplir con las finalidades descritas en este Aviso de Privacidad y, posteriormente, durante los plazos establecidos por la legislación aplicable, incluyendo: plazos de prescripción de acciones legales; obligaciones fiscales y contables (generalmente 5 años conforme a la legislación fiscal mexicana); obligaciones en materia de prevención de lavado de dinero; y cualquier otro plazo establecido por ley.",
+          "VIII.2. Eliminación de datos:\nUna vez cumplidos los plazos de conservación establecidos, sus datos personales serán eliminados de nuestros sistemas de manera segura e irreversible, utilizando métodos que garanticen que la información no pueda ser recuperada ni reconstruida.",
+          "VIII.3. Excepciones:\nPool & Chill podrá conservar ciertos datos personales por períodos adicionales cuando sea necesario para: cumplir con obligaciones legales; resolver disputas; hacer cumplir nuestros acuerdos; o proteger los derechos, propiedad o seguridad de Pool & Chill, sus usuarios o terceros."
         ]
       },
       "consentRevocation": {
-        "title": "10. Revocación del Consentimiento",
+        "title": "Revocación del Consentimiento",
         "content": [
-          "De conformidad con el artículo 8, segundo párrafo de la LFPDPPP, usted puede revocar el consentimiento que nos ha otorgado para el tratamiento de sus datos personales en cualquier momento, sin efectos retroactivos.",
-          "Para revocar su consentimiento, deberá enviar una solicitud a:\n• Correo electrónico: team@poolandchill.com\n• Asunto: REVOCACIÓN DE CONSENTIMIENTO",
-          "Su solicitud deberá incluir:\n• Nombre completo del titular\n• Correo electrónico registrado en la Plataforma\n• Copia de identificación oficial vigente\n• Descripción clara y precisa de los tratamientos para los cuales desea revocar su consentimiento\n• Indicación de si la revocación es total o parcial",
-          "Consideraciones importantes:\n• No en todos los casos podremos atender su solicitud de forma inmediata, ya que es posible que por alguna obligación legal o contractual sea necesario continuar con el tratamiento de ciertos datos (Art. 26 LFPDPPP)\n• La revocación total del consentimiento implicará la imposibilidad de continuar prestándole los servicios de la Plataforma y la cancelación de su cuenta\n• La revocación parcial podrá limitarse a las finalidades secundarias sin afectar la prestación del servicio principal\n• Pool & Chill dará respuesta a su solicitud en un plazo máximo de 20 días hábiles"
+          "De conformidad con el artículo 8, segundo párrafo de la LFPDPPP, usted puede revocar el consentimiento que nos ha otorgado para el tratamiento de sus datos personales en cualquier momento, sin efectos retroactivos. Para revocar su consentimiento deberá seguir el mismo procedimiento establecido para el ejercicio de derechos ARCO (sección VII)."
         ]
       },
       "useLimitation": {
@@ -468,14 +440,12 @@
         ]
       },
       "cookies": {
-        "title": "12. Uso de Cookies y Tecnologías de Rastreo",
+        "title": "IX. Uso de Cookies y Tecnologías Similares",
         "content": [
-          "Pool & Chill utiliza cookies, almacenamiento local (localStorage) del navegador y tecnologías similares de conformidad con lo siguiente:",
-          "Cookies esenciales (estrictamente necesarias):\n• Cookies de sesión para mantener su autenticación\n• Almacenamiento de preferencia de idioma (español/inglés) en localStorage\n• Tokens de acceso y actualización (access token y refresh token) en localStorage para la gestión de sesiones\n• Identificador de usuario para personalizar la experiencia",
-          "Cookies de rendimiento y analítica:\n• Firebase Analytics: Para recopilar datos de uso agregados y anónimos que nos permiten mejorar la Plataforma\n• Estas cookies recopilan información sobre cómo los visitantes utilizan el sitio web (páginas más visitadas, errores, tiempos de carga)",
-          "Cookies de funcionalidad:\n• Preferencias de idioma del usuario\n• Estado de sesión del proceso de registro\n• Preferencias de visualización",
-          "Puede configurar su navegador para rechazar cookies o alertarle cuando se envíen. Sin embargo, la desactivación de cookies esenciales impedirá el correcto funcionamiento de la Plataforma, incluyendo la autenticación y el proceso de registro.",
-          "Para mayor información sobre la gestión de cookies en los navegadores más comunes, puede consultar la documentación de su navegador web."
+          "IX.1. Cookies:\nLa Plataforma utiliza cookies y tecnologías similares para mejorar su experiencia de usuario, analizar el uso de la Plataforma y personalizar el contenido mostrado.",
+          "IX.2. Tipos de cookies utilizadas:\n• Cookies técnicas: Necesarias para el funcionamiento básico de la Plataforma\n• Cookies de rendimiento: Permiten analizar cómo los usuarios interactúan con la Plataforma\n• Cookies de funcionalidad: Permiten recordar sus preferencias y personalizar su experiencia\n• Cookies de marketing: Utilizadas para mostrar contenido relevante y realizar análisis de marketing",
+          "IX.3. Control de cookies:\nUsted puede controlar y gestionar las cookies a través de la configuración de su navegador. Sin embargo, tenga en cuenta que deshabilitar ciertas cookies puede afectar la funcionalidad de la Plataforma.",
+          "IX.4. Tecnologías de seguimiento:\nLa Plataforma también puede utilizar tecnologías de seguimiento como píxeles de seguimiento, web beacons y tecnologías similares para recopilar información sobre su uso de la Plataforma."
         ]
       },
       "childrenPrivacy": {
@@ -488,42 +458,33 @@
         ]
       },
       "securityMeasures": {
-        "title": "14. Medidas de Seguridad",
+        "title": "VI. Medidas de Seguridad",
         "content": [
-          "De conformidad con el artículo 19 de la LFPDPPP, Pool & Chill ha implementado y mantiene medidas de seguridad administrativas, técnicas y físicas para proteger los datos personales contra daño, pérdida, alteración, destrucción o uso, acceso o tratamiento no autorizado:",
-          "Medidas Técnicas:\n• Cifrado de datos sensibles mediante AES-GCM (Advanced Encryption Standard - Galois/Counter Mode) de 256 bits, con derivación de clave PBKDF2 de 100,000 iteraciones, utilizando la API Web Crypto nativa del navegador\n• Cifrado de datos en tránsito mediante protocolos SSL/TLS\n• Almacenamiento de contraseñas mediante algoritmos de hash criptográfico irreversibles\n• Sistema de tokens de autenticación con expiración temporal\n• Firewalls y sistemas de detección y prevención de intrusos\n• Respaldos automáticos y cifrados con redundancia geográfica\n• Almacenamiento seguro de archivos en Firebase Cloud Storage con control de acceso por usuario",
-          "Medidas Administrativas:\n• Políticas de seguridad de la información documentadas y actualizadas\n• Acuerdos de confidencialidad y protección de datos con empleados, colaboradores y proveedores\n• Capacitación continua del personal en materia de protección de datos personales\n• Control de acceso basado en roles y principio de privilegio mínimo\n• Auditorías internas periódicas de seguridad de la información\n• Plan documentado de respuesta a incidentes y notificación de vulneraciones de seguridad\n• Evaluaciones de impacto en la protección de datos para nuevas funcionalidades",
-          "Medidas Físicas:\n• Infraestructura alojada en centros de datos certificados (Firebase/Google Cloud y Render) con acceso restringido\n• Vigilancia y monitoreo 24/7\n• Sistemas de control de acceso y protección contra desastres",
-          "A pesar de la implementación de estas medidas, ningún sistema de seguridad es absolutamente infalible. En caso de que ocurra una vulneración de seguridad que afecte de forma significativa los derechos patrimoniales o morales de los titulares, Pool & Chill notificará al titular de forma inmediata, conforme al artículo 20 de la LFPDPPP, indicando: (i) la naturaleza del incidente; (ii) los datos personales comprometidos; (iii) las recomendaciones al titular para proteger sus intereses; y (iv) las acciones correctivas implementadas."
+          "Pool & Chill implementa medidas de seguridad administrativas, técnicas y físicas para proteger sus datos personales contra daño, pérdida, alteración, destrucción o uso, acceso o tratamiento no autorizados:",
+          "VI.1. Medidas Administrativas:\n• Políticas y procedimientos internos de protección de datos\n• Capacitación periódica del personal en materia de protección de datos\n• Controles de acceso basados en roles y responsabilidades\n• Auditorías periódicas de seguridad",
+          "VI.2. Medidas Técnicas:\n• Cifrado de datos en tránsito mediante protocolos TLS/SSL\n• Cifrado de datos en reposo mediante algoritmos de cifrado avanzados\n• Sistemas de autenticación de múltiples factores cuando sea aplicable\n• Monitoreo continuo de la infraestructura tecnológica\n• Firewalls y sistemas de detección de intrusiones\n• Copias de seguridad periódicas y planes de recuperación ante desastres\n• Actualizaciones regulares de software y parches de seguridad",
+          "VI.3. Medidas Físicas:\n• Control de acceso físico a las instalaciones donde se almacenan los datos\n• Sistemas de videovigilancia y control de acceso\n• Destrucción segura de documentos físicos cuando sea aplicable",
+          "A pesar de las medidas de seguridad implementadas, ningún sistema de transmisión o almacenamiento de datos es completamente seguro. Pool & Chill no puede garantizar la seguridad absoluta de los datos personales, aunque se compromete a mantener los más altos estándares de seguridad disponibles en la industria."
         ]
       },
       "updates": {
-        "title": "15. Modificaciones al Aviso de Privacidad",
+        "title": "X. Modificaciones al Aviso de Privacidad",
         "content": [
-          "De conformidad con el artículo 16, último párrafo de la LFPDPPP, Pool & Chill se reserva el derecho de efectuar modificaciones o actualizaciones al presente Aviso de Privacidad en cualquier momento para atender:",
-          "• Cambios en la legislación mexicana e internacional aplicable en materia de protección de datos\n• Modificaciones en las políticas internas de privacidad\n• Nuevas finalidades de tratamiento de datos personales\n• Cambios en el modelo de negocio o servicios de la Plataforma\n• Implementación de nuevas tecnologías o integraciones con terceros\n• Requerimientos o recomendaciones del INAI",
-          "Las modificaciones serán notificadas mediante:\n• Correo electrónico a la dirección registrada, con al menos 10 días naturales de anticipación a la entrada en vigor\n• Publicación en el sitio web de la Plataforma con indicación clara de la fecha de última actualización\n• Notificación destacada dentro de la Plataforma al iniciar sesión",
-          "Si las modificaciones implican un tratamiento distinto al originalmente informado, o la inclusión de nuevas finalidades, categorías de datos o transferencias a terceros, se recabará nuevamente el consentimiento del titular.",
-          "Se recomienda al titular consultar periódicamente el presente Aviso de Privacidad. La versión vigente estará disponible en todo momento en la Plataforma."
+          "Pool & Chill se reserva el derecho de modificar este Aviso de Privacidad en cualquier momento. Las modificaciones serán publicadas en la Plataforma y, cuando sean sustanciales, se le notificará mediante correo electrónico o mediante un aviso destacado en la Plataforma.",
+          "Se recomienda revisar periódicamente este Aviso de Privacidad para estar informado sobre cómo protegemos sus datos personales."
         ]
       },
       "consentClause": {
-        "title": "16. Consentimiento",
+        "title": "XI. Consentimiento",
         "content": [
-          "Al proporcionar sus datos personales a través de los formularios de registro, formulario de contacto, o cualquier otro medio dispuesto por la Plataforma, y al aceptar los presentes términos, usted manifiesta haber leído, entendido y aceptado el presente Aviso de Privacidad Integral en todos sus términos.",
-          "Asimismo, otorga su consentimiento expreso, libre, específico e informado para el tratamiento de sus datos personales conforme a las finalidades, transferencias y condiciones aquí descritas, de conformidad con los artículos 8 y 36 de la LFPDPPP.",
-          "Tratándose de datos personales sensibles (datos biométricos para verificación de identidad y datos financieros), su consentimiento expreso se otorga de manera reforzada al completar voluntariamente el proceso de verificación de identidad con Didit y al proporcionar sus datos bancarios, conforme al artículo 9 de la LFPDPPP.",
-          "Este consentimiento podrá ser revocado en cualquier momento, sin efectos retroactivos, conforme al procedimiento establecido en la Sección 10 del presente Aviso."
+          "Al proporcionar sus datos personales a través de la Plataforma Pool & Chill, usted otorga su consentimiento expreso para el tratamiento de sus datos personales conforme a los términos establecidos en este Aviso de Privacidad."
         ]
       },
       "complaints": {
-        "title": "17. Quejas y Denuncias ante el INAI",
+        "title": "XII. Autoridad de Control",
         "content": [
-          "Si usted considera que su derecho a la protección de datos personales ha sido lesionado por alguna conducta de Pool & Chill, o presume alguna violación a las disposiciones previstas en la LFPDPPP y demás ordenamientos aplicables, podrá interponer la queja o denuncia correspondiente ante el INAI, de conformidad con los artículos 45 y 46 de la LFPDPPP:",
-          "Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI)\nDomicilio: Insurgentes Sur 3211, Col. Insurgentes Cuicuilco, Alcaldía Coyoacán, C.P. 04530, Ciudad de México, México\nTeléfono: 800 835 4324 (INAI Tel)\nCorreo electrónico: atencion@inai.org.mx\nSitio web: www.inai.org.mx",
-          "El INAI es el organismo constitucional autónomo garante del cumplimiento del derecho a la protección de datos personales en México, conforme al artículo 6, apartado A, fracción VIII de la Constitución Política de los Estados Unidos Mexicanos.",
-          "Pool & Chill se compromete a cooperar plenamente con cualquier procedimiento de verificación, investigación o imposición de sanciones que lleve a cabo el INAI, y a acatar las resoluciones que emita dicho Instituto.",
-          "Fecha de entrada en vigor del presente Aviso de Privacidad: 4 de febrero de 2026."
+          "Si considera que sus derechos de protección de datos personales han sido vulnerados, usted tiene derecho a presentar una denuncia ante el Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI), que es la autoridad encargada de vigilar el cumplimiento de la LFPDPPP en México.",
+          "Para más información, puede visitar el sitio web del INAI: www.inai.org.mx"
         ]
       }
     }

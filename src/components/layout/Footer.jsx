@@ -1,14 +1,10 @@
 import { Facebook, Instagram } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import TermsModal from '../ui/TermsModal';
-import PrivacyModal from '../ui/PrivacyModal';
+import { Link } from 'react-router-dom';
 
 export function Footer() {
   const { t } = useTranslation();
   const poolChillLogo = '/images/poolChillLogo.png';
-  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
-  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   
   return (
     <footer className="bg-white" style={{ boxShadow: '0 -2px 10px -1px rgba(0, 0, 0, 0.08), 0 -1px 4px -1px rgba(0, 0, 0, 0.04)' }}>
@@ -30,18 +26,18 @@ export function Footer() {
 
             {/* Links and Social Media - Centered */}
             <div className="flex flex-col items-center justify-center gap-3 text-[#3CA2A2] md:pl-32 lg:pl-40">
-              <button
-                onClick={() => setIsTermsModalOpen(true)}
+              <Link
+                to="/terminos"
                 className="hover:opacity-70 transition-opacity font-medium text-center"
               >
                 {t('footer.terms')}
-              </button>
-              <button
-                onClick={() => setIsPrivacyModalOpen(true)}
+              </Link>
+              <Link
+                to="/privacidad"
                 className="hover:opacity-70 transition-opacity font-medium text-center"
               >
                 {t('footer.privacy')}
-              </button>
+              </Link>
               
               {/* Social Media Icons */}
               <div className="flex gap-4 mt-2 justify-center items-center">
@@ -76,17 +72,6 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Modal de Términos y Condiciones */}
-      <TermsModal
-        isOpen={isTermsModalOpen}
-        onClose={() => setIsTermsModalOpen(false)}
-      />
-
-      {/* Modal de Aviso de Privacidad */}
-      <PrivacyModal
-        isOpen={isPrivacyModalOpen}
-        onClose={() => setIsPrivacyModalOpen(false)}
-      />
     </footer>
   );
 }
