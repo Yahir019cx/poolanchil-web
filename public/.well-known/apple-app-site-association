@@ -1,0 +1,9 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [{
+      "appID": "95WXXJMP37.com.nextdevcode.poolandchill",
+      "paths": ["/property/*"]
+    }]
+  }
+}
