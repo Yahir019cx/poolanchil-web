@@ -3,6 +3,6 @@
   "target": {
     "namespace": "android_app",
     "package_name": "com.poolandchill.app",
-    "sha256_cert_fingerprints": ["PLACEHOLDER_SHA256"]
+    "sha256_cert_fingerprints": ["2E:A7:D2:CD:B5:C1:35:BE:2C:A2:6E:F5:4F:2C:4E:BB:90:C2:C2:2C:C6:E9:3D:75:41:D7:4A:6D:D0:2F:47:B3"]
   }
 }]
