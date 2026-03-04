@@ -29,6 +29,7 @@ export default function Terms() {
     'payments',
     'jurisdiction',
     'modifications',
+    'userGeneratedContent',
     'contact'
   ];
 
