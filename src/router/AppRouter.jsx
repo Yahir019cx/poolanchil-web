@@ -18,6 +18,7 @@ const ForgotPassword = lazy(() => import('../pages/ForgotPassword'));
 const Login = lazy(() => import('../pages/Login'));
 const Terms = lazy(() => import('../pages/Terms'));
 const Privacy = lazy(() => import('../pages/Privacy'));
+const PropertyRedirect = lazy(() => import('../pages/PropertyRedirect'));
 
 
 // Layout con Navbar y Footer
@@ -62,6 +63,7 @@ export default function AppRouter() {
           <Route path="/verificacion-exitosa" element={<VerificacionExitosa />} />
           <Route path="/verificacion-didit" element={<VerificacionDidit />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/property/:id" element={<PropertyRedirect />} />
         </Route>
       </Routes>
       </Suspense>

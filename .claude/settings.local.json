@@ -7,7 +7,11 @@
       "Bash(dir /S /B)",
       "Bash(node:*)",
       "Bash(npm install:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(find /c/Users/pyahi/poolanchil-web -name .env* -type f)",
+      "Bash(grep -r \"window\\\\.location\\\\|window\\\\.open\\\\|setTimeout.*navigate\\\\|setInterval.*navigate\\\\|intent://\\\\|poolandchill://\" /c/Users/pyahi/poolanchil-web/src --include=*.js --include=*.jsx -n)",
+      "Bash(find /c/Users/pyahi/poolanchil-web -name *.json -path */config* -o -name package.json)",
+      "Bash(grep -r \"app-store\\\\|play-store\\\\|App Store\\\\|Play Store\" /c/Users/pyahi/poolanchil-web/src --include=*.jsx --include=*.ts)"
     ],
     "deny": [],
     "ask": []
