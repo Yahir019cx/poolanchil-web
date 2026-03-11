@@ -303,11 +303,25 @@
           "15.2. Continued use of the Platform after the modifications take effect shall constitute acceptance of the modified Terms. If the User does not agree with the modifications, they must immediately cease using the Platform and request cancellation of their account."
         ]
       },
-      "contact": {
-        "title": "XVI. Contact",
+      "userGeneratedContent": {
+        "title": "XVII. User-Generated Content",
         "content": [
-          "16.1. For any inquiry, clarification, or notification related to these Terms, Users may contact Pool & Chill through the contact channels provided on the Platform.",
-          "16.2. All official notifications and communications between Pool & Chill and Users shall be made by email to the address registered in the User's account or by publication on the Platform.",
+          "The POOL & CHILL platform allows users to create profiles and upload content related to the use of the service, including profile photographs, property photographs, descriptions, and other information associated with their account or their listings.",
+          "The user declares and warrants that all content they publish or upload to the platform:",
+          "a) Is their property or they have the necessary rights for its use and publication.",
+          "b) Does not infringe third-party rights, including copyright, trademark, image rights, or other legal rights.",
+          "c) Does not contain illegal, offensive, discriminatory, violent, pornographic, misleading material or material that violates applicable legislation.",
+          "POOL & CHILL reserves the right, at its sole discretion, to review, moderate, hide, or remove any content it considers to violate these Terms and Conditions, the platform's policies, or applicable legislation.",
+          "Likewise, POOL & CHILL may suspend or cancel accounts of users who publish content that infringes these provisions.",
+          "Users may report content they consider inappropriate or that infringes these terms through the support channels available within the platform or through the contact means published on the website.",
+          "POOL & CHILL will analyze the reports received and may take such measures as it deems necessary, including removal of content, restriction of access, or suspension of the corresponding account."
+        ]
+      },
+      "contact": {
+        "title": "XVIII. Contact",
+        "content": [
+          "18.1. For any inquiry, clarification, or notification related to these Terms, Users may contact Pool & Chill through the contact channels provided on the Platform.",
+          "18.2. All official notifications and communications between Pool & Chill and Users shall be made by email to the address registered in the User's account or by publication on the Platform.",
           "By using the Pool & Chill Platform, you acknowledge that you have read, understood, and accepted these Terms and Conditions of Use in their entirety."
         ]
       }
